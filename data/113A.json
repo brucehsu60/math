@@ -62,7 +62,7 @@
       "options": ["(A) 1個", "(B) 2個", "(C) 3個", "(D) 4個", "(E) 5個(含)以上"],
       "answer": "(B)",
       "hint": "看到 $\\sin(A+B)$ 直接用和角公式展開，把已知角度的三角函數值代入化簡，最後再用疊合或是直接湊角度解方程式。",
-      "explanation": "將等式左邊利用和角公式展開，並將 $\\frac{\\pi}{6}$ ($30^\\circ$) 代入：<br>$\\sin x \\cos 30^\\circ + \cos x \\sin 30^\\circ = \\sin x + \\frac{1}{2}$<br>$\\frac{\\sqrt{3}}{2}\\sin x + \\frac{1}{2}\\cos x = \\sin x + \\frac{1}{2}$<br>同乘以 2 並整理移項：<br>$\\cos x - (2-\\sqrt{3})\\sin x = 1$<br><br>【學霸視角】：看到 $2-\\sqrt{3}$ 就要有直覺，這是 $\\tan 15^\\circ$ 的值！<br>將式子改寫為：$\\cos x - \\tan 15^\\circ \\sin x = 1$<br>$\\cos x - \\frac{\\sin 15^\\circ}{\\cos 15^\\circ} \\sin x = 1$<br>同乘 $\\cos 15^\\circ$：$\\cos x \\cos 15^\\circ - \\sin x \\sin 15^\\circ = \\cos 15^\\circ$<br>利用餘弦的和角公式逆推：$\\cos(x + 15^\\circ) = \\cos 15^\\circ$<br><br>這代表 $x + 15^\\circ$ 和 $15^\\circ$ 是同界角，或者兩者在單位圓上左右對稱（即 $360^\\circ - 15^\\circ$）。<br>所以 $x + 15^\\circ = 360^\\circ k + 15^\\circ$ 或 $x + 15^\\circ = 360^\\circ k - 15^\\circ$。<br>解得 $x = 360^\\circ k$ 或 $x = 360^\\circ k - 30^\\circ$。<br>因為題目限制 $0 \\le x \\lt 2\\pi$ ($0^\\circ \\le x \\lt 360^\\circ$)。<br>代入整數 $k$：<br>當 $k=0$，$x = 0^\\circ$ ($0$)。<br>當 $k=1$，$x = 330^\\circ$ ($\\frac{11\\pi}{6}$)。<br>共解得 2 個符合條件的 $x$。"
+      "explanation": "將等式左邊利用和角公式展開，並將 $\\frac{\\pi}{6}$ ($30^\\circ$) 代入：<br>$\\sin x \\cos 30^\\circ + \\cos x \\sin 30^\\circ = \\sin x + \\frac{1}{2}$<br>$\\frac{\\sqrt{3}}{2}\\sin x + \\frac{1}{2}\\cos x = \\sin x + \\frac{1}{2}$<br>同乘以 2 並整理移項：<br>$\\cos x - (2-\\sqrt{3})\\sin x = 1$<br><br>【學霸視角】：看到 $2-\\sqrt{3}$ 就要有直覺，這是 $\\tan 15^\\circ$ 的值！<br>將式子改寫為：$\\cos x - \\tan 15^\\circ \\sin x = 1$<br>$\\cos x - \\frac{\\sin 15^\\circ}{\\cos 15^\\circ} \\sin x = 1$<br>同乘 $\\cos 15^\\circ$：$\\cos x \\cos 15^\\circ - \\sin x \\sin 15^\\circ = \\cos 15^\\circ$<br>利用餘弦的和角公式逆推：$\\cos(x + 15^\\circ) = \\cos 15^\\circ$<br><br>這代表 $x + 15^\\circ$ 和 $15^\\circ$ 是同界角，或者兩者在單位圓上左右對稱（即 $360^\\circ - 15^\\circ$）。<br>所以 $x + 15^\\circ = 360^\\circ k + 15^\\circ$ 或 $x + 15^\\circ = 360^\\circ k - 15^\\circ$。<br>解得 $x = 360^\\circ k$ 或 $x = 360^\\circ k - 30^\\circ$。<br>因為題目限制 $0 \\le x \\lt 2\\pi$ ($0^\\circ \\le x \\lt 360^\\circ$)。<br>代入整數 $k$：<br>當 $k=0$，$x = 0^\\circ$ ($0$)。<br>當 $k=1$，$x = 330^\\circ$ ($\\frac{11\\pi}{6}$)。<br>共解得 2 個符合條件的 $x$。"
     },
     {
       "id": "113-gsatA-05",
@@ -312,8 +312,8 @@
       "correct_rate": null,
       "question": "【題組 18-20】承 18 題，已知空間中有一點 $P(a,b,c)$ 滿足向量 $\\vec{OP}$ 與向量 $(1,0,0)$ 的夾角 $\\theta \\le \\frac{\\pi}{6}$。試說明實數 $a,b,c$ 滿足不等式 $a^2 \\ge 3(b^2+c^2)$。",
       "options": [],
-      "answer": "$\\text{見詳解證明}$",
-      "hint": "把題目給的夾角條件翻譯成數學語言。利用向量內積公式 $\\cos\\theta = \frac{\\vec{a}\\cdot\\vec{b}}{|a||b|}$，因為夾角小於等於 $30^\\circ$，代表 $\\cos$ 值大於等於 $\\frac{\\sqrt{3}}{2}$，兩邊平方就能證出來。",
+      "answer": "\\text{見詳解證明}",
+      "hint": "把題目給的夾角條件翻譯成數學語言。利用向量內積公式 $\\cos\\theta = \\frac{\\vec{a}\\cdot\\vec{b}}{|a||b|}$，因為夾角小於等於 $30^\\circ$，代表 $\\cos$ 值大於等於 $\\frac{\\sqrt{3}}{2}$，兩邊平方就能證出來。",
       "explanation": "根據向量內積定義計算夾角的餘弦值：<br>令 $\\vec{u} = (1,0,0)$，已知夾角為 $\\theta$：<br>$\\cos\\theta = \\frac{\\vec{OP} \\cdot \\vec{u}}{|\\vec{OP}| |\\vec{u}|} = \\frac{a}{\\sqrt{a^2+b^2+c^2} \\cdot 1}$。<br><br>已知條件為 $\\theta \\le \\frac{\\pi}{6} = 30^\\circ$。<br>因為在 $0 \\sim 90^\\circ$ 之間，角度越小 $\\cos$ 值越大，故：<br>$\\cos\\theta \\ge \\cos(30^\\circ) = \\frac{\\sqrt{3}}{2}$。<br><br>將我們算出的 $\\cos\\theta$ 代入不等式：<br>$\\frac{a}{\\sqrt{a^2+b^2+c^2}} \\ge \\frac{\\sqrt{3}}{2}$。<br>（此處可推知 $a$ 必定大於 0，因為等號右邊是正數）<br><br>將不等式兩邊同時平方，保持大於等於的關係：<br>$\\frac{a^2}{a^2+b^2+c^2} \\ge \\frac{3}{4}$。<br>兩邊同乘分母 $4(a^2+b^2+c^2)$：<br>$4a^2 \\ge 3(a^2+b^2+c^2)$。<br>展開右邊並移項：<br>$4a^2 \\ge 3a^2 + 3(b^2+c^2) \\Rightarrow a^2 \\ge 3(b^2+c^2)$。<br>得證。"
     },
     {
@@ -326,7 +326,7 @@
       "correct_rate": null,
       "question": "【題組 18-20】承 19 題，已知點 $P$ 在平面 $E$ 上且 $b=0$。試求 $a$ 的最大可能範圍，並求線段 $OP$ 的最小可能長度。",
       "options": [],
-      "answer": "$a \\in [6-2\\sqrt{3}, 6+2\\sqrt{3}]$，最小長度 $4\\sqrt{3}-4$",
+      "answer": "a \\in [6-2\\sqrt{3}, 6+2\\sqrt{3}]，最小長度 4\\sqrt{3}-4",
       "hint": "把點 $P$ 的兩個已知條件 ($b=0$ 及在平面上) 寫成方程式，代入第 19 題證出來的不等式中解出 $a$ 的範圍。最後用配方法求拋物線極值。",
       "explanation": "1. **尋找變數 $a$ 的限制範圍：**<br>已知點 $P(a,0,c)$ 在平面 $E: x-z=4$ 上，代入得：$a - c = 4 \\Rightarrow c = a - 4$。<br>將 $b=0, c=a-4$ 代入上一題證明的條件式 $a^2 \\ge 3(b^2+c^2)$：<br>$a^2 \\ge 3(0^2 + (a-4)^2)$<br>$a^2 \\ge 3(a^2 - 8a + 16)$<br>$a^2 \\ge 3a^2 - 24a + 48$<br>移項整理：$2a^2 - 24a + 48 \\le 0 \\Rightarrow a^2 - 12a + 24 \\le 0$。<br>解一元二次方程式找邊界：$a = \\frac{12 \\pm \\sqrt{144 - 96}}{2} = \\frac{12 \\pm \\sqrt{48}}{2} = 6 \\pm 2\\sqrt{3}$。<br>所以 $a$ 的範圍為 **$6-2\\sqrt{3} \\le a \\le 6+2\\sqrt{3}$**。<br><br>2. **求 $OP$ 最小長度：**<br>$\\overline{OP}^2 = a^2 + b^2 + c^2 = a^2 + 0 + (a-4)^2 = 2a^2 - 8a + 16$。<br>這是一個開口向上的二次函數，我們對其配方求極值：<br>$\\overline{OP}^2 = 2(a^2 - 4a + 4) + 8 = 2(a-2)^2 + 8$。<br>拋物線的頂點發生在 $a=2$，但我們必須檢查 $a=2$ 是否在剛剛算出的範圍內！<br>因為 $\\sqrt{3} \\approx 1.732$，$6-2\\sqrt{3} \\approx 6 - 3.464 = 2.536$。<br>我們發現有效範圍的左邊界 $2.536$ 已經在頂點 $a=2$ 的「右邊」了，所以函數在這個區間內是遞增的。<br>要找最小值，只能取代入區間的最左端點 $a = 6-2\\sqrt{3}$：<br>$\\overline{OP}^2_{min} = 2(6-2\\sqrt{3}-2)^2 + 8 = 2(4-2\\sqrt{3})^2 + 8$<br>$= 2(16 - 16\\sqrt{3} + 12) + 8 = 56 - 32\\sqrt{3} + 8 = 64 - 32\\sqrt{3}$。<br><br>最後開根號（利用雙重根號化簡）：<br>$\\overline{OP}_{min} = \\sqrt{64 - 32\\sqrt{3}} = \\sqrt{4(16 - 8\\sqrt{3})} = 2\\sqrt{16 - 2\\sqrt{48}}$<br>找相加=16，相乘=48的數 (12 和 4)：<br>$= 2(\\sqrt{12} - \\sqrt{4}) = 2(2\\sqrt{3} - 2) = \\mathbf{4\\sqrt{3} - 4}$。"
     }

@@ -3,53 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學測數學精選題庫</title>
+    <title>高中數學歷屆題庫</title>
     
-    <!-- 引入 KaTeX (修正了排版工具的正確網址 contrib) -->
+    <!-- 引入 KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderQuestions()"></script>
 
     <style>
-        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
-        .header-section { text-align: center; margin-bottom: 20px; }
-        .version-text { font-size: 13px; color: #94a3b8; margin-top: 5px; }
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #333; }
+        .header-section { text-align: center; margin-bottom: 30px; }
+        h1 { color: #1e293b; margin-bottom: 5px; }
+        .version-text { font-size: 13px; color: #64748b; }
         
-        .controls { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 16px; outline: none; width: 200px; }
+        /* 篩選器面板 */
+        .filter-panel { 
+            display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; 
+            background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 30px; 
+        }
+        .filter-group { display: flex; flex-direction: column; }
+        .filter-group label { font-size: 14px; color: #64748b; margin-bottom: 5px; font-weight: bold; }
+        select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 15px; outline: none; min-width: 160px; background-color: #fff; cursor: pointer; }
+        optgroup { font-weight: bold; color: #3b82f6; }
+        
+        /* 題目卡片 */
+        .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
+        
+        /* 標籤設計 */
+        .badge-group { margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .badge { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        .badge-year { background: #e2e8f0; color: #475569; }
+        .badge-category { background: #1e293b; color: white; } /* 冊別 */
+        .badge-topic { background: #3b82f6; color: white; }   /* 主題 */
+        .badge-type { background: #8b5cf6; color: white; }
+        .badge-diff-easy { background: #10b981; color: white; }
+        .badge-diff-med { background: #f59e0b; color: white; }
+        .badge-diff-hard { background: #ef4444; color: white; }
+        
+        .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 25px; }
+        
+        /* 選項按鈕 (單選與多選) */
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        button.option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; display: flex; align-items: center; }
+        button.option-btn .opt-label { font-weight: bold; margin-right: 15px; color: #64748b; }
+        button.option-btn:hover:not(:disabled) { background: #f8fafc; border-color: #cbd5e1; }
+        button.option-btn:disabled { cursor: default; }
+        
+        /* 填充題輸入區 */
+        .fill-in-blank { display: flex; gap: 10px; align-items: center; }
+        .fill-in-blank input { padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; width: 150px; outline: none; }
+        .fill-in-blank button { padding: 12px 20px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .fill-in-blank button:hover { background: #2563eb; }
 
-        .question-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 25px; }
-        .badge-group { margin-bottom: 15px; }
-        .topic-badge { display: inline-block; background: #2c3e50; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; margin-right: 5px; }
-        .diff-badge { display: inline-block; background: #007bff; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        /* 狀態顏色 */
+        .correct { background: #dcfce7 !important; border-color: #22c55e !important; }
+        .correct .opt-label { color: #166534; }
+        .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; opacity: 0.7; }
         
-        .question-text { font-size: 18px; line-height: 1.8; color: #333; margin-bottom: 20px; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        button.option-btn { padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; transition: all 0.2s; }
-        button.option-btn:hover:not(:disabled) { background: #f1f5f9; border-color: #cbd5e1; }
-        button.option-btn:disabled { cursor: not-allowed; }
-        
-        .correct { background: #dcfce7 !important; border-color: #86efac !important; color: #166534; font-weight: bold; }
-        .wrong { background: #fee2e2 !important; border-color: #fca5a5 !important; color: #991b1b; text-decoration: line-through; }
-        .explanation { margin-top: 20px; padding: 15px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0; display: none; font-size: 15px; line-height: 1.8; }
+        /* 提示與詳解 */
+        .feedback-area { margin-top: 25px; display: none; }
+        .hint-box { background: #fef9c3; border-left: 4px solid #eab308; padding: 15px; border-radius: 0 8px 8px 0; margin-bottom: 15px; font-size: 15px; }
+        .exp-box { background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 20px; border-radius: 0 8px 8px 0; font-size: 16px; line-height: 1.8; }
+        .exp-title { font-weight: bold; color: #1e293b; margin-bottom: 10px; }
+        .empty-state { text-align: center; color: #94a3b8; padding: 50px 0; font-size: 18px; }
     </style>
 </head>
 <body>
     <div class="header-section">
-        <h1 style="color: #1e293b;">📘 學測數學精選題庫</h1>
-        <p style="color: #64748b; margin-bottom: 5px;">各單元互動練習</p>
-        <div id="version-display" class="version-text">正在確認題庫版本...</div>
+        <h1>📐 高中數學歷屆題庫</h1>
+        <div id="version-display" class="version-text">正在載入題庫...</div>
     </div>
 
-    <div class="controls">
-        <select id="chapter-filter" onchange="renderQuestions()">
-            <option value="all">顯示全部章節</option>
-            <option value="三角函數">三角函數</option>
-            <option value="空間向量">空間向量</option>
-        </select>
+    <!-- 篩選器面板 -->
+    <div class="filter-panel">
+        <div class="filter-group">
+            <label for="year-filter">年度</label>
+            <select id="year-filter" onchange="renderQuestions()">
+                <option value="all">全部年度</option>
+                <option value="113">113年</option>
+                <option value="83">83年</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="category-filter">冊別</label>
+            <select id="category-filter" onchange="renderQuestions()">
+                <option value="all">全部冊別</option>
+                <option value="第一冊">第一冊</option>
+                <option value="第二冊">第二冊</option>
+                <option value="第三冊">第三冊</option>
+                <option value="第四冊">第四冊</option>
+                <option value="第五冊">第五冊</option>
+                <option value="第六冊">第六冊</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="chapter-filter">主題</label>
+            <select id="chapter-filter" onchange="renderQuestions()">
+                <option value="all">全部主題</option>
+                <optgroup label="第一冊">
+                    <option value="數與式">數與式</option>
+                    <option value="指數與對數">指數與對數</option>
+                    <option value="多項式函數">多項式函數</option>
+                    <option value="直線與圓">直線與圓</option>
+                </optgroup>
+                <optgroup label="第二冊">
+                    <option value="數列與級數">數列與級數</option>
+                    <option value="數據分析">數據分析</option>
+                    <option value="排列組合與機率">排列組合與機率</option>
+                    <option value="三角比">三角比</option>
+                </optgroup>
+                <optgroup label="第三冊">
+                    <option value="三角函數">三角函數</option>
+                    <option value="指數與對數函數">指數與對數函數</option>
+                    <option value="平面向量">平面向量</option>
+                </optgroup>
+                <optgroup label="第四冊">
+                    <option value="空間向量">空間向量</option>
+                    <option value="空間中的平面與直線">空間中的平面與直線</option>
+                    <option value="機率">機率</option>
+                    <option value="矩陣">矩陣</option>
+                </optgroup>
+                <optgroup label="第五冊">
+                    <option value="極限與函數">極限與函數</option>
+                    <option value="微分">微分</option>
+                    <option value="積分">積分</option>
+                </optgroup>
+                <optgroup label="第六冊">
+                    <option value="二次曲線">二次曲線</option>
+                    <option value="複數與多項式方程式">複數與多項式方程式</option>
+                    <option value="機率統計">機率統計</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="type-filter">題型</label>
+            <select id="type-filter" onchange="renderQuestions()">
+                <option value="all">全部題型</option>
+                <option value="單選題">單選題</option>
+                <option value="多選題">多選題</option>
+                <option value="填充題">填充題</option>
+            </select>
+        </div>
     </div>
     
-    <div id="quiz-container">載入中，請稍候...</div>
+    <div id="quiz-container">
+        <div class="empty-state">載入中...</div>
+    </div>
 
     <script>
         let allQuestions = []; 
@@ -57,64 +159,88 @@
         
         window.onload = function() {
             fetch(`questions.json?t=${cacheBuster}`)
-                .then(res => {
-                    if (!res.ok) throw new Error("網路連線或檔案讀取異常");
-                    return res.json();
-                })
+                .then(res => res.json())
                 .then(data => {
-                    if (Array.isArray(data)) {
-                        allQuestions = data;
-                        document.getElementById('version-display').innerText = "目前版本：過渡期舊版 (伺服器同步中...)";
-                    } else if (data.questions) {
-                        allQuestions = data.questions;
-                        document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
-                    } else {
-                        throw new Error("無法辨識的 JSON 格式");
-                    }
-                    renderQuestions(); 
+                    allQuestions = data.questions || [];
+                    document.getElementById('version-display').innerText = `版本：${data.version} | 更新於：${data.update_time}`;
+                    // 確保 KaTeX 載入後再渲染
+                    if(window.renderMathInElement) { renderQuestions(); }
                 })
                 .catch(err => {
-                    console.error("錯誤詳情：", err);
-                    document.getElementById('version-display').innerText = '系統狀態：異常';
-                    document.getElementById('quiz-container').innerHTML = `<p style="color:red; text-align:center;">錯誤訊息：${err.message}</p>`;
+                    document.getElementById('quiz-container').innerHTML = `<div class="empty-state" style="color:#ef4444;">題庫載入失敗，請確認檔案位置。</div>`;
                 });
         };
 
+        function getDifficultyClass(diff) {
+            if (diff.includes("易")) return "badge-diff-easy";
+            if (diff.includes("難") || diff.includes("困難")) return "badge-diff-hard";
+            return "badge-diff-med";
+        }
+
         function renderQuestions() {
             const container = document.getElementById('quiz-container');
-            const selectedChapter = document.getElementById('chapter-filter').value;
+            const yearFilter = document.getElementById('year-filter').value;
+            const categoryFilter = document.getElementById('category-filter').value;
+            const chapterFilter = document.getElementById('chapter-filter').value;
+            const typeFilter = document.getElementById('type-filter').value;
+            
             container.innerHTML = ''; 
             
-            const filteredQuestions = selectedChapter === 'all' 
-                ? allQuestions 
-                : allQuestions.filter(q => q.chapter === selectedChapter);
+            const filteredQuestions = allQuestions.filter(q => {
+                return (yearFilter === 'all' || q.year === yearFilter) &&
+                       (categoryFilter === 'all' || q.category === categoryFilter) &&
+                       (chapterFilter === 'all' || q.chapter === chapterFilter) &&
+                       (typeFilter === 'all' || q.type === typeFilter);
+            });
 
-            if(!filteredQuestions || filteredQuestions.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#64748b;">此章節目前尚未新增題目。</p>';
+            if(filteredQuestions.length === 0) {
+                container.innerHTML = '<div class="empty-state">目前沒有符合條件的題目 😢</div>';
                 return;
             }
 
-            filteredQuestions.forEach((q, index) => {
+            filteredQuestions.forEach(q => {
                 const card = document.createElement('div');
                 card.className = 'question-card';
                 
                 let optionsHtml = '';
-                const labels = ['A', 'B', 'C', 'D'];
-                q.options.forEach((opt, optIndex) => {
-                    const safeOpt = encodeURIComponent(opt);
-                    const safeAns = encodeURIComponent(q.answer);
-                    optionsHtml += `<button class="option-btn" onclick="checkAnswer(this, '${safeOpt}', '${safeAns}', 'exp-${q.id}')">${labels[optIndex]}. ${opt}</button>`;
-                });
+                const labels = ['A', 'B', 'C', 'D', 'E'];
+                
+                if (q.type === "單選題" && q.options) {
+                    q.options.forEach((opt, idx) => {
+                        optionsHtml += `
+                            <button class="option-btn" onclick="checkSingleAnswer(this, '${encodeURIComponent(opt)}', '${encodeURIComponent(q.answer)}', 'feedback-${q.id}')">
+                                <span class="opt-label">${labels[idx]}</span> <span>${opt}</span>
+                            </button>`;
+                    });
+                } else if (q.type === "多選題") {
+                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 10px;">(此為多選題，請自行思考後點擊下方按鈕看解答)</div>
+                                    <button class="option-btn" style="justify-content:center; background:#f8fafc;" onclick="document.getElementById('feedback-${q.id}').style.display='block'">顯示解答與詳解</button>`;
+                } else if (q.type === "填充題" || q.type === "選填題") {
+                    optionsHtml += `
+                        <div class="fill-in-blank">
+                            <input type="text" id="input-${q.id}" placeholder="請輸入答案...">
+                            <button onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">送出</button>
+                        </div>`;
+                }
 
                 card.innerHTML = `
                     <div class="badge-group">
-                        <span class="topic-badge">${q.chapter}</span>
-                        <span class="diff-badge">${q.difficulty}</span>
+                        <span class="badge badge-year">${q.year} ${q.exam}</span>
+                        <span class="badge badge-category">${q.category}</span>
+                        <span class="badge badge-topic">${q.chapter}</span>
+                        <span class="badge badge-type">${q.type}</span>
+                        <span class="badge ${getDifficultyClass(q.difficulty)}">${q.difficulty}</span>
                     </div>
                     <div class="question-text"><strong>Q:</strong> ${q.question}</div>
                     <div class="options">${optionsHtml}</div>
-                    <div id="exp-${q.id}" class="explanation">
-                        <strong>💡 關鍵解析：</strong><br>${q.explanation}
+                    
+                    <div id="feedback-${q.id}" class="feedback-area">
+                        ${q.hint ? `<div class="hint-box"><strong>💡 破題提示：</strong>${q.hint}</div>` : ''}
+                        <div class="exp-box">
+                            <div class="exp-title">📝 完整解析</div>
+                            <div style="color:#22c55e; font-weight:bold; margin-bottom:10px;">正確答案：${q.answer}</div>
+                            ${q.explanation}
+                        </div>
                     </div>
                 `;
                 container.appendChild(card);
@@ -122,32 +248,43 @@
 
             if (typeof renderMathInElement !== 'undefined') {
                 renderMathInElement(container, {
-                    delimiters: [
-                        {left: "$$", right: "$$", display: true},
-                        {left: "$", right: "$", display: false}
-                    ]
+                    delimiters: [ {left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false} ],
+                    throwOnError: false
                 });
             }
         }
 
-        function checkAnswer(btn, encodedSelected, encodedCorrect, explanationId) {
-            const selectedOption = decodeURIComponent(encodedSelected);
-            const correctAnswer = decodeURIComponent(encodedCorrect);
-            const allButtons = btn.parentElement.children;
+        // 單選題檢查
+        function checkSingleAnswer(btn, encSelected, encCorrect, feedbackId) {
+            const selected = decodeURIComponent(encSelected);
+            const correct = decodeURIComponent(encCorrect);
+            const buttons = btn.parentElement.querySelectorAll('.option-btn');
             
-            for (let b of allButtons) {
+            buttons.forEach(b => {
                 b.disabled = true;
-                let btnText = b.innerHTML.substring(3).trim(); 
-                if (btnText === correctAnswer) {
+                if (b.querySelector('span:nth-child(2)').innerHTML.trim() === correct) {
                     b.classList.add('correct');
                 }
-            }
+            });
+            if (selected !== correct) btn.classList.add('wrong');
+            document.getElementById(feedbackId).style.display = 'block';
+        }
+
+        // 填充題檢查
+        function checkFillInAnswer(qId, encCorrect) {
+            const input = document.getElementById(`input-${qId}`);
+            const correct = decodeURIComponent(encCorrect);
+            const feedback = document.getElementById(`feedback-${qId}`);
             
-            if (selectedOption !== correctAnswer) {
-                btn.classList.add('wrong');
+            input.disabled = true;
+            if(input.value.trim() === correct) {
+                input.style.borderColor = "#22c55e";
+                input.style.backgroundColor = "#dcfce7";
+            } else {
+                input.style.borderColor = "#ef4444";
+                input.style.backgroundColor = "#fee2e2";
             }
-            
-            document.getElementById(explanationId).style.display = 'block';
+            feedback.style.display = 'block';
         }
     </script>
 </body>

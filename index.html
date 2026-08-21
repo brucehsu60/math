@@ -25,14 +25,18 @@
         .tag-btn:hover { background: #e2e8f0; }
         .tag-btn.active { background: #1e293b; color: white; border-color: #1e293b; font-weight: bold; }
         
-        /* 特定篩選類別的活躍顏色 */
         .tag-btn.active[data-filter="type"] { background: #8b5cf6; border-color: #8b5cf6; }
         .tag-btn.active[data-filter="chapter"] { background: #3b82f6; border-color: #3b82f6; }
         
-        /* 答對率篩選按鈕顏色 */
-        .tag-btn.active[data-filter="rate"][data-value="high"] { background: #10b981; border-color: #10b981; }
-        .tag-btn.active[data-filter="rate"][data-value="med"] { background: #f59e0b; border-color: #f59e0b; }
-        .tag-btn.active[data-filter="rate"][data-value="low"] { background: #ef4444; border-color: #ef4444; }
+        /* 特製：答對率篩選按鈕自帶底色 */
+        .btn-rate-high { background: #10b981; color: white; border-color: #10b981; }
+        .btn-rate-med { background: #f59e0b; color: white; border-color: #f59e0b; }
+        .btn-rate-low { background: #ef4444; color: white; border-color: #ef4444; }
+        .btn-rate-high:hover { background: #059669; }
+        .btn-rate-med:hover { background: #d97706; }
+        .btn-rate-low:hover { background: #dc2626; }
+        /* 點選時加上粗外框提示 */
+        .tag-btn.active[data-filter="rate"] { outline: 3px solid #1e293b; outline-offset: 1px; }
 
         /* 題目卡片 */
         .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
@@ -47,11 +51,9 @@
         .badge-topic { background: #3b82f6; color: white; }   
         .badge-type { background: #8b5cf6; color: white; }   
         
-        /* 答對率標籤顏色 */
         .badge-rate-high { background: #10b981; color: white; } 
         .badge-rate-med { background: #f59e0b; color: white; }  
         .badge-rate-low { background: #ef4444; color: white; }  
-        .badge-rate-none { background: #94a3b8; color: white; } 
 
         .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 25px; }
         
@@ -64,7 +66,7 @@
         /* 多選題選取狀態 */
         button.option-btn.multi-btn.selected { background: #e0f2fe; border-color: #38bdf8; }
 
-        /* 動作按鈕 (確認答案等) */
+        /* 動作按鈕 */
         .action-btn { padding: 12px 20px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.2s; margin-top: 10px; width: 100%; }
         .action-btn:hover { background: #2563eb; }
 
@@ -111,9 +113,9 @@
             <span class="filter-label">答對率：</span>
             <div class="filter-buttons">
                 <button class="tag-btn active" data-filter="rate" data-value="all">全部</button>
-                <button class="tag-btn" data-filter="rate" data-value="high">易 (≥60%)</button>
-                <button class="tag-btn" data-filter="rate" data-value="med">中 (30~59%)</button>
-                <button class="tag-btn" data-filter="rate" data-value="low">難 (<30%)</button>
+                <button class="tag-btn btn-rate-high" data-filter="rate" data-value="high">易 (≥60%)</button>
+                <button class="tag-btn btn-rate-med" data-filter="rate" data-value="med">中 (30~59%)</button>
+                <button class="tag-btn btn-rate-low" data-filter="rate" data-value="low">難 (<30%)</button>
             </div>
         </div>
         
@@ -188,6 +190,7 @@
         let currentFilters = { year: 'all', chapter: 'all', type: 'all', rate: 'all' };
 
         function loadQuestions() {
+            // 強制清除快取機制
             const cacheBuster = new Date().getTime();
             fetch(`questions.json?t=${cacheBuster}`)
                 .then(res => res.json())
@@ -216,9 +219,7 @@
         function applyFilter(filterType, filterValue) {
             currentFilters[filterType] = filterValue;
             
-            // 找出所有同類型的按鈕並移除 active
             document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
-            // 替目標按鈕加上 active
             const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
             if (targetBtn) {
                 targetBtn.classList.add('active');
@@ -228,9 +229,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 取代難易度的答對率計算邏輯
         function getRateInfo(rate) {
-            if (rate === null || rate === undefined) return { class: "badge-rate-none", category: "none", text: "無數據" };
+            // 處理非選題無數據的情況：回傳 null
+            if (rate === null || rate === undefined) return null;
             if (rate >= 60) return { class: "badge-rate-high", category: "high", text: `易 (${rate}%)` };
             if (rate >= 30) return { class: "badge-rate-med", category: "med", text: `中 (${rate}%)` };
             return { class: "badge-rate-low", category: "low", text: `難 (${rate}%)` };
@@ -242,10 +243,13 @@
             
             const filtered = allQuestions.filter(q => {
                 const rateInfo = getRateInfo(q.correct_rate);
+                // 若篩選器選了特定難度，無數據的題目會自動被過濾掉
+                const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
+                
                 return (currentFilters.year === 'all' || q.year === currentFilters.year) &&
                        (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
                        (currentFilters.type === 'all' || q.type === currentFilters.type) &&
-                       (currentFilters.rate === 'all' || rateInfo.category === currentFilters.rate);
+                       matchRate;
             });
 
             if(filtered.length === 0) {
@@ -259,7 +263,6 @@
                 let optionsHtml = '';
                 let displayAnswer = q.answer;
                 
-                // 單選題
                 if (q.type === "單選題" && q.options) {
                     q.options.forEach((opt) => {
                         optionsHtml += `
@@ -268,7 +271,6 @@
                             </button>`;
                     });
                 } 
-                // 多選題
                 else if (q.type === "多選題" && q.options) {
                     q.options.forEach((opt) => {
                         optionsHtml += `
@@ -279,13 +281,12 @@
                     const encodedAns = encodeURIComponent(JSON.stringify(q.answer));
                     optionsHtml += `<button class="action-btn" onclick="checkMultiAnswer(this, '${q.id}', '${encodedAns}')">確認答案</button>`;
                     
-                    // 精簡化多選題的解答文字，例如：將 ["(A) 第一象限", "(E) x軸"] 變成 "(A)(E)"
+                    // 自動精簡多選題答案 (A)(E)
                     displayAnswer = q.answer.map(ans => {
                         const match = ans.match(/^\([A-E]\)/);
                         return match ? match[0] : ans;
                     }).join('');
                 } 
-                // 填充題
                 else if (q.type === "填充題") {
                     optionsHtml += `
                         <div class="fill-in-blank">
@@ -293,13 +294,17 @@
                             <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
                         </div>`;
                 } 
-                // 非選擇題
                 else if (q.type === "非選擇題") {
                     optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫非選擇題，請在計算紙上作答後點擊看答案)</div>
                                     <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
                 }
 
+                // 處理答對率標籤，無數據者直接回傳空字串不顯示
                 const rateInfo = getRateInfo(q.correct_rate);
+                const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
+
+                // Q 題號雙重保險，避免出現 undefined
+                const safeQNum = q.q_num ? q.q_num : "X";
 
                 card.innerHTML = `
                     <div class="badge-group">
@@ -307,9 +312,9 @@
                         <span class="badge badge-category">${q.category}</span>
                         <span class="badge badge-topic clickable" onclick="applyFilter('chapter', '${q.chapter}')" title="點擊篩選">${q.chapter}</span>
                         <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選">${q.type}</span>
-                        <span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>
+                        ${rateBadgeHtml}
                     </div>
-                    <div class="question-text"><strong>Q${q.q_num}：</strong> ${q.question}</div>
+                    <div class="question-text"><strong>Q${safeQNum}：</strong> ${q.question}</div>
                     <div class="options">${optionsHtml}</div>
                     
                     <div id="feedback-${q.id}" class="feedback-area">

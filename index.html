@@ -209,17 +209,33 @@
         function loadQuestions() {
             const cacheBuster = new Date().getTime();
             
+            // 加入錯誤捕捉機制，若單一檔案寫錯不會造成全站當機
             Promise.all(dataFiles.map(file => 
-                fetch(`${file}?t=${cacheBuster}`).then(res => res.ok ? res.json() : { questions: [] })
+                fetch(`${file}?t=${cacheBuster}`)
+                .then(res => {
+                    if (!res.ok) {
+                        console.warn(`檔案不存在或讀取失敗: ${file}`);
+                        return { questions: [] };
+                    }
+                    return res.json().catch(err => {
+                        console.error(`檔案 JSON 格式錯誤 (可能漏打逗號或引號)，已跳過: ${file}`, err);
+                        return { questions: [] };
+                    });
+                })
+                .catch(err => {
+                    console.error(`網路連線問題: ${file}`, err);
+                    return { questions: [] };
+                })
             ))
             .then(results => {
                 allQuestions = [];
                 results.forEach(data => {
-                    if (data.questions) {
+                    if (data && data.questions) {
                         allQuestions = allQuestions.concat(data.questions);
                     }
                 });
                 
+                // 題庫排序
                 allQuestions.sort((a, b) => {
                     if (a.year !== b.year) return b.year.localeCompare(a.year);
                     return a.q_num - b.q_num;
@@ -227,10 +243,6 @@
 
                 setupFilterButtons();
                 renderQuestions();
-            })
-            .catch(err => {
-                document.getElementById('quiz-container').innerHTML = `<div class="empty-state" style="color:#ef4444;">題庫載入失敗，請確認 data 資料夾與 JSON 檔案是否存在。</div>`;
-                console.error("載入錯誤:", err);
             });
         }
 
@@ -247,7 +259,6 @@
         }
 
         function applyFilter(filterType, filterValue) {
-            // ★ 切換 (Toggle) 邏輯：如果按了已經選取的按鈕(且不是「全部」)，就退回「全部」
             if (currentFilters[filterType] === filterValue && filterValue !== 'all') {
                 filterValue = 'all';
             }
@@ -265,13 +276,11 @@
                 currentFilters[filterType] = filterValue;
             }
             
-            // 更新 UI 狀態
             document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
             const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
             if (targetBtn) {
                 targetBtn.classList.add('active');
             } else if (filterValue === 'all') {
-                // 防呆：如果找不到目標，就讓「全部」按鈕亮起
                 const allBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="all"]`);
                 if(allBtn) allBtn.classList.add('active');
             }
@@ -281,7 +290,9 @@
         }
 
         function getRateInfo(rate) {
-            if (rate === null || rate === undefined) return null;
+            if (rate === null || rate === undefined || rate === "") return null;
+            rate = Number(rate);
+            if (isNaN(rate)) return null;
             if (rate >= 60) return { class: "badge-rate-high", category: "high", text: "易" };
             if (rate >= 30) return { class: "badge-rate-med", category: "med", text: "中" };
             return { class: "badge-rate-low", category: "low", text: "難" };
@@ -303,7 +314,7 @@
             });
 
             if(filtered.length === 0) {
-                container.innerHTML = '<div class="empty-state">沒有符合條件的題目 😢</div>';
+                container.innerHTML = `<div class="empty-state" style="color:#f59e0b;">目前沒有符合條件的題目。<br><br>若完全沒有題目出現，可能是因為您剛剛上傳的 JSON 檔案有格式錯誤 (如漏打雙引號、逗號等)，請檢查修正。</div>`;
                 return;
             }
 
@@ -320,12 +331,6 @@
                                 <span>${opt}</span>
                             </button>`;
                     });
-                    
-                    if(typeof displayAnswer === 'string') {
-                        const match = displayAnswer.match(/^\([A-E]\)/);
-                        if(match) displayAnswer = match[0];
-                    }
-
                 } 
                 else if (q.type === "多選題" && q.options) {
                     q.options.forEach((opt) => {
@@ -334,11 +339,14 @@
                                 <span>${opt}</span>
                             </button>`;
                     });
-                    const encodedAns = encodeURIComponent(JSON.stringify(q.answer));
+                    
+                    // 防呆轉換，確保 answer 是陣列
+                    let ansArray = Array.isArray(q.answer) ? q.answer : [q.answer];
+                    const encodedAns = encodeURIComponent(JSON.stringify(ansArray));
                     optionsHtml += `<button class="action-btn" onclick="checkMultiAnswer(this, '${q.id}', '${encodedAns}')">確認答案</button>`;
                     
-                    displayAnswer = q.answer.map(ans => {
-                        const match = ans.match(/^\([A-E]\)/);
+                    displayAnswer = ansArray.map(ans => {
+                        const match = String(ans).match(/^\([A-E]\)/);
                         return match ? match[0] : ans;
                     }).join('');
                 } 

@@ -1,11 +1,12 @@
-
 {
-  "version": "v1.0.1",
+  "version": "v1.2.0",
   "update_time": "2026-08-21",
   "questions": [
     {
-      "id": "T01-001",
-      "category": "單元複習",
+      "id": "113-gsatA-01",
+      "year": "113",
+      "exam": "學測數A",
+      "category": "第三冊",
       "chapter": "三角函數",
       "type": "單選題",
       "difficulty": "中等",
@@ -17,23 +18,41 @@
         "$-\\frac{3}{4}$"
       ],
       "answer": "$-\\frac{4}{5}$",
-      "explanation": "因為 $\\theta$ 在第二象限，其餘弦值 $\\cos \\theta$ 必為負值。利用平方關係 $\\sin^2 \\theta + \\cos^2 \\theta = 1$，可推導出 $\\cos \\theta = -\\frac{4}{5}$。"
+      "hint": "注意第二象限角的餘弦值正負。",
+      "explanation": "因為 $\\theta$ 在第二象限，其餘弦值 $\\cos \\theta$ 必為負值。<br>利用平方關係 $\\sin^2 \\theta + \\cos^2 \\theta = 1$，可推導出 $\\cos \\theta = -\\frac{4}{5}$。"
     },
     {
-      "id": "T02-001",
-      "category": "單元複習",
-      "chapter": "空間向量",
-      "type": "單選題",
-      "difficulty": "困難",
-      "question": "已知向量 $\\vec{u} = (1, 2, 3)$ 與 $\\vec{v} = (-1, 0, 1)$，求兩向量的內積 $\\vec{u} \\cdot \\vec{v}$？",
-      "options": [
-        "2",
-        "3",
-        "4",
-        "0"
-      ],
-      "answer": "2",
-      "explanation": "內積公式為各分量相乘後相加：$1 \\times (-1) + 2 \\times 0 + 3 \\times 1 = -1 + 0 + 3 = 2$。"
+      "id": "83-gsat-04",
+      "year": "83",
+      "exam": "學測",
+      "category": "第一冊",
+      "chapter": "直線與圓",
+      "type": "填充題",
+      "difficulty": "易",
+      "question": "若圓 $C$ 的方程式為 $x^2 + y^2 - 4x + 6y - 3 = 0$，求此圓的半徑？",
+      "options": [],
+      "answer": "4",
+      "hint": "利用配方法將一般式化為標準式 $(x-h)^2 + (y-k)^2 = r^2$。",
+      "explanation": "$x^2 - 4x + 4 + y^2 + 6y + 9 = 3 + 4 + 9$<br>$(x - 2)^2 + (y + 3)^2 = 16$<br>因此半徑 $r = \\sqrt{16} = 4$。"
+    },
+    {
+       "id": "83-gsat-10",
+       "year": "83",
+       "exam": "學測",
+       "category": "第六冊",
+       "chapter": "二次曲線",
+       "type": "多選題",
+       "difficulty": "難",
+       "question": "關於橢圓 $\\frac{x^2}{25} + \\frac{y^2}{9} = 1$，下列敘述何者正確？",
+       "options": [
+          "中心為 $(0,0)$",
+          "長軸長為 5",
+          "焦點在 $x$ 軸上",
+          "短軸長為 6"
+       ],
+       "answer": "中心為 $(0,0), 焦點在 x 軸上, 短軸長為 6",
+       "hint": "觀察分母大小判斷長短軸，並計算 $c^2 = a^2 - b^2$。",
+       "explanation": "A. 中心為 $(0,0)$，正確。<br>B. $a^2=25 \\Rightarrow a=5$，長軸長為 $2a=10$，錯誤。<br>C. $a^2$ 在 $x^2$ 下方，焦點在 $x$ 軸上，正確。<br>D. $b^2=9 \\Rightarrow b=3$，短軸長為 $2b=6$，正確。<br>故選 A, C, D。"
     }
   ]
 }

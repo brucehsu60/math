@@ -16,9 +16,10 @@
         
         /* 標籤篩選面板 */
         .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .filter-row { display: flex; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+        .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .filter-row:last-child { margin-bottom: 0; }
-        .filter-label { font-weight: bold; color: #64748b; width: 60px; flex-shrink: 0; font-size: 15px; }
+        .filter-label { font-weight: bold; color: #64748b; width: 65px; flex-shrink: 0; font-size: 15px; margin-top: 6px; }
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; }
         
         .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .tag-btn:hover { background: #e2e8f0; }
@@ -26,6 +27,11 @@
         .tag-btn.active[data-filter="category"] { background: #1e293b; color: white; border-color: #1e293b; }
         .tag-btn.active[data-filter="type"] { background: #8b5cf6; color: white; border-color: #8b5cf6; }
         .tag-btn.active[data-filter="chapter"] { background: #3b82f6; color: white; border-color: #3b82f6; }
+        
+        /* 答對率篩選按鈕顏色 */
+        .tag-btn.active[data-filter="rate"][data-value="high"] { background: #10b981; color: white; border-color: #10b981; }
+        .tag-btn.active[data-filter="rate"][data-value="med"] { background: #f59e0b; color: white; border-color: #f59e0b; }
+        .tag-btn.active[data-filter="rate"][data-value="low"] { background: #ef4444; color: white; border-color: #ef4444; }
 
         /* 題目卡片 */
         .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
@@ -40,24 +46,22 @@
         .badge-topic { background: #3b82f6; color: white; }   
         .badge-type { background: #8b5cf6; color: white; }   
         
-        /* 難易度與答對率標籤 */
-        .badge-diff-easy { background: #10b981; color: white; } 
-        .badge-diff-med { background: #f59e0b; color: white; }  
-        .badge-diff-hard { background: #ef4444; color: white; }  
-        .badge-rate { background: #64748b; color: white; }
+        /* 答對率標籤顏色 (取代原本的難易度) */
+        .badge-rate-high { background: #10b981; color: white; } /* >=60% */
+        .badge-rate-med { background: #f59e0b; color: white; }  /* 30~59% */
+        .badge-rate-low { background: #ef4444; color: white; }  /* <30% */
+        .badge-rate-none { background: #94a3b8; color: white; } 
 
         .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 25px; }
         
         /* 選項按鈕通用 */
         .options { display: flex; flex-direction: column; gap: 12px; }
         button.option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; display: flex; align-items: center; transition: all 0.2s; }
-        button.option-btn .opt-label { font-weight: bold; margin-right: 15px; color: #64748b; }
         button.option-btn:hover:not(:disabled) { background: #f8fafc; }
         button.option-btn:disabled { cursor: default; }
         
         /* 多選題選取狀態 */
         button.option-btn.multi-btn.selected { background: #e0f2fe; border-color: #38bdf8; }
-        button.option-btn.multi-btn.selected .opt-label { color: #0284c7; }
 
         /* 動作按鈕 (確認答案等) */
         .action-btn { padding: 12px 20px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.2s; margin-top: 10px; width: 100%; }
@@ -68,8 +72,7 @@
         .fill-in-blank input { padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; flex-grow: 1; max-width: 250px; outline: none; }
         
         /* 對錯顏色反饋 */
-        .correct { background: #dcfce7 !important; border-color: #22c55e !important; }
-        .correct .opt-label { color: #166534 !important; }
+        .correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
         .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; opacity: 0.7; text-decoration: line-through; }
         
         /* 詳解區 */
@@ -88,33 +91,61 @@
     <div class="filter-container">
         <div class="filter-row" id="filter-year">
             <span class="filter-label">年度：</span>
-            <button class="tag-btn active" data-filter="year" data-value="all">全部</button>
-            <button class="tag-btn" data-filter="year" data-value="115學測數A">115學測數A</button>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="year" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="year" data-value="115學測數A">115學測數A</button>
+            </div>
         </div>
         <div class="filter-row" id="filter-category">
             <span class="filter-label">冊別：</span>
-            <button class="tag-btn active" data-filter="category" data-value="all">全部</button>
-            <button class="tag-btn" data-filter="category" data-value="第一冊">第一冊</button>
-            <button class="tag-btn" data-filter="category" data-value="第二冊">第二冊</button>
-            <button class="tag-btn" data-filter="category" data-value="第三冊">第三冊</button>
-            <button class="tag-btn" data-filter="category" data-value="第四冊">第四冊</button>
-            <button class="tag-btn" data-filter="category" data-value="第五冊">第五冊</button>
-            <button class="tag-btn" data-filter="category" data-value="第六冊">第六冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="category" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="category" data-value="第一冊">第一冊</button>
+                <button class="tag-btn" data-filter="category" data-value="第二冊">第二冊</button>
+                <button class="tag-btn" data-filter="category" data-value="第三冊">第三冊</button>
+                <button class="tag-btn" data-filter="category" data-value="第四冊">第四冊</button>
+                <button class="tag-btn" data-filter="category" data-value="第五冊">第五冊</button>
+                <button class="tag-btn" data-filter="category" data-value="第六冊">第六冊</button>
+            </div>
         </div>
         <div class="filter-row" id="filter-chapter">
             <span class="filter-label">主題：</span>
-            <button class="tag-btn active" data-filter="chapter" data-value="all">全部</button>
-            <button class="tag-btn" data-filter="chapter" data-value="數與式">數與式</button>
-            <button class="tag-btn" data-filter="chapter" data-value="排列組合與機率">排列組合與機率</button>
-            <button class="tag-btn" data-filter="chapter" data-value="矩陣">矩陣</button>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="chapter" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="chapter" data-value="數與式">數與式</button>
+                <button class="tag-btn" data-filter="chapter" data-value="指數與對數">指數與對數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="多項式函數">多項式函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="直線與圓">直線與圓</button>
+                <button class="tag-btn" data-filter="chapter" data-value="數列與級數">數列與級數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="數據分析">數據分析</button>
+                <button class="tag-btn" data-filter="chapter" data-value="排列組合與機率">排列組合與機率</button>
+                <button class="tag-btn" data-filter="chapter" data-value="三角比">三角比</button>
+                <button class="tag-btn" data-filter="chapter" data-value="三角函數">三角函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="指數與對數函數">指數與對數函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="平面向量">平面向量</button>
+                <button class="tag-btn" data-filter="chapter" data-value="空間向量">空間向量</button>
+                <button class="tag-btn" data-filter="chapter" data-value="空間中的平面與直線">空間中的平面與直線</button>
+                <button class="tag-btn" data-filter="chapter" data-value="矩陣">矩陣</button>
+            </div>
         </div>
         <div class="filter-row" id="filter-type">
             <span class="filter-label">題型：</span>
-            <button class="tag-btn active" data-filter="type" data-value="all">全部</button>
-            <button class="tag-btn" data-filter="type" data-value="單選題">單選題</button>
-            <button class="tag-btn" data-filter="type" data-value="多選題">多選題</button>
-            <button class="tag-btn" data-filter="type" data-value="填充題">填充題</button>
-            <button class="tag-btn" data-filter="type" data-value="非選擇題">非選擇題</button>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="type" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="type" data-value="單選題">單選題</button>
+                <button class="tag-btn" data-filter="type" data-value="多選題">多選題</button>
+                <button class="tag-btn" data-filter="type" data-value="填充題">填充題</button>
+                <button class="tag-btn" data-filter="type" data-value="非選擇題">非選擇題</button>
+            </div>
+        </div>
+        <div class="filter-row" id="filter-rate">
+            <span class="filter-label">答對率：</span>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="rate" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="rate" data-value="high">綠色 (≥60%)</button>
+                <button class="tag-btn" data-filter="rate" data-value="med">黃色 (30~59%)</button>
+                <button class="tag-btn" data-filter="rate" data-value="low">紅色 (<30%)</button>
+            </div>
         </div>
     </div>
     
@@ -124,7 +155,7 @@
 
     <script>
         let allQuestions = []; 
-        let currentFilters = { year: 'all', category: 'all', chapter: 'all', type: 'all' };
+        let currentFilters = { year: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
 
         function loadQuestions() {
             const cacheBuster = new Date().getTime();
@@ -156,15 +187,7 @@
             if (row) {
                 row.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
                 let targetBtn = row.querySelector(`.tag-btn[data-value="${filterValue}"]`);
-                if (!targetBtn && filterValue !== 'all') {
-                    targetBtn = document.createElement('button');
-                    targetBtn.className = 'tag-btn active';
-                    targetBtn.setAttribute('data-filter', filterType);
-                    targetBtn.setAttribute('data-value', filterValue);
-                    targetBtn.innerText = filterValue;
-                    targetBtn.onclick = handleFilterBtnClick;
-                    row.appendChild(targetBtn);
-                } else if (targetBtn) {
+                if (targetBtn) {
                     targetBtn.classList.add('active');
                 }
             }
@@ -172,11 +195,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function getDiffClass(diff) {
-            if (diff === '易') return "badge-diff-easy";
-            if (diff === '中') return "badge-diff-med";
-            if (diff === '難') return "badge-diff-hard";
-            return "badge-diff-med";
+        // 決定答對率顏色標籤 (並返回分類字串供篩選用)
+        function getRateInfo(rate) {
+            if (rate === null || rate === undefined) return { class: "badge-rate-none", category: "none" };
+            if (rate >= 60) return { class: "badge-rate-high", category: "high" };
+            if (rate >= 30) return { class: "badge-rate-med", category: "med" };
+            return { class: "badge-rate-low", category: "low" };
         }
 
         function renderQuestions() {
@@ -184,10 +208,12 @@
             container.innerHTML = ''; 
             
             const filtered = allQuestions.filter(q => {
+                const rateInfo = getRateInfo(q.correct_rate);
                 return (currentFilters.year === 'all' || q.year === currentFilters.year) &&
                        (currentFilters.category === 'all' || q.category === currentFilters.category) &&
                        (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
-                       (currentFilters.type === 'all' || q.type === currentFilters.type);
+                       (currentFilters.type === 'all' || q.type === currentFilters.type) &&
+                       (currentFilters.rate === 'all' || rateInfo.category === currentFilters.rate);
             });
 
             if(filtered.length === 0) {
@@ -195,40 +221,46 @@
                 return;
             }
 
-            // index 用來產生 Q1, Q2 題號
             filtered.forEach((q, index) => {
                 const card = document.createElement('div');
                 card.className = 'question-card';
                 let optionsHtml = '';
-                const labels = ['A', 'B', 'C', 'D', 'E'];
                 
+                // 單選題
                 if (q.type === "單選題" && q.options) {
-                    q.options.forEach((opt, idx) => {
+                    q.options.forEach((opt) => {
                         optionsHtml += `
                             <button class="option-btn" data-val="${encodeURIComponent(opt)}" onclick="checkSingleAnswer(this, '${encodeURIComponent(q.answer)}', 'feedback-${q.id}')">
-                                <span class="opt-label">${labels[idx]}</span> <span>${opt}</span>
+                                <span>${opt}</span>
                             </button>`;
                     });
-                } else if (q.type === "多選題" && q.options) {
-                    q.options.forEach((opt, idx) => {
+                } 
+                // 多選題
+                else if (q.type === "多選題" && q.options) {
+                    q.options.forEach((opt) => {
                         optionsHtml += `
                             <button class="option-btn multi-btn" data-val="${encodeURIComponent(opt)}" onclick="this.classList.toggle('selected')">
-                                <span class="opt-label">${labels[idx]}</span> <span>${opt}</span>
+                                <span>${opt}</span>
                             </button>`;
                     });
-                    // 多選題答案傳入 JSON 字串陣列
                     const encodedAns = encodeURIComponent(JSON.stringify(q.answer));
                     optionsHtml += `<button class="action-btn" onclick="checkMultiAnswer(this, '${q.id}', '${encodedAns}')">確認答案</button>`;
-                } else if (q.type === "填充題") {
+                } 
+                // 填充題
+                else if (q.type === "填充題") {
                     optionsHtml += `
                         <div class="fill-in-blank">
                             <input type="text" id="input-${q.id}" placeholder="請輸入答案...">
                             <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
                         </div>`;
-                } else if (q.type === "非選擇題") {
+                } 
+                // 非選擇題
+                else if (q.type === "非選擇題") {
                     optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫非選擇題，請在計算紙上作答後點擊對答案)</div>
                                     <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
                 }
+
+                const rateInfo = getRateInfo(q.correct_rate);
 
                 card.innerHTML = `
                     <div class="badge-group">
@@ -236,8 +268,7 @@
                         <span class="badge badge-category clickable" onclick="applyFilter('category', '${q.category}')" title="點擊篩選">${q.category}</span>
                         <span class="badge badge-topic clickable" onclick="applyFilter('chapter', '${q.chapter}')" title="點擊篩選">${q.chapter}</span>
                         <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選">${q.type}</span>
-                        <span class="badge ${getDiffClass(q.difficulty)}">${q.difficulty}</span>
-                        ${q.correct_rate ? `<span class="badge badge-rate">答對率 ${q.correct_rate}%</span>` : ''}
+                        <span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此答對率區間">${q.correct_rate !== null ? '答對率 ' + q.correct_rate + '%' : '無答對率數據'}</span>
                     </div>
                     <div class="question-text"><strong>Q${index + 1}：</strong> ${q.question}</div>
                     <div class="options">${optionsHtml}</div>
@@ -291,11 +322,10 @@
                 if (isCorrect) {
                     opt.classList.add('correct'); 
                     if (!isSelected) {
-                        // 漏選的正確答案用綠色虛線提示
-                        opt.style.border = '2px dashed #22c55e'; 
+                        opt.style.border = '2px dashed #22c55e'; // 漏選提示
                     }
                 } else if (isSelected && !isCorrect) {
-                    opt.classList.add('wrong'); // 錯選的畫紅線
+                    opt.classList.add('wrong'); // 錯選
                 }
             });
             
@@ -310,7 +340,6 @@
             const feedback = document.getElementById(`feedback-${qId}`);
             
             input.disabled = true;
-            // 去除空白進行簡單防呆比對
             if(input.value.replace(/\s+/g, '') === correct.replace(/\s+/g, '')) {
                 input.style.borderColor = "#22c55e";
                 input.style.backgroundColor = "#dcfce7";
@@ -319,7 +348,7 @@
                 input.style.backgroundColor = "#fee2e2";
             }
             feedback.style.display = 'block';
-            input.nextElementSibling.style.display = 'none'; // 隱藏按鈕
+            input.nextElementSibling.style.display = 'none'; 
         }
     </script>
 </body>

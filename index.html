@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>學測數學互動題庫</title>
+</head>
+<body>
+    <h1>試閱版：學測數學精選題</h1>
+    <div id="quiz-container">正在從題庫讀取題目...</div>
+    <script>
+        fetch('questions.json')
+            .then(res => res.json())
+            .then(data => {
+                let content = '';
+                data.forEach(q => {
+                    content += `<h3>【${q.topic}】</h3><p>${q.question}</p><hr>`;
+                });
+                document.getElementById('quiz-container').innerHTML = content;
+            });
+    </script>
+</body>
+</html>

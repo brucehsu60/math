@@ -13,8 +13,8 @@
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
         .header-section { text-align: center; margin-bottom: 20px; }
+        .version-text { font-size: 13px; color: #94a3b8; margin-top: 5px; }
         
-        /* 篩選器排版 */
         .controls { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 16px; outline: none; width: 200px; }
 
@@ -37,10 +37,11 @@
 <body>
     <div class="header-section">
         <h1 style="color: #1e293b;">📘 學測數學精選題庫</h1>
-        <p style="color: #64748b;">各單元互動練習</p>
+        <p style="color: #64748b; margin-bottom: 5px;">各單元互動練習</p>
+        <!-- 顯示版本號的區塊 -->
+        <div id="version-display" class="version-text">正在確認題庫版本...</div>
     </div>
 
-    <!-- 控制列：只保留章節篩選，且置中對齊 -->
     <div class="controls">
         <select id="chapter-filter" onchange="renderQuestions()">
             <option value="all">顯示全部章節</option>
@@ -57,10 +58,15 @@
         fetch('questions.json')
             .then(res => res.json())
             .then(data => {
-                allQuestions = data;
+                // 將版本資訊寫入畫面
+                document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
+                
+                // 題目資料現在位於 data.questions
+                allQuestions = data.questions;
                 renderQuestions(); 
             })
             .catch(err => {
+                document.getElementById('version-display').innerText = '讀取版本失敗';
                 document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認檔案格式。';
             });
 

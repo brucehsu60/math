@@ -14,16 +14,14 @@
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
         .header-section { text-align: center; margin-bottom: 20px; }
         
-        /* 篩選器與商業按鈕排版 */
-        .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 16px; outline: none; }
-        .cta-button { background: #f59e0b; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.2s; }
-        .cta-button:hover { background: #d97706; }
+        /* 篩選器排版 */
+        .controls { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 16px; outline: none; width: 200px; }
 
         .question-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 25px; }
         .badge-group { margin-bottom: 15px; }
         .topic-badge { display: inline-block; background: #2c3e50; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; margin-right: 5px; }
-        .diff-badge { display: inline-block; background: #e74c3c; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        .diff-badge { display: inline-block; background: #007bff; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
         
         .question-text { font-size: 18px; line-height: 1.8; color: #333; margin-bottom: 20px; }
         .options { display: flex; flex-direction: column; gap: 10px; }
@@ -34,57 +32,43 @@
         .correct { background: #dcfce7 !important; border-color: #86efac !important; color: #166534; font-weight: bold; }
         .wrong { background: #fee2e2 !important; border-color: #fca5a5 !important; color: #991b1b; text-decoration: line-through; }
         .explanation { margin-top: 20px; padding: 15px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0; display: none; font-size: 15px; line-height: 1.8; }
-        
-        /* 底部鎖定橫幅 */
-        .premium-banner { text-align: center; padding: 30px; background: #1e293b; color: white; border-radius: 12px; margin-top: 40px; }
     </style>
 </head>
 <body>
     <div class="header-section">
         <h1 style="color: #1e293b;">📘 學測數學精選題庫</h1>
-        <p style="color: #64748b;">互動試閱版</p>
+        <p style="color: #64748b;">各單元互動練習</p>
     </div>
 
-    <!-- 新增的控制列：章節篩選與引流按鈕 -->
+    <!-- 控制列：只保留章節篩選，且置中對齊 -->
     <div class="controls">
         <select id="chapter-filter" onchange="renderQuestions()">
             <option value="all">顯示全部章節</option>
             <option value="三角函數">三角函數</option>
             <option value="空間向量">空間向量</option>
         </select>
-        <!-- 這裡的 href 之後可以換成您的 Google 表單、蝦皮賣場或 Line 連結 -->
-        <a href="#" class="cta-button" onclick="alert('這裡將會連結到您的課程報名或講義購買頁面！')">解鎖完整 15 單元 🔓</a>
     </div>
     
     <div id="quiz-container">載入中，請稍候...</div>
 
-    <!-- 底部商業橫幅 -->
-    <div class="premium-banner">
-        <h3>喜歡這樣的練習方式嗎？</h3>
-        <p>這只是精選試閱。完整版包含 500+ 題歷屆試題與獨家影音詳解！</p>
-        <a href="#" class="cta-button" style="display: inline-block; margin-top: 10px;" onclick="alert('這裡將會連結到您的課程報名或講義購買頁面！')">立即獲取完整講義與題庫</a>
-    </div>
-
     <script>
-        let allQuestions = []; // 儲存所有題目的變數
+        let allQuestions = []; 
 
         fetch('questions.json')
             .then(res => res.json())
             .then(data => {
                 allQuestions = data;
-                renderQuestions(); // 初次載入時渲染所有題目
+                renderQuestions(); 
             })
             .catch(err => {
                 document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認檔案格式。';
             });
 
-        // 渲染題目的函數（加入篩選邏輯）
         function renderQuestions() {
             const container = document.getElementById('quiz-container');
             const selectedChapter = document.getElementById('chapter-filter').value;
             container.innerHTML = ''; 
             
-            // 根據選單過濾題目
             const filteredQuestions = selectedChapter === 'all' 
                 ? allQuestions 
                 : allQuestions.filter(q => q.chapter === selectedChapter);
@@ -120,7 +104,6 @@
                 container.appendChild(card);
             });
 
-            // 重新渲染數學公式
             renderMathInElement(container, {
                 delimiters: [
                     {left: "$$", right: "$$", display: true},

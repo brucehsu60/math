@@ -14,7 +14,7 @@
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #333; }
         .header-section { text-align: center; margin-bottom: 30px; }
         
-        /* 標籤篩選區塊 */
+        /* 標籤篩選面板 */
         .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .filter-row { display: flex; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .filter-row:last-child { margin-bottom: 0; }
@@ -31,20 +31,26 @@
         .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
         .badge-group { margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap; }
         .badge { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        
+        /* 讓 Badge 變成可點擊的按鈕外觀 */
+        .badge.clickable { cursor: pointer; transition: transform 0.1s, opacity 0.2s; }
+        .badge.clickable:hover { transform: translateY(-2px); opacity: 0.8; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
         .badge-year { background: #e2e8f0; color: #475569; }
         .badge-category { background: #1e293b; color: white; } 
         .badge-topic { background: #3b82f6; color: white; }   
         .badge-type { background: #8b5cf6; color: white; }   
         
+        /* 答對率標籤 (目前不作為篩選條件，所以沒有 .clickable) */
         .badge-rate-high { background: #10b981; color: white; } 
         .badge-rate-med { background: #f59e0b; color: white; }  
         .badge-rate-low { background: #ef4444; color: white; }  
-        .badge-rate-none { background: #94a3b8; color: white; } /* 無數據 */
+        .badge-rate-none { background: #94a3b8; color: white; } 
 
         .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 25px; }
         .options { display: flex; flex-direction: column; gap: 12px; }
         
-        /* 選項與輸入框設計 */
+        /* 選項與輸入框 */
         button.option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; display: flex; align-items: center; }
         button.option-btn .opt-label { font-weight: bold; margin-right: 15px; color: #64748b; }
         button.option-btn:hover:not(:disabled) { background: #f8fafc; }
@@ -87,6 +93,17 @@
             <button class="tag-btn" data-filter="category" data-value="第二冊">第二冊</button>
             <button class="tag-btn" data-filter="category" data-value="第三冊">第三冊</button>
             <button class="tag-btn" data-filter="category" data-value="第四冊">第四冊</button>
+            <!-- 補上第五冊與第六冊 -->
+            <button class="tag-btn" data-filter="category" data-value="第五冊">第五冊</button>
+            <button class="tag-btn" data-filter="category" data-value="第六冊">第六冊</button>
+        </div>
+        <div class="filter-row" id="filter-chapter">
+            <span class="filter-label">主題：</span>
+            <button class="tag-btn active" data-filter="chapter" data-value="all">全部</button>
+            <!-- 這裡的按鈕會根據需要自動長出來，預設放三個常用的 -->
+            <button class="tag-btn" data-filter="chapter" data-value="數與式">數與式</button>
+            <button class="tag-btn" data-filter="chapter" data-value="排列組合與機率">排列組合與機率</button>
+            <button class="tag-btn" data-filter="chapter" data-value="矩陣">矩陣</button>
         </div>
         <div class="filter-row" id="filter-type">
             <span class="filter-label">題型：</span>
@@ -104,7 +121,7 @@
 
     <script>
         let allQuestions = []; 
-        let currentFilters = { year: 'all', category: 'all', type: 'all' };
+        let currentFilters = { year: 'all', category: 'all', chapter: 'all', type: 'all' };
 
         function loadQuestions() {
             const cacheBuster = new Date().getTime();
@@ -120,20 +137,48 @@
                 });
         }
 
+        // 綁定上方篩選面板的按鈕點擊事件
         function setupFilterButtons() {
             document.querySelectorAll('.tag-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const filterType = e.target.getAttribute('data-filter');
-                    const filterValue = e.target.getAttribute('data-value');
-                    currentFilters[filterType] = filterValue;
-                    
-                    const row = document.getElementById(`filter-${filterType}`);
-                    row.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    
-                    renderQuestions();
-                });
+                btn.onclick = handleFilterBtnClick;
             });
+        }
+
+        function handleFilterBtnClick(e) {
+            const filterType = e.target.getAttribute('data-filter');
+            const filterValue = e.target.getAttribute('data-value');
+            applyFilter(filterType, filterValue);
+        }
+
+        // 核心過濾邏輯 (提供給上方按鈕與卡片標籤共用)
+        function applyFilter(filterType, filterValue) {
+            currentFilters[filterType] = filterValue;
+            
+            const row = document.getElementById(`filter-${filterType}`);
+            if (row) {
+                // 先移除該列所有 active 狀態
+                row.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+                
+                // 尋找目標按鈕
+                let targetBtn = row.querySelector(`.tag-btn[data-value="${filterValue}"]`);
+                
+                // 如果是新主題 (HTML 裡面原本沒有寫的)，自動建立一顆新按鈕
+                if (!targetBtn && filterValue !== 'all') {
+                    targetBtn = document.createElement('button');
+                    targetBtn.className = 'tag-btn active';
+                    targetBtn.setAttribute('data-filter', filterType);
+                    targetBtn.setAttribute('data-value', filterValue);
+                    targetBtn.innerText = filterValue;
+                    targetBtn.onclick = handleFilterBtnClick;
+                    row.appendChild(targetBtn);
+                } else if (targetBtn) {
+                    targetBtn.classList.add('active');
+                }
+            }
+            
+            renderQuestions();
+            // 點擊卡片標籤後，自動捲動回上方讓使用者看到篩選結果
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function getRateClass(rate) {
@@ -150,11 +195,12 @@
             const filtered = allQuestions.filter(q => {
                 return (currentFilters.year === 'all' || q.year === currentFilters.year) &&
                        (currentFilters.category === 'all' || q.category === currentFilters.category) &&
+                       (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
                        (currentFilters.type === 'all' || q.type === currentFilters.type);
             });
 
             if(filtered.length === 0) {
-                container.innerHTML = '<div class="empty-state">沒有符合條件的題目。</div>';
+                container.innerHTML = '<div class="empty-state">沒有符合條件的題目 😢</div>';
                 return;
             }
 
@@ -164,7 +210,6 @@
                 let optionsHtml = '';
                 const labels = ['A', 'B', 'C', 'D', 'E'];
                 
-                // 依照不同題型渲染介面
                 if (q.type === "單選題" && q.options) {
                     q.options.forEach((opt, idx) => {
                         optionsHtml += `
@@ -188,12 +233,13 @@
                                     <button class="option-btn" style="justify-content:center; background:#f1f5f9;" onclick="document.getElementById('feedback-${q.id}').style.display='block'">💡 顯示非選擇題解答與詳解</button>`;
                 }
 
+                // 組合卡片 HTML (加入 clickable 類別與 onclick 事件)
                 card.innerHTML = `
                     <div class="badge-group">
-                        <span class="badge badge-year">${q.year} ${q.exam}</span>
-                        <span class="badge badge-category">${q.category}</span>
-                        <span class="badge badge-topic">${q.chapter}</span>
-                        <span class="badge badge-type">${q.type}</span>
+                        <span class="badge badge-year clickable" onclick="applyFilter('year', '${q.year}')" title="點擊篩選此年度">${q.year} ${q.exam}</span>
+                        <span class="badge badge-category clickable" onclick="applyFilter('category', '${q.category}')" title="點擊篩選此冊別">${q.category}</span>
+                        <span class="badge badge-topic clickable" onclick="applyFilter('chapter', '${q.chapter}')" title="點擊篩選此主題">${q.chapter}</span>
+                        <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選此題型">${q.type}</span>
                         <span class="badge ${getRateClass(q.correct_rate)}">${q.correct_rate ? '答對率 ' + q.correct_rate + '%' : '無答對率數據'}</span>
                     </div>
                     <div class="question-text"><strong>Q:</strong> ${q.question}</div>

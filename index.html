@@ -54,19 +54,35 @@
     <script>
         let allQuestions = []; 
 
-        // 【關鍵修改】：在網址後面加上時間戳記，強制突破瀏覽器快取！
+        // 強制更新標籤
         const cacheBuster = new Date().getTime();
+        
         fetch(`questions.json?t=${cacheBuster}`)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error("網路連線或檔案讀取異常");
+                return res.json();
+            })
             .then(data => {
-                document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
-                allQuestions = data.questions;
+                // 【終極防護】：判斷抓到的是新版還是舊版 JSON
+                if (Array.isArray(data)) {
+                    // 如果抓到舊版，就套用舊版邏輯
+                    allQuestions = data;
+                    document.getElementById('version-display').innerText = "目前版本：過渡期舊版 (伺服器同步中...)";
+                } else if (data.questions) {
+                    // 如果抓到新版，就套用新版邏輯
+                    allQuestions = data.questions;
+                    document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
+                } else {
+                    throw new Error("無法辨識的 JSON 格式");
+                }
+                
                 renderQuestions(); 
             })
             .catch(err => {
+                // 更清晰的錯誤回報
                 console.error("錯誤詳情：", err);
-                document.getElementById('version-display').innerText = '讀取版本失敗';
-                document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認 JSON 檔案格式是否有誤。';
+                document.getElementById('version-display').innerText = '系統狀態：異常';
+                document.getElementById('quiz-container').innerHTML = `<p style="color:red; text-align:center;">錯誤訊息：${err.message}</p>`;
             });
 
         function renderQuestions() {
@@ -78,7 +94,7 @@
                 ? allQuestions 
                 : allQuestions.filter(q => q.chapter === selectedChapter);
 
-            if(filteredQuestions.length === 0) {
+            if(!filteredQuestions || filteredQuestions.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#64748b;">此章節目前尚未新增題目。</p>';
                 return;
             }

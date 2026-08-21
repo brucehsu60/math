@@ -38,7 +38,6 @@
     <div class="header-section">
         <h1 style="color: #1e293b;">📘 學測數學精選題庫</h1>
         <p style="color: #64748b; margin-bottom: 5px;">各單元互動練習</p>
-        <!-- 顯示版本號的區塊 -->
         <div id="version-display" class="version-text">正在確認題庫版本...</div>
     </div>
 
@@ -55,19 +54,19 @@
     <script>
         let allQuestions = []; 
 
-        fetch('questions.json')
+        // 【關鍵修改】：在網址後面加上時間戳記，強制突破瀏覽器快取！
+        const cacheBuster = new Date().getTime();
+        fetch(`questions.json?t=${cacheBuster}`)
             .then(res => res.json())
             .then(data => {
-                // 將版本資訊寫入畫面
                 document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
-                
-                // 題目資料現在位於 data.questions
                 allQuestions = data.questions;
                 renderQuestions(); 
             })
             .catch(err => {
+                console.error("錯誤詳情：", err);
                 document.getElementById('version-display').innerText = '讀取版本失敗';
-                document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認檔案格式。';
+                document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認 JSON 檔案格式是否有誤。';
             });
 
         function renderQuestions() {

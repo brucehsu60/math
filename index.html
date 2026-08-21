@@ -1,22 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>學測數學互動題庫</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測數學精選題庫</title>
+    
+    <!-- 引入 KaTeX 數學公式套件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/auto-render/auto-render.min.js"></script>
+
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
+        .header-section { text-align: center; margin-bottom: 30px; }
+        .question-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 25px; }
+        
+        /* 標籤系統排版 */
+        .badge-group { margin-bottom: 15px; }
+        .topic-badge { display: inline-block; background: #2c3e50; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; margin-right: 5px; }
+        .diff-badge { display: inline-block; background: #e74c3c; color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        
+        .question-text { font-size: 18px; line-height: 1.8; color: #333; margin-bottom: 20px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        button { padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; transition: all 0.2s; }
+        button:hover:not(:disabled) { background: #f1f5f9; border-color: #cbd5e1; }
+        button:disabled { cursor: not-allowed; }
+        
+        /* 答題回饋 */
+        .correct { background: #dcfce7 !important; border-color: #86efac !important; color: #166534; font-weight: bold; }
+        .wrong { background: #fee2e2 !important; border-color: #fca5a5 !important; color: #991b1b; text-decoration: line-through; }
+        
+        .explanation { margin-top: 20px; padding: 15px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0; display: none; font-size: 15px; line-height: 1.8; }
+    </style>
 </head>
 <body>
-    <h1>試閱版：學測數學精選題</h1>
-    <div id="quiz-container">正在從題庫讀取題目...</div>
+    <div class="header-section">
+        <h1 style="color: #1e293b;">📘 學測數學精選題庫</h1>
+        <p style="color: #64748b;">試閱版 - 支援專業數學公式排版</p>
+    </div>
+    
+    <div id="quiz-container">載入中，請稍候...</div>
+
     <script>
         fetch('questions.json')
             .then(res => res.json())
             .then(data => {
-                let content = '';
-                data.forEach(q => {
-                    content += `<h3>【${q.topic}】</h3><p>${q.question}</p><hr>`;
+                const container = document.getElementById('quiz-container');
+                container.innerHTML = ''; 
+                
+                data.forEach((q, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'question-card';
+                    
+                    let optionsHtml = '';
+                    const labels = ['A', 'B', 'C', 'D'];
+                    q.options.forEach((opt, optIndex) => {
+                        // 使用 encodeURIComponent 避免數學符號干擾 HTML 標籤
+                        const safeOpt = encodeURIComponent(opt);
+                        const safeAns = encodeURIComponent(q.answer);
+                        optionsHtml += `<button onclick="checkAnswer(this, '${safeOpt}', '${safeAns}', 'exp-${index}')">${labels[optIndex]}. ${opt}</button>`;
+                    });
+
+                    card.innerHTML = `
+                        <div class="badge-group">
+                            <span class="topic-badge">${q.chapter}</span>
+                            <span class="diff-badge">${q.difficulty}</span>
+                        </div>
+                        <div class="question-text"><strong>Q${index + 1}:</strong> ${q.question}</div>
+                        <div class="options">${optionsHtml}</div>
+                        <div id="exp-${index}" class="explanation">
+                            <strong>💡 關鍵解析：</strong><br>${q.explanation}
+                        </div>
+                    `;
+                    container.appendChild(card);
                 });
-                document.getElementById('quiz-container').innerHTML = content;
+
+                // 呼叫 KaTeX 渲染整個題庫的數學公式
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('quiz-container').innerHTML = '讀取失敗，請確認檔案格式。';
             });
+
+        function checkAnswer(btn, encodedSelected, encodedCorrect, explanationId) {
+            const selectedOption = decodeURIComponent(encodedSelected);
+            const correctAnswer = decodeURIComponent(encodedCorrect);
+            const allButtons = btn.parentElement.children;
+            
+            for (let b of allButtons) {
+                b.disabled = true;
+                let btnText = b.innerHTML.substring(3).trim(); 
+                if (btnText === correctAnswer) {
+                    b.classList.add('correct');
+                }
+            }
+            
+            if (selectedOption !== correctAnswer) {
+                btn.classList.add('wrong');
+            }
+            
+            document.getElementById(explanationId).style.display = 'block';
+        }
     </script>
 </body>
 </html>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>學測數學精選題庫</title>
     
-    <!-- 引入 KaTeX (移除 defer，強迫網頁優先載入數學引擎，避免車禍) -->
+    <!-- 引入 KaTeX (修正了排版工具的正確網址 contrib) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/auto-render/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
@@ -55,7 +55,6 @@
         let allQuestions = []; 
         const cacheBuster = new Date().getTime();
         
-        // 確保網頁主體都準備好後，再去抓題目
         window.onload = function() {
             fetch(`questions.json?t=${cacheBuster}`)
                 .then(res => {
@@ -121,7 +120,6 @@
                 container.appendChild(card);
             });
 
-            // 呼叫數學渲染工具
             if (typeof renderMathInElement !== 'undefined') {
                 renderMathInElement(container, {
                     delimiters: [

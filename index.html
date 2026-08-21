@@ -194,8 +194,7 @@
         let allQuestions = []; 
         let currentFilters = { year: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
 
-        // ★ 模組化：題庫檔案清單
-        // 未來擴充 113年，只需在這裡加上 'data/113A.json' 即可
+        // ★ 題庫檔案清單
         const dataFiles = [
             'data/115A.json',
             'data/114A.json'
@@ -204,7 +203,6 @@
         function loadQuestions() {
             const cacheBuster = new Date().getTime();
             
-            // 同時抓取所有 JSON 檔案並合併
             Promise.all(dataFiles.map(file => 
                 fetch(`${file}?t=${cacheBuster}`).then(res => res.ok ? res.json() : { questions: [] })
             ))
@@ -216,7 +214,6 @@
                     }
                 });
                 
-                // 可選：依據年度和題號自動排序，讓畫面更整齊
                 allQuestions.sort((a, b) => {
                     if (a.year !== b.year) return b.year.localeCompare(a.year);
                     return a.q_num - b.q_num;
@@ -244,6 +241,11 @@
         }
 
         function applyFilter(filterType, filterValue) {
+            // ★ 切換 (Toggle) 邏輯：如果按了已經選取的按鈕(且不是「全部」)，就退回「全部」
+            if (currentFilters[filterType] === filterValue && filterValue !== 'all') {
+                filterValue = 'all';
+            }
+
             if (filterType === 'category') {
                 currentFilters.category = filterValue;
                 currentFilters.chapter = 'all';
@@ -257,10 +259,15 @@
                 currentFilters[filterType] = filterValue;
             }
             
+            // 更新 UI 狀態
             document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
             const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
             if (targetBtn) {
                 targetBtn.classList.add('active');
+            } else if (filterValue === 'all') {
+                // 防呆：如果找不到目標，就讓「全部」按鈕亮起
+                const allBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="all"]`);
+                if(allBtn) allBtn.classList.add('active');
             }
             
             renderQuestions();

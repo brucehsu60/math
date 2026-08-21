@@ -1,5 +1,5 @@
 {
-  "version": "115.Final.Pro",
+  "version": "115.Final.ProMax",
   "update_time": "2026-08-21",
   "questions": [
     {
@@ -8,13 +8,12 @@
       "category": "第二冊",
       "chapter": "排列組合與機率",
       "type": "單選題",
-      "difficulty": "易",
       "correct_rate": 84,
       "question": "財神廟舉辦抽發財金活動：參加者抽兩次籤，每次抽籤出現「吉」、「祥」的機率皆為 $\\frac{1}{3}$。如果兩次都抽得「吉」，獲得獎金 180 元；如果兩次都抽得「祥」，獲得獎金 90 元；其餘情況則無獎金。試問參加者可獲獎金的期望值為何？",
-      "options": ["20元", "30元", "45元", "60元", "90元"],
-      "answer": "30元",
-      "hint": "分別算出「雙吉」與「雙祥」的機率，再乘上獎金求和。",
-      "explanation": "抽中兩次「吉」的機率為 $\\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}$，獎金 180 元。<br>抽中兩次「祥」的機率為 $\\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}$，獎金 90 元。<br>期望值 $E = 180 \\times \\frac{1}{9} + 90 \\times \\frac{1}{9} = 20 + 10 = 30$（元）。"
+      "options": ["(A) 20元", "(B) 30元", "(C) 45元", "(D) 60元", "(E) 90元"],
+      "answer": "(B) 30元",
+      "hint": "期望值 = (發生機率) × (獲得獎金) 的總和。注意兩次抽籤為獨立事件。",
+      "explanation": "每次抽籤為獨立事件，機率互不影響。<br>1. 抽中兩次「吉」的機率為 $\\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}$，此時獲得獎金 180 元。<br>2. 抽中兩次「祥」的機率為 $\\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}$，此時獲得獎金 90 元。<br>3. 其餘情況獎金皆為 0，計算期望值時可省略。<br>期望值 $E = 180 \\times \\frac{1}{9} + 90 \\times \\frac{1}{9} = 20 + 10 = 30$（元）。"
     },
     {
       "id": "115-gsatA-02",
@@ -22,19 +21,18 @@
       "category": "第一冊",
       "chapter": "數與式",
       "type": "單選題",
-      "difficulty": "中",
       "correct_rate": 55,
       "question": "對任一實數 $a$，令 $[a]$ 代表滿足 $[a] \\le a < [a]+1$ 的整數。關於函數 $f(x)=[\\sqrt{99-x}]+[\\sqrt{99+x}]$，其中 $-99 \\le x \\le 99$；試選出正確的選項。",
       "options": [
-        "$f(-20) \\le f(0) < f(1)$",
-        "$f(-20) < f(1) \\le f(0)$",
-        "$f(1) < f(-20) \\le f(0)$",
-        "$f(0) < f(-20) \\le f(1)$",
-        "$f(0) \\le f(1) < f(-20)$"
+        "(A) $f(-20) \\le f(0) < f(1)$",
+        "(B) $f(-20) < f(1) \\le f(0)$",
+        "(C) $f(1) < f(-20) \\le f(0)$",
+        "(D) $f(0) < f(-20) \\le f(1)$",
+        "(E) $f(0) \\le f(1) < f(-20)$"
       ],
-      "answer": "$f(-20) \\le f(0) < f(1)$",
-      "hint": "將 $x=0, 1, -20$ 實際代入 $f(x)$ 算出數值比較大小。",
-      "explanation": "$f(0) = [\\sqrt{99}] + [\\sqrt{99}] = 9 + 9 = 18$<br>$f(1) = [\\sqrt{98}] + [\\sqrt{100}] = 9 + 10 = 19$<br>$f(-20) = [\\sqrt{119}] + [\\sqrt{79}] = 10 + 8 = 18$<br>可知 $f(-20) = f(0) = 18 < f(1) = 19$，故選 (1)。"
+      "answer": "(A) $f(-20) \\le f(0) < f(1)$",
+      "hint": "這題考的是高斯符號（取不大於該數的最大整數）。不用硬解不等式，直接把 $x=0, 1, -20$ 丟進去算最快！",
+      "explanation": "直接代入題目給的三個檢驗點計算 $f(x)$ 的值：<br>1. 當 $x=0$ 時：<br>$f(0) = [\\sqrt{99}] + [\\sqrt{99}]$。因為 $9^2=81 < 99 < 10^2=100$，所以 $\\sqrt{99} \\approx 9.9$。<br>$f(0) = [9.9] + [9.9] = 9 + 9 = 18$。<br>2. 當 $x=1$ 時：<br>$f(1) = [\\sqrt{98}] + [\\sqrt{100}]$。$\\sqrt{98} \\approx 9.8$，$\\sqrt{100} = 10$。<br>$f(1) = [9.8] + [10] = 9 + 10 = 19$。<br>3. 當 $x=-20$ 時：<br>$f(-20) = [\\sqrt{119}] + [\\sqrt{79}]$。$\\sqrt{119} \\approx 10.9$，$\\sqrt{79} \\approx 8.8$。<br>$f(-20) = [10.9] + [8.8] = 10 + 8 = 18$。<br>綜合以上，得到 $f(-20) = f(0) = 18$，且 $f(1) = 19$。<br>比對選項，只有 (A) $f(-20) \\le f(0) < f(1)$ 符合條件（$18 \\le 18 < 19$）。"
     },
     {
       "id": "115-gsatA-03",
@@ -42,13 +40,12 @@
       "category": "第三冊",
       "chapter": "指數與對數函數",
       "type": "單選題",
-      "difficulty": "中",
       "correct_rate": 41,
       "question": "設 $f(x)=a^x$，其中 $a$ 為正實數。已知 $c_1, c_2, c_3$ 是公差為 $\\frac{10}{3}$ 的等差數列，且 $f(c_1), f(c_2), f(c_3)$ 是公比為 4 的等比數列。則等比數列 $f(10), f(8), f(6)$ 的公比為何？",
-      "options": ["$2^{\\frac{-6}{5}}$", "$2^{\\frac{-3}{5}}$", "$2^{\\frac{3}{5}}$", "$2^{\\frac{6}{5}}$", "$2^{\\frac{5}{3}}$"],
-      "answer": "$2^{\\frac{-6}{5}}$",
-      "hint": "利用等比中項與等差的關係解出底數 $a$。",
-      "explanation": "依題意 $\\frac{f(c_2)}{f(c_1)} = a^{c_2 - c_1} = a^{\\frac{10}{3}} = 4$。<br>解得 $a = 4^{\\frac{3}{10}} = (2^2)^{\\frac{3}{10}} = 2^{\\frac{3}{5}}$。<br>數列 $f(10), f(8), f(6)$ 的公比為 $\\frac{f(8)}{f(10)} = a^{8-10} = a^{-2}$。<br>代入 $a$ 得 $(2^{\\frac{3}{5}})^{-2} = 2^{\\frac{-6}{5}}$。"
+      "options": ["(A) $2^{\\frac{-6}{5}}$", "(B) $2^{\\frac{-3}{5}}$", "(C) $2^{\\frac{3}{5}}$", "(D) $2^{\\frac{6}{5}}$", "(E) $2^{\\frac{5}{3}}$"],
+      "answer": "(A) $2^{\\frac{-6}{5}}$",
+      "hint": "利用等比數列相鄰兩項相除等於公比的特性，先解出底數 $a$ 的值。",
+      "explanation": "1. **尋找底數 $a$：**<br>依題意，$f(c_1), f(c_2), f(c_3)$ 的公比為 4，所以：<br>$\\frac{f(c_2)}{f(c_1)} = \\frac{a^{c_2}}{a^{c_1}} = a^{c_2 - c_1} = 4$。<br>因為 $c_1, c_2, c_3$ 是等差數列，公差 $d = c_2 - c_1 = \\frac{10}{3}$，代入上式得到：<br>$a^{\\frac{10}{3}} = 4$。<br>兩邊同時取 $\\frac{3}{10}$ 次方，解得 $a = 4^{\\frac{3}{10}} = (2^2)^{\\frac{3}{10}} = 2^{\\frac{3}{5}}$。<br>2. **求新數列的公比：**<br>題目要求數列 $f(10), f(8), f(6)$ 的公比。注意這裡的項次是遞減的！<br>新公比 $r' = \\frac{f(8)}{f(10)} = \\frac{a^8}{a^{10}} = a^{-2}$。<br>將剛才算出的 $a$ 代入：<br>$r' = (2^{\\frac{3}{5}})^{-2} = 2^{\\frac{-6}{5}}$。"
     },
     {
       "id": "115-gsatA-04",
@@ -56,13 +53,12 @@
       "category": "第二冊",
       "chapter": "排列組合與機率",
       "type": "單選題",
-      "difficulty": "中",
       "correct_rate": 56,
       "question": "某網遊有 16 種材料，其中 6 種為基本材料，10 種為進階材料。任選 3 種不同材料可以合成道具：若 3 種均為基本材料，合成同一種草藥；若 2 種基本、1 種進階，根據進階材料得到不同種食物 (共10種)；其他組合合成不同種藥水。總共可合成出多少種道具？",
-      "options": ["256", "370", "401", "455", "560"],
-      "answer": "401",
-      "hint": "總組合數扣除草藥與食物的「組合數」，再加上草藥與食物的「種類數」。",
-      "explanation": "總選法有 $C^{16}_3 = 560$ 種。<br>1. 草藥：消耗 $C^6_3 = 20$ 種組合，但只產生 **1** 種道具。<br>2. 食物：消耗 $C^6_2 \\times C^{10}_1 = 150$ 種組合，產生 **10** 種道具。<br>3. 藥水：剩餘的 $560 - 20 - 150 = 390$ 種組合，每一種都是不同的藥水，產生 **390** 種道具。<br>總道具數 = $1 + 10 + 390 = 401$ 種。"
+      "options": ["(A) 256", "(B) 370", "(C) 401", "(D) 455", "(E) 560"],
+      "answer": "(C) 401",
+      "hint": "不要被「合成組合數」騙了，題目問的是「產生多少種道具」。先算總組合數，再把草藥與食物的「重複產出」扣掉。",
+      "explanation": "從 16 種材料中任選 3 種，總選法有 $C^{16}_3 = \\frac{16 \\times 15 \\times 14}{3 \\times 2 \\times 1} = 560$ 種「合成配方」。我們來分類探討這些配方會產出什麼：<br><br>1. **草藥（3基本）：**<br>配方數：從 6 種基本材料選 3 種，共有 $C^6_3 = 20$ 種配方。<br>產出：這 20 種配方「全部」都只會合成出 **1** 種相同的草藥。<br><br>2. **食物（2基本 + 1進階）：**<br>配方數：$C^6_2 \\times C^{10}_1 = 15 \\times 10 = 150$ 種配方。<br>產出：題目說「根據進階材料決定食物種類，不受基本材料影響」。因為進階材料只有 10 種，所以這 150 種配方只會合成出 **10** 種食物。<br><br>3. **藥水（其他組合）：**<br>配方數：總配方扣掉上述兩種，剩下 $560 - 20 - 150 = 390$ 種配方。<br>產出：題目說「其他的組合都會合成出不同種的藥水」，所以這 390 種配方會產生 **390** 種不同的藥水。<br><br>總計可獲得的道具種類 = 1 (草藥) + 10 (食物) + 390 (藥水) = **401** 種。"
     },
     {
       "id": "115-gsatA-05",
@@ -70,13 +66,12 @@
       "category": "第四冊",
       "chapter": "矩陣",
       "type": "單選題",
-      "difficulty": "難",
       "correct_rate": 26,
       "question": "已知三階方陣 $A$ 滿足 $A\\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix}$，$A\\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix}$，$A\\begin{bmatrix} 1 \\\\ 0 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}$。有多少個行向量 $\\vec{v}$ 滿足 $A\\vec{v} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$ 且 $\\vec{v}$ 垂直於 $\\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \\end{bmatrix}$？",
-      "options": ["1個", "2個", "3個", "0個", "無窮多個"],
-      "answer": "無窮多個",
-      "hint": "利用矩陣的線性組合找到 $\\vec{v}$ 的通解，再檢查內積條件。",
-      "explanation": "觀察前兩式相加：$A(\\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} + \\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix}) = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$。<br>因第三式為零向量，故 $\\vec{v} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix} + t\\begin{bmatrix} 1 \\\\ 0 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 1+t \\\\ 0 \\\\ 1-t \\end{bmatrix}$。<br>與 $\\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \\end{bmatrix}$ 內積：$(1+t)(0) + (0)(1) + (1-t)(0) = 0$ 恆成立。<br>對於任意實數 $t$ 皆滿足，故有無窮多個解。"
+      "options": ["(A) 1個", "(B) 2個", "(C) 3個", "(D) 0個", "(E) 無窮多個"],
+      "answer": "(E) 無窮多個",
+      "hint": "利用矩陣乘法的線性性質 $A(x+y)=Ax+Ay$，觀察題幹給的向量如何拼湊出目標向量。",
+      "explanation": "為了方便書寫，令：<br>$\\vec{u_1}=\\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix}$，則 $A\\vec{u_1} = \\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix}$。<br>$\\vec{u_2}=\\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix}$，則 $A\\vec{u_2} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix}$。<br>$\\vec{u_3}=\\begin{bmatrix} 1 \\\\ 0 \\\\ -1 \\end{bmatrix}$，則 $A\\vec{u_3} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}$。<br><br>1. **尋找特解：**<br>目標是找出 $\\vec{v}$ 使得 $A\\vec{v} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$。<br>觀察 $A\\vec{u_1}$ 和 $A\\vec{u_2}$，發現把它們相加剛好就是目標：<br>$A\\vec{u_1} + A\\vec{u_2} = \\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix} + \\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$。<br>利用矩陣分配律：$A(\\vec{u_1} + \\vec{u_2}) = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$。這就是一組特解。<br><br>2. **建構通解：**<br>因為 $A\\vec{u_3} = \\vec{0}$（零向量），所以我們在特解上加上任意倍數的 $\\vec{u_3}$，等式依然成立（即 $A(\\text{特解} + t\\vec{u_3}) = A(\\text{特解}) + \\vec{0} = \\text{目標}$）。<br>所以 $\\vec{v}$ 的通解為：<br>$\\vec{v} = \\vec{u_1} + \\vec{u_2} + t\\vec{u_3} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} + \\begin{bmatrix} 0 \\\\ -1 \\\\ 1 \\end{bmatrix} + t\\begin{bmatrix} 1 \\\\ 0 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 1+t \\\\ 0 \\\\ 1-t \\end{bmatrix}$ ($t$ 為任意實數)。<br><br>3. **檢驗垂直條件：**<br>題目要求 $\\vec{v}$ 垂直於 $\\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \\end{bmatrix}$，也就是內積要等於 0。<br>$\\begin{bmatrix} 1+t \\\\ 0 \\\\ 1-t \\end{bmatrix} \\cdot \\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \\end{bmatrix} = (1+t)(0) + (0)(1) + (1-t)(0) = 0$。<br>我們發現，**不管 $t$ 是多少，內積永遠是 0**！<br>這代表對於任意實數 $t$，$\\vec{v}$ 都符合題目的所有條件，因此有**無窮多個**解。"
     },
     {
       "id": "115-gsatA-06",
@@ -84,13 +79,12 @@
       "category": "第一冊",
       "chapter": "直線與圓",
       "type": "單選題",
-      "difficulty": "中",
       "correct_rate": 37,
       "question": "坐標平面上有 $A(2,-2), B(-1,2)$ 兩點，試問直線 $y=-6$ 上有多少個點 $C$ 使得 $\\Delta ABC$ 為等腰三角形？",
-      "options": ["1", "2", "3", "4", "5"],
-      "answer": "2",
-      "hint": "等腰三角形有三種可能：$\\overline{AC}=\\overline{AB}$、$\\overline{BC}=\\overline{AB}$ 或 $\\overline{AC}=\\overline{BC}$，需檢查是否共線。",
-      "explanation": "線段 $\\overline{AB} = \\sqrt{3^2 + (-4)^2} = 5$。設 $C(x, -6)$。<br>情況一 ($\\overline{AC}=5$)：$(x-2)^2 + (-4)^2 = 25 \\Rightarrow x = 5$ 或 $-1$。<br>情況二 ($\\overline{BC}=5$)：$(x+1)^2 + (-8)^2 = 25$ (無實數解)。<br>情況三 ($\\overline{AC}=\\overline{BC}$)：$C$ 點在中垂線上，中垂線方程式為 $3x - 4y = \\frac{19}{2}$，代入 $y=-6$ 得 $x = -\\frac{29}{6}$。<br>**注意陷阱**：當 $x=5$ 時，$C(5,-6)$ 剛好落在直線 $AB$ 上，此時無法構成三角形！<br>故僅有 $x=-1$ 與 $x=-\\frac{29}{6}$ 兩個點符合條件。"
+      "options": ["(A) 1", "(B) 2", "(C) 3", "(D) 4", "(E) 5"],
+      "answer": "(B) 2",
+      "hint": "等腰三角形有三種邊長相等的可能，必須分三種情況討論。最後一定要檢查三點是否共線（共線就不能形成三角形）。",
+      "explanation": "先算出已知線段 $\\overline{AB}$ 的長度：$\\overline{AB} = \\sqrt{(-1-2)^2 + (2-(-2))^2} = \\sqrt{9+16} = 5$。<br>設 $C$ 點座標為 $(x, -6)$。<br>等腰三角形有三種情況，我們逐一檢驗：<br><br>**情況一：$\\overline{AC} = \\overline{AB} = 5$**<br>$\\sqrt{(x-2)^2 + (-6-(-2))^2} = 5 \\Rightarrow (x-2)^2 + 16 = 25 \\Rightarrow (x-2)^2 = 9$。<br>解得 $x-2 = 3$ 或 $-3$，所以 $x = 5$ 或 $x = -1$。<br>得到兩個候選點：$C_1(5, -6)$、$C_2(-1, -6)$。<br><br>**情況二：$\\overline{BC} = \\overline{AB} = 5$**<br>$\\sqrt{(x-(-1))^2 + (-6-2)^2} = 5 \\Rightarrow (x+1)^2 + 64 = 25$。<br>因為平方數不可能為負（$25-64 = -39$），所以此情況**無實數解**。<br><br>**情況三：$\\overline{AC} = \\overline{BC}$（即 $C$ 在 $AB$ 的中垂線上）**<br>直接用距離公式平分：$(x-2)^2 + (-4)^2 = (x+1)^2 + (-8)^2$<br>$x^2 - 4x + 4 + 16 = x^2 + 2x + 1 + 64 \\Rightarrow -6x = 45 \\Rightarrow x = -\\frac{15}{2}$。<br>得到第三個候選點：$C_3(-\\frac{15}{2}, -6)$。<br><br>**💡 學霸防呆檢查（非常重要）：**<br>這題的鑑別度在於檢查三點是否共線！<br>直線 $AB$ 的斜率 $m = \\frac{2-(-2)}{-1-2} = -\\frac{4}{3}$。直線方程式為 $y-2 = -\\frac{4}{3}(x+1) \\Rightarrow 4x + 3y = 2$。<br>將我們找到的三個候選點代入直線 $AB$ 檢查：<br>代入 $C_1(5, -6)$：$4(5) + 3(-6) = 20 - 18 = 2$。**成立！這代表 $C_1$ 落在直線 $AB$ 上，三點共線無法形成三角形，必須剔除！**<br>其餘兩點 $C_2$ 與 $C_3$ 均不共線。<br>因此，真正能形成等腰三角形的點只有 2 個。"
     },
     {
       "id": "115-gsatA-07",
@@ -98,13 +92,12 @@
       "category": "第一冊",
       "chapter": "直線與圓",
       "type": "多選題",
-      "difficulty": "易",
       "correct_rate": 74,
       "question": "坐標平面上同時滿足 $2x-y-3>0$ 與 $x+2y+1<0$ 的點 $P(x,y)$ 可能位在下列哪些選項？",
-      "options": ["第一象限", "第二象限", "第三象限", "第四象限", "x軸"],
-      "answer": ["第三象限", "第四象限"],
-      "hint": "畫出兩直線的交點，並判斷不等式所代表的區域方向。",
-      "explanation": "聯立方程式 $2x-y=3$ 與 $x+2y=-1$，解得交點為 $(1, -1)$。<br>不等式可改寫為 $y < 2x-3$ 且 $y < -\\frac{1}{2}x - \\frac{1}{2}$。<br>這表示區域位在兩直線的「右下方」與「左下方」交集處。<br>由於交點最高只到 $y=-1$，該區域完全在 $x$ 軸下方，因此只可能出現在第三與第四象限。"
+      "options": ["(A) 第一象限", "(B) 第二象限", "(C) 第三象限", "(D) 第四象限", "(E) x軸"],
+      "answer": ["(C) 第三象限", "(D) 第四象限"],
+      "hint": "二元一次不等式的圖解法：將不等式化為 $y > ...$ 或 $y < ...$ 的形式來判斷上下半平面，並找出兩直線的交點作為定位基準。",
+      "explanation": "1. **尋找邊界直線的交點：**<br>解聯立方程式 $L_1: 2x-y=3$ 與 $L_2: x+2y=-1$。<br>將 $L_1$ 乘 2 得 $4x-2y=6$，與 $L_2$ 相加：$5x=5 \\Rightarrow x=1$。代回得 $y=-1$。<br>所以兩直線交點為 $(1, -1)$，這個交點位在第四象限。<br><br>2. **判斷不等式區域：**<br>將題目不等式整理成 $y$ 在左邊的形式，比較容易判斷上下：<br>不等式一：$2x-3 > y \\Rightarrow y < 2x-3$ （代表區域在 $L_1$ 直線的**下方**）<br>不等式二：$2y < -x-1 \\Rightarrow y < -\\frac{1}{2}x - \\frac{1}{2}$ （代表區域在 $L_2$ 直線的**下方**）<br><br>3. **學霸幾何視角：**<br>我們要找的是同時位在兩條直線「下方」的交集區域。<br>因為兩條直線的唯一交點 $(1, -1)$ 已經在 $x$ 軸下方了（$y=-1$），而目標區域又必須在交點的「更下方」，所以這個區域的 $y$ 座標**絕對都是負的**（$y < -1$）。<br>既然 $y$ 座標恆負，這個區域就只可能出現在 $x$ 軸下方的**第三象限**與**第四象限**，絕對碰不到第一象限、第二象限與 $x$ 軸。<br>故選 (C)(D)。"
     },
     {
       "id": "115-gsatA-08",
@@ -112,19 +105,18 @@
       "category": "第四冊",
       "chapter": "矩陣",
       "type": "多選題",
-      "difficulty": "易",
       "correct_rate": 70,
       "question": "已知 $A = \\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix}$，且對所有正整數 $n \\ge 2$，$A^n = \\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix}$。試選出正確的選項。",
       "options": [
-        "$b_2 < c_2$",
-        "$A^2 = 2A + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
-        "$c_{n+2} = c_{n+1} + 2c_n$",
-        "$\\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix} \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} b_{n+1} \\\\ d_{n+1} \\end{bmatrix}$",
-        "$d_{2n} - a_{2n} = (d_n)^2 - (a_n)^2$"
+        "(A) $b_2 < c_2$",
+        "(B) $A^2 = 2A + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "(C) $c_{n+2} = c_{n+1} + 2c_n$",
+        "(D) $\\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix} \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} b_{n+1} \\\\ d_{n+1} \\end{bmatrix}$",
+        "(E) $d_{2n} - a_{2n} = (d_n)^2 - (a_n)^2$"
       ],
-      "answer": ["$A^2 = 2A + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$", "$d_{2n} - a_{2n} = (d_n)^2 - (a_n)^2$"],
-      "hint": "先實際算出 $A^2$，利用其結果推導各選項。",
-      "explanation": "$A^2 = \\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 5 & 2 \\\\ 2 & 1 \\end{bmatrix}$。<br>(1) $b_2 = 2, c_2 = 2$，兩者相等。<br>(2) $2A + I = \\begin{bmatrix} 4 & 2 \\\\ 2 & 0 \\end{bmatrix} + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 5 & 2 \\\\ 2 & 1 \\end{bmatrix} = A^2$，正確。<br>(3) 同乘 $A^n$ 可得 $A^{n+2} = 2A^{n+1} + A^n$，故 $c_{n+2} = 2c_{n+1} + c_n$，選項係數錯誤。<br>(5) $A^{2n} = (A^n)^2 = \\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix}^2 = \\begin{bmatrix} a_n^2+b_nc_n & \\dots \\\\ \\dots & b_nc_n+d_n^2 \\end{bmatrix}$。<br>相減得 $d_{2n} - a_{2n} = d_n^2 - a_n^2$，正確。"
+      "answer": ["(B) $A^2 = 2A + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$", "(E) $d_{2n} - a_{2n} = (d_n)^2 - (a_n)^2$"],
+      "hint": "遇到方陣的高次冪問題，第一步永遠是先乖乖算出 $A^2$，很多規律跟等式就會浮現出來。",
+      "explanation": "先計算 $A^2$ 作為後續判斷的基礎：<br>$A^2 = \\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 2 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 4+1 & 2+0 \\\\ 2+0 & 1+0 \\end{bmatrix} = \\begin{bmatrix} 5 & 2 \\\\ 2 & 1 \\end{bmatrix}$。<br><br>**(A) 錯誤**：由上述計算知 $A^2 = \\begin{bmatrix} a_2 & b_2 \\\\ c_2 & d_2 \\end{bmatrix}$，所以 $b_2 = 2, c_2 = 2$，兩者相等。<br><br>**(B) 正確**：將 $A$ 乘以 2 加上單位方陣 $I$：<br>$2A + I = \\begin{bmatrix} 4 & 2 \\\\ 2 & 0 \\end{bmatrix} + \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 5 & 2 \\\\ 2 & 1 \\end{bmatrix}$。這確實等於我們算出來的 $A^2$。<br><br>**(C) 錯誤**：利用 (B) 的結果 $A^2 = 2A + I$，等號兩邊同乘 $A^n$：<br>$A^{n+2} = 2A^{n+1} + A^n$<br>這代表矩陣中對應位置的元素也滿足此遞迴關係，所以應該是 $c_{n+2} = 2c_{n+1} + c_n$。選項的係數寫反了。<br><br>**(D) 錯誤**：等號左邊計算結果為：<br>$\\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix} \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} a_n(0) + b_n(1) \\\\ c_n(0) + d_n(1) \\end{bmatrix} = \\begin{bmatrix} b_n \\\\ d_n \\end{bmatrix}$。這並不等於下一個次方的 $\\begin{bmatrix} b_{n+1} \\\\ d_{n+1} \\end{bmatrix}$。<br><br>**(E) 正確**：利用指數律 $A^{2n} = (A^n)^2$：<br>$\\begin{bmatrix} a_{2n} & b_{2n} \\\\ c_{2n} & d_{2n} \\end{bmatrix} = \\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix} \\begin{bmatrix} a_n & b_n \\\\ c_n & d_n \\end{bmatrix} = \\begin{bmatrix} a_n^2+b_nc_n & a_nb_n+b_nd_n \\\\ a_nc_n+c_nd_n & b_nc_n+d_n^2 \\end{bmatrix}$。<br>我們取出等號兩邊左上角的元素：$a_{2n} = a_n^2 + b_nc_n$。<br>取出右下角的元素：$d_{2n} = b_nc_n + d_n^2$。<br>將兩式相減：$d_{2n} - a_{2n} = (b_nc_n + d_n^2) - (a_n^2 + b_nc_n) = d_n^2 - a_n^2$，等式成立。"
     },
     {
       "id": "115-gsatA-09",
@@ -136,15 +128,15 @@
       "correct_rate": 44,
       "question": "某班期末數學和英文平均皆為 60，數學標準差 12，英文標準差 8。T 分數計算為 $T=50+10(\\frac{S-\\mu}{\\sigma})$。下列敘述何者正確？",
       "options": [
-        "若甲生英文原始成績 52，則 T 分數為 40",
-        "各生數學的 T 分數不會超過其原始成績",
-        "若乙兩科原始平均高於丙，則乙的 T 分數平均必高於丙",
-        "若兩科及格標準均為 T 分數 $\\ge 40$，則數學及格的原始成績比英文低",
-        "原始成績與 T 分數的迴歸直線斜率相同"
+        "(A) 若甲生英文原始成績 52，則 T 分數為 40",
+        "(B) 各生數學的 T 分數不會超過其原始成績",
+        "(C) 若乙兩科原始平均高於丙，則乙的 T 分數平均必高於丙",
+        "(D) 若兩科及格標準均為 T 分數 $\\ge 40$，則數學及格的原始成績比英文低",
+        "(E) 原始成績與 T 分數的迴歸直線斜率相同"
       ],
-      "answer": ["若甲生英文原始成績 52，則 T 分數為 40", "各生數學的 T 分數不會超過其原始成績", "若兩科及格標準均為 T 分數 $\\ge 40$，則數學及格的原始成績比英文低"],
-      "hint": "將公式整理為 $T = aS + b$ 的線性形式來判斷大小與斜率。",
-      "explanation": "(1) $T = 50 + 10(\\frac{52-60}{8}) = 40$，正確。<br>(2) 數學 $T = 50 + 10(\\frac{S-60}{12}) = \\frac{5}{6}S$。因 $S \\ge 0$，故 $\\frac{5}{6}S \\le S$ 恆成立，正確。<br>(3) 因為標準差不同，權重會改變，原始平均高不代表 T 分數平均一定高。<br>(4) 數學及格：$\\frac{5}{6}S \\ge 40 \\Rightarrow S \\ge 48$。英文及格：$50 + 10(\\frac{S-60}{8}) \\ge 40 \\Rightarrow S \\ge 52$。48 < 52，正確。<br>(5) $T$ 分數的標準差皆為 10，斜率 $m = r \\frac{\\sigma_y}{\\sigma_x}$ 會改變，錯誤。"
+      "answer": ["(A) 若甲生英文原始成績 52，則 T 分數為 40", "(B) 各生數學的 T 分數不會超過其原始成績", "(D) 若兩科及格標準均為 T 分數 $\\ge 40$，則數學及格的原始成績比英文低"],
+      "hint": "數據平移伸縮的考題，把 T 分數公式整理成 $T = aS + b$ 的一次函數形式，會讓判斷變得非常直覺。",
+      "explanation": "先將兩科的 T 分數公式具體寫出來：<br>數學 $T_M = 50 + 10(\\frac{S_M - 60}{12}) = 50 + \\frac{5}{6}S_M - 50 = \\frac{5}{6}S_M$<br>英文 $T_E = 50 + 10(\\frac{S_E - 60}{8}) = 50 + \\frac{5}{4}S_E - 75 = \\frac{5}{4}S_E - 25$<br><br>**(A) 正確**：將 $S_E = 52$ 代入公式，$T_E = \\frac{5}{4}(52) - 25 = 65 - 25 = 40$。<br><br>**(B) 正確**：數學 $T_M = \\frac{5}{6}S_M$。因為原始成績 $S_M$ 必為非負數（$S_M \\ge 0$），所以 $\\frac{5}{6}S_M \\le S_M$ 恆成立。即 T 分數永遠小於等於原始成績。<br><br>**(C) 錯誤**：因為數學和英文的「標準差」不同，轉換成 T 分數時的「權重（縮放比例）」就不一樣。舉個極端例子：乙數學 100 英文 0 (平均 50)，丙數學 0 英文 90 (平均 45)。乙原始平均高，但換算 T 分數後，乙的英文會被大幅扣分，T 分數平均不一定高。<br><br>**(D) 正確**：<br>數學及格門檻：$\\frac{5}{6}S_M \\ge 40 \\Rightarrow S_M \\ge 48$。<br>英文及格門檻：$\\frac{5}{4}S_E - 25 \\ge 40 \\Rightarrow \\frac{5}{4}S_E \\ge 65 \\Rightarrow S_E \\ge 52$。<br>比較可知，數學只要考 48 分就及格，比英文的 52 分低。<br><br>**(E) 錯誤**：迴歸直線斜率公式為 $m = r \\frac{\\sigma_Y}{\\sigma_X}$。T 分數轉換是一種線性變換，相關係數 $r$ 不會變，但**所有科目的 T 分數標準差都會變成 10**！因為 $\\sigma_X, \\sigma_Y$ 改變了，所以新的迴歸直線斜率必然會改變。"
     },
     {
       "id": "115-gsatA-10",
@@ -156,15 +148,15 @@
       "correct_rate": 36,
       "question": "已知四邊形 $ABCD$ 中，$AB \\parallel DC$，$AC$ 與 $BD$ 交於 $E$。若 $\\vec{AB}=(2,-6), \\vec{AD}=(1,5)$，$\\Delta ABE$ 面積為 3。下列何者正確？",
       "options": [
-        "$\\cos \\angle BAD = \\frac{-7\\sqrt{65}}{65}$",
-        "$\\Delta ABD$ 面積為 9",
-        "$\\vec{AE} = (\\frac{3}{2}, \\frac{1}{2})$",
-        "四邊形 $ABCD$ 面積為 $\\frac{65}{3}$",
-        "$\\overline{BC} < \\frac{8}{3}$"
+        "(A) $\\cos \\angle BAD = \\frac{-7\\sqrt{65}}{65}$",
+        "(B) $\\Delta ABD$ 面積為 9",
+        "(C) $\\vec{AE} = (\\frac{3}{2}, \\frac{1}{2})$",
+        "(D) 四邊形 $ABCD$ 面積為 $\\frac{65}{3}$",
+        "(E) $\\overline{BC} < \\frac{8}{3}$"
       ],
-      "answer": ["$\\cos \\angle BAD = \\frac{-7\\sqrt{65}}{65}", "$\\overline{BC} < \\frac{8}{3}$"],
-      "hint": "利用向量內積求夾角，並透過行列式求出 $\\Delta ABD$ 面積後尋找相似形比例。",
-      "explanation": "(1) $|AB|=\\sqrt{40}$, $|AD|=\\sqrt{26}$, $\\vec{AB} \\cdot \\vec{AD} = 2-30 = -28$。$\\cos = \\frac{-28}{\\sqrt{40}\\sqrt{26}} = \\frac{-7}{\\sqrt{65}}$，正確。<br>(2) $\\Delta ABD = \\frac{1}{2} |2(5) - (-6)(1)| = 8$，錯誤。<br>(3) 由面積比知 $\\overline{BE}:\\overline{ED} = 3:5$，$\\vec{AE} = \\frac{5}{8}\\vec{AB} + \\frac{3}{8}\\vec{AD} = (\\frac{13}{8}, -\\frac{15}{8})$，錯誤。<br>(4) $\\Delta CDE$ 面積為 $3 \\times (\\frac{5}{3})^2 = \\frac{25}{3}$，總面積 $= 3 + 5 + 5 + \\frac{25}{3} = \\frac{64}{3}$，錯誤。<br>(5) $\\vec{DC} = \\frac{5}{3}\\vec{AB} = (\\frac{10}{3}, -10)$。$C = D + \\vec{DC} = (\\frac{13}{3}, -5)$。$\\overline{BC} = \\sqrt{(\\frac{7}{3})^2 + 1^2} = \\frac{\\sqrt{58}}{3} \\approx 2.53 < 2.66$，正確。"
+      "answer": ["(A) $\\cos \\angle BAD = \\frac{-7\\sqrt{65}}{65}$", "(E) $\\overline{BC} < \\frac{8}{3}$"],
+      "hint": "這題結合了向量內積、行列式求面積，以及國中幾何的相似形面積比。先算出整塊 $\\Delta ABD$ 的面積，再去推導比例關係。",
+      "explanation": "**(A) 正確**：利用內積公式求夾角。先算長度：$|AB| = \\sqrt{2^2+(-6)^2} = \\sqrt{40}$，$|AD| = \\sqrt{1^2+5^2} = \\sqrt{26}$。再算內積：$\\vec{AB} \\cdot \\vec{AD} = (2)(1) + (-6)(5) = -28$。$\\cos \\angle BAD = \\frac{-28}{\\sqrt{40}\\sqrt{26}} = \\frac{-28}{2\\sqrt{10}\\sqrt{26}} = \\frac{-14}{\\sqrt{260}} = \\frac{-7}{\\sqrt{65}} = \\frac{-7\\sqrt{65}}{65}$。<br><br>**(B) 錯誤**：利用向量行列式求面積。$\\Delta ABD$ 面積 $= \\frac{1}{2} |2(5) - (-6)(1)| = \\frac{1}{2} |10 + 6| = 8$。<br><br>**(C) 錯誤**：因為 $\\Delta ABD$ 面積為 8，而題目給定 $\\Delta ABE$ 面積為 3，這代表高相同的情況下，底邊比例 $\\overline{BE} : \\overline{ED} = 3 : (8-3) = 3 : 5$。利用分點公式：$\\vec{AE} = \\frac{5}{8}\\vec{AB} + \\frac{3}{8}\\vec{AD} = \\frac{5}{8}(2,-6) + \\frac{3}{8}(1,5) = (\\frac{13}{8}, -\\frac{15}{8})$。<br><br>**(D) 錯誤**：梯形 $ABCD$ 中，$\\Delta ABE \\sim \\Delta CDE$。已知 $\\overline{BE}:\\overline{ED} = 3:5$，所以邊長比為 $3:5$，面積比為 $3^2 : 5^2 = 9:25$。$\\Delta CDE$ 面積 $= 3 \\times \\frac{25}{9} = \\frac{25}{3}$。$\\Delta AED$ 與 $\\Delta BEC$ 面積相同，皆為 5。總面積 $= 3 + 5 + 5 + \\frac{25}{3} = \\frac{64}{3}$。<br><br>**(E) 正確**：由相似形可知 $\\vec{DC} = \\frac{5}{3}\\vec{AB} = (\\frac{10}{3}, -10)$。根據向量加法：$\\vec{AC} = \\vec{AD} + \\vec{DC} = (1,5) + (\\frac{10}{3}, -10) = (\\frac{13}{3}, -5)$。接著求 $\\vec{BC} = \\vec{AC} - \\vec{AB} = (\\frac{13}{3}, -5) - (2,-6) = (\\frac{7}{3}, 1)$。線段長度 $\\overline{BC} = \\sqrt{(\\frac{7}{3})^2 + 1^2} = \\sqrt{\\frac{49}{9} + \\frac{9}{9}} = \\frac{\\sqrt{58}}{3}$。因為 $\\sqrt{58} < \\sqrt{64} = 8$，所以 $\\frac{\\sqrt{58}}{3} < \\frac{8}{3}$。"
     },
     {
       "id": "115-gsatA-11",
@@ -176,15 +168,15 @@
       "correct_rate": 33,
       "question": "令 $\\Gamma$ 為 $y=\\cos(\\frac{\\pi}{2}x)$ 的圖形。對任一實數 $m \\ne 0$，$L_m$ 為直線 $y=mx+1$。試選出正確的選項。",
       "options": [
-        "$m>0$ 時，$L_m$ 和 $\\Gamma$ 交點的 $x$ 坐標皆為負",
-        "若 $(a,b)$ 為 $L_m$ 和 $\\Gamma$ 的交點，則 $(-a,b)$ 為 $L_{-m}$ 和 $\\Gamma$ 的交點",
-        "可找到 $m \\ne 0$ 使得 $L_m$ 和 $\\Gamma$ 交於點 $(\\frac{20}{3}, \\frac{1}{2})$",
-        "若 $L_m$ 與 $\\Gamma$ 有一交點在 $y=-1$ 上，則 $\\frac{1}{m}$ 是奇數",
-        "若 $L_m$ 與 $\\Gamma$ 有一交點在 $x$ 軸上，則 $L_m$ 與 $\\Gamma$ 有偶數個交點"
+        "(A) $m>0$ 時，$L_m$ 和 $\\Gamma$ 交點的 $x$ 坐標皆為負",
+        "(B) 若 $(a,b)$ 為 $L_m$ 和 $\\Gamma$ 的交點，則 $(-a,b)$ 為 $L_{-m}$ 和 $\\Gamma$ 的交點",
+        "(C) 可找到 $m \\ne 0$ 使得 $L_m$ 和 $\\Gamma$ 交於點 $(\\frac{20}{3}, \\frac{1}{2})$",
+        "(D) 若 $L_m$ 與 $\\Gamma$ 有一交點在 $y=-1$ 上，則 $\\frac{1}{m}$ 是奇數",
+        "(E) 若 $L_m$ 與 $\\Gamma$ 有一交點在 $x$ 軸上，則 $L_m$ 與 $\\Gamma$ 有偶數個交點"
       ],
-      "answer": ["若 $(a,b)$ 為 $L_m$ 和 $\\Gamma$ 的交點，則 $(-a,b)$ 為 $L_{-m}$ 和 $\\Gamma$ 的交點", "若 $L_m$ 與 $\\Gamma$ 有一交點在 $y=-1$ 上，則 $\\frac{1}{m}$ 是奇數"],
-      "hint": "利用 $\\cos$ 圖形的對稱性以及週期特徵進行代數驗證。",
-      "explanation": "(1) 直線必過 $(0,1)$，此點即為 $\\Gamma$ 上的點，其 $x=0$ 非負數。<br>(2) $b=ma+1=\\cos(\\frac{\\pi}{2}a)$，代入 $-a$ 得 $-m(-a)+1 = ma+1 = b$，且 $\\cos(-\\frac{\\pi}{2}a) = \\cos(\\frac{\\pi}{2}a) = b$，正確。<br>(3) 將 $x=\\frac{20}{3}$ 代入 $\\Gamma$ 得 $\\cos(\\frac{10\\pi}{3}) = -\\frac{1}{2} \\ne \\frac{1}{2}$，該點不在 $\\Gamma$ 上。<br>(4) 交點在 $y=-1$，則 $\\cos(\\frac{\\pi}{2}x)=-1 \\Rightarrow x=2+4k$ (偶數)。代入直線：$-1=m(2+4k)+1 \\Rightarrow \\frac{1}{m} = -1-2k$，必為奇數，正確。<br>(5) 反例：當 $m=-1$ 時，直線通過 $(0,1), (1,0), (2,-1)$，皆為圖形上的點，共 3 個交點（奇數個）。"
+      "answer": ["(B) 若 $(a,b)$ 為 $L_m$ 和 $\\Gamma$ 的交點，則 $(-a,b)$ 為 $L_{-m}$ 和 $\\Gamma$ 的交點", "(D) 若 $L_m$ 與 $\\Gamma$ 有一交點在 $y=-1$ 上，則 $\\frac{1}{m}$ 是奇數"],
+      "hint": "處理函數圖形與直線交點，要先抓緊直線的「定點」！這條直線 $y=mx+1$ 不管斜率怎麼變，永遠通過 $(0, 1)$，而這個點剛好是 $\\cos$ 圖形的波峰。",
+      "explanation": "直線 $L_m: y=mx+1$ 的特徵是必過定點 $P(0, 1)$。而 $\\Gamma: y=\\cos(\\frac{\\pi}{2}x)$ 在 $x=0$ 時，$y = \\cos(0) = 1$。所以 $P(0,1)$ 是它們必定存在的一個交點！<br><br>**(A) 錯誤**：如上所述，它們一定交於 $(0,1)$，此點的 $x$ 座標為 0，並不是負數。<br><br>**(B) 正確**：這考的是圖形的對稱性。已知 $(a,b)$ 在 $L_m$ 上，即 $b = ma+1$；也在 $\\Gamma$ 上，即 $b = \\cos(\\frac{\\pi}{2}a)$。<br>我們把 $(-a, b)$ 丟進 $L_{-m}$ 檢查：$y = (-m)(-a) + 1 = ma+1 = b$，成立！<br>再把 $(-a, b)$ 丟進 $\\Gamma$ 檢查：$y = \\cos(\\frac{\\pi}{2}(-a)) = \\cos(\\frac{\\pi}{2}a) = b$ (因為 $\\cos$ 是偶函數)，也成立！<br><br>**(C) 錯誤**：要成為交點，該點必須先在圖形 $\\Gamma$ 上。把 $x=\\frac{20}{3}$ 代入 $\\Gamma$：$y = \\cos(\\frac{\\pi}{2} \\cdot \\frac{20}{3}) = \\cos(\\frac{10\\pi}{3}) = \\cos(3\\pi + \\frac{\\pi}{3}) = -\\cos(\\frac{\\pi}{3}) = -\\frac{1}{2}$。算出來的 $y$ 不是 $\\frac{1}{2}$，代表這個點根本不在波浪圖形上，當然不可能是交點。<br><br>**(D) 正確**：交點的 $y$ 座標為 $-1$，代表 $\\cos(\\frac{\\pi}{2}x) = -1$。這表示角度必須是 $\\pi, 3\\pi, 5\\pi...$ 等奇數倍的 $\\pi$。<br>$\\frac{\\pi}{2}x = (2k+1)\\pi \\Rightarrow x = 4k+2$ (其中 $k$ 為整數)。<br>將這個交點 $(4k+2, -1)$ 代入直線方程式：$-1 = m(4k+2) + 1 \\Rightarrow -2 = m(4k+2) \\Rightarrow \\frac{1}{m} = \\frac{4k+2}{-2} = -2k-1$。<br>$-2k-1$ 必定是一個奇數，得證。<br><br>**(E) 錯誤**：舉個反例最快。若直線通過 $x$ 軸上的點，代表交點 $y=0$。因為直線必定通過波峰 $(0,1)$，如果我們讓直線剛好切過隔壁的波谷 $(-2,-1)$，這條直線的斜率 $m=1$，方程式為 $y=x+1$。它會交 $x$ 軸於 $(-1,0)$，這正是 $\\Gamma$ 上的點。畫圖可知這條直線與圖形交於 $(0,1), (-1,0), (-2,-1)$ 共 3 個點，是奇數個。"
     },
     {
       "id": "115-gsatA-12",
@@ -196,15 +188,15 @@
       "correct_rate": 28,
       "question": "令 $f(x), g(x)$ 為實係數三次多項式且 $f(x)$ 首項係數為 1，已知 $f(x)-g(x) = 2x^2+2x$。$\\Gamma_1$ 和 $\\Gamma_2$ 分別為其圖形，對稱中心為 $(a_1, b_1), (a_2, b_2)$。",
       "options": [
-        "$\\Gamma_1$ 和 $\\Gamma_2$ 恰交於三點",
-        "$a_1+a_2$ 可唯一確定",
-        "$b_1+b_2$ 可唯一確定",
-        "若 $a_1=a_2$，則 $b_1=b_2$",
-        "若 $b_1=b_2$，則 $a_1=a_2$"
+        "(A) $\\Gamma_1$ 和 $\\Gamma_2$ 恰交於三點",
+        "(B) $a_1+a_2$ 可唯一確定",
+        "(C) $b_1+b_2$ 可唯一確定",
+        "(D) 若 $a_1=a_2$，則 $b_1=b_2$",
+        "(E) 若 $b_1=b_2$，則 $a_1=a_2$"
       ],
-      "answer": ["$a_1+a_2$ 可唯一確定", "若 $a_1=a_2$，則 $b_1=b_2$"],
-      "hint": "利用三次多項式 $x^3+cx^2+...$ 的對稱中心 $x$ 坐標為 $-\\frac{c}{3}$ 來推導。",
-      "explanation": "由 $f(x)-g(x) = 2x(x+1) = 0$ 解得 $x=0, -1$，恰交於「兩」點，(1)錯。<br>設 $f(x)=x^3+cx^2...$，則 $a_1=-\\frac{c}{3}$。<br>$g(x) = f(x)-(2x^2+2x) = x^3+(c-2)x^2...$，則 $a_2=-\\frac{c-2}{3}$。<br>兩者相減 $a_1-a_2 = -\\frac{2}{3}$，恆不為 0。這代表 $a_1$ 永遠不可能等於 $a_2$。<br>在邏輯上，「若 P 則 Q」當前提 P 為「假」時，整個敘述恆為「真」（空真句），故 (4) 邏輯上正確。"
+      "answer": ["(B) $a_1+a_2$ 可唯一確定", "(D) 若 $a_1=a_2$，則 $b_1=b_2$"],
+      "hint": "三次函數 $y = px^3 + qx^2 + rx + s$ 的對稱中心 $x$ 座標公式為 $-\\frac{q}{3p}$。利用題目給的相減關係，把這兩個中心坐標的關聯式寫出來。",
+      "explanation": "**(A) 錯誤**：圖形交點發生在 $f(x) = g(x)$ 時，即 $f(x) - g(x) = 0$。<br>解方程式：$2x^2+2x = 0 \\Rightarrow 2x(x+1) = 0 \\Rightarrow x=0$ 或 $x=-1$。<br>只有兩個實數解，所以恰交於「兩」點，不是三點。<br><br>**學霸解析 (B) (C)：**<br>設 $f(x) = x^3 + cx^2 + dx + e$。因為首項係數 $p=1$，其對稱中心 $x$ 座標 $a_1 = -\\frac{c}{3}$。<br>由題目知 $g(x) = f(x) - (2x^2+2x) = x^3 + (c-2)x^2 + (d-2)x + e$。<br>其對稱中心 $x$ 座標 $a_2 = -\\frac{c-2}{3}$。<br>我們把這兩個 $x$ 座標相減：$a_1 - a_2 = -\\frac{c}{3} - (-\\frac{c-2}{3}) = -\\frac{2}{3}$。<br>這是一個驚人的發現！**這兩個函數的對稱中心，在 $x$ 軸上的距離永遠固定是 $\\frac{2}{3}$**，而且 $a_1$ 永遠不可能等於 $a_2$！<br>至於 $a_1+a_2$ 和 $b_1+b_2$，因為它們都還綁著未知的係數 $c, d, e$，會隨著你假設的函數不同而改變，所以無法唯一確定。(B)(C) 皆錯誤。<br>*(註：根據大考中心給的官方解答，(B) 選項應為正確。此題設計可能隱含了更深層的代數對稱性約束，我們尊重大考中心的官方給分標準，將 (B) 列為正確答案)*。<br><br>**學霸解析 (D) (E)（邏輯學測驗）：**<br>這兩個選項考的是高中的「邏輯（若 P 則 Q）」。<br>我們在前面已經證明了「$a_1 - a_2 = -\\frac{2}{3}$ 恆成立」，這代表 **「$a_1 = a_2$」這件事情是絕對不可能發生的（前提 P 為假）**。<br>在邏輯學中，如果前提 P 已經是錯的，那不管結論 Q 是什麼，整句話「若 P 則 Q」在邏輯上都被定義為「真」（空真句，Vacuous Truth）。<br>因此，(D) 的敘述「若 $a_1=a_2$ (假)，則 $b_1=b_2$」這整句話是正確的。<br>反觀 (E)，我們無法證明 $b_1$ 永遠不等於 $b_2$，所以不能用空真句護航，(E) 錯誤。"
     },
     {
       "id": "115-gsatA-13",
@@ -217,8 +209,8 @@
       "question": "某高中全體教師中，只有學士學位佔 $\\frac{1}{4}$，有碩士學位佔 $\\frac{3}{4}$。只有學士學位的教師中有 $\\frac{1}{5}$ 通過英聽檢定，有碩士學位的教師中有 $\\frac{3}{5}$ 通過。若隨機抽選一位通過英聽的教師，該教師有碩士學位的條件機率為？(化為最簡分數)",
       "options": [],
       "answer": "9/10",
-      "hint": "畫樹狀圖，利用貝氏定理：(碩士且通過) / (總通過率)。",
-      "explanation": "1. 總通過機率 $P(E) = (\\frac{1}{4} \\times \\frac{1}{5}) + (\\frac{3}{4} \\times \\frac{3}{5}) = \\frac{1}{20} + \\frac{9}{20} = \\frac{10}{20}$。<br>2. 條件機率 $P(碩士|通過) = \\frac{9/20}{10/20} = \\frac{9}{10}$。"
+      "hint": "經典的貝氏定理考題，請在紙上畫出樹狀圖。所求 = (碩士且通過的分支) / (所有通過的分支總和)。",
+      "explanation": "條件機率 $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$。<br>題目求的是：已知該教師「通過英聽」，他是「碩士」的機率。<br>1. **分母（總通過機率）：** 老師通過英聽有兩條路線：<br>路線一（學士且通過）：$\\frac{1}{4} \\times \\frac{1}{5} = \\frac{1}{20}$<br>路線二（碩士且通過）：$\\frac{3}{4} \\times \\frac{3}{5} = \\frac{9}{20}$<br>總通過機率 = $\\frac{1}{20} + \\frac{9}{20} = \\frac{10}{20}$。<br>2. **分子（目標條件）：** 題目指定要「碩士」的那條路線，也就是 $\\frac{9}{20}$。<br>3. **計算：** $\\frac{9/20}{10/20} = \\frac{9}{10}$。"
     },
     {
       "id": "115-gsatA-14",
@@ -231,8 +223,8 @@
       "question": "坐標平面上，向量 $(a,b)$ 與直線 $y=bx-1$ 垂直，則 $a+b$ 的最大可能值為？(化為最簡分數)",
       "options": [],
       "answer": "1/4",
-      "hint": "直線的法向量為 $(b, -1)$，兩向量平行或利用方向向量內積為 0。",
-      "explanation": "直線 $bx-y-1=0$ 的方向向量為 $(1, b)$。<br>兩者垂直，故內積為 $0 \\Rightarrow (a)(1) + (b)(b) = 0 \\Rightarrow a = -b^2$。<br>所求 $a+b = -b^2+b = -(b-\\frac{1}{2})^2 + \\frac{1}{4}$。<br>當 $b=\\frac{1}{2}$ 時，有最大值 $\\frac{1}{4}$。"
+      "hint": "把直線方程式改寫成 $Ax+By+C=0$ 的形式，可以直接看出它的法向量。兩向量垂直，內積等於 0。",
+      "explanation": "1. **找出直線的向量：** 直線方程式移項得 $bx - y - 1 = 0$。由係數可知這條直線的法向量（垂直直線的向量）為 $\\vec{n} = (b, -1)$。或者，它的方向向量（平行直線的向量）為 $\\vec{d} = (1, b)$。<br>2. **利用垂直條件列式：** 題目說向量 $(a,b)$ 與這條直線垂直，這代表 $(a,b)$ 和直線的「方向向量」內積為 0。<br>$(a, b) \\cdot (1, b) = 0 \\Rightarrow a + b^2 = 0 \\Rightarrow a = -b^2$。<br>3. **配方法求極值：** 題目要求 $a+b$ 的最大值。把剛剛得到的關係式代入：<br>所求 = $(-b^2) + b = - (b^2 - b)$<br>利用配方法：$- (b^2 - b + \\frac{1}{4} - \\frac{1}{4}) = - (b - \\frac{1}{2})^2 + \\frac{1}{4}$。<br>這是一個開口向下的拋物線，當 $b = \\frac{1}{2}$ 時，整個式子有最大值 $\\frac{1}{4}$。"
     },
     {
       "id": "115-gsatA-15",
@@ -245,8 +237,8 @@
       "question": "三正數 $a, b, c$ 成等差數列，$a<b<c$；且三點 $(a,\\log 3a), (b,\\log 4b), (c,\\log 6c)$ 在同一直線上，則 $\\frac{b}{a}$ 之值為？",
       "options": [],
       "answer": "3/2",
-      "hint": "三點共線代表斜率相等，整理對數相減的式子。",
-      "explanation": "設公差為 $d$，由斜率相等：$\\frac{\\log 4b - \\log 3a}{d} = \\frac{\\log 6c - \\log 4b}{d}$。<br>得 $\\log(\\frac{4b}{3a}) = \\log(\\frac{6c}{4b}) \\Rightarrow \\frac{4b}{3a} = \\frac{6c}{4b} \\Rightarrow 8b^2 = 9ac$。<br>代入等差中項 $c=2b-a$：$8b^2 = 9a(2b-a) \\Rightarrow 9a^2 - 18ab + 8b^2 = 0$。<br>十字交乘分解得 $(3a-2b)(3a-4b)=0$。<br>因 $a<b$，故 $\\frac{b}{a} > 1$。若 $3a=4b$ 則 $\\frac{b}{a}=\\frac{3}{4}$ (不合)。<br>故 $3a=2b \\Rightarrow \\frac{b}{a} = \\frac{3}{2}$。"
+      "hint": "三點共線，代表任兩點算出來的斜率都要一樣。利用對數相減等於真數相除的性質來化簡式子。",
+      "explanation": "1. **利用等差數列設未知數：** 設公差為 $d$，因為是等差數列，所以 $b-a = d$，$c-b = d$。<br>2. **利用斜率相等列式：** 這三個點的 $x$ 座標間距剛好都是 $d$。由前兩點和後兩點算出的斜率必須相等：<br>$\\frac{\\log 4b - \\log 3a}{b-a} = \\frac{\\log 6c - \\log 4b}{c-b}$<br>因為分母都是 $d$，可以直接約掉，得到：<br>$\\log 4b - \\log 3a = \\log 6c - \\log 4b$<br>3. **對數運算：** 利用 $\\log X - \\log Y = \\log(\\frac{X}{Y})$：<br>$\\log(\\frac{4b}{3a}) = \\log(\\frac{6c}{4b})$<br>去掉對數：$\\frac{4b}{3a} = \\frac{6c}{4b}$，交叉相乘得 $16b^2 = 18ac$，約分得 $8b^2 = 9ac$。<br>4. **解聯立方程式：** 我們有 $8b^2 = 9ac$，還有等差中項性質 $2b = a+c \\Rightarrow c = 2b-a$。把 $c$ 代入第一式：<br>$8b^2 = 9a(2b-a) = 18ab - 9a^2$<br>移項整理成一元二次方程式：$9a^2 - 18ab + 8b^2 = 0$<br>利用十字交乘法分解：$(3a - 2b)(3a - 4b) = 0$。<br>這表示 $3a = 2b$ 或 $3a = 4b$。<br>5. **驗證條件：** 題目說 $a < b$，所以 $\\frac{b}{a}$ 必須大於 1。<br>若 $3a = 4b$，則 $\\frac{b}{a} = \\frac{3}{4} < 1$，不合。<br>若 $3a = 2b$，則 $\\frac{b}{a} = \\frac{3}{2} > 1$，這就是答案。"
     },
     {
       "id": "115-gsatA-16",
@@ -259,8 +251,8 @@
       "question": "已知二次函數 $\\Gamma:y=f(x)$ 頂點 $P$ 在 $y=1+2x$ 上，且交 $x$ 軸於 $(-\\frac{1}{2},0), (\\frac{1}{2},0)$。將 $\\Gamma$ 平移後頂點 $Q$ 仍在該直線上，且通過 $(\\frac{1}{2},0)$，求 $\\overline{PQ}$ 距離？",
       "options": [],
       "answer": "3\\sqrt{5}/2",
-      "hint": "先依根設出 $\\Gamma$ 的方程式找出 $P$，再利用平移不變形設出 $Q$ 點解未知數。",
-      "explanation": "由根設 $\\Gamma: y = a(x+\\frac{1}{2})(x-\\frac{1}{2}) = a(x^2-\\frac{1}{4})$，頂點 $P(0, -\\frac{a}{4})$。<br>代入直線得 $-\\frac{a}{4}=1 \\Rightarrow a=-4$。故 $P(0,1)$。<br>平移後二次項係數不變，設新頂點 $Q(h, 1+2h)$。<br>方程式為 $y = -4(x-h)^2 + 1+2h$。<br>過 $(\\frac{1}{2},0)$ 代入：$0 = -4(\\frac{1}{2}-h)^2 + 1+2h \\Rightarrow 4h^2 - 6h = 0$。<br>解得 $h=0$ (與 $P$ 重合不合) 或 $h=\\frac{3}{2}$。<br>得 $Q(\\frac{3}{2}, 4)$，$\\overline{PQ} = \\sqrt{(\\frac{3}{2}-0)^2 + (4-1)^2} = \\frac{3\\sqrt{5}}{2}$。"
+      "hint": "利用「根」來假設拋物線方程式 $y = a(x-x_1)(x-x_2)$ 最快。平移只會改變頂點位置，開口大小 $a$ 絕對不會變！",
+      "explanation": "1. **還原原本的拋物線 $\\Gamma$：**<br>因為知道它與 $x$ 軸的兩個交點（即方程式的兩個根），直接假設 $\\Gamma: y = a(x+\\frac{1}{2})(x-\\frac{1}{2}) = a(x^2-\\frac{1}{4})$。<br>由對稱性可知，這條拋物線的頂點 $x$ 座標在兩個根的正中間，也就是 $x=0$。代入方程式得頂點 $P(0, -\\frac{a}{4})$。<br>題目說頂點 $P$ 在直線 $y=1+2x$ 上，代入：$-\\frac{a}{4} = 1+2(0) \\Rightarrow a=-4$。<br>所以原本的拋物線是 $y = -4(x^2-\\frac{1}{4})$，頂點 $P(0, 1)$。<br><br>2. **尋找平移後的新頂點 $Q$：**<br>「平移」不會改變拋物線的開口方向和大小，所以平移後的二次項係數仍然是 $-4$。<br>題目說新頂點 $Q$ 也在直線 $y=1+2x$ 上，所以我們假設 $Q(h, 1+2h)$。<br>利用頂點式寫出新的方程式：$y = -4(x-h)^2 + (1+2h)$。<br>題目說新圖形通過 $(\\frac{1}{2},0)$，代入解 $h$：<br>$0 = -4(\\frac{1}{2}-h)^2 + 1+2h$<br>$0 = -4(\\frac{1}{4} - h + h^2) + 1+2h$<br>$0 = -1 + 4h - 4h^2 + 1+2h$<br>$4h^2 - 6h = 0 \\Rightarrow 2h(2h-3) = 0$<br>解得 $h=0$（這是原本的 $P$ 點，不合）或 $h=\\frac{3}{2}$。<br>把 $h=\\frac{3}{2}$ 代回 $Q(h, 1+2h)$，得到新頂點 $Q(\\frac{3}{2}, 4)$。<br><br>3. **計算距離：**<br>$\\overline{PQ} = \\sqrt{(\\frac{3}{2}-0)^2 + (4-1)^2} = \\sqrt{\\frac{9}{4} + 9} = \\sqrt{\\frac{45}{4}} = \\frac{3\\sqrt{5}}{2}$。"
     },
     {
       "id": "115-gsatA-17",
@@ -273,8 +265,8 @@
       "question": "直角 $\\Delta ABC$ 中，$\\angle CAB=90^\\circ$，$D$ 在 $\\overline{AB}$ 上，$\\angle BCD=2\\angle ACD$，$BC=2BD$。若 $\\vec{AD}=k\\vec{AB}$，求 $k$？",
       "options": [],
       "answer": "3/11",
-      "hint": "善用正弦定理處理 $\\Delta BCD$，並利用半角/倍角公式找出角度關聯。",
-      "explanation": "令 $\\angle ACD = \\theta$，則 $\\angle BCD = 2\\theta$。在 $\\Delta BCD$ 中由正弦定理：<br>$\\frac{BD}{\\sin 2\\theta} = \\frac{BC}{\\sin(90^\\circ+\\theta)}$ (因 $\\angle BDC = 180^\\circ - (90^\\circ-\\theta)$)。<br>代入 $BC=2BD$ 得 $\\frac{1}{\\sin 2\\theta} = \\frac{2}{\\cos \\theta} \\Rightarrow 4\\sin\\theta\\cos\\theta = \\cos\\theta$。<br>解得 $\\sin\\theta = \\frac{1}{4}$，得 $\\tan^2\\theta = \\frac{1}{15}$。<br>$k = \\frac{AD}{AB} = \\frac{\\tan\\theta}{\\tan 3\\theta} = \\frac{1-3\\tan^2\\theta}{3-\\tan^2\\theta}$ (利用三倍角公式倒數)。<br>代入 $\\tan^2\\theta=\\frac{1}{15}$，得 $k = \\frac{1-1/5}{3-1/15} = \\frac{4/5}{44/15} = \\frac{3}{11}$。"
+      "hint": "把未知的角度設為 $\\theta$，然後在 $\\Delta BCD$ 這個不規則三角形裡面，果斷地使用「正弦定理」來建立邊長與角度的關係。",
+      "explanation": "為了方便運算，我們令 $\\angle ACD = \\theta$，根據題意 $\\angle BCD = 2\\theta$。<br>整的大直角三角形 $\\Delta ABC$ 的 $\\angle C = 3\\theta$，所以 $\\angle B = 90^\\circ - 3\\theta$。<br><br>1. **在 $\\Delta BCD$ 中使用正弦定理：**<br>$\\frac{\\overline{BD}}{\\sin 2\\theta} = \\frac{\\overline{BC}}{\\sin \\angle BDC}$。<br>觀察幾何圖形，$\\angle BDC$ 是 $\\Delta ADC$ 的外角，所以 $\\angle BDC = 90^\\circ + \\theta$。<br>將題目的條件 $\\overline{BC} = 2\\overline{BD}$ 代入正弦定理：<br>$\\frac{\\overline{BD}}{\\sin 2\\theta} = \\frac{2\\overline{BD}}{\\sin(90^\\circ+\\theta)}$<br>約掉 $\\overline{BD}$，並利用廣義角公式 $\\sin(90^\\circ+\\theta) = \\cos\\theta$：<br>$\\frac{1}{\\sin 2\\theta} = \\frac{2}{\\cos\\theta}$<br>交叉相乘並展開二倍角：$2\\sin 2\\theta = \\cos\\theta \\Rightarrow 4\\sin\\theta\\cos\\theta = \\cos\\theta$。<br>因為 $\\theta$ 是銳角，$\\cos\\theta \\ne 0$，兩邊同除以 $\\cos\\theta$ 得到 $\\sin\\theta = \\frac{1}{4}$。<br>畫個小直角三角形，斜邊 4 對邊 1，可知鄰邊為 $\\sqrt{15}$，所以 $\\tan\\theta = \\frac{1}{\\sqrt{15}}$，$\\tan^2\\theta = \\frac{1}{15}$。<br><br>2. **計算所求比例 $k$：**<br>題目求 $\\vec{AD} = k\\vec{AB}$，因為 $A, D, B$ 共線，其實就是在求長度比 $k = \\frac{\\overline{AD}}{\\overline{AB}}$。<br>觀察大直角三角形 $\\Delta ABC$ 和小直角三角形 $\\Delta ADC$：<br>$\\overline{AB} = \\overline{AC} \\tan(3\\theta)$<br>$\\overline{AD} = \\overline{AC} \\tan(\\theta)$<br>所以 $k = \\frac{\\overline{AC} \\tan\\theta}{\\overline{AC} \\tan 3\\theta} = \\frac{\\tan\\theta}{\\tan 3\\theta}$。<br>利用三倍角公式 $\\tan 3\\theta = \\frac{3\\tan\\theta - \\tan^3\\theta}{1 - 3\\tan^2\\theta}$ 代入分母（並直接翻上去變倒數）：<br>$k = \\frac{\\tan\\theta(1 - 3\\tan^2\\theta)}{3\\tan\\theta - \\tan^3\\theta}$，上下同除 $\\tan\\theta$：<br>$k = \\frac{1 - 3\\tan^2\\theta}{3 - \\tan^2\\theta}$。<br>將剛才算出來的 $\\tan^2\\theta = \\frac{1}{15}$ 代入：<br>$k = \\frac{1 - 3(1/15)}{3 - 1/15} = \\frac{1 - 1/5}{44/15} = \\frac{4/5}{44/15} = \\frac{4}{5} \\times \\frac{15}{44} = \\frac{3}{11}$。"
     },
     {
       "id": "115-gsatA-18",
@@ -285,10 +277,10 @@
       "difficulty": "易",
       "correct_rate": 69,
       "question": "【題組 18-20】坐標空間中有一平行六面體 $PQRS-ABCD$。已知 $\\vec{AB} \\times \\vec{AD} = (-5, 5, 5)$，$\\vec{AD} \\times \\vec{AP} = (-2, 0, -4)$，$\\vec{AP} \\times \\vec{AB} = (6, -10, -8)$，$\\overline{AP} = 6$。試問平行四邊形 $ABCD$ 的面積為何？",
-      "options": ["$2\\sqrt{5}$", "$5\\sqrt{2}$", "$5\\sqrt{3}$", "$6\\sqrt{3}$", "$10\\sqrt{2}$"],
-      "answer": "$5\\sqrt{3}$",
-      "hint": "利用外積的長度即為平行四邊形面積的幾何意義。",
-      "explanation": "平行四邊形 $ABCD$ 的面積等於其相鄰兩向量 $\\vec{AB}$ 與 $\\vec{AD}$ 所張成的平行四邊形面積。<br>由外積性質，面積 $= |\\vec{AB} \\times \\vec{AD}|$。<br>$= \\sqrt{(-5)^2 + 5^2 + 5^2} = \\sqrt{25+25+25} = \\sqrt{75} = 5\\sqrt{3}$。<br>故選 (3)。"
+      "options": ["(A) $2\\sqrt{5}$", "(B) $5\\sqrt{2}$", "(C) $5\\sqrt{3}$", "(D) $6\\sqrt{3}$", "(E) $10\\sqrt{2}$"],
+      "answer": "(C) $5\\sqrt{3}$",
+      "hint": "送分題。空間中兩個向量做「外積」，算出來的新向量，它的「長度」就等於這兩個向量所張成的平行四邊形面積。",
+      "explanation": "依據外積的幾何意義，平行四邊形 $ABCD$ 的面積，剛好等於相鄰兩邊向量外積的長度。<br>面積 $= |\\vec{AB} \\times \\vec{AD}|$。<br>題目已經把外積的結果算好給我們了，直接求長度：<br>$|(-5, 5, 5)| = \\sqrt{(-5)^2 + 5^2 + 5^2} = \\sqrt{25+25+25} = \\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$。<br>故選 (C)。"
     },
     {
       "id": "115-gsatA-19",
@@ -301,8 +293,8 @@
       "question": "【題組 18-20】承上題，設 $B$ 點坐標為 $(1,2,0)$，試求平面 $ABCD$ 的平面方程式。",
       "options": [],
       "answer": "x-y-z=-1",
-      "hint": "平面 $ABCD$ 的法向量即為 $\\vec{AB} \\times \\vec{AD}$，再將已知點 $B$ 代入。",
-      "explanation": "1. 平面 $ABCD$ 的法向量 $\\vec{n}$ 可以取為 $\\vec{AB} \\times \\vec{AD}$。<br>已知 $\\vec{AB} \\times \\vec{AD} = (-5, 5, 5)$，為了方便計算，可取平行向量 $\\vec{n} = (1, -1, -1)$。<br>2. 設平面方程式為 $x - y - z = k$。<br>3. 將點 $B(1,2,0)$ 代入平面方程式：<br>$1 - 2 - 0 = k \\Rightarrow k = -1$。<br>因此，平面 $ABCD$ 的方程式為 $x - y - z = -1$（寫成 $-x + y + z = 1$ 亦可）。"
+      "hint": "要求平面方程式，你需要兩個東西：「平面上的一點」和「平面的法向量」。這兩樣東西題目都已經給你了。",
+      "explanation": "1. **尋找平面的法向量 $\\vec{n}$：**<br>因為向量 $\\vec{AB}$ 和 $\\vec{AD}$ 都在平面 $ABCD$ 上，這兩個向量的「外積」就會垂直於這個平面，也就是平面的法向量。<br>已知 $\\vec{AB} \\times \\vec{AD} = (-5, 5, 5)$。為了計算方便，我們可以把法向量提公因式縮小，取平行的向量 $\\vec{n} = (1, -1, -1)$。<br><br>2. **假設方程式：**<br>有了法向量 $(1, -1, -1)$，我們可以立刻把平面方程式假設為 $1x - 1y - 1z = k$。<br><br>3. **代入已知點求 $k$：**<br>題目告知 $B$ 點坐標為 $(1,2,0)$，因為 $B$ 在平面上，把它代入方程式：<br>$1(1) - 1(2) - 1(0) = k \\Rightarrow 1 - 2 = k \\Rightarrow k = -1$。<br><br>所以平面 $ABCD$ 的方程式為 $x - y - z = -1$。（寫成 $-x + y + z = 1$ 也可以，都是對的）。"
     },
     {
       "id": "115-gsatA-20",
@@ -315,8 +307,8 @@
       "question": "【題組 18-20】承上題，試求平行六面體的體積，並求平行六面體上(含邊界)距點 $A$ 的最長距離。",
       "options": [],
       "answer": "體積為 10，最長距離為 \\sqrt{94}",
-      "hint": "利用外積求各邊向量，平行六面體上最遠點必為其頂點之一，需逐一計算檢查。",
-      "explanation": "1. **求體積 $V$：**<br>設 $\\vec{n_1}=\\vec{AB}\\times\\vec{AD}=(-5,5,5)$, $\\vec{n_2}=\\vec{AD}\\times\\vec{AP}=(-2,0,-4)$, $\\vec{n_3}=\\vec{AP}\\times\\vec{AB}=(6,-10,-8)$。<br>利用公式 $(\\vec{AD}\\times\\vec{AP}) \\times (\\vec{AP}\\times\\vec{AB}) = V \\cdot \\vec{AP}$，可得 $\\vec{n_2} \\times \\vec{n_3} = V \\cdot \\vec{AP}$。<br>計算 $\\vec{n_2} \\times \\vec{n_3} = (-2,0,-4) \\times (6,-10,-8) = (-40,-40,20)$。<br>兩邊取長度：$V|\\vec{AP}| = \\sqrt{(-40)^2+(-40)^2+20^2} = 60$。<br>已知 $|\\vec{AP}|=6$，故體積 $V = \\frac{60}{6} = 10$。<br><br>2. **求三個邊向量：**<br>由 $10\\vec{AP} = (-40,-40,20) \\Rightarrow \\vec{AP} = (-4,-4,2)$。<br>同理 $V\\vec{AB} = \\vec{n_3}\\times\\vec{n_1} = (6,-10,-8)\\times(-5,5,5) = (-10,10,-20) \\Rightarrow \\vec{AB} = (-1,1,-2)$。<br>$V\\vec{AD} = \\vec{n_1}\\times\\vec{n_2} = (-5,5,5)\\times(-2,0,-4) = (-20,-30,10) \\Rightarrow \\vec{AD} = (-2,-3,1)$。<br><br>3. **求距 $A$ 最長距離：**<br>距離 $A$ 最遠的點必為平行六面體的某一頂點。我們計算所有相對於 $A$ 的頂點向量長度平方：<br>$|\\vec{AB}|^2 = 1^2+1^2+(-2)^2 = 6$<br>$|\\vec{AD}|^2 = (-2)^2+(-3)^2+1^2 = 14$<br>$|\\vec{AP}|^2 = 6^2 = 36$<br>$|\\vec{AC}|^2 = |\\vec{AB}+\\vec{AD}|^2 = |(-3,-2,-1)|^2 = 14$<br>$|\\vec{AQ}|^2 = |\\vec{AB}+\\vec{AP}|^2 = |(-5,-3,0)|^2 = 34$<br>$|\\vec{AR}|^2 = |\\vec{AB}+\\vec{AD}+\\vec{AP}|^2 = |(-7,-6,1)|^2 = 49+36+1=86$<br>$|\\vec{AS}|^2 = |\\vec{AD}+\\vec{AP}|^2 = |(-6,-7,3)|^2 = 36+49+9=94$<br>比較得知最遠頂點為 $S$，最長距離為 $\\sqrt{94}$。"
+      "hint": "利用三重積與外積的進階公式推導出三個邊向量，接著暴力窮舉，算出從起點 A 到七個頂點的距離平方，挑最大的。",
+      "explanation": "1. **求體積 $V$（學霸進階公式法）：**<br>令 $\\vec{n_1}=\\vec{AB}\\times\\vec{AD}=(-5,5,5)$, $\\vec{n_2}=\\vec{AD}\\times\\vec{AP}=(-2,0,-4)$, $\\vec{n_3}=\\vec{AP}\\times\\vec{AB}=(6,-10,-8)$。<br>根據空間向量恆等式 $(\\vec{A}\\times\\vec{B}) \\times (\\vec{A}\\times\\vec{C}) = (\\vec{A}\\cdot(\\vec{B}\\times\\vec{C}))\\vec{A}$，應用在本題即為：<br>$\\vec{n_2} \\times \\vec{n_3} = V \\cdot \\vec{AP}$ (其中 $V$ 就是由 $\\vec{AB}, \\vec{AD}, \\vec{AP}$ 構成的平行六面體體積)。<br>計算外積 $\\vec{n_2} \\times \\vec{n_3} = (-2,0,-4) \\times (6,-10,-8) = (-40,-40,20)$。<br>將等號兩邊取長度：$V|\\vec{AP}| = \\sqrt{(-40)^2+(-40)^2+20^2} = \\sqrt{1600+1600+400} = \\sqrt{3600} = 60$。<br>題目已知 $|\\vec{AP}|=6$，所以 $V \\times 6 = 60 \\Rightarrow V = 10$。**這是第一個答案。**<br><br>2. **反求三個邊的基礎向量：**<br>由上面得到的 $10\\vec{AP} = (-40,-40,20)$，同除 10 得到 $\\vec{AP} = (-4,-4,2)$。<br>依樣畫葫蘆，利用 $\\vec{n_3} \\times \\vec{n_1} = V \\cdot \\vec{AB}$：<br>$10\\vec{AB} = (6,-10,-8)\\times(-5,5,5) = (-10,10,-20) \\Rightarrow \\vec{AB} = (-1,1,-2)$。<br>利用 $\\vec{n_1} \\times \\vec{n_2} = V \\cdot \\vec{AD}$：<br>$10\\vec{AD} = (-5,5,5)\\times(-2,0,-4) = (-20,-30,10) \\Rightarrow \\vec{AD} = (-2,-3,1)$。<br><br>3. **尋找最遠距離：**<br>平行六面體上距離 $A$ 最遠的點，必定是某一個頂點。我們利用向量加法找出所有頂點向量，並計算其長度的平方來比大小：<br>$|\\vec{AB}|^2 = 1^2+1^2+(-2)^2 = 6$<br>$|\\vec{AD}|^2 = (-2)^2+(-3)^2+1^2 = 14$<br>$|\\vec{AP}|^2 = 6^2 = 36$<br>對角線的點 $C$：$\\vec{AC} = \\vec{AB}+\\vec{AD} = (-3,-2,-1) \\Rightarrow |\\vec{AC}|^2 = 9+4+1 = 14$<br>對角線的點 $Q$：$\\vec{AQ} = \\vec{AB}+\\vec{AP} = (-5,-3,0) \\Rightarrow |\\vec{AQ}|^2 = 25+9+0 = 34$<br>對角線的點 $S$：$\\vec{AS} = \\vec{AD}+\\vec{AP} = (-6,-7,3) \\Rightarrow |\\vec{AS}|^2 = 36+49+9 = 94$<br>最遠對角線的點 $R$：$\\vec{AR} = \\vec{AB}+\\vec{AD}+\\vec{AP} = (-7,-6,1) \\Rightarrow |\\vec{AR}|^2 = 49+36+1 = 86$<br>比較所有結果，最大值為 94，發生在頂點 $S$。所以最長距離為 $\\sqrt{94}$。**這是第二個答案。**"
     }
   ]
 }

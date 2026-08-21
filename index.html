@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>學測數學精選題庫</title>
     
-    <!-- 引入 KaTeX -->
+    <!-- 引入 KaTeX (移除 defer，強迫網頁優先載入數學引擎，避免車禍) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/auto-render/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/auto-render/auto-render.min.js"></script>
 
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
@@ -53,37 +53,33 @@
 
     <script>
         let allQuestions = []; 
-
-        // 強制更新標籤
         const cacheBuster = new Date().getTime();
         
-        fetch(`questions.json?t=${cacheBuster}`)
-            .then(res => {
-                if (!res.ok) throw new Error("網路連線或檔案讀取異常");
-                return res.json();
-            })
-            .then(data => {
-                // 【終極防護】：判斷抓到的是新版還是舊版 JSON
-                if (Array.isArray(data)) {
-                    // 如果抓到舊版，就套用舊版邏輯
-                    allQuestions = data;
-                    document.getElementById('version-display').innerText = "目前版本：過渡期舊版 (伺服器同步中...)";
-                } else if (data.questions) {
-                    // 如果抓到新版，就套用新版邏輯
-                    allQuestions = data.questions;
-                    document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
-                } else {
-                    throw new Error("無法辨識的 JSON 格式");
-                }
-                
-                renderQuestions(); 
-            })
-            .catch(err => {
-                // 更清晰的錯誤回報
-                console.error("錯誤詳情：", err);
-                document.getElementById('version-display').innerText = '系統狀態：異常';
-                document.getElementById('quiz-container').innerHTML = `<p style="color:red; text-align:center;">錯誤訊息：${err.message}</p>`;
-            });
+        // 確保網頁主體都準備好後，再去抓題目
+        window.onload = function() {
+            fetch(`questions.json?t=${cacheBuster}`)
+                .then(res => {
+                    if (!res.ok) throw new Error("網路連線或檔案讀取異常");
+                    return res.json();
+                })
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        allQuestions = data;
+                        document.getElementById('version-display').innerText = "目前版本：過渡期舊版 (伺服器同步中...)";
+                    } else if (data.questions) {
+                        allQuestions = data.questions;
+                        document.getElementById('version-display').innerText = `目前版本：${data.version} (更新時間：${data.update_time})`;
+                    } else {
+                        throw new Error("無法辨識的 JSON 格式");
+                    }
+                    renderQuestions(); 
+                })
+                .catch(err => {
+                    console.error("錯誤詳情：", err);
+                    document.getElementById('version-display').innerText = '系統狀態：異常';
+                    document.getElementById('quiz-container').innerHTML = `<p style="color:red; text-align:center;">錯誤訊息：${err.message}</p>`;
+                });
+        };
 
         function renderQuestions() {
             const container = document.getElementById('quiz-container');
@@ -125,12 +121,15 @@
                 container.appendChild(card);
             });
 
-            renderMathInElement(container, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
+            // 呼叫數學渲染工具
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
         }
 
         function checkAnswer(btn, encodedSelected, encodedCorrect, explanationId) {

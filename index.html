@@ -250,7 +250,7 @@
 
         const newSystemYears = ['115', '114', '113', '112', '111'];
         
-        // ★ 修改點：動態產生 110~083 年，並插入 92補、91補
+        // ★ 動態產生 110~083 年，並插入 92補、91補
         let oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
         oldSystemYears.splice(oldSystemYears.indexOf('92') + 1, 0, '92補');
         oldSystemYears.splice(oldSystemYears.indexOf('91') + 1, 0, '91補');
@@ -261,7 +261,7 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 修改點：加入 110~083 的檔案路徑
+        // ★ 包含所有檔案路徑 (115~083)
         const dataFiles = [
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
             'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
@@ -275,39 +275,33 @@
             'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
         ];
 
-        function loadQuestions() {
+        // ★ 學霸改良版：循序讀取，避免 404 檔案造成伺服器塞車當機
+        async function loadQuestions() {
             const cacheBuster = new Date().getTime();
+            allQuestions = [];
             
-            Promise.all(dataFiles.map(file => 
-                fetch(`${file}?t=${cacheBuster}`)
-                .then(res => {
-                    if (!res.ok) return { questions: [] };
-                    return res.json().catch(err => {
-                        console.error(`檔案 JSON 格式錯誤: ${file}`, err);
-                        return { questions: [] };
-                    });
-                })
-                .catch(err => {
-                    console.error(`網路連線問題: ${file}`, err);
-                    return { questions: [] };
-                })
-            ))
-            .then(results => {
-                allQuestions = [];
-                results.forEach(data => {
-                    if (data && data.questions) {
-                        allQuestions = allQuestions.concat(data.questions);
+            for (const file of dataFiles) {
+                try {
+                    const res = await fetch(`${file}?t=${cacheBuster}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.questions) {
+                            allQuestions = allQuestions.concat(data.questions);
+                        }
                     }
-                });
-                
-                allQuestions.sort((a, b) => {
-                    if (a.year !== b.year) return b.year.localeCompare(a.year);
-                    return a.q_num - b.q_num;
-                });
-
-                setupFilterButtons();
-                renderQuestions();
+                } catch (err) {
+                    // 檔案還沒建立或解析失敗，默默跳過即可
+                    console.log(`略過尚未建立的檔案: ${file}`);
+                }
+            }
+            
+            allQuestions.sort((a, b) => {
+                if (a.year !== b.year) return b.year.localeCompare(a.year);
+                return a.q_num - b.q_num;
             });
+
+            setupFilterButtons();
+            renderQuestions();
         }
 
         function setupFilterButtons() {

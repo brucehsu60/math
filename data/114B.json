@@ -1,5 +1,5 @@
 {
-  "version": "2.0.114B",
+  "version": "3.0.114B",
   "update_time": "2026-08-22",
   "questions": [
     {
@@ -42,10 +42,10 @@
       "correct_rate": 55,
       "diagram": null,
       "question": "已知實數 $a, b$ 滿足 $\\frac{1}{2} \\lt a \\lt 1$ 及 $1 \\lt b \\lt 2$。試問下列哪個選項的值最小？",
-      "options": ["(1) 0", "(2) $\\log a$", "(3) $2\\log a$", "(4) $\\log b$", "(5) $\\frac{1}{\\log b}$"],
+      "options": ["(1) 0", "(2) $\\log a$", "(3) $\\log(a^2)$", "(4) $\\log b$", "(5) $\\frac{1}{\\log b}$"],
       "answer": "(3)",
       "hint": "以常用對數 (底數為10) 的單調遞增性質，先判斷各選項數值的正負號，再做比對。",
-      "explanation": "**💡 破題關鍵：**對數在真數小於 1 時為負，真數大於 1 時為正。先把正負數分開就能瞬間刪去大半選項。<br><br>**📝 學霸詳解**<br>1. 先確認各對數值的正負：<br>   - 因為 $1 \\lt b \\lt 2$，真數大於 1，所以 $\\log b \\gt 0$。進而 $\\frac{1}{\\log b} \\gt 0$。<br>   - 因為 $\\frac{1}{2} \\lt a \\lt 1$，真數小於 1，所以 $\\log a \\lt 0$。<br>2. 我們要找「最小值」，因此只需在負數選項中比較，即比較 (2) 與 (3)。<br>3. 觀察選項 (3) $2\\log a$。<br>4. 因為 $\\log a$ 是一個負數，負數乘上 2 會變得「更負」（也就是更小）。<br>   所以 $2\\log a \\lt \\log a \\lt 0$。<br>5. 故 $2\\log a$ 是所有選項中最小的。<br><br>**答案：(3)**"
+      "explanation": "**💡 破題關鍵：**對數在真數小於 1 時為負，真數大於 1 時為正。先把正負數分開就能瞬間刪去大半選項。<br><br>**📝 學霸詳解**<br>1. 先確認各對數值的正負：<br>   - 因為 $1 \\lt b \\lt 2$，真數大於 1，所以 $\\log b \\gt 0$。進而 $\\frac{1}{\\log b} \\gt 0$。<br>   - 因為 $\\frac{1}{2} \\lt a \\lt 1$，真數小於 1，所以 $\\log a \\lt 0$。<br>2. 我們要找「最小值」，因此只需在負數選項中比較，即比較 (2) 與 (3)。<br>3. 將選項 (3) 展開：$\\log(a^2) = 2\\log a$。<br>4. 因為 $\\log a$ 是一個負數，負數乘上 2 會變得「更負」（也就是更小）。<br>   所以 $2\\log a \\lt \\log a \\lt 0$。<br>5. 故 $\\log(a^2)$ 是所有選項中最小的。<br><br>**答案：(3)**"
     },
     {
       "id": "114-gsatB-04",
@@ -56,7 +56,7 @@
       "type": "單選題",
       "correct_rate": 35,
       "diagram": null,
-      "question": "某商店推出抽獎活動，提供香蕉、鳳梨、蘋果、橘子四種不同款式的水果公仔當獎品。每次抽獎可得1個公仔，且每種款式被抽中的機率皆相等。某甲決定抽獎四次，試問他恰抽到三種不同款式公仔的機率為何？",
+      "question": "某商店推出抽獎活動，提供香蕉、鳳梨、蘋果、橘子四不同款式的水果公仔當獎品。每次抽獎可得1個公仔，且每種款式被抽中的機率皆相等。某甲決定抽獎四次，試問他恰抽到三種不同款式公仔的機率為何？",
       "options": ["(1) $\\frac{5}{16}$", "(2) $\\frac{3}{8}$", "(3) $\\frac{1}{2}$", "(4) $\\frac{9}{16}$", "(5) $\\frac{5}{8}$"],
       "answer": "(4)",
       "hint": "這是一個古典機率問題。先算總樣本空間，再針對「四個位子放三種水果」計算其排列組合數（必為 2同、1異、1異 的情形）。",
@@ -132,10 +132,10 @@
       "correct_rate": 52,
       "diagram": null,
       "question": "坐標平面上設 $O$ 為原點，且 $P$ 點坐標為 $(2,2)$。已知向量 $\\vec{OP}=\\alpha\\vec{OA}+\\beta\\vec{OB}$，其中實數 $\\alpha, \\beta$ 滿足 $0\\le\\alpha\\le1, 0\\le\\beta\\le1$。下列選項中，試選出可能的 $A, B$ 點坐標。",
-      "options": ["(1) $A(-2,-3), B(-4,3)$", "(2) $A(3,2), B(3,4)$", "(3) $A(3,4), B(4,-1)$", "(4) $A(1,2), B(2,1)$", "(5) $A(-1,-1), B(1,1)$"],
+      "options": ["(1) $A(2,-3), B(-4,3)$", "(2) $A(3,2), B(3,4)$", "(3) $A(3,4), B(4,-1)$", "(4) $A(1,2), B(2,1)$", "(5) $A(1,-1), B(1,1)$"],
       "answer": ["(2)", "(3)", "(4)"],
       "hint": "條件限制代表點 $P$ 落在向量 $\\vec{OA}$ 與 $\\vec{OB}$ 所張成的平行四邊形內部。直接將各選項代入解聯立，檢驗 $\\alpha, \\beta$ 是否皆在 $[0, 1]$ 之間。",
-      "explanation": "**💡 破題關鍵：**這題看似幾何，其實是純粹的解二元一次聯立方程式，解出 $\\alpha, \\beta$ 驗證範圍即可。<br><br>**📝 學霸詳解**<br>目標是解 $\\alpha x_A + \\beta x_B = 2$ 且 $\\alpha y_A + \\beta y_B = 2$，檢查 $0 \\le \\alpha \\le 1$ 且 $0 \\le \\beta \\le 1$。<br>*(1)* $\\begin{cases} -2\\alpha - 4\\beta = 2 \\\\ -3\\alpha + 3\\beta = 2 \\end{cases}$<br>由第一式，既然 $\\alpha, \\beta \\ge 0$，左邊必 $\\le 0$，不可能等於 2。錯誤。<br><br>*(2)* $\\begin{cases} 3\\alpha + 3\\beta = 2 \\\\ 2\\alpha + 4\\beta = 2 \\end{cases}$<br>解聯立：$\\alpha+\\beta = \\frac{2}{3}$，代入第二式 $2(\\frac{2}{3}) + 2\\beta = 2 \\Rightarrow 2\\beta = \\frac{2}{3} \\Rightarrow \\beta = \\frac{1}{3}$。<br>則 $\\alpha = \\frac{1}{3}$。兩者皆符合 $[0,1]$。正確。<br><br>*(3)* $\\begin{cases} 3\\alpha + 4\\beta = 2 \\\\ 4\\alpha - \\beta = 2 \\end{cases}$<br>由第二式得 $\\beta = 4\\alpha - 2$，代入第一式：$3\\alpha + 4(4\\alpha-2) = 2 \\Rightarrow 19\\alpha = 10 \\Rightarrow \\alpha = \\frac{10}{19} \\approx 0.52$。<br>$\\beta = 4(\\frac{10}{19}) - 2 = \\frac{2}{19} \\approx 0.1$。兩者皆符合 $[0,1]$。正確。<br><br>*(4)* $\\begin{cases} \\alpha + 2\\beta = 2 \\\\ 2\\alpha + \\beta = 2 \\end{cases}$<br>兩式相加得 $3(\\alpha+\\beta) = 4 \\Rightarrow \\alpha+\\beta = \\frac{4}{3}$。由對稱性知 $\\alpha = \\beta = \\frac{2}{3}$。<br>兩者皆符合 $[0,1]$。正確。<br><br>*(5)* $\\begin{cases} -\\alpha + \\beta = 2 \\\\ -\\alpha + \\beta = 2 \\end{cases}$<br>因為 $\\alpha, \\beta \\in [0, 1]$，所以 $-\\alpha + \\beta$ 的最大值發生在 $\\alpha=0, \\beta=1$ 時，此時為 $1$。不可能等於 $2$。錯誤。<br><br>**答案：(2), (3), (4)**"
+      "explanation": "**💡 破題關鍵：**這題看似幾何，其實是純粹的解二元一次聯立方程式，解出 $\\alpha, \\beta$ 驗證範圍即可。<br><br>**📝 學霸詳解**<br>目標是解 $\\alpha x_A + \\beta x_B = 2$ 且 $\\alpha y_A + \\beta y_B = 2$，檢查 $0 \\le \\alpha \\le 1$ 且 $0 \\le \\beta \\le 1$。<br>*(1)* $\\begin{cases} 2\\alpha - 4\\beta = 2 \\\\ -3\\alpha + 3\\beta = 2 \\end{cases}$<br>由第一式得 $\\alpha = 1 + 2\\beta$。既然 $\\beta \\ge 0$，則 $\\alpha \\ge 1$。但限制 $\\alpha \\le 1$，所以唯一可能是 $\\beta=0, \\alpha=1$。<br>代入第二式檢驗：$-3(1) + 3(0) = -3 \\neq 2$。不合，錯誤。<br><br>*(2)* $\\begin{cases} 3\\alpha + 3\\beta = 2 \\\\ 2\\alpha + 4\\beta = 2 \\end{cases}$<br>解聯立：$\\alpha+\\beta = \\frac{2}{3}$，代入第二式 $2(\\frac{2}{3}) + 2\\beta = 2 \\Rightarrow 2\\beta = \\frac{2}{3} \\Rightarrow \\beta = \\frac{1}{3}$。<br>則 $\\alpha = \\frac{1}{3}$。兩者皆符合 $[0,1]$。正確。<br><br>*(3)* $\\begin{cases} 3\\alpha + 4\\beta = 2 \\\\ 4\\alpha - \\beta = 2 \\end{cases}$<br>由第二式得 $\\beta = 4\\alpha - 2$，代入第一式：$3\\alpha + 4(4\\alpha-2) = 2 \\Rightarrow 19\\alpha = 10 \\Rightarrow \\alpha = \\frac{10}{19} \\approx 0.52$。<br>$\\beta = 4(\\frac{10}{19}) - 2 = \\frac{2}{19} \\approx 0.1$。兩者皆符合 $[0,1]$。正確。<br><br>*(4)* $\\begin{cases} \\alpha + 2\\beta = 2 \\\\ 2\\alpha + \\beta = 2 \\end{cases}$<br>兩式相加得 $3(\\alpha+\\beta) = 4 \\Rightarrow \\alpha+\\beta = \\frac{4}{3}$。由對稱性知 $\\alpha = \\beta = \\frac{2}{3}$。<br>兩者皆符合 $[0,1]$。正確。<br><br>*(5)* $\\begin{cases} \\alpha + \\beta = 2 \\\\ -\\alpha + \\beta = 2 \\end{cases}$<br>因為 $\\alpha, \\beta \\in [0, 1]$，第一式要等於 $2$，只能是 $\\alpha=1, \\beta=1$。<br>代入第二式檢驗：$-1 + 1 = 0 \\neq 2$。不合，錯誤。<br><br>**答案：(2), (3), (4)**"
     },
     {
       "id": "114-gsatB-10",

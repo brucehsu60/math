@@ -267,18 +267,22 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 題庫檔案清單
+        // ★ 擴充後的題庫檔案清單 (自動讀取以下清單中存在的檔案)
         const dataFiles = [
-            'data/115A.json',
-            'data/114A.json',
-            'data/113A.json',
-            'data/112A.json',
-            'data/111A.json',
-            'data/115B.json',
-            'data/114B.json',
-            'data/113B.json',
-            'data/112B.json',
-            'data/111B.json'
+            // 學測數A
+            'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
+            // 學測數B
+            'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
+            // 分科數甲
+            'data/114甲.json', 'data/113甲.json', 'data/112甲.json', 'data/111甲.json',
+            // 分科數乙
+            'data/114乙.json',
+            // 舊制學測
+            'data/110學測.json', 'data/109學測.json', 'data/108學測.json', 'data/107學測.json', 'data/106學測.json',
+            // 舊指考數甲
+            'data/110指考甲.json', 'data/109指考甲.json', 'data/108指考甲.json',
+            // 舊指考數乙
+            'data/110指考乙.json', 'data/109指考乙.json', 'data/108指考乙.json'
         ];
 
         function loadQuestions() {

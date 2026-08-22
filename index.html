@@ -128,7 +128,6 @@
 
     <!-- 標籤篩選面板 -->
     <div class="filter-container">
-        <!-- 雙層連動：第一層 考試類別 -->
         <div class="filter-row">
             <span class="filter-label">考試類別：</span>
             <div class="filter-buttons" id="exam-type-buttons">
@@ -143,7 +142,6 @@
             </div>
         </div>
 
-        <!-- 雙層連動：第二層 考試年份 -->
         <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
             <span class="filter-label">考試年份：</span>
             <div class="filter-buttons" id="exam-year-buttons">
@@ -173,7 +171,6 @@
         
         <hr style="border:0; border-top:1px dashed #cbd5e1; margin: 15px 0;">
         
-        <!-- 冊別與主題合併區塊 -->
         <div class="filter-row">
             <span class="filter-label">主題：</span>
             <div class="filter-buttons">
@@ -239,7 +236,6 @@
         </div>
     </div>
     
-    <!-- 篩選結果計數器 -->
     <div id="result-stats" class="result-stats-container" style="display: none;">
         共篩選出 <span id="question-count">0</span> 題
     </div>
@@ -253,7 +249,11 @@
         let currentFilters = { examType: 'all', examYear: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
 
         const newSystemYears = ['115', '114', '113', '112', '111'];
-        const oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
+        
+        // ★ 修改點：動態產生 110~083 年，並插入 92補、91補
+        let oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
+        oldSystemYears.splice(oldSystemYears.indexOf('92') + 1, 0, '92補');
+        oldSystemYears.splice(oldSystemYears.indexOf('91') + 1, 0, '91補');
 
         const examTypeMapping = {
             '舊制學測': '學測',       
@@ -261,14 +261,18 @@
             '舊指考(乙)': '指考乙'    
         };
 
+        // ★ 修改點：加入 110~083 的檔案路徑
         const dataFiles = [
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
             'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
             'data/114甲.json', 'data/113甲.json', 'data/112甲.json', 'data/111甲.json',
             'data/114乙.json',
-            'data/110學測.json', 'data/109學測.json', 'data/108學測.json', 'data/107學測.json', 'data/106學測.json',
-            'data/110指考甲.json', 'data/109指考甲.json', 'data/108指考甲.json',
-            'data/110指考乙.json', 'data/109指考乙.json', 'data/108指考乙.json'
+            'data/110.json', 'data/109.json', 'data/108.json', 'data/107.json', 'data/106.json',
+            'data/105.json', 'data/104.json', 'data/103.json', 'data/102.json', 'data/101.json',
+            'data/100.json', 'data/099.json', 'data/098.json', 'data/097.json', 'data/096.json',
+            'data/095.json', 'data/094.json', 'data/093.json', 'data/092.json', 'data/092補.json',
+            'data/091.json', 'data/091補.json', 'data/090.json', 'data/089.json', 'data/088.json',
+            'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
         ];
 
         function loadQuestions() {
@@ -299,35 +303,6 @@
                 allQuestions.sort((a, b) => {
                     if (a.year !== b.year) return b.year.localeCompare(a.year);
                     return a.q_num - b.q_num;
-                });
-
-                let activeGroup = null;
-                allQuestions.forEach(q => {
-                    const imgSrc = q.diagram || q.image;
-                    const groupRegex = /【.*?(\d+)\s*-\s*(\d+).*?】/;
-                    const match = q.question.match(groupRegex);
-
-                    if (match) {
-                        const start = parseInt(match[1], 10);
-                        const end = parseInt(match[2], 10);
-
-                        if (!activeGroup || activeGroup.year !== q.year || activeGroup.start !== start || activeGroup.end !== end) {
-                            activeGroup = {
-                                year: q.year,
-                                start: start,
-                                end: end,
-                                image: imgSrc || null
-                            };
-                        } else {
-                            if (!imgSrc && activeGroup.image) {
-                                q.diagram = activeGroup.image; 
-                            } else if (imgSrc) {
-                                activeGroup.image = imgSrc;
-                            }
-                        }
-                    } else {
-                        activeGroup = null;
-                    }
                 });
 
                 setupFilterButtons();
@@ -420,17 +395,13 @@
             return { class: "badge-rate-low", category: "low", text: rate + "%" };
         }
 
-        // ★ 終極升級版：通用的 Markdown 粗體轉 HTML / LaTeX 粗體函數
         function formatBold(text) {
             if (!text) return '';
-            // 利用正規表達式，將字串以數學標籤 ($...$ 或 $$...$$) 為界線切割
             let parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
             for (let i = 0; i < parts.length; i++) {
                 if (i % 2 === 0) {
-                    // 偶數索引為「普通文字區塊」：轉換為 HTML 的 <b>...</b>
                     parts[i] = parts[i].replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                 } else {
-                    // 奇數索引為「數學公式區塊」：轉換為 KaTeX 支援的 \textbf{...}
                     parts[i] = parts[i].replace(/\*\*(.*?)\*\*/g, '\\textbf{$1}');
                 }
             }
@@ -480,7 +451,6 @@
                 let optionsHtml = '';
                 let displayAnswer = q.answer;
                 
-                // ★ 全面套用升級版的 Markdown 分段轉換
                 let displayQuestion = formatBold(q.question);
                 let formattedExp = formatBold(q.explanation);
                 let formattedHint = formatBold(q.hint);
@@ -519,10 +489,6 @@
                             <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
                         </div>`;
                 } 
-                else if (q.type === "非選擇題") {
-                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫非選擇題，請在計算紙上作答後點擊看答案)</div>
-                                    <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
-                }
 
                 const rateInfo = getRateInfo(q.correct_rate);
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
@@ -552,7 +518,6 @@
                         ${q.hint ? `<div class="hint-box"><b>💡 破題關鍵：</b>${formattedHint}</div>` : ''}
                         <div class="exp-box">
                             <div style="color:#22c55e; font-weight:bold; margin-bottom:10px; font-size:18px;">✅ 正確答案：${displayAnswer}</div>
-                            <!-- ★ 這裡直接印出格式化後的詳解 (JSON 已自帶粗體標題) -->
                             ${formattedExp}
                         </div>
                     </div>
@@ -595,10 +560,10 @@
                 if (isCorrect) {
                     opt.classList.add('correct'); 
                     if (!isSelected) {
-                        opt.style.border = '2px dashed #22c55e'; // 漏選提示
+                        opt.style.border = '2px dashed #22c55e'; 
                     }
                 } else if (isSelected && !isCorrect) {
-                    opt.classList.add('wrong'); // 錯選
+                    opt.classList.add('wrong'); 
                 }
             });
             

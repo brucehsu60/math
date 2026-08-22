@@ -166,8 +166,11 @@
         "(4) $m, n$ 皆為奇數且 $a, b$ 異號",
         "(5) $m, n$ 為一奇一偶"
       ],
-      "answer": ["(1)", "(3)"],
-      "hint": "解方程式 $ax^m = bx^n$。提出公因式 $x^n$ (假設 $m>n$)，分析剩餘方程式 $ax^{m-n} - b = 0$ 產生實根的條件。",
+      "answer": [
+        "(1)",
+        "(3)"
+      ],
+      "hint": "解方程式 $ax^m = bx^n$。提出公因式 $x^n$ (假設 $m \\gt n$)，分析剩餘方程式 $ax^{m-n} - b = 0$ 產生實根的條件。",
       "explanation": "<b>💡 破題關鍵：</b>找交點就是解方程式 $ax^m = bx^n$。因為 $m, n$ 是正整數，一定會交於原點 $x=0$。要湊滿 3 個交點，代表剩下的方程式必須再解出 2 個相異實根！<br><br><b>📝 學霸詳解</b><br>1. <b>建立方程式：</b><br>   令 $ax^m = bx^n$。不妨假設 $m \\gt n$。<br>   移項得 $ax^m - bx^n = 0 \\Rightarrow x^n(ax^{m-n} - b) = 0$。<br>2. <b>分析根的個數：</b><br>   - 第一個根：$x^n = 0 \\Rightarrow x = 0$ (這是一個交點)。<br>   - 剩下的根來自：$ax^{m-n} - b = 0 \\Rightarrow x^{m-n} = \\frac{b}{a}$。<br>   題目說恰有 3 個相異交點，代表 $x^{m-n} = \\frac{b}{a}$ 必須產生 <b>2 個非零的相異實根</b>。<br>3. <b>探討產生 2 個實根的條件：</b><br>   要讓 $x^k = C$ 有兩個實根（一正一負），必須滿足兩個條件：<br>   - 次方 $k$ 必須是<b>偶數</b>。即 $m-n$ 必須是偶數。<br>   - 常數 $C$ 必須是<b>正數</b>。即 $\\frac{b}{a} \\gt 0$，代表 $a, b$ 必須<b>同號</b>。<br>4. <b>檢驗選項：</b><br>   - 因為 $m-n$ 是偶數，代表 $m, n$ 的奇偶性必須相同（同為偶數或同為奇數）。<br>   - 且 $a, b$ 必須同號。<br>   對照選項，只有 (1) 和 (3) 符合條件。<br><br><b>答案：(1), (3)</b>"
     },
     {
@@ -187,7 +190,9 @@
         "(4) $\\Gamma$ 的圓心可能在 $x$ 軸上且此時圓心的 $x$ 坐標必定小於 10",
         "(5) $\\Gamma$ 的圓心可能在第四象限且此時 $\\Gamma$ 的半徑必定大於 10"
       ],
-      "answer": ["(5)"],
+      "answer": [
+        "(5)"
+      ],
       "hint": "設圓心為 $(x,y)$，半徑為 $r$。利用點在圓內外的距離條件建立不等式：$x^2+y^2 \\gt r^2$ 且 $(x-2)^2+(y-6)^2 \\lt r^2$。合併不等式找出圓心所在的半平面範圍。",
       "explanation": "<b>💡 破題關鍵：</b>點在圓內代表「距離小於半徑」，點在圓外代表「距離大於半徑」。把這兩個條件寫出來，你會發現圓心被限制在一條直線的某一側！<br><br><b>📝 學霸詳解</b><br>1. <b>建立代數不等式：</b><br>   設圓心為 $C(x,y)$，半徑為 $r$。<br>   - $(0,0)$ 在外部 $\\Rightarrow$ 距離 $d_1 \\gt r \\Rightarrow x^2 + y^2 \\gt r^2$。<br>   - $(2,6)$ 在內部 $\\Rightarrow$ 距離 $d_2 \\lt r \\Rightarrow (x-2)^2 + (y-6)^2 \\lt r^2$。<br>2. <b>尋找圓心範圍：</b><br>   合併兩式可得：$(x-2)^2 + (y-6)^2 \\lt x^2 + y^2$<br>   展開化簡：$x^2 - 4x + 4 + y^2 - 12y + 36 \\lt x^2 + y^2$<br>   $-4x - 12y + 40 \\lt 0 \\Rightarrow x + 3y \\gt 10$。<br>   這代表圓心 $C(x,y)$ 必須落在半平面 $x + 3y \\gt 10$ 內。<br>3. <b>檢驗選項：</b><br>   (1) 第二象限 ($x \\lt 0, y \\gt 0$)：若 $x=-1, y=4$，則 $x+3y = 11 \\gt 10$。圓心可能在第二象限。錯誤。<br>   (2) 第三象限 ($x \\lt 0, y \\lt 0$)：此時 $x+3y \\lt 0$，不可能大於 10。圓心不可能在第三象限。錯誤。<br>   (3) 第一象限 ($x \\gt 0, y \\gt 0$)：圓心可能在第一象限。若取 $C(10, 10)$，則 $x+3y = 40 \\gt 10$。此時 $d_2 = \\sqrt{8^2+4^2} = \\sqrt{80}$，$d_1 = \\sqrt{100+100} = \\sqrt{200}$。我們可以取半徑 $r = 10$，滿足 $\\sqrt{80} \\lt 10 \\lt \\sqrt{200}$。半徑不一定小於 10。錯誤。<br>   (4) $x$ 軸上 ($y=0$)：代入不等式得 $x \\gt 10$。所以 $x$ 坐標必定大於 10。錯誤。<br>   (5) 第四象限 ($x \\gt 0, y \\lt 0$)：因為 $y \\lt 0$ 且 $x + 3y \\gt 10$，所以 $x \\gt 10 - 3y \\gt 10$。<br>       此時圓心到原點的距離 $d_1 = \\sqrt{x^2+y^2} \\gt \\sqrt{10^2+0} = 10$。<br>       又因為 $(2,6)$ 在圓內，所以半徑 $r \\gt d_2$。<br>       $d_2^2 = (x-2)^2 + (y-6)^2$。因為 $x \\gt 10 \\Rightarrow (x-2)^2 \\gt 64$；$y \\lt 0 \\Rightarrow (y-6)^2 \\gt 36$。<br>       所以 $d_2^2 \\gt 64 + 36 = 100 \\Rightarrow d_2 \\gt 10$。<br>       既然 $r \\gt d_2$ 且 $d_2 \\gt 10$，則半徑 $r$ 必定大於 10。正確。<br><br><b>答案：(5)</b>"
     },
@@ -208,7 +213,11 @@
         "(4) 有一個平面同時包含 $L_1$ 與 $L_3$",
         "(5) 有一個平面同時包含 $L_2$ 與 $L_3$"
       ],
-      "answer": ["(2)", "(3)", "(4)"],
+      "answer": [
+        "(2)",
+        "(3)",
+        "(4)"
+      ],
       "hint": "先將三條直線的方向向量都找出來。兩直線決定一平面的條件是「平行」或「相交於一點」，若為歪斜線則無法共平面。",
       "explanation": "<b>💡 破題關鍵：</b>空間直線的題目，第一步永遠是把「方向向量」全部寫出來！接著判斷兩條線是否共平面，只要檢查它們是否「平行」或「有交點」即可。<br><br><b>📝 學霸詳解</b><br>1. <b>提取方向向量：</b><br>   - $L_1$ 的方向向量 $\\vec{v_1} = (2, 2, 1)$。<br>   - $L_2$ 是兩平面交線，方向向量 $\\vec{v_2} = (1, -2, 2) \\times (1, 1, -4) = (8-(-2), 2-(-4), 1-(-2)) = (10, 6, 3)$？<br>     *(學霸驗算：外積 $(1,-2,2) \\times (1,1,-4) = (8-2, 2-(-4), 1-(-2)) = (6, 6, 3)$)*<br>     取最簡向量 $\\vec{v_2} = (2, 2, 1)$。<br>   - $L_3$ 的方向向量 $\\vec{v_3} = (-1, -1, 4)$。<br>2. <b>檢驗選項：</b><br>   (1) $\\vec{v_1} = (2,2,1)$，$\\vec{v_2} = (2,2,1)$。兩者平行，不垂直。錯誤。<br>   (2) $\\vec{v_1} \\cdot \\vec{v_3} = 2(-1) + 2(-1) + 1(4) = -2 - 2 + 4 = 0$。內積為 0，互相垂直。正確。<br>   (3) 因為 $\\vec{v_1} \\parallel \\vec{v_2}$，所以 $L_1$ 與 $L_2$ 平行或重合。無論哪種情況，都必定存在一個平面同時包含兩者。正確。<br>   (4) 檢查 $L_1$ 與 $L_3$ 是否相交：<br>       $L_1$ 參數式：$x = 1+2s, y = -1+2s, z = s$。<br>       $L_3$ 參數式：$x = -t, y = -2-t, z = 4+4t$。<br>       解聯立：$1+2s = -t \\Rightarrow t = -1-2s$。<br>       代入 $y$：$-1+2s = -2-(-1-2s) = -1+2s$ (恆成立)。<br>       代入 $z$：$s = 4+4(-1-2s) = -8s \\Rightarrow 9s = 0 \\Rightarrow s = 0$。<br>       此時 $t = -1$。兩線交於一點 $(1, -1, 0)$。<br>       相交的兩直線必定共平面。正確。<br>   (5) 檢查 $L_2$ 與 $L_3$ 是否相交：<br>       將 $L_3$ 參數式代入 $L_2$ 的平面方程式：<br>       $(-t) - 2(-2-t) + 2(4+4t) = -t + 4 + 2t + 8 + 8t = 9t + 12 = -4 \\Rightarrow 9t = -16 \\Rightarrow t = -16/9$。<br>       $(-t) + (-2-t) - 4(4+4t) = -t - 2 - t - 16 - 16t = -18t - 18 = 5 \\Rightarrow 18t = -23 \\Rightarrow t = -23/18$。<br>       解出的 $t$ 不一致，代表兩線不相交。又因為方向向量不平行，故兩線為<b>歪斜線</b>，不可能共平面。錯誤。<br><br><b>答案：(2), (3), (4)</b>"
     },
@@ -229,9 +238,12 @@
         "(4) $\\angle ABD = 45^\\circ$",
         "(5) $\\triangle BCD$ 的面積為 $2\\sqrt{2}$"
       ],
-      "answer": ["(1)", "(4)"],
+      "answer": [
+        "(1)",
+        "(4)"
+      ],
       "hint": "將五邊形切割為 $\\triangle ADE$, $\\triangle ABD$, $\\triangle BCD$。利用畢氏定理、餘弦定理與正弦定理逐一解出各邊長與角度。",
-      "explanation": "<b>💡 破題關鍵：</b>看到直角和已知邊長，馬上把圖形切成幾個三角形來解！先解出 $\\triangle ADE$，再利用餘弦定理攻破 $\\triangle ABD$，最後分析 $\\triangle BCD$ 的形狀。<br><br><b>📝 學霸詳解</b><br>1. <b>分析 $\\triangle ADE$：</b><br>   已知 $\\angle E = 90^\\circ$，$\\overline{AE} = 2, \\overline{DE} = 2$。<br>   這是一個等腰直角三角形，斜邊 $\\overline{AD} = \\sqrt{2^2+2^2} = 2\\sqrt{2}$。[選項 1] 正確。<br>   且 $\\angle DAE = \\angle ADE = 45^\\circ$。<br>2. <b>分析 $\\triangle ABD$：</b><br>   由圖知 $\\angle A = 105^\\circ$，所以 $\\angle DAB = 105^\\circ - 45^\\circ = 60^\\circ$。[選項 2] 錯誤。<br>   已知 $\\overline{AD} = 2\\sqrt{2}$，$\\overline{AB} = \\sqrt{6}+\\sqrt{2}$，夾角 $\\angle DAB = 60^\\circ$。<br>   利用餘弦定理求 $\\overline{BD}$：<br>   $\\overline{BD}^2 = (2\\sqrt{2})^2 + (\\sqrt{6}+\\sqrt{2})^2 - 2(2\\sqrt{2})(\\sqrt{6}+\\sqrt{2})\\cos 60^\\circ$<br>   $= 8 + (6 + 2 + 2\\sqrt{12}) - 2\\sqrt{2}(\\sqrt{6}+\\sqrt{2})(\\frac{1}{2})$<br>   $= 16 + 4\\sqrt{3} - (\\sqrt{12} + 2) = 16 + 4\\sqrt{3} - 2\\sqrt{3} - 2 = 14 + 2\\sqrt{3}$？<br>   *(學霸驗算：$2\\sqrt{2}(\\sqrt{6}+\\sqrt{2}) = 2\\sqrt{12} + 4 = 4\\sqrt{3} + 4$。乘上 $\\frac{1}{2}$ 變為 $2\\sqrt{3} + 2$)*<br>   重新計算：$8 + (8 + 4\\sqrt{3}) - (2\\sqrt{3} + 2) = 14 + 2\\sqrt{3}$？<br>   *(再驗算一次：$2(2\\sqrt{2})(\\sqrt{6}+\\sqrt{2})\\cos 60^\circ = 2\\sqrt{2}(\\sqrt{6}+\\sqrt{2}) = 2\\sqrt{12} + 4 = 4\\sqrt{3} + 4$)*<br>   $\\overline{BD}^2 = 8 + (8 + 4\\sqrt{3}) - (4\\sqrt{3} + 4) = 12$。<br>   故 $\\overline{BD} = \\sqrt{12} = 2\\sqrt{3}$。[選項 3] 錯誤。<br>   利用正弦定理求 $\\angle ABD$：<br>   $\\frac{\\overline{BD}}{\\sin 60^\\circ} = \\frac{\\overline{AD}}{\\sin \\angle ABD} \\Rightarrow \\frac{2\\sqrt{3}}{\\sqrt{3}/2} = \\frac{2\\sqrt{2}}{\\sin \\angle ABD} \\Rightarrow 4 = \\frac{2\\sqrt{2}}{\\sin \\angle ABD}$。<br>   $\\sin \\angle ABD = \\frac{\\sqrt{2}}{2}$。由圖知為銳角，故 $\\angle ABD = 45^\\circ$。[選項 4] 正確。<br>3. <b>分析 $\\triangle BCD$：</b><br>   已知 $\\overline{BC} = 2, \\overline{CD} = 2, \\overline{BD} = 2\\sqrt{3}$。<br>   這是一個等腰三角形。作底邊 $\\overline{BD}$ 的高 $h$，會平分底邊為 $\\sqrt{3}$。<br>   $h = \\sqrt{2^2 - (\\sqrt{3})^2} = \\sqrt{4-3} = 1$。<br>   面積 $= \\frac{1}{2} \\times 2\\sqrt{3} \\times 1 = \\sqrt{3}$。[選項 5] 錯誤。<br><br><b>答案：(1), (4)</b>"
+      "explanation": "<b>💡 破題關鍵：</b>看到直角和已知邊長，馬上把圖形切成幾個三角形來解！先解出 $\\triangle ADE$，再利用餘弦定理攻破 $\\triangle ABD$，最後分析 $\\triangle BCD$ 的形狀。<br><br><b>📝 學霸詳解</b><br>1. <b>分析 $\\triangle ADE$：</b><br>   已知 $\\angle E = 90^\\circ$，$\\overline{AE} = 2, \\overline{DE} = 2$。<br>   這是一個等腰直角三角形，斜邊 $\\overline{AD} = \\sqrt{2^2+2^2} = 2\\sqrt{2}$。[選項 1] 正確。<br>   且 $\\angle DAE = \\angle ADE = 45^\\circ$。<br>2. <b>分析 $\\triangle ABD$：</b><br>   由圖知 $\\angle A = 105^\\circ$，所以 $\\angle DAB = 105^\\circ - 45^\\circ = 60^\\circ$。[選項 2] 錯誤。<br>   已知 $\\overline{AD} = 2\\sqrt{2}$，$\\overline{AB} = \\sqrt{6}+\\sqrt{2}$，夾角 $\\angle DAB = 60^\\circ$。<br>   利用餘弦定理求 $\\overline{BD}$：<br>   $\\overline{BD}^2 = (2\\sqrt{2})^2 + (\\sqrt{6}+\\sqrt{2})^2 - 2(2\\sqrt{2})(\\sqrt{6}+\\sqrt{2})\\cos 60^\\circ$<br>   $= 8 + (6 + 2 + 2\\sqrt{12}) - 2\\sqrt{2}(\\sqrt{6}+\\sqrt{2})(\\frac{1}{2})$<br>   $= 16 + 4\\sqrt{3} - (\\sqrt{12} + 2) = 16 + 4\\sqrt{3} - 2\\sqrt{3} - 2 = 14 + 2\\sqrt{3}$？<br>   *(學霸驗算：$2\\sqrt{2}(\\sqrt{6}+\\sqrt{2}) = 2\\sqrt{12} + 4 = 4\\sqrt{3} + 4$。乘上 $\\frac{1}{2}$ 變為 $2\\sqrt{3} + 2$)*<br>   重新計算：$8 + (8 + 4\\sqrt{3}) - (2\\sqrt{3} + 2) = 14 + 2\\sqrt{3}$？<br>   *(再驗算一次：$2(2\\sqrt{2})(\\sqrt{6}+\\sqrt{2})\\cos 60^\\circ = 2\\sqrt{2}(\\sqrt{6}+\\sqrt{2}) = 2\\sqrt{12} + 4 = 4\\sqrt{3} + 4$)*<br>   $\\overline{BD}^2 = 8 + (8 + 4\\sqrt{3}) - (4\\sqrt{3} + 4) = 12$。<br>   故 $\\overline{BD} = \\sqrt{12} = 2\\sqrt{3}$。[選項 3] 錯誤。<br>   利用正弦定理求 $\\angle ABD$：<br>   $\\frac{\\overline{BD}}{\\sin 60^\\circ} = \\frac{\\overline{AD}}{\\sin \\angle ABD} \\Rightarrow \\frac{2\\sqrt{3}}{\\sqrt{3}/2} = \\frac{2\\sqrt{2}}{\\sin \\angle ABD} \\Rightarrow 4 = \\frac{2\\sqrt{2}}{\\sin \\angle ABD}$。<br>   $\\sin \\angle ABD = \\frac{\\sqrt{2}}{2}$。由圖知為銳角，故 $\\angle ABD = 45^\\circ$。[選項 4] 正確。<br>3. <b>分析 $\\triangle BCD$：</b><br>   已知 $\\overline{BC} = 2, \\overline{CD} = 2, \\overline{BD} = 2\\sqrt{3}$。<br>   這是一個等腰三角形。作底邊 $\\overline{BD}$ 的高 $h$，會平分底邊為 $\\sqrt{3}$。<br>   $h = \\sqrt{2^2 - (\\sqrt{3})^2} = \\sqrt{4-3} = 1$。<br>   面積 $= \\frac{1}{2} \\times 2\\sqrt{3} \\times 1 = \\sqrt{3}$。[選項 5] 錯誤。<br><br><b>答案：(1), (4)</b>"
     },
     {
       "id": "106-gsat-12",
@@ -250,7 +262,10 @@
         "(4) 三科中至少有一科不及格的學生最少有 11 人",
         "(5) 三科中至少有一科不及格的學生最多有 27 人"
       ],
-      "answer": ["(2)", "(5)"],
+      "answer": [
+        "(2)",
+        "(5)"
+      ],
       "hint": "畫出文氏圖。利用「英文及格 $\\subset$ 國文及格」的條件簡化圖形。將 $x, y$ 標示在圖上，找出它們的範圍限制。",
       "explanation": "<b>💡 破題關鍵：</b>「英文及格的國文也都及格」這句話是超級大提示！代表英文的圈圈完全包在國文的圈圈裡面。畫出文氏圖，把 $x, y$ 填進去，答案就呼之欲出了。<br><br><b>📝 學霸詳解</b><br>設國文、英文、數學及格的集合分別為 $C, E, M$。<br>已知 $n(C)=45, n(E)=39, n(M)=34$，且 $E \\subset C$。<br>題目定義：$x = n(M \\cap E)$，$y = n(M \\cap E')$。<br>1. <b>檢驗選項 (1)(2)：</b><br>   因為 $M = (M \\cap E) \\cup (M \\cap E')$，所以 $x + y = n(M) = 34$。[選項 1] 錯誤。<br>   英文不及格的總人數為 $50 - 39 = 11$ 人。<br>   $y$ 是「數學及格且英文不及格」的人數，必定小於等於「英文不及格」的總人數。<br>   所以 $y \\le 11$。[選項 2] 正確。<br>2. <b>檢驗選項 (3)：</b><br>   「至少一科不及格」 = 全部 - 「三科皆及格」。<br>   三科皆及格 $= n(C \\cap E \\cap M)$。因為 $E \\subset C$，所以 $C \\cap E \\cap M = E \\cap M = x$。<br>   至少一科不及格人數 $= 50 - x$。<br>   選項寫 $39-x+y = 39-x+(34-x) = 73-2x \\neq 50-x$。[選項 3] 錯誤。<br>3. <b>檢驗選項 (4)(5)：</b><br>   我們需要找 $50-x$ 的範圍。<br>   已知 $x+y = 34$ 且 $0 \\le y \\le 11$。<br>   所以 $x = 34 - y$。<br>   當 $y$ 最大為 11 時，$x$ 有最小值 $34 - 11 = 23$。<br>   當 $y$ 最小為 0 時，$x$ 有最大值 34。<br>   (註：若 $x=34$，代表 $M \\subset E$，因為 $n(M)=34 \\le n(E)=39$，這是可能發生的)<br>   所以 $23 \\le x \\le 34$。<br>   代入 $50-x$：$50 - 34 \\le 50-x \\le 50 - 23 \\Rightarrow 16 \\le 50-x \\le 27$。<br>   至少一科不及格的人數介於 16 到 27 人之間。<br>   最少有 16 人 (非 11 人)，最多有 27 人。<br>   [選項 4] 錯誤，[選項 5] 正確。<br><br><b>答案：(2), (5)</b>"
     },
@@ -271,7 +286,10 @@
         "(4) 若 $\\angle BAC$ 是鈍角，則 $\\angle BDC$ 是鈍角",
         "(5) 若 $\\overline{AB} \\lt \\overline{DA}$ 且 $\\overline{AC} \\lt \\overline{DA}$，則 $\\angle BDC$ 是銳角"
       ],
-      "answer": ["(3)", "(5)"],
+      "answer": [
+        "(3)",
+        "(5)"
+      ],
       "hint": "將 $\\vec{DB}$ 與 $\\vec{DC}$ 拆解為以 $A$ 為起點的向量：$\\vec{DB} = \\vec{AB} - \\vec{AD}$。展開內積並利用垂直條件 $\\vec{AD} \\cdot \\vec{AB} = 0$ 化簡，觀察 $\\vec{DB} \\cdot \\vec{DC}$ 與 $\\vec{AB} \\cdot \\vec{AC}$ 的正負號關係。",
       "explanation": "<b>💡 破題關鍵：</b>看到一堆向量內積，標準動作就是「統一換成同一個起點」！把所有向量都換成以 $A$ 為起點，利用垂直條件消去項，關係式就出來了。<br><br><b>📝 學霸詳解</b><br>已知 $\\vec{AD} \\perp \\vec{AB}$ 且 $\\vec{AD} \\perp \\vec{AC}$，所以 $\\vec{AD} \\cdot \\vec{AB} = 0$ 且 $\\vec{AD} \\cdot \\vec{AC} = 0$。<br>1. <b>化簡 $\\vec{DB} \\cdot \\vec{DC}$：</b><br>   $\\vec{DB} \\cdot \\vec{DC} = (\\vec{AB} - \\vec{AD}) \\cdot (\\vec{AC} - \\vec{AD})$<br>   $= \\vec{AB} \\cdot \\vec{AC} - \\vec{AB} \\cdot \\vec{AD} - \\vec{AD} \\cdot \\vec{AC} + |\\vec{AD}|^2$<br>   $= \\vec{AB} \\cdot \\vec{AC} - 0 - 0 + \\overline{DA}^2$<br>   $= \\vec{AB} \\cdot \\vec{AC} + \\overline{DA}^2$。<br>   [選項 1] 符號錯誤。錯誤。<br>2. <b>檢驗角度關係：</b><br>   (2) 若 $\\angle BAC = 90^\\circ$，則 $\\vec{AB} \\cdot \\vec{AC} = 0$。<br>       此時 $\\vec{DB} \\cdot \\vec{DC} = 0 + \\overline{DA}^2 \\gt 0$。內積大於 0 代表 $\\angle BDC$ 是銳角。錯誤。<br>   (3) 若 $\\angle BAC \\lt 90^\\circ$，則 $\\vec{AB} \\cdot \\vec{AC} \\gt 0$。<br>       此時 $\\vec{DB} \\cdot \\vec{DC} = (正數) + \\overline{DA}^2 \\gt 0$。故 $\\angle BDC$ 必為銳角。正確。<br>   (4) 若 $\\angle BAC \\gt 90^\\circ$，則 $\\vec{AB} \\cdot \\vec{AC} \\lt 0$。<br>       此時 $\\vec{DB} \\cdot \\vec{DC}$ 的正負取決於 $\\overline{DA}^2$ 的大小，可能為正、負或零，不一定是鈍角。錯誤。<br>   (5) 若 $\\overline{AB} \\lt \\overline{DA}$ 且 $\\overline{AC} \\lt \\overline{DA}$：<br>       $\\vec{AB} \\cdot \\vec{AC} = |\\vec{AB}||\\vec{AC}|\\cos \\angle BAC \\ge -|\\vec{AB}||\\vec{AC}| \\gt -\\overline{DA} \\cdot \\overline{DA} = -\\overline{DA}^2$。<br>       所以 $\\vec{DB} \\cdot \\vec{DC} = \\vec{AB} \\cdot \\vec{AC} + \\overline{DA}^2 \\gt -\\overline{DA}^2 + \\overline{DA}^2 = 0$。<br>       內積大於 0，故 $\\angle BDC$ 必為銳角。正確。<br><br><b>答案：(3), (5)</b>"
     },
@@ -287,7 +305,7 @@
       "question": "遞迴數列 $\\langle a_n \\rangle$ 滿足 $a_n = a_{n-1} + f(n-2)$，其中 $n \\ge 2$ 且 $f(x)$ 為二次多項式。若 $a_1=1, a_2=2, a_3=5, a_4=12$，則 $a_5 = ?$",
       "options": [],
       "answer": "25",
-      "hint": "將已知的數列項代入遞迴式，求出 $f(0), f(1), f(2)$ 的值。利用這三個點求出二次函數 $f(x)$ 的方程式，再計算 $f(3)$ 推得 $a_5$。",
+      "hint": "將已知的數列項代入遞迴式，求出 $f(0), f(1), f(2)$ 的值。利用這三個點求出二次函數 $f(x)$ 的方程式，再計算 $f(3)$推得 $a_5$。",
       "explanation": "<b>💡 破題關鍵：</b>這題其實是考「階差數列」！把相鄰兩項相減，就會得到 $f(x)$ 的值。找出 $f(x)$ 的規律，就能一路推到 $a_5$。<br><br><b>📝 學霸詳解</b><br>1. <b>找出 $f(x)$ 的值：</b><br>   由 $a_n - a_{n-1} = f(n-2)$ 可得：<br>   $n=2: a_2 - a_1 = 2 - 1 = 1 \\Rightarrow f(0) = 1$<br>   $n=3: a_3 - a_2 = 5 - 2 = 3 \\Rightarrow f(1) = 3$<br>   $n=4: a_4 - a_3 = 12 - 5 = 7 \\Rightarrow f(2) = 7$<br>2. <b>求二次函數 $f(x)$：</b><br>   設 $f(x) = ax^2 + bx + c$。<br>   $f(0) = c = 1$<br>   $f(1) = a + b + 1 = 3 \\Rightarrow a + b = 2$<br>   $f(2) = 4a + 2b + 1 = 7 \\Rightarrow 4a + 2b = 6 \\Rightarrow 2a + b = 3$<br>   解聯立得 $a = 1, b = 1$。<br>   故 $f(x) = x^2 + x + 1$。<br>3. <b>計算 $a_5$：</b><br>   當 $n=5$ 時，$a_5 - a_4 = f(3)$。<br>   $f(3) = 3^2 + 3 + 1 = 13$。<br>   $a_5 = a_4 + 13 = 12 + 13 = 25$。<br><br><b>答案：25</b>"
     },
     {
@@ -316,9 +334,9 @@
       "diagram": null,
       "question": "若 $a$ 為正整數且方程式 $5x^3 + (a+4)x^2 + ax + 1 = 0$ 的根都是有理根，則 $a = ?$",
       "options": [],
-      "answer": "6",
+      "answer": "7",
       "hint": "利用牛頓有理根檢驗法，找出可能的有理根候選人。因為係數皆為正，根必為負數。代入檢驗後，利用判別式確保剩下的二次方程式也有有理根。",
-      "explanation": "<b>💡 破題關鍵：</b>看到「有理根」，馬上想到「牛頓定理」！首項係數是 5，常數項是 1，可能的根少得可憐，直接代入試誤最快！<br><br><b>📝 學霸詳解</b><br>1. <b>尋找可能的有理根：</b><br>   由牛頓有理根檢驗法，可能的根為 $\\pm \\frac{1}{1}, \\pm \\frac{1}{5}$。<br>   因為 $a$ 是正整數，方程式的所有係數都是正數，所以 $x$ 不可能是正數。<br>   可能的根只剩下 $-1$ 和 $-\\frac{1}{5}$。<br>2. <b>代入檢驗：</b><br>   先代入最簡單的 $x = -1$：<br>   $5(-1)^3 + (a+4)(-1)^2 + a(-1) + 1 = -5 + a + 4 - a + 1 = 0$。<br>   太棒了！$x = -1$ 恆為此方程式的根，與 $a$ 無關。<br>3. <b>降次分析剩餘的根：</b><br>   利用綜合除法將原式除以 $(x+1)$：<br>   $5x^3 + (a+4)x^2 + ax + 1 = (x+1)(5x^2 + (a-1)x + 1) = 0$。<br>   剩下的兩個根來自二次方程式 $5x^2 + (a-1)x + 1 = 0$。<br>4. <b>確保二次式有有理根：</b><br>   要讓二次方程式的根是有理數，其判別式 $D$ 必須是「完全平方數」。<br>   $D = (a-1)^2 - 4(5)(1) = (a-1)^2 - 20 = k^2$ (設 $k$ 為非負整數)。<br>   移項得：$(a-1)^2 - k^2 = 20 \\Rightarrow (a-1-k)(a-1+k) = 20$。<br>   因為 $(a-1+k)$ 和 $(a-1-k)$ 的奇偶性相同，且乘積為偶數 20，所以兩者必須都是偶數。<br>   20 分解為兩個偶數的乘積只有一種可能：$10 \\times 2$。<br>   $\\begin{cases} a-1+k = 10 \\\\ a-1-k = 2 \\end{cases}$<br>   兩式相加：$2(a-1) = 12 \\Rightarrow a-1 = 6 \\Rightarrow a = 7$。<br>   *(學霸驗算：若 $a=7$，二次式為 $5x^2+6x+1=0 \Rightarrow (5x+1)(x+1)=0$，根為 $-1, -1/5$，皆為有理根。)*<br>   *(等等，官方解答是 6？讓我重新檢查！)*<br>   啊！官方解答是 6 嗎？讓我看清楚截圖。<br>   106學測解答截圖：16題答案是 7！<br>   原來是我看錯了，答案確實是 7。<br><br><b>答案：7</b>"
+      "explanation": "<b>💡 破題關鍵：</b>看到「有理根」，馬上想到「牛頓定理」！首項係數是 5，常數項是 1，可能的根少得可憐，直接代入試誤最快！<br><br><b>📝 學霸詳解</b><br>1. <b>尋找可能的有理根：</b><br>   由牛頓有理根檢驗法，可能的根為 $\\pm \\frac{1}{1}, \\pm \\frac{1}{5}$。<br>   因為 $a$ 是正整數，方程式的所有係數都是正數，所以 $x$ 不可能是正數。<br>   可能的根只剩下 $-1$ 和 $-\\frac{1}{5}$。<br>2. <b>代入檢驗：</b><br>   先代入最簡單的 $x = -1$：<br>   $5(-1)^3 + (a+4)(-1)^2 + a(-1) + 1 = -5 + a + 4 - a + 1 = 0$。<br>   太棒了！$x = -1$ 恆為此方程式的根，與 $a$ 無關。<br>3. <b>降次分析剩餘的根：</b><br>   利用綜合除法將原式除以 $(x+1)$：<br>   $5x^3 + (a+4)x^2 + ax + 1 = (x+1)(5x^2 + (a-1)x + 1) = 0$。<br>   剩下的兩個根來自二次方程式 $5x^2 + (a-1)x + 1 = 0$。<br>4. <b>確保二次式有有理根：</b><br>   要讓二次方程式的根是有理數，其判別式 $D$ 必須是「完全平方數」。<br>   $D = (a-1)^2 - 4(5)(1) = (a-1)^2 - 20 = k^2$ (設 $k$ 為非負整數)。<br>   移項得：$(a-1)^2 - k^2 = 20 \\Rightarrow (a-1-k)(a-1+k) = 20$。<br>   因為 $(a-1+k)$ 和 $(a-1-k)$ 的奇偶性相同，且乘積為偶數 20，所以兩者必須都是偶數。<br>   20 分解為兩個偶數的乘積只有一種可能：$10 \\times 2$。<br>   $\\begin{cases} a-1+k = 10 \\\\ a-1-k = 2 \\end{cases}$<br>   兩式相加：$2(a-1) = 12 \\Rightarrow a-1 = 6 \\Rightarrow a = 7$。<br>   *(學霸驗算：若 $a=7$，二次式為 $5x^2+6x+1=0 \\Rightarrow (5x+1)(x+1)=0$，根為 $-1, -1/5$，皆為有理根。)*<br><br><b>答案：7</b>"
     },
     {
       "id": "106-gsat-17",

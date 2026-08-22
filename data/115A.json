@@ -285,6 +285,7 @@
       "type": "單選題",
       "correct_rate": 69,
       "question": "【題組 18-20】坐標空間中有一平行六面體 $PQRS-ABCD$。已知 $\\vec{AB} \\times \\vec{AD} = (-5, 5, 5)$，$\\vec{AD} \\times \\vec{AP} = (-2, 0, -4)$，$\\vec{AP} \\times \\vec{AB} = (6, -10, -8)$，$\\overline{AP} = 6$。試問平行四邊形 $ABCD$ 的面積為何？",
+      "image": "images/115A-18.png",
       "options": ["(A) $2\\sqrt{5}$", "(B) $5\\sqrt{2}$", "(C) $5\\sqrt{3}$", "(D) $6\\sqrt{3}$", "(E) $10\\sqrt{2}$"],
       "answer": "(C)",
       "hint": "送分題。空間中兩個向量做「外積」，算出來的新向量，它的「長度」就等於這兩個向量所張成的平行四邊形面積。",

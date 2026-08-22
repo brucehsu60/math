@@ -1,5 +1,5 @@
 {
-  "version": "2.2.111B",
+  "version": "2.3.111B",
   "update_time": "2026-08-22",
   "questions": [
     {
@@ -285,7 +285,7 @@
       "options": [],
       "answer": "$\\theta_1 \\lt \\theta_3 \\lt \\theta_2$",
       "hint": "利用直角三角形幾何定義寫出正弦函數，藉由正弦函數在第一象限的遞增性質比較角度大小。",
-      "explanation": "<b>💡 破題關鍵：</b><b>偏移距離</b>剛好是直角三角形的「對邊」，<b>塔高</b>是「斜邊」。算出 $\\sin$ 值就能利用單調遞增比出角度大小。<br><br><b>📝 學霸詳解</b><br>1. 由題意幾何關係可知，在直角三角形中：$\\sin \\theta = \\frac{\\text{對邊(<b>偏移距離</b>)}}{\\text{斜邊(<b>塔高</b>)}}$。<br>2. 計算三座塔的正弦值：<br>   - 虎丘塔：$\\sin \\theta_1 = \\frac{2.3}{48} \\approx 0.0479$<br>   - 護珠塔：$\\sin \\theta_2 = \\frac{2.3}{19} \\approx 0.121$<br>   - 比薩斜塔：$\\sin \\theta_3 = \\frac{4}{57} \\approx 0.0701$<br>3. 比較三個正弦值大小：<br>   $\\frac{2.3}{48} \\lt \\frac{4}{57} \\lt \\frac{2.3}{19}$，即 $\\sin \\theta_1 \\lt \\sin \\theta_3 \\lt \\sin \\theta_2$。<br>4. 因為塔的<b>傾斜度</b>均落在銳角範圍 $0^\\circ \\le \\theta \\lt 90^\\circ$，而此區間內正弦函數 $y = \\sin \\theta$ 為嚴格遞增函數。<br>   故角度大小關係與正弦值同步：$\\theta_1 \\lt \\theta_3 \\lt \\theta_2$。<br><br><b>答案：$\\theta_1 \\lt \\theta_3 \\lt \\theta_2$</b>"
+      "explanation": "<b>💡 破題關鍵：</b><b>偏移距離</b>剛好是直角三角形的「對邊」，<b>塔高</b>是「斜邊」。算出 $\\sin$ 值就能利用單調遞增比出角度大小。<br><br><b>📝 學霸詳解</b><br>1. 由題意幾何關係可知，在直角三角形中：$\\sin \\theta = \\frac{\\text{對邊(偏移距離)}}{\\text{斜邊(塔高)}}$。<br>2. 計算三座塔的正弦值：<br>   - 虎丘塔：$\\sin \\theta_1 = \\frac{2.3}{48} \\approx 0.0479$<br>   - 護珠塔：$\\sin \\theta_2 = \\frac{2.3}{19} \\approx 0.121$<br>   - 比薩斜塔：$\\sin \\theta_3 = \\frac{4}{57} \\approx 0.0701$<br>3. 比較三個正弦值大小：<br>   $\\frac{2.3}{48} \\lt \\frac{4}{57} \\lt \\frac{2.3}{19}$，即 $\\sin \\theta_1 \\lt \\sin \\theta_3 \\lt \\sin \\theta_2$。<br>4. 因為塔的<b>傾斜度</b>均落在銳角範圍 $0^\\circ \\le \\theta \\lt 90^\\circ$，而此區間內正弦函數 $y = \\sin \\theta$ 為嚴格遞增函數。<br>   故角度大小關係與正弦值同步：$\\theta_1 \\lt \\theta_3 \\lt \\theta_2$。<br><br><b>答案：$\\theta_1 \\lt \\theta_3 \\lt \\theta_2$</b>"
     },
     {
       "id": "111-gsatB-20",

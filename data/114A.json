@@ -11,7 +11,7 @@
       "type": "單選題",
       "correct_rate": 57,
       "diagram": null,
-      "question": "不透明袋中有藍、綠色球各若干顆，且球上皆有 1 或 2 的編號，其顆數如下表：<br><br>| | 藍 | 綠 |<br>| :---: | :---: | :---: |<br>| **1號** | 2 | 4 |<br>| **2號** | 3 | $k$ |<br><br>從此袋中隨機抽取一球（每顆球被抽到的機率相等），若已知抽到藍色球的事件與抽到 1 號球的事件互相獨立，試問 $k$ 值為何？",
+      "question": "不透明袋中有藍、綠色球各若干顆，且球上皆有 1 或 2 的編號，其顆數如下表：<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\"></th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">藍</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">綠</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"><b>1號</b></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">2</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">4</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"><b>2號</b></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">3</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$k$</td></tr></table>從此袋中隨機抽取一球（每顆球被抽到的機率相等），若已知抽到藍色球的事件與抽到 1 號球的事件互相獨立，試問 $k$ 值為何？",
       "options": ["(A) 2", "(B) 3", "(C) 4", "(D) 5", "(E) 6"],
       "answer": "(E)",
       "hint": "獨立事件的定義是：$P(A \\cap B) = P(A) \\times P(B)$。找出總球數以及各事件發生的機率並代入等式。",

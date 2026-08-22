@@ -250,7 +250,6 @@
 
         const newSystemYears = ['115', '114', '113', '112', '111'];
         
-        // ★ 動態產生 110~083 年，並插入 92補、91補
         let oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
         oldSystemYears.splice(oldSystemYears.indexOf('92') + 1, 0, '92補');
         oldSystemYears.splice(oldSystemYears.indexOf('91') + 1, 0, '91補');
@@ -261,7 +260,6 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 包含所有檔案路徑 (115~083)
         const dataFiles = [
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
             'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
@@ -275,7 +273,6 @@
             'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
         ];
 
-        // ★ 學霸改良版：循序讀取，避免 404 檔案造成伺服器塞車當機
         async function loadQuestions() {
             const cacheBuster = new Date().getTime();
             allQuestions = [];
@@ -290,7 +287,6 @@
                         }
                     }
                 } catch (err) {
-                    // 檔案還沒建立或解析失敗，默默跳過即可
                     console.log(`略過尚未建立的檔案: ${file}`);
                 }
             }
@@ -483,6 +479,11 @@
                             <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
                         </div>`;
                 } 
+                // ★ 補回非選擇題的按鈕邏輯
+                else if (q.type === "非選擇題") {
+                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫非選擇題，請在計算紙上作答後點擊看答案)</div>
+                                    <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
+                }
 
                 const rateInfo = getRateInfo(q.correct_rate);
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';

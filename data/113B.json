@@ -285,7 +285,7 @@
       "options": [],
       "answer": "$4\\sqrt{65}$",
       "hint": "這是一個已知三邊長的等腰三角形，利用畢氏定理求出高，再算面積即可。",
-      "explanation": "**💡 破題關鍵：**不需建立立體坐標，直接觀察 $\\Delta BCD$ 的三邊長度即可在平面上運算。<br><br>**📝 學霸詳解**<br>1. 根據題意，已知 $\\Delta BCD$ 的三邊長分別為：<br>   底邊 $\\overline{BC} = 8$<br>   腰長 $\\overline{BD} = 9$<br>   腰長 $\\overline{DC} = 9$<br>2. 因為 $\\overline{BD} = \\overline{DC}$，此為一個等腰三角形。<br>3. 從頂點 $D$ 向底邊 $\\overline{BC}$ 作高，交點為 $M$。此高會平分底邊，故 $\\overline{BM} = \\frac{8}{2} = 4$。<br>4. 在直角 $\\Delta BMD$ 中，利用畢氏定理求高 $\\overline{DM}$：<br>   $\\overline{DM} = \\sqrt{\\overline{BD}^2 - \\overline{BM}^2} = \\sqrt{9^2 - 4^2} = \\sqrt{81 - 16} = \\sqrt{65}$。<br>5. 面積 $= \\frac{1}{2} \\times \\text{底} \\times \\text{高} = \\frac{1}{2} \\times 8 \\times \\sqrt{65} = 4\\sqrt{65}$。<br><br>**答案：4\\sqrt{65}**"
+      "explanation": "**💡 破題關鍵：**不需建立立體坐標，直接觀察 $\\Delta BCD$ 的三邊長度即可在平面上運算。<br><br>**📝 學霸詳解**<br>1. 根據題意，已知 $\\Delta BCD$ 的三邊長分別為：<br>   底邊 $\\overline{BC} = 8$<br>   腰長 $\\overline{BD} = 9$<br>   腰長 $\\overline{DC} = 9$<br>2. 因為 $\\overline{BD} = \\overline{DC}$，此為一個等腰三角形。<br>3. 從頂點 $D$ 向底邊 $\\overline{BC}$ 作高，交點為 $M$。此高會平分底邊，故 $\\overline{BM} = \\frac{8}{2} = 4$。<br>4. 在直角 $\\Delta BMD$ 中，利用畢氏定理求高 $\\overline{DM}$：<br>   $\\overline{DM} = \\sqrt{\\overline{BD}^2 - \\overline{BM}^2} = \\sqrt{9^2 - 4^2} = \\sqrt{81 - 16} = \\sqrt{65}$。<br>5. 面積 $= \\frac{1}{2} \\times \\text{底} \\times \\text{高} = \\frac{1}{2} \\times 8 \\times \\sqrt{65} = 4\\sqrt{65}$。<br><br>**答案：$4\\sqrt{65}$**"
     },
     {
       "id": "113-gsatB-20",

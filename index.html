@@ -18,7 +18,7 @@
         .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .filter-row:last-child { margin-bottom: 0; }
-        .filter-label { font-weight: bold; color: #64748b; width: 65px; flex-shrink: 0; font-size: 15px; margin-top: 6px; }
+        .filter-label { font-weight: bold; color: #64748b; width: 80px; flex-shrink: 0; font-size: 15px; margin-top: 6px; }
         .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: center;}
         
         .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; }
@@ -41,6 +41,9 @@
         .btn-rate-med:hover { background: #d97706; }
         .btn-rate-low:hover { background: #dc2626; }
         .tag-btn.active[data-filter="rate"] { outline: 3px solid #1e293b; outline-offset: 1px; }
+
+        /* 年份特製按鈕 (讓28個年份排版更緊湊) */
+        .btn-year { padding: 4px 10px; font-size: 13px; }
 
         /* 題目卡片 */
         .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
@@ -96,18 +99,30 @@
 
     <!-- 標籤篩選面板 -->
     <div class="filter-container">
+        <!-- 雙層連動：第一層 考試類別 -->
         <div class="filter-row">
-            <span class="filter-label">年度：</span>
-            <div class="filter-buttons">
-                <button class="tag-btn active" data-filter="year" data-value="all">全部</button>
-                <button class="tag-btn" data-filter="year" data-value="115學測數A">115學測數A</button>
-                <button class="tag-btn" data-filter="year" data-value="114學測數A">114學測數A</button>
-                <button class="tag-btn" data-filter="year" data-value="113學測數A">113學測數A</button>
-                <button class="tag-btn" data-filter="year" data-value="112學測數A">112學測數A</button>
-                <button class="tag-btn" data-filter="year" data-value="111學測數A">111學測數A</button>
+            <span class="filter-label">考試類別：</span>
+            <div class="filter-buttons" id="exam-type-buttons">
+                <button class="tag-btn active" data-filter="examType" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="examType" data-value="學測數A">學測數A</button>
+                <button class="tag-btn" data-filter="examType" data-value="學測數B">學測數B</button>
+                <button class="tag-btn" data-filter="examType" data-value="分科數甲">分科數甲</button>
+                <button class="tag-btn" data-filter="examType" data-value="分科數乙">分科數乙</button>
+                <button class="tag-btn" data-filter="examType" data-value="舊制學測">舊制學測</button>
+                <button class="tag-btn" data-filter="examType" data-value="舊指考(甲)">舊指考(甲)</button>
+                <button class="tag-btn" data-filter="examType" data-value="舊指考(乙)">舊指考(乙)</button>
             </div>
         </div>
-        <div class="filter-row">
+
+        <!-- 雙層連動：第二層 考試年份 (預設隱藏) -->
+        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <span class="filter-label">考試年份：</span>
+            <div class="filter-buttons" id="exam-year-buttons">
+                <!-- 由 JavaScript 動態產生 -->
+            </div>
+        </div>
+
+        <div class="filter-row" style="margin-top: 12px;">
             <span class="filter-label">題型：</span>
             <div class="filter-buttons">
                 <button class="tag-btn active" data-filter="type" data-value="all">全部</button>
@@ -195,7 +210,23 @@
 
     <script>
         let allQuestions = []; 
-        let currentFilters = { year: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
+        let currentFilters = { examType: 'all', examYear: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
+
+        // 定義年份陣列
+        const newSystemYears = ['115', '114', '113', '112', '111'];
+        // 自動生成 110 到 83 年
+        const oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
+
+        // 為了比對 JSON 裡面的 "year" 字串設定的關鍵字對應表
+        const examTypeMapping = {
+            '學測數A': '學測數A',
+            '學測數B': '學測數B',
+            '分科數甲': '分科數甲',
+            '分科數乙': '分科數乙',
+            '舊制學測': '學測',       // 未來舊檔請標示如 "110學測"
+            '舊指考(甲)': '指考甲',   // 未來舊檔請標示如 "109指考甲"
+            '舊指考(乙)': '指考乙'    // 未來舊檔請標示如 "109指考乙"
+        };
 
         // ★ 題庫檔案清單
         const dataFiles = [
@@ -209,23 +240,16 @@
         function loadQuestions() {
             const cacheBuster = new Date().getTime();
             
-            // 加入錯誤捕捉機制，若單一檔案寫錯不會造成全站當機
             Promise.all(dataFiles.map(file => 
                 fetch(`${file}?t=${cacheBuster}`)
                 .then(res => {
-                    if (!res.ok) {
-                        console.warn(`檔案不存在或讀取失敗: ${file}`);
-                        return { questions: [] };
-                    }
+                    if (!res.ok) return { questions: [] };
                     return res.json().catch(err => {
-                        console.error(`檔案 JSON 格式錯誤 (可能漏打逗號或引號)，已跳過: ${file}`, err);
+                        console.error(`檔案 JSON 格式錯誤: ${file}`, err);
                         return { questions: [] };
                     });
                 })
-                .catch(err => {
-                    console.error(`網路連線問題: ${file}`, err);
-                    return { questions: [] };
-                })
+                .catch(err => return { questions: [] })
             ))
             .then(results => {
                 allQuestions = [];
@@ -258,11 +282,40 @@
             applyFilter(filterType, filterValue);
         }
 
+        // 動態更新第二層年份選單
+        function updateYearButtons(examType) {
+            const yearContainer = document.getElementById('exam-year-container');
+            const yearButtonsDiv = document.getElementById('exam-year-buttons');
+            
+            if (examType === 'all') {
+                yearContainer.style.display = 'none';
+                currentFilters.examYear = 'all';
+                return;
+            }
+
+            yearContainer.style.display = 'flex';
+            yearButtonsDiv.innerHTML = '<button class="tag-btn active" data-filter="examYear" data-value="all">全部年份</button>';
+            
+            const targetYears = ['學測數A', '學測數B', '分科數甲', '分科數乙'].includes(examType) ? newSystemYears : oldSystemYears;
+
+            targetYears.forEach(y => {
+                yearButtonsDiv.innerHTML += `<button class="tag-btn btn-year" data-filter="examYear" data-value="${y}">${y}</button>`;
+            });
+
+            // 幫新產生的按鈕綁定事件
+            yearButtonsDiv.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.onclick = handleFilterBtnClick;
+            });
+            currentFilters.examYear = 'all';
+        }
+
         function applyFilter(filterType, filterValue) {
+            // 反向取消選取
             if (currentFilters[filterType] === filterValue && filterValue !== 'all') {
                 filterValue = 'all';
             }
 
+            // 處理分類與主題的連動
             if (filterType === 'category') {
                 currentFilters.category = filterValue;
                 currentFilters.chapter = 'all';
@@ -276,6 +329,12 @@
                 currentFilters[filterType] = filterValue;
             }
             
+            // 如果切換了考試類別，要連動更新年份按鈕
+            if (filterType === 'examType') {
+                updateYearButtons(filterValue);
+            }
+            
+            // 更新按鈕視覺狀態
             document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
             const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
             if (targetBtn) {
@@ -289,13 +348,16 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // 修改答對率轉換，直接顯示數字
         function getRateInfo(rate) {
             if (rate === null || rate === undefined || rate === "") return null;
             rate = Number(rate);
             if (isNaN(rate)) return null;
-            if (rate >= 60) return { class: "badge-rate-high", category: "high", text: "易" };
-            if (rate >= 30) return { class: "badge-rate-med", category: "med", text: "中" };
-            return { class: "badge-rate-low", category: "low", text: "難" };
+            
+            // text 欄位改為直接輸出數字加上 %
+            if (rate >= 60) return { class: "badge-rate-high", category: "high", text: rate + "%" };
+            if (rate >= 30) return { class: "badge-rate-med", category: "med", text: rate + "%" };
+            return { class: "badge-rate-low", category: "low", text: rate + "%" };
         }
 
         function renderQuestions() {
@@ -306,7 +368,12 @@
                 const rateInfo = getRateInfo(q.correct_rate);
                 const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
                 
-                return (currentFilters.year === 'all' || q.year === currentFilters.year) &&
+                // 檢查是否符合考試類別與年份
+                const mappedExamType = currentFilters.examType !== 'all' ? examTypeMapping[currentFilters.examType] : '';
+                const matchExamType = currentFilters.examType === 'all' || q.year.includes(mappedExamType);
+                const matchExamYear = currentFilters.examYear === 'all' || q.year.includes(currentFilters.examYear);
+
+                return matchExamType && matchExamYear &&
                        (currentFilters.category === 'all' || q.category === currentFilters.category) &&
                        (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
                        (currentFilters.type === 'all' || q.type === currentFilters.type) &&
@@ -314,7 +381,7 @@
             });
 
             if(filtered.length === 0) {
-                container.innerHTML = `<div class="empty-state" style="color:#f59e0b;">目前沒有符合條件的題目。<br><br>若完全沒有題目出現，可能是因為您剛剛上傳的 JSON 檔案有格式錯誤 (如漏打雙引號、逗號等)，請檢查修正。</div>`;
+                container.innerHTML = `<div class="empty-state" style="color:#f59e0b;">目前沒有符合條件的題目。<br><br>請嘗試切換其他年份或題型。</div>`;
                 return;
             }
 
@@ -340,7 +407,6 @@
                             </button>`;
                     });
                     
-                    // 防呆轉換，確保 answer 是陣列
                     let ansArray = Array.isArray(q.answer) ? q.answer : [q.answer];
                     const encodedAns = encodeURIComponent(JSON.stringify(ansArray));
                     optionsHtml += `<button class="action-btn" onclick="checkMultiAnswer(this, '${q.id}', '${encodedAns}')">確認答案</button>`;
@@ -362,14 +428,16 @@
                                     <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
                 }
 
+                // 產生答對率徽章
                 const rateInfo = getRateInfo(q.correct_rate);
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
 
                 const safeQNum = q.q_num ? q.q_num : "X";
 
+                // 將 badge-year 的 clickable 移除，因為年份與類別現在改用雙層過濾，純展示用最安全
                 card.innerHTML = `
                     <div class="badge-group">
-                        <span class="badge badge-year clickable" onclick="applyFilter('year', '${q.year}')" title="點擊篩選">${q.year}</span>
+                        <span class="badge badge-year">${q.year}</span>
                         <span class="badge badge-category clickable" onclick="applyFilter('category', '${q.category}')" title="點擊篩選">${q.category}</span>
                         <span class="badge badge-topic clickable" onclick="applyFilter('chapter', '${q.chapter}')" title="點擊篩選">${q.chapter}</span>
                         <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選">${q.type}</span>

@@ -292,7 +292,7 @@
       "chapter": "三角比",
       "type": "填充題",
       "correct_rate": 49,
-      "diagram": "images/103-gsat-15-fig.png",
+      "diagram": null,
       "question": "小鎮 A 距離一筆直道路 6 公里，並與道路上的小鎮 B 相距 12 公里。今欲在此道路上蓋一家超級市場使其與 A, B 等距，則此超級市場與 A 的距離須為 $?$ 公里。(化為最簡根式)",
       "options": [],
       "answer": "$4\\sqrt{3}$",

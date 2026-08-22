@@ -1,5 +1,5 @@
 {
-  "version": "1.0.113B",
+  "version": "2.0.113B",
   "update_time": "2026-08-22",
   "questions": [
     {
@@ -26,11 +26,11 @@
       "type": "單選題",
       "correct_rate": 49,
       "diagram": null,
-      "question": "已知 $a,b,c$ 為實數，且滿足 $1<a<10$、$b=\\log a$、$c=\\log b$，試選出正確的選項。",
-      "options": ["(1) $c<0<b<1$", "(2) $0<c<1<b$", "(3) $0<c<b<1$", "(4) $1<c<b$", "(5) $c<b<0$"],
+      "question": "已知 $a,b,c$ 為實數，且滿足 $1 \\lt a \\lt 10$、$b=\\log a$、$c=\\log b$，試選出正確的選項。",
+      "options": ["(1) $c \\lt 0 \\lt b \\lt 1$", "(2) $0 \\lt c \\lt 1 \\lt b$", "(3) $0 \\lt c \\lt b \\lt 1$", "(4) $1 \\lt c \\lt b$", "(5) $c \\lt b \\lt 0$"],
       "answer": "(1)",
       "hint": "利用對數函數的單調遞增性質，逐步推導 $b$ 與 $c$ 的範圍。",
-      "explanation": "**💡 破題關鍵：**對數函數 $y=\\log x$ 在底數大於 $1$ 時為遞增函數，將不等式同取對數即可降階。<br><br>**📝 學霸詳解**<br>1. 已知 $1 < a < 10$。<br>2. 由於 $\\log$ (以 $10$ 為底) 是嚴格遞增函數，對三邊同取對數：<br>   $\\log 1 < \\log a < \\log 10$<br>   $0 < b < 1$。<br>3. 接著，因為 $0 < b < 1$，再次對其取對數：<br>   $\\log b < \\log 1$<br>   $c < 0$。<br>4. 綜合上述結果，得到 $c < 0 < b < 1$。<br><br>**答案：(1)**"
+      "explanation": "**💡 破題關鍵：**對數函數 $y=\\log x$ 在底數大於 $1$ 時為遞增函數，將不等式同取對數即可降階。<br><br>**📝 學霸詳解**<br>1. 已知 $1 \\lt a \\lt 10$。<br>2. 由於 $\\log$ (以 $10$ 為底) 是嚴格遞增函數，對三邊同取對數：<br>   $\\log 1 \\lt \\log a \\lt \\log 10$<br>   $0 \\lt b \\lt 1$。<br>3. 接著，因為 $0 \\lt b \\lt 1$，再次對其取對數：<br>   $\\log b \\lt \\log 1$<br>   $c \\lt 0$。<br>4. 綜合上述結果，得到 $c \\lt 0 \\lt b \\lt 1$。<br><br>**答案：(1)**"
     },
     {
       "id": "113-gsatB-03",
@@ -45,7 +45,7 @@
       "options": ["(1) (6,3)", "(2) (7,3)", "(3) (8,5)", "(4) (9,1)", "(5) (9,2)"],
       "answer": "(2)",
       "hint": "分別利用點斜式求出射擊直線方程式，並檢查該直線在 $y=5$ 與 $y=6$ 時的 $x$ 坐標是否避開了牆壁區間。",
-      "explanation": "**💡 破題關鍵：**直線不被阻擋的條件，就是直線在通過牆壁所在的 $y$ 高度時，其 $x$ 坐標必須在牆壁範圍之外。<br><br>**📝 學霸詳解**<br>牆壁一：$y=5$，阻擋區間 $x \\in [10, 15]$。<br>牆壁二：$y=6$，阻擋區間 $x \\in [0, 9]$。<br>我們將選項的點 $Q$ 與 $P(12,10)$ 連線，檢查是否安全：<br>*(1)* 若 $Q(6,3)$：連線斜率 $m = \\frac{10-3}{12-6} = \\frac{7}{6}$。<br>   過 $y=6$ 時：$x = 6 + 3 \\times \\frac{6}{7} \\approx 8.57 \\in [0,9]$，被牆二擋住。<br>*(2)* 若 $Q(7,3)$：連線斜率 $m = \\frac{10-3}{12-7} = \\frac{7}{5}$。<br>   過 $y=5$ 時：$x = 7 + 2 \\times \\frac{5}{7} \\approx 8.42 < 10$，避開牆一。<br>   過 $y=6$ 時：$x = 7 + 3 \\times \\frac{5}{7} \\approx 9.14 > 9$，避開牆二。完全通關！<br>*(3)* 若 $Q(8,5)$：正好在牆一的左側延伸線上，與 $P(12,10)$ 連線斜率 $m = \\frac{5}{4}$。<br>   過 $y=6$ 時：$x = 8 + 1 \\times \\frac{4}{5} = 8.8 \\in [0,9]$，被牆二擋住。<br>*(4)* 若 $Q(9,1)$：斜率 $m = \\frac{9}{3} = 3$。<br>   過 $y=6$ 時：$x = 9 + 5 \\times \\frac{1}{3} \\approx 10.67 > 9$ (避開牆二)。<br>   過 $y=5$ 時：$x = 9 + 4 \\times \\frac{1}{3} \\approx 10.33 \\in [10,15]$，被牆一擋住。<br>*(5)* 若 $Q(9,2)$：斜率 $m = \\frac{8}{3}$。<br>   過 $y=5$ 時：$x = 9 + 3 \\times \\frac{3}{8} = 10.125 \\in [10,15]$，被牆一擋住。<br><br>**答案：(2)**"
+      "explanation": "**💡 破題關鍵：**直線不被阻擋的條件，就是直線在通過牆壁所在的 $y$ 高度時，其 $x$ 坐標必須在牆壁範圍之外。<br><br>**📝 學霸詳解**<br>牆壁一：$y=5$，阻擋區間 $x \\in [10, 15]$。<br>牆壁二：$y=6$，阻擋區間 $x \\in [0, 9]$。<br>我們將選項的點 $Q$ 與 $P(12,10)$ 連線，檢查是否安全：<br>*(1)* 若 $Q(6,3)$：連線斜率 $m = \\frac{10-3}{12-6} = \\frac{7}{6}$。<br>   過 $y=6$ 時：$x = 6 + 3 \\times \\frac{6}{7} \\approx 8.57 \\in [0,9]$，被牆二擋住。<br>*(2)* 若 $Q(7,3)$：連線斜率 $m = \\frac{10-3}{12-7} = \\frac{7}{5}$。<br>   過 $y=5$ 時：$x = 7 + 2 \\times \\frac{5}{7} \\approx 8.42 \\lt 10$，避開牆一。<br>   過 $y=6$ 時：$x = 7 + 3 \\times \\frac{5}{7} \\approx 9.14 \\gt 9$，避開牆二。完全通關！<br>*(3)* 若 $Q(8,5)$：正好在牆一的左側延伸線上，與 $P(12,10)$ 連線斜率 $m = \\frac{5}{4}$。<br>   過 $y=6$ 時：$x = 8 + 1 \\times \\frac{4}{5} = 8.8 \\in [0,9]$，被牆二擋住。<br>*(4)* 若 $Q(9,1)$：斜率 $m = \\frac{9}{3} = 3$。<br>   過 $y=6$ 時：$x = 9 + 5 \\times \\frac{1}{3} \\approx 10.67 \\gt 9$ (避開牆二)。<br>   過 $y=5$ 時：$x = 9 + 4 \\times \\frac{1}{3} \\approx 10.33 \\in [10,15]$，被牆一擋住。<br>*(5)* 若 $Q(9,2)$：斜率 $m = \\frac{8}{3}$。<br>   過 $y=5$ 時：$x = 9 + 3 \\times \\frac{3}{8} = 10.125 \\in [10,15]$，被牆一擋住。<br><br>**答案：(2)**"
     },
     {
       "id": "113-gsatB-04",
@@ -101,11 +101,11 @@
       "type": "單選題",
       "correct_rate": 15,
       "diagram": null,
-      "question": "有一城市分為東、西兩區。兩區各有一個氣溫偵測站，該城市當天的最高溫(單位：攝氏度)是取這兩區當天氣溫的最大值來記錄。下表顯示東、西兩區某月(共30天)每日最高溫分布的情形。<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">溫度 $t$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$18 \\le t < 24$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$24 \\le t < 30$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$30 \\le t < 36$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$36 \\le t$</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">東區(天數)</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">0</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">11</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">14</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">5</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">西區(天數)</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">3</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">12</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">15</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">0</td></tr></table>根據上表，該城市當月每日最高溫分布的情形如下表。<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">溫度 $t$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$18 \\le t < 24$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$24 \\le t < 30$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$30 \\le t < 36$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$36 \\le t$</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">天數</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$A$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$B$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$C$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$D$</td></tr></table>試選出有可能為數組 $(A,B,C,D)$ 的選項。",
+      "question": "有一城市分為東、西兩區。兩區各有一個氣溫偵測站，該城市當天的最高溫(單位：攝氏度)是取這兩區當天氣溫的最大值來記錄。下表顯示東、西兩區某月(共30天)每日最高溫分布的情形。<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">溫度 $t$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$18 \\le t \\lt 24$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$24 \\le t \\lt 30$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$30 \\le t \\lt 36$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$36 \\le t$</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">東區(天數)</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">0</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">11</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">14</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">5</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">西區(天數)</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">3</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">12</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">15</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">0</td></tr></table>根據上表，該城市當月每日最高溫分布的情形如下表。<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">溫度 $t$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$18 \\le t \\lt 24$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$24 \\le t \\lt 30$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$30 \\le t \\lt 36$</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">$36 \\le t$</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">天數</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$A$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$B$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$C$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$D$</td></tr></table>試選出有可能為數組 $(A,B,C,D)$ 的選項。",
       "options": ["(1) (0,15,15,0)", "(2) (3,12,15,5)", "(3) (0,9,16,5)", "(4) (3,7,15,5)", "(5) (0,12,13,5)"],
       "answer": "(3)",
       "hint": "最高溫代表只要東、西區有任何一區達標，該城市最高溫就會落入該區間。從極端值（最低與最高區間）開始判定。",
-      "explanation": "**💡 破題關鍵：**「兩區取最大值」表示聯集概念。要讓城市最高溫落在較低溫度區間，必須兩區「同時」都在該低溫區間。<br><br>**📝 學霸詳解**<br>設 $T_E$ 為東區氣溫，$T_W$ 為西區氣溫，城市氣溫為 $T = \\max(T_E, T_W)$。<br>1. **判斷 D ($t \\ge 36$)：**<br>   只要有一區 $\\ge 36$，城市最高溫就 $\\ge 36$。西區為 0 天，東區有 5 天。所以這 5 天的城市最高溫必定 $\\ge 36$，故 $D = 5$。<br>2. **判斷 A ($18 \\le t < 24$)：**<br>   要讓城市最高溫落在此最低區間，必須東、西兩區「皆」落在此區間。但東區有 0 天落在此區間，因此不可能有任何一天的城市最高溫在此區間，故 $A = 0$。<br>   （由 $A=0, D=5$ 可先刪去選項1, 2, 4，僅剩 3, 5）<br>3. **判斷 C ($30 \\le t < 36$)：**<br>   東區氣溫 $\\ge 30$ 共有 $14 + 5 = 19$ 天。這代表城市的最高溫至少有 $19$ 天是 $\\ge 30$ 的。<br>   所以 $C + D \\ge 19$。已知 $D = 5$，則 $C \\ge 14$。<br>4. **檢驗選項：**<br>   選項 (3) 的 $C = 16$，滿足 $16 \\ge 14$。<br>   選項 (5) 的 $C = 13$，不滿足 $13 \\ge 14$，直接淘汰。<br>   故只剩下選項 (3) 有可能。<br><br>**答案：(3)**"
+      "explanation": "**💡 破題關鍵：**「兩區取最大值」表示聯集概念。要讓城市最高溫落在較低溫度區間，必須兩區「同時」都在該低溫區間。<br><br>**📝 學霸詳解**<br>設 $T_E$ 為東區氣溫，$T_W$ 為西區氣溫，城市氣溫為 $T = \\max(T_E, T_W)$。<br>1. **判斷 D ($t \\ge 36$)：**<br>   只要有一區 $\\ge 36$，城市最高溫就 $\\ge 36$。西區為 0 天，東區有 5 天。所以這 5 天的城市最高溫必定 $\\ge 36$，故 $D = 5$。<br>2. **判斷 A ($18 \\le t \\lt 24$)：**<br>   要讓城市最高溫落在此最低區間，必須東、西兩區「皆」落在此區間。但東區有 0 天落在此區間，因此不可能有任何一天的城市最高溫在此區間，故 $A = 0$。<br>   （由 $A=0, D=5$ 可先刪去選項1, 2, 4，僅剩 3, 5）<br>3. **判斷 C ($30 \\le t \\lt 36$)：**<br>   東區氣溫 $\\ge 30$ 共有 $14 + 5 = 19$ 天。這代表城市的最高溫至少有 $19$ 天是 $\\ge 30$ 的。<br>   所以 $C + D \\ge 19$。已知 $D = 5$，則 $C \\ge 14$。<br>4. **檢驗選項：**<br>   選項 (3) 的 $C = 16$，滿足 $16 \\ge 14$。<br>   選項 (5) 的 $C = 13$，不滿足 $13 \\lt 14$，直接淘汰。<br>   故只剩下選項 (3) 有可能。<br><br>**答案：(3)**"
     },
     {
       "id": "113-gsatB-08",
@@ -116,11 +116,11 @@
       "type": "多選題",
       "correct_rate": 56,
       "diagram": null,
-      "question": "已知正實數數列 $a,b,c,d,e$ 為等比數列，且 $a<b<c<d<e$，試選出下列為等比數列的選項。",
+      "question": "已知正實數數列 $a,b,c,d,e$ 為等比數列，且 $a \\lt b \\lt c \\lt d \\lt e$，試選出下列為等比數列的選項。",
       "options": ["(1) $a,-b,c,-d,e$", "(2) $e,d,c,b,a$", "(3) $\\log a, \\log b, \\log c, \\log d, \\log e$", "(4) $3^a, 3^b, 3^c, 3^d, 3^e$", "(5) $abc, bcd, cde$"],
       "answer": ["(1)", "(2)", "(5)"],
       "hint": "檢查各數列的後項除以前項是否為固定常數 (公比)。注意對數會將等比變為等差，指數無法維持等比。",
-      "explanation": "**💡 破題關鍵：**緊扣等比數列的定義：相鄰兩項之商為定值 $r$。已知原數列公比 $r > 1$。<br><br>**📝 學霸詳解**<br>*(1)* 公比為 $\\frac{-b}{a} = -r$，每項皆乘上 $-r$，為等比數列。正確。<br>*(2)* 順序反轉，公比變為 $\\frac{d}{e} = \\frac{1}{r}$，仍為等比數列。正確。<br>*(3)* $\\log b - \\log a = \\log(\\frac{b}{a}) = \\log r$ (為常數)。這是「等差數列」，非等比。錯誤。<br>*(4)* 後項除以前項 $\\frac{3^b}{3^a} = 3^{b-a}$。因為原數列為等比，其項間差距 $b-a \\neq c-b$，故商不為定值。錯誤。<br>*(5)* 檢查相鄰項的比值：$\\frac{bcd}{abc} = \\frac{d}{a} = r^3$，$\\frac{cde}{bcd} = \\frac{e}{b} = r^3$。比值固定為 $r^3$，為等比數列。正確。<br><br>**答案：(1), (2), (5)**"
+      "explanation": "**💡 破題關鍵：**緊扣等比數列的定義：相鄰兩項之商為定值 $r$。已知原數列公比 $r \\gt 1$。<br><br>**📝 學霸詳解**<br>*(1)* 公比為 $\\frac{-b}{a} = -r$，每項皆乘上 $-r$，為等比數列。正確。<br>*(2)* 順序反轉，公比變為 $\\frac{d}{e} = \\frac{1}{r}$，仍為等比數列。正確。<br>*(3)* $\\log b - \\log a = \\log(\\frac{b}{a}) = \\log r$ (為常數)。這是「等差數列」，非等比。錯誤。<br>*(4)* 後項除以前項 $\\frac{3^b}{3^a} = 3^{b-a}$。因為原數列為等比，其項間差距 $b-a \\ne c-b$，故商不為定值。錯誤。<br>*(5)* 檢查相鄰項的比值：$\\frac{bcd}{abc} = \\frac{d}{a} = r^3$，$\\frac{cde}{bcd} = \\frac{e}{b} = r^3$。比值固定為 $r^3$，為等比數列。正確。<br><br>**答案：(1), (2), (5)**"
     },
     {
       "id": "113-gsatB-09",
@@ -135,7 +135,7 @@
       "options": ["(1) $2(x^3+7x^2+x+3)(x^2+5x+1)$", "(2) $(x^3+7x^2+x+3)(x^2+5x+1)-x$", "(3) $(x^3+7x^2+x+3)(x^2+5x+1)+x^2$", "(4) $(x^3+7x^2+x+4)(x^2+5x+1)-x$", "(5) $(x^3+7x^2+x+4)(x^2+5x+1)-x^2$"],
       "answer": ["(2)", "(5)"],
       "hint": "依據除法原理 $f(x) = Q(x)D(x) + R(x)$，餘式 $R(x)$ 的次數必須嚴格小於除式的次數(即二次)。如果大於等於，就會改變商式。",
-      "explanation": "**💡 破題關鍵：**檢驗各選項在除以 $x^2+5x+1$ 時，商式是否依舊保持為 $x^3+7x^2+x+3$。關鍵在於尾巴的餘式次數是否小於 2。<br><br>**📝 學霸詳解**<br>依據除法原理，$f(x) = (x^3+7x^2+x+3)(x^2+5x+1) + R(x)$，其中 $\\deg R(x) < 2$ (最高只能是一次式)。<br>*(1)* $f(x) = 2(x^3+7x^2+x+3)(x^2+5x+1)$，商式變成了 $2(x^3+7x^2+x+3)$，錯誤。<br>*(2)* 尾巴餘式為 $-x$，次數為 1，合乎條件，商式不變。正確。<br>*(3)* 尾巴餘式為 $x^2$，次數等於 2。如果繼續除以 $(x^2+5x+1)$，會產生 $+1$ 的新商數，使得總商式變為 $x^3+7x^2+x+4$。錯誤。<br>*(4)* 將式子展開：$(x^3+7x^2+x+3)(x^2+5x+1) + 1 \\cdot (x^2+5x+1) - x$<br>   $= (x^3+7x^2+x+3)(x^2+5x+1) + (x^2+4x+1)$。<br>   尾巴的 $x^2+4x+1$ 次數為 2，再除一次會多出 $+1$ 商數，使得總商式變成 $x^3+7x^2+x+4$。錯誤。<br>*(5)* 將式子展開：$(x^3+7x^2+x+3)(x^2+5x+1) + 1 \\cdot (x^2+5x+1) - x^2$<br>   $= (x^3+7x^2+x+3)(x^2+5x+1) + (5x+1)$。<br>   尾巴餘式 $5x+1$ 次數為 1，除法終止！所以此時的商式精準地保持為 $x^3+7x^2+x+3$。正確。<br><br>**答案：(2), (5)**"
+      "explanation": "**💡 破題關鍵：**檢驗各選項在除以 $x^2+5x+1$ 時，商式是否依舊保持為 $x^3+7x^2+x+3$。關鍵在於尾巴的餘式次數是否小於 2。<br><br>**📝 學霸詳解**<br>依據除法原理，$f(x) = (x^3+7x^2+x+3)(x^2+5x+1) + R(x)$，其中 $\\deg R(x) \\lt 2$ (最高只能是一次式)。<br>*(1)* $f(x) = 2(x^3+7x^2+x+3)(x^2+5x+1)$，商式變成了 $2(x^3+7x^2+x+3)$，錯誤。<br>*(2)* 尾巴餘式為 $-x$，次數為 1，合乎條件，商式不變。正確。<br>*(3)* 尾巴餘式為 $x^2$，次數等於 2。如果繼續除以 $(x^2+5x+1)$，會產生 $+1$ 的新商數，使得總商式變為 $x^3+7x^2+x+4$。錯誤。<br>*(4)* 將式子展開：$(x^3+7x^2+x+3)(x^2+5x+1) + 1 \\cdot (x^2+5x+1) - x$<br>   $= (x^3+7x^2+x+3)(x^2+5x+1) + (x^2+4x+1)$。<br>   尾巴的 $x^2+4x+1$ 次數為 2，再除一次會多出 $+1$ 商數，使得總商式變成 $x^3+7x^2+x+4$。錯誤。<br>*(5)* 將式子展開：$(x^3+7x^2+x+3)(x^2+5x+1) + 1 \\cdot (x^2+5x+1) - x^2$<br>   $= (x^3+7x^2+x+3)(x^2+5x+1) + (5x+1)$。<br>   尾巴餘式 $5x+1$ 次數為 1，除法終止！所以此時的商式精準地保持為 $x^3+7x^2+x+3$。正確。<br><br>**答案：(2), (5)**"
     },
     {
       "id": "113-gsatB-10",
@@ -165,7 +165,7 @@
       "options": ["(1) $A=0.93X$", "(2) $Y \\le 0.8X$", "(3) $\\frac{-0.07+p+q+r}{4}=-0.05$", "(4) $\\sqrt[4]{\\frac{Y}{X}}-1=-0.05$", "(5) $0.93(1+p)(1+q)(1+r)=(0.95)^4$"],
       "answer": ["(1)", "(4)", "(5)"],
       "hint": "年成長率 $g$ 的意義為 $E_n = E_{n-1}(1+g)$。平均成長率為幾何平均而非算術平均。",
-      "explanation": "**💡 破題關鍵：**釐清「年成長率」的定義，以及總變化量是用「連乘」計算而非相加。<br><br>**📝 學霸詳解**<br>*(1)* 根據定義 $A = X(1 + (-0.07)) = 0.93X$。正確。<br>*(2)* $Y = X(1-0.05)^4 = X(0.95)^4$。計算得 $(0.95)^2 = 0.9025$，$(0.95)^4 = 0.9025^2 \\approx 0.8145$。因為 $0.8145 > 0.8$，所以 $Y > 0.8X$。錯誤。<br>*(3)* 平均成長率不能用「算術平均數」(直接相加除以 4) 來算，而是必須用「幾何平均數」$\\sqrt[4]{(1-0.07)(1+p)(1+q)(1+r)} - 1$。錯誤。<br>*(4)* 由 $Y = X(0.95)^4 \\Rightarrow \\frac{Y}{X} = (0.95)^4 \\Rightarrow \\sqrt[4]{\\frac{Y}{X}} = 0.95 = 1 - 0.05$，故 $\\sqrt[4]{\\frac{Y}{X}}-1 = -0.05$。正確。<br>*(5)* 利用連乘原理，$Y = X(1-0.07)(1+p)(1+q)(1+r)$。又 $Y = X(0.95)^4$，兩式相比即可得到 $0.93(1+p)(1+q)(1+r) = (0.95)^4$。正確。<br><br>**答案：(1), (4), (5)**"
+      "explanation": "**💡 破題關鍵：**釐清「年成長率」的定義，以及總變化量是用「連乘」計算而非相加。<br><br>**📝 學霸詳解**<br>*(1)* 根據定義 $A = X(1 + (-0.07)) = 0.93X$。正確。<br>*(2)* $Y = X(1-0.05)^4 = X(0.95)^4$。計算得 $(0.95)^2 = 0.9025$，$(0.95)^4 = 0.9025^2 \\approx 0.8145$。因為 $0.8145 \\gt 0.8$，所以 $Y \\gt 0.8X$。錯誤。<br>*(3)* 平均成長率不能用「算術平均數」(直接相加除以 4) 來算，而是必須用「幾何平均數」$\\sqrt[4]{(1-0.07)(1+p)(1+q)(1+r)} - 1$。錯誤。<br>*(4)* 由 $Y = X(0.95)^4 \\Rightarrow \\frac{Y}{X} = (0.95)^4 \\Rightarrow \\sqrt[4]{\\frac{Y}{X}} = 0.95 = 1 - 0.05$，故 $\\sqrt[4]{\\frac{Y}{X}}-1 = -0.05$。正確。<br>*(5)* 利用連乘原理，$Y = X(1-0.07)(1+p)(1+q)(1+r)$。又 $Y = X(0.95)^4$，兩式相比即可得到 $0.93(1+p)(1+q)(1+r) = (0.95)^4$。正確。<br><br>**答案：(1), (4), (5)**"
     },
     {
       "id": "113-gsatB-12",
@@ -177,7 +177,7 @@
       "correct_rate": 49,
       "diagram": null,
       "question": "小明寫了一個程式讓機器人在2×2的棋盤中移動，如圖所示。每執行一次，程式會選擇「上、下、左、右」中的某一個方向，不同方向被選擇的機率均相等，並指示機器人依該方向移動一格，但若選到的方向會跑出棋盤，則機器人該次會停在原地。每次執行都是從上次所在位置依程式重新選取的方向移動，假設機器人的初始位置在A。令執行程式 $n$ 次後，機器人停留在 $A, B, C, D$ 的機率分別為 $a_n, b_n, c_n$ 和 $d_n$。試選出正確的選項。",
-      "options": ["(1) $b_1 = \\frac{1}{4}$", "(2) $b_2 = \\frac{1}{8}$", "(3) $a_2+d_2 = \\frac{3}{4}$", "(4) $b_{99} = c_{99}$", "(5) $a_{100}+d_{100} > \\frac{1}{2}$"],
+      "options": ["(1) $b_1 = \\frac{1}{4}$", "(2) $b_2 = \\frac{1}{8}$", "(3) $a_2+d_2 = \\frac{3}{4}$", "(4) $b_{99} = c_{99}$", "(5) $a_{100}+d_{100} \\gt \\frac{1}{2}$"],
       "answer": ["(1)", "(4)"],
       "hint": "建立狀態轉移機率，第一步從 A 出發，分別會往哪裡走？利用對稱性可推知 $b_n = c_n$ 以及對角線機率和的規律。",
       "explanation": "**💡 破題關鍵：**這是一個標準的馬可夫鏈(狀態轉移)題型。善用盤面的「對稱性」可省去大量計算。<br><br>**📝 學霸詳解**<br>設棋盤位置為：<br>[A B]<br>[C D]<br>從 A 出發(往上、左會出界原地停留，機率各 1/4，共 2/4 = 1/2)：<br>- 留 A：1/2<br>- 去 B：1/4<br>- 去 C：1/4<br>*(1)* 執行 1 次後，$b_1 = \\frac{1}{4}$。正確。<br>*(2)* 執行 2 次要到 B，可能路徑為 (A$\\to$B) 或 (B$\\to$B) 或 (D$\\to$B)。<br>   其中 $b_2 = a_1 \\times P(A\\to B) + b_1 \\times P(B\\to B) + c_1 \\times P(C\\to B)$ (因C無法直達B機率0)<br>   $b_2 = (\\frac{1}{2})(\\frac{1}{4}) + (\\frac{1}{4})(\\frac{1}{2}) + (\\frac{1}{4})(0) = \\frac{1}{8} + \\frac{1}{8} = \\frac{1}{4}$。錯誤。<br>*(3)* 同理求 $a_2, d_2$：<br>   $a_2 = a_1(\\frac{1}{2}) + b_1(\\frac{1}{4}) + c_1(\\frac{1}{4}) = \\frac{1}{4} + \\frac{1}{16} + \\frac{1}{16} = \\frac{3}{8}$。<br>   $d_2 = b_1(\\frac{1}{4}) + c_1(\\frac{1}{4}) = \\frac{1}{16} + \\frac{1}{16} = \\frac{1}{8}$。<br>   $a_2 + d_2 = \\frac{3}{8} + \\frac{1}{8} = \\frac{1}{2}$。錯誤。<br>*(4)* 因為盤面關於主對角線 (A-D) 完美對稱，從 A 出發，B 和 C 的地位完全相等，故無論第幾次 $b_n$ 永遠等於 $c_n$。正確。<br>*(5)* 我們觀察 $a_n + d_n$ 的變化規律：<br>   $a_{n+1} + d_{n+1} = \\frac{1}{2}a_n + \\frac{1}{4}b_n + \\frac{1}{4}c_n + \\frac{1}{4}b_n + \\frac{1}{4}c_n + \\frac{1}{2}d_n = \\frac{1}{2}(a_n+d_n) + \\frac{1}{2}(b_n+c_n)$。<br>   因為 $a_n+b_n+c_n+d_n = 1$，所以 $b_n+c_n = 1 - (a_n+d_n)$。<br>   代入得到 $a_{n+1} + d_{n+1} = \\frac{1}{2}(a_n+d_n) + \\frac{1}{2}(1 - (a_n+d_n)) = \\frac{1}{2}$。<br>   這代表從 $n=1$ 開始，$a_n+d_n$ 永遠「等於」$\\frac{1}{2}$，不會大於。錯誤。<br><br>**答案：(1), (4)**"
@@ -191,11 +191,11 @@
       "type": "選填題",
       "correct_rate": 63,
       "diagram": null,
-      "question": "已知 $a,b,c,d$ 為實數，且 $\\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix}$。若 $\\begin{bmatrix} 1 & -1 \\\\ 3 & -2 \\end{bmatrix} \\begin{bmatrix} 2a+1 \\\\ 2b+1 \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix}$，則 $c-3d$ 的值為 $(13-1)(13-2)$",
+      "question": "已知 $a,b,c,d$ 為實數，且 $\\begin{bmatrix} 1 & -1 \\\\ 3 & -2 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}$。若 $\\begin{bmatrix} 1 & -1 \\\\ 3 & -2 \\end{bmatrix} \\begin{bmatrix} 2a+1 \\\\ 2b+1 \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix}$，則 $c-3d$ 的值為何？",
       "options": [],
-      "answer": "13-1=0, 13-2=7",
+      "answer": "-1",
       "hint": "先解出 $a, b$ 的數值，再直接代入第二個矩陣方程式算出 $c, d$ 即可。",
-      "explanation": "**💡 破題關鍵：**二階反方陣或是直接聯立求解皆可，這題數字很漂亮，直接解聯立最快。<br><br>**📝 學霸詳解**<br>1. 展開第一個矩陣方程式解聯立：<br>   $\\begin{cases} 2a + b = 1 \\\\ 3a + 2b = 2 \\end{cases}$<br>   由第一式得 $b = 1 - 2a$，代入第二式得 $3a + 2(1 - 2a) = 2 \\Rightarrow -a + 2 = 2 \\Rightarrow a = 0$。<br>   因此 $b = 1$。<br>2. 將 $a=0, b=1$ 代入後面的矩陣中：<br>   $\\begin{bmatrix} 2a+1 \\\\ 2b+1 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix}$。<br>3. 計算第二個矩陣乘法：<br>   $\\begin{bmatrix} 1 & -1 \\\\ 3 & -2 \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 1(1) + (-1)(3) \\\\ 3(1) + (-2)(3) \\end{bmatrix} = \\begin{bmatrix} -2 \\\\ -3 \\end{bmatrix}$。<br>4. 所以 $c = -2$，$d = -3$。<br>5. 題目所求 $c - 3d = -2 - 3(-3) = -2 + 9 = 7$。<br><br>**答案：7** (註：依題意計算答案為 7，對應畫卡格採 07 標記補足)"
+      "explanation": "**💡 破題關鍵：**這題數字經過設計，直接解二元一次聯立方程式最快最穩。<br><br>**📝 學霸詳解**<br>1. 展開第一個矩陣方程式解聯立：<br>   $\\begin{cases} a - b = 1 \\\\ 3a - 2b = 0 \\end{cases}$<br>   由第二式得 $2b = 3a \\Rightarrow b = 1.5a$，代入第一式：<br>   $a - 1.5a = 1 \\Rightarrow -0.5a = 1 \\Rightarrow a = -2$。<br>   代回得 $b = -3$。<br>2. 將 $a=-2, b=-3$ 代入後面的矩陣中：<br>   $\\begin{bmatrix} 2a+1 \\\\ 2b+1 \\end{bmatrix} = \\begin{bmatrix} 2(-2)+1 \\\\ 2(-3)+1 \\end{bmatrix} = \\begin{bmatrix} -3 \\\\ -5 \\end{bmatrix}$。<br>3. 計算第二個矩陣乘法求 $c, d$：<br>   $\\begin{bmatrix} c \\\\ d \\end{bmatrix} = \\begin{bmatrix} 1 & -1 \\\\ 3 & -2 \\end{bmatrix} \\begin{bmatrix} -3 \\\\ -5 \\end{bmatrix} = \\begin{bmatrix} 1(-3) + (-1)(-5) \\\\ 3(-3) + (-2)(-5) \\end{bmatrix} = \\begin{bmatrix} -3 + 5 \\\\ -9 + 10 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}$。<br>4. 所以 $c = 2$，$d = 1$。<br>5. 題目所求 $c - 3d = 2 - 3(1) = -1$。<br><br>**答案：-1**"
     },
     {
       "id": "113-gsatB-14",
@@ -206,9 +206,9 @@
       "type": "選填題",
       "correct_rate": 23,
       "diagram": null,
-      "question": "某校全體高三學生都有報考學測數學A或數學B，在這些學生中只報考數學A的學生占全體高三學生的 $\\frac{3}{10}$，報考數學A的學生中 $\\frac{5}{8}$ 同時也報考數學B。則只報考數學B的學生在該校所有報考數學B的學生中所占的比例為 $\\frac{(14-1)}{(14-2)}$。(化為最簡分數)",
+      "question": "某校全體高三學生都有報考學測數學A或數學B，在這些學生中只報考數學A的學生占全體高三學生的 $\\frac{3}{10}$，報考數學A的學生中 $\\frac{5}{8}$ 同時也報考數學B。則只報考數學B的學生在該校所有報考數學B的學生中所占的比例為何？(化為最簡分數)",
       "options": [],
-      "answer": "14-1=2, 14-2=7",
+      "answer": "2/7",
       "hint": "利用文氏圖或表格法，設總人數為 100 人，將「只考A」、「兩者皆考」、「只考B」的人數具體算出來。",
       "explanation": "**💡 破題關鍵：**碰到比例問題，直接將母體假設為一個方便計算的具體數字(如 100 或最小公倍數)。<br><br>**📝 學霸詳解**<br>設全校高三總人數為 $100$ 人。<br>1. 「只考數A」的人數：$100 \\times \\frac{3}{10} = 30$ 人。<br>2. 設「報考數A的總人數」為 $N_A$。題意說「報考數A的學生中有 $\\frac{5}{8}$ 同時報考數B」，這表示：<br>   (既考A又考B) $= \\frac{5}{8} N_A$<br>   (只考數A) $= N_A - \\frac{5}{8} N_A = \\frac{3}{8} N_A$。<br>3. 將「只考數A」的人數代入：<br>   $\\frac{3}{8} N_A = 30 \\Rightarrow N_A = 80$。<br>   所以 (既考A又考B) 的人數 $= 80 - 30 = 50$ 人。<br>4. 因為全體學生「皆有報考」數A或數B，所以總人數 $=$ (只考A) $+$ (既考A又考B) $+$ (只考B)。<br>   $100 = 30 + 50 + \\text{(只考B)} \\Rightarrow \\text{(只考B)} = 20$ 人。<br>5. 題目所求為：「只報考數B」占「所有報考數B」的比例。<br>   所有報考數B $= \\text{(只考B)} + \\text{(既考A又考B)} = 20 + 50 = 70$。<br>   比例 $= \\frac{20}{70} = \\frac{2}{7}$。<br><br>**答案：2/7**"
     },
@@ -221,11 +221,11 @@
       "type": "選填題",
       "correct_rate": 28,
       "diagram": null,
-      "question": "已知 $P_1, P_2, R$ 為平面上相異三點，其中 $P_1, P_2, R$ 三點不共線，且滿足 $\\vec{P_1R}=4\\vec{P_1Q_1}, \\vec{P_2R}=7\\vec{P_2Q_2}$，則 $\\vec{Q_1Q_2} = (15-1) \\vec{P_1Q_1} + (15-2)(15-3) \\vec{P_2Q_2}$",
+      "question": "已知 $P_1, P_2, R$ 為平面上相異三點，其中 $P_1, P_2, R$ 三點不共線，且滿足 $\\vec{P_1R}=4\\vec{P_1Q_1}, \\vec{P_2R}=7\\vec{P_2Q_2}$。若 $\\vec{Q_1Q_2} = a \\vec{P_1Q_1} + b \\vec{P_2Q_2}$，試求數對 $(a,b)$。",
       "options": [],
-      "answer": "15-1=3, 15-2=-, 15-3=6",
+      "answer": "(3, -6)",
       "hint": "利用向量減法 $\\vec{Q_1Q_2} = \\vec{R Q_2} - \\vec{R Q_1}$ 或以 $R$ 為起點拆解，再換算回 $P_1Q_1$ 與 $P_2Q_2$ 向量。",
-      "explanation": "**💡 破題關鍵：**圖形上這兩個點 $Q_1, Q_2$ 分別位在線段 $P_1R$ 與 $P_2R$ 上，利用幾何向量加減法直接連接。<br><br>**📝 學霸詳解**<br>1. 由 $\\vec{P_1R} = 4\\vec{P_1Q_1}$ 可知，點 $Q_1$ 位於 $P_1$ 到 $R$ 的路上，且 $\\vec{Q_1R} = 3\\vec{P_1Q_1}$。<br>2. 同理由 $\\vec{P_2R} = 7\\vec{P_2Q_2}$ 可知，點 $Q_2$ 位於 $P_2$ 到 $R$ 的路上，且 $\\vec{Q_2R} = 6\\vec{P_2Q_2}$，反向則為 $\\vec{R Q_2} = -6\\vec{P_2Q_2}$。<br>3. 利用向量加法串接 $\\vec{Q_1Q_2}$：<br>   $\\vec{Q_1Q_2} = \\vec{Q_1R} + \\vec{R Q_2}$<br>4. 將步驟 1 與 2 的結果代入：<br>   $\\vec{Q_1Q_2} = 3\\vec{P_1Q_1} - 6\\vec{P_2Q_2}$。<br>5. 故答案填入 $3$ 與 $-6$。<br><br>**答案：3, -6**"
+      "explanation": "**💡 破題關鍵：**圖形上這兩個點 $Q_1, Q_2$ 分別位在線段 $P_1R$ 與 $P_2R$ 上，利用幾何向量加減法直接連接。<br><br>**📝 學霸詳解**<br>1. 由 $\\vec{P_1R} = 4\\vec{P_1Q_1}$ 可知，點 $Q_1$ 位於 $P_1$ 到 $R$ 的路上，且 $\\vec{Q_1R} = 3\\vec{P_1Q_1}$。<br>2. 同理由 $\\vec{P_2R} = 7\\vec{P_2Q_2}$ 可知，點 $Q_2$ 位於 $P_2$ 到 $R$ 的路上，且 $\\vec{Q_2R} = 6\\vec{P_2Q_2}$，反向則為 $\\vec{R Q_2} = -6\\vec{P_2Q_2}$。<br>3. 利用向量加法串接 $\\vec{Q_1Q_2}$：<br>   $\\vec{Q_1Q_2} = \\vec{Q_1R} + \\vec{R Q_2}$<br>4. 將步驟 1 與 2 的結果代入：<br>   $\\vec{Q_1Q_2} = 3\\vec{P_1Q_1} - 6\\vec{P_2Q_2}$。<br>5. 故 $a = 3, b = -6$，數對為 $(3, -6)$。<br><br>**答案：(3, -6)**"
     },
     {
       "id": "113-gsatB-16",
@@ -236,9 +236,9 @@
       "type": "選填題",
       "correct_rate": 15,
       "diagram": null,
-      "question": "在空間坐標系中，有一球心坐標在 $O(0,0,0)$ 且北極點在 $N(0,0,2)$ 的地球儀。已知球面上點 $A$ 坐標為 $(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}, \\sqrt{3})$，赤道上距離點 $A$ 最遠的點為點 $P$，則在通過點 $A$、點 $P$ 的大圓上這兩點的劣弧長為 $\\frac{(16-1)\\pi}{(16-2)}$。(化為最簡分數)",
+      "question": "在空間坐標系中，有一球心坐標在 $O(0,0,0)$ 且北極點在 $N(0,0,2)$ 的地球儀。已知球面上點 $A$ 坐標為 $(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}, \\sqrt{3})$，赤道上距離點 $A$ 最遠的點為點 $P$，則在通過點 $A$、點 $P$ 的大圓上這兩點的劣弧長為多少 $\\pi$？(化為最簡分數)",
       "options": [],
-      "answer": "16-1=4, 16-2=3",
+      "answer": "4/3",
       "hint": "先找出赤道上與 A 投影點反向的 P 點坐標，再利用內積求出夾角，最後帶入弧長公式 $S=R\\theta$。",
       "explanation": "**💡 破題關鍵：**立體幾何中「距離最遠」通常位在通過原點的對向。善用空間向量內積求夾角。<br><br>**📝 學霸詳解**<br>1. 由北極點 $N(0,0,2)$ 可知，球的半徑 $R = 2$。赤道即為 $xy$ 平面上的大圓 ( $z=0$ )。<br>2. 將點 $A$ 投影至赤道上得 $A'(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}, 0)$。<br>3. 點 $P$ 必須在赤道上，且距離 $A$ 最遠，代表 $P$ 點的位置與投影點 $A'$ 恰好在原點的「正對面」。<br>   向量 $\\vec{OA'} = (\\frac{\\sqrt{3}}{2}, \\frac{1}{2}, 0)$，其長度為 $\\sqrt{(\\frac{\\sqrt{3}}{2})^2 + (\\frac{1}{2})^2} = 1$。<br>   因為 $P$ 點要在半徑為 $2$ 的赤道上，且方向與 $\\vec{OA'}$ 相反，故 $\\vec{OP} = -2 \\vec{OA'} = (-\\sqrt{3}, -1, 0)$。<br>4. 求大圓劣弧長，須先找夾角 $\\theta$：<br>   $\\vec{OA} = (\\frac{\\sqrt{3}}{2}, \\frac{1}{2}, \\sqrt{3})$，$\\vec{OP} = (-\\sqrt{3}, -1, 0)$。<br>   內積 $\\vec{OA} \\cdot \\vec{OP} = (\\frac{\\sqrt{3}}{2})(-\\sqrt{3}) + (\\frac{1}{2})(-1) + (\\sqrt{3})(0) = -\\frac{3}{2} - \\frac{1}{2} = -2$。<br>5. 根據內積公式 $\\cos\\theta = \\frac{\\vec{OA} \\cdot \\vec{OP}}{|\\vec{OA}||\\vec{OP}|} = \\frac{-2}{2 \\times 2} = -\\frac{1}{2}$。<br>   可知夾角 $\\theta = 120^\\circ = \\frac{2\\pi}{3}$ 弧度。<br>6. 大圓劣弧長 $S = R\\theta = 2 \\times \\frac{2\\pi}{3} = \\frac{4\\pi}{3}$。<br><br>**答案：4/3**"
     },
@@ -251,9 +251,9 @@
       "type": "選填題",
       "correct_rate": 1,
       "diagram": null,
-      "question": "在一圓的圓周上取12個等分點並以順時針方向依序編1號至12號。由這12個點任取3點為頂點所形成的三角形中，三個內角的角度由小到大會成等差數列的三角形有 $(17-1)(17-2)$ 個。",
+      "question": "在一圓的圓周上取12個等分點並以順時針方向依序編1號至12號。由這12個點任取3點為頂點所形成的三角形中，三個內角的角度由小到大會成等差數列的三角形共有幾個？",
       "options": [],
-      "answer": "17-1=7, 17-2=6",
+      "answer": "76",
       "hint": "圓周角等於對應弧度的一半。角度成等差，表示對應的三段弧長也成等差且總和為12份。先列舉可能組合，再計算排列數。",
       "explanation": "**💡 破題關鍵：**將角度的問題轉換為「構成三角形的三邊弧長所佔的等分點份數」。<br><br>**📝 學霸詳解**<br>1. 圓周角定理：三角形的內角為其對應弧的一半。若三內角成等差數列，則其對應的三段弧長（設佔總圓周的 $a, b, c$ 份等分區間）也必定成等差數列。<br>2. 圓周總共被分為 12 份，故 $a + b + c = 12$。既然成等差，中間項 $b$ 必為總和的三分之一：$b = \\frac{12}{3} = 4$。<br>3. 設公差為 $d$，則這三段弧長的分佈可能為 $(4-d, 4, 4+d)$。由於弧長必為正整數，故 $d$ 只能為 $0, 1, 2, 3$。<br>4. 列舉所有的弧長組合情形：<br>   - **$d=0$：(4, 4, 4)**<br>     正三角形。12個頂點任選1個作起點，長度為4，可畫出 $\\frac{12}{3} = 4$ 個。<br>   - **$d=1$：(3, 4, 5)**<br>     三段弧長皆相異（不等邊三角形）。<br>     先指定圓上的第1號點為其中一頂點，剩下的弧長順序有兩種 (3-4-5 順時針，或 3-5-4 順時針)。<br>     故 12 個起點 $\\times 2$ 種順序 $= 24$ 個。<br>   - **$d=2$：(2, 4, 6)**<br>     三段弧長皆相異。算法同上：12 個起點 $\\times 2$ 種順序 $= 24$ 個。<br>   - **$d=3$：(1, 4, 7)**<br>     三段弧長皆相異。算法同上：12 個起點 $\\times 2$ 種順序 $= 24$ 個。<br>5. 總數 $= 4 + 24 + 24 + 24 = 76$ 個。<br><br>**答案：76**"
     },
@@ -298,9 +298,9 @@
       "diagram": null,
       "question": "【題組 18-20】試求 $\\overline{AD}$ 的長度與四面體 $ABCD$ 的體積，並求此四面體以 $\\Delta BCD$ 為底面時，頂點 $A$ 到底面的高度。(角錐體積 $=\\frac{1}{3} \\times \\text{底面積} \\times \\text{高}$)",
       "options": [],
-      "answer": "\\overline{AD}=7，體積=\\frac{56}{3}，高=\\frac{14\\sqrt{65}}{65}",
+      "answer": "\\overline{AD}=7，體積=\\frac{112}{3}，高=\\frac{28\\sqrt{65}}{65}",
       "hint": "建立空間坐標系求出 $A$ 點出發的三條邊長，算出以直角角落為底的錐體體積後，再利用換底公式求出斜面高。",
-      "explanation": "**💡 破題關鍵：**以 $A$ 為原點建立 $x,y,z$ 坐標系，將三邊長設為變數解聯立。<br><br>**📝 學霸詳解**<br>1. **設定坐標與變數：**<br>   設 $A$ 為原點 $(0,0,0)$，由於 $B, C, D$ 皆為鄰邊中點，可設它們分別位於三股坐標軸上：<br>   $B(x, 0, 0), D(0, y, 0), C(0, 0, z)$。<br>2. **利用已知邊長解聯立方程式：**<br>   由畢氏定理得知兩點間距離的平方關係：<br>   $\\overline{BD}^2 = x^2 + y^2 = 9^2 = 81$<br>   $\\overline{DC}^2 = y^2 + z^2 = 9^2 = 81$<br>   $\\overline{BC}^2 = x^2 + z^2 = 8^2 = 64$<br>   將前兩式相減得 $x^2 = z^2$，代入第三式可得 $2x^2 = 64 \\Rightarrow x^2 = 32 \\Rightarrow x = 4\\sqrt{2}, z = 4\\sqrt{2}$。<br>   再將 $x^2 = 32$ 代回第一式：$32 + y^2 = 81 \\Rightarrow y^2 = 49 \\Rightarrow y = 7$。<br>3. **求 $\\overline{AD}$ 長度：**<br>   $\\overline{AD} = y = 7$。<br>4. **求四面體 $ABCD$ 體積：**<br>   以 $\\Delta ABD$ 為底面積，$\\overline{AC}$ 為高 (因為 $C$ 在 $z$ 軸上，垂直 $xy$ 平面)：<br>   $V = \\frac{1}{3} \\times (\\frac{1}{2} x y) \\times z = \\frac{1}{6} x y z$<br>   $V = \\frac{1}{6} \\times 4\\sqrt{2} \\times 7 \\times 4\\sqrt{2} = \\frac{1}{6} \\times 112 = \\frac{56}{3}$。<br>5. **求頂點 $A$ 到 $\\Delta BCD$ 的高度 $h$：**<br>   利用同一個錐體體積，轉換底面為 $\\Delta BCD$：<br>   $V = \\frac{1}{3} \\times \\text{面積}(\\Delta BCD) \\times h$<br>   代入前一題求出的面積 $4\\sqrt{65}$ 與體積 $\\frac{56}{3}$：<br>   $\\frac{56}{3} = \\frac{1}{3} \\times 4\\sqrt{65} \\times h$<br>   解得 $h = \\frac{56}{4\\sqrt{65}} = \\frac{14}{\\sqrt{65}} = \\frac{14\\sqrt{65}}{65}$。<br><br>**答案：$\\overline{AD}=7$，體積為 $\\frac{56}{3}$，高為 $\\frac{14\\sqrt{65}}{65}$**"
+      "explanation": "**💡 破題關鍵：**以 $A$ 為原點建立 $x,y,z$ 坐標系，將三邊長設為變數解聯立。<br><br>**📝 學霸詳解**<br>1. **設定坐標與變數：**<br>   設 $A$ 為原點 $(0,0,0)$，由於 $B, C, D$ 皆為互相垂直的面上的鄰邊中點，可設它們分別位於三股坐標軸上：<br>   $B(x, 0, 0), D(0, y, 0), C(0, 0, z)$。<br>2. **利用已知邊長解聯立方程式：**<br>   由畢氏定理得知兩點間距離的平方關係：<br>   $\\overline{BD}^2 = x^2 + y^2 = 9^2 = 81$<br>   $\\overline{DC}^2 = y^2 + z^2 = 9^2 = 81$<br>   $\\overline{BC}^2 = x^2 + z^2 = 8^2 = 64$<br>   將前兩式相減得 $x^2 = z^2$，代入第三式可得 $2x^2 = 64 \\Rightarrow x^2 = 32 \\Rightarrow x = \\sqrt{32} = 4\\sqrt{2}, z = 4\\sqrt{2}$。<br>   再將 $x^2 = 32$ 代回第一式：$32 + y^2 = 81 \\Rightarrow y^2 = 49 \\Rightarrow y = 7$。<br>3. **求 $\\overline{AD}$ 長度：**<br>   $\\overline{AD} = y = 7$。<br>4. **求四面體 $ABCD$ 體積：**<br>   以 $\\Delta ABD$ 為底面積，$\\overline{AC}$ 為高 (因為 $C$ 在 $z$ 軸上，垂直 $xy$ 平面)：<br>   $\\Delta ABD \\text{ 面積} = \\frac{1}{2} x y = \\frac{1}{2}(4\\sqrt{2})(7) = 14\\sqrt{2}$。<br>   $V = \\frac{1}{3} \\times 14\\sqrt{2} \\times z = \\frac{1}{3} \\times 14\\sqrt{2} \\times 4\\sqrt{2} = \\frac{112}{3}$。<br>5. **求頂點 $A$ 到 $\\Delta BCD$ 的高度 $h$：**<br>   利用同一個錐體體積，轉換底面為 $\\Delta BCD$：<br>   $V = \\frac{1}{3} \\times \\text{面積}(\\Delta BCD) \\times h$<br>   代入前一題求出的面積 $4\\sqrt{65}$ 與剛算出的體積 $\\frac{112}{3}$：<br>   $\\frac{112}{3} = \\frac{1}{3} \\times 4\\sqrt{65} \\times h$<br>   解得 $h = \\frac{112}{4\\sqrt{65}} = \\frac{28}{\\sqrt{65}} = \\frac{28\\sqrt{65}}{65}$。<br><br>**答案：$\\overline{AD}=7$，體積為 $\\frac{112}{3}$，高為 $\\frac{28\\sqrt{65}}{65}$**"
     }
   ]
 }

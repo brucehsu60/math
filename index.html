@@ -273,9 +273,11 @@
             'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
         ];
 
+        // ★ 學霸升級版：加入 JSON 抓蟲警報器
         async function loadQuestions() {
             const cacheBuster = new Date().getTime();
             allQuestions = [];
+            let errorFiles = []; // 記錄壞掉的檔案
             
             for (const file of dataFiles) {
                 try {
@@ -287,8 +289,14 @@
                         }
                     }
                 } catch (err) {
-                    console.log(`略過尚未建立的檔案: ${file}`);
+                    console.error(`❌ 檔案解析失敗: ${file}`, err);
+                    errorFiles.push(file); // 抓到壞掉的檔案
                 }
+            }
+            
+            // 如果有檔案壞掉，直接跳出警告視窗提醒你！
+            if (errorFiles.length > 0) {
+                alert(`⚠️ 警告：以下檔案的 JSON 格式有錯誤，導致無法載入：\n\n${errorFiles.join('\n')}\n\n請檢查這些檔案是否漏了逗號、括號，或有未跳脫的符號。`);
             }
             
             allQuestions.sort((a, b) => {
@@ -445,7 +453,7 @@
                 let formattedExp = formatBold(q.explanation);
                 let formattedHint = formatBold(q.hint);
                 
-                if (q.type === "單選題" && q.options) {
+                if (q.type === "單選題" && q.options && q.options.length > 0) {
                     q.options.forEach((opt) => {
                         let optDisplay = formatBold(opt);
                         optionsHtml += `
@@ -454,7 +462,7 @@
                             </button>`;
                     });
                 } 
-                else if (q.type === "多選題" && q.options) {
+                else if (q.type === "多選題" && q.options && q.options.length > 0) {
                     q.options.forEach((opt) => {
                         let optDisplay = formatBold(opt);
                         optionsHtml += `
@@ -479,10 +487,10 @@
                             <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
                         </div>`;
                 } 
-                // ★ 補回非選擇題的按鈕邏輯
-                else if (q.type === "非選擇題") {
-                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫非選擇題，請在計算紙上作答後點擊看答案)</div>
-                                    <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
+                // ★ 學霸升級版：萬用按鈕！不管 JSON 裡面寫「非選擇題」還是「混合題」，通通都會產生按鈕！
+                else {
+                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫或混合題型，請在計算紙上作答後點擊看答案)</div>
+                                    <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">看答案 / 詳解</button>`;
                 }
 
                 const rateInfo = getRateInfo(q.correct_rate);

@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        <!-- 雙層連動：第二層 考試年份 (自動換行，標題固定對齊頂部) -->
+        <!-- 雙層連動：第二層 考試年份 -->
         <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
             <span class="filter-label">考試年份：</span>
             <div class="filter-buttons" id="exam-year-buttons">
@@ -252,33 +252,22 @@
         let allQuestions = []; 
         let currentFilters = { examType: 'all', examYear: 'all', category: 'all', chapter: 'all', type: 'all', rate: 'all' };
 
-        // 定義年份陣列
         const newSystemYears = ['115', '114', '113', '112', '111'];
-        // 自動生成 110 到 83 年
         const oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
 
-        // 為了比對 JSON 裡面的 "year" 字串設定的關鍵字對應表
         const examTypeMapping = {
             '舊制學測': '學測',       
             '舊指考(甲)': '指考甲',   
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 擴充後的題庫檔案清單
         const dataFiles = [
-            // 學測數A
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
-            // 學測數B
             'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
-            // 分科數甲
             'data/114甲.json', 'data/113甲.json', 'data/112甲.json', 'data/111甲.json',
-            // 分科數乙
             'data/114乙.json',
-            // 舊制學測
             'data/110學測.json', 'data/109學測.json', 'data/108學測.json', 'data/107學測.json', 'data/106學測.json',
-            // 舊指考數甲
             'data/110指考甲.json', 'data/109指考甲.json', 'data/108指考甲.json',
-            // 舊指考數乙
             'data/110指考乙.json', 'data/109指考乙.json', 'data/108指考乙.json'
         ];
 
@@ -307,7 +296,6 @@
                     }
                 });
                 
-                // 題庫排序
                 allQuestions.sort((a, b) => {
                     if (a.year !== b.year) return b.year.localeCompare(a.year);
                     return a.q_num - b.q_num;
@@ -317,7 +305,6 @@
                 let activeGroup = null;
                 allQuestions.forEach(q => {
                     const imgSrc = q.diagram || q.image;
-                    // 使用正規表達式尋找「【題組 18-20】」或「【18-20題為題組】」內的數字區間
                     const groupRegex = /【.*?(\d+)\s*-\s*(\d+).*?】/;
                     const match = q.question.match(groupRegex);
 
@@ -325,7 +312,6 @@
                         const start = parseInt(match[1], 10);
                         const end = parseInt(match[2], 10);
 
-                        // 若為新的題組或換了考卷年度，重新設定這組題組的共用圖片
                         if (!activeGroup || activeGroup.year !== q.year || activeGroup.start !== start || activeGroup.end !== end) {
                             activeGroup = {
                                 year: q.year,
@@ -334,16 +320,13 @@
                                 image: imgSrc || null
                             };
                         } else {
-                            // 同題組內，若當前題目(如第19、20題)沒有圖，但群組(如第18題)有圖，則自動繼承圖片
                             if (!imgSrc && activeGroup.image) {
                                 q.diagram = activeGroup.image; 
                             } else if (imgSrc) {
-                                // 若這題自己有新圖，則更新群組圖片給後面的題目用
                                 activeGroup.image = imgSrc;
                             }
                         }
                     } else {
-                        // 如果這題沒有題組標記，就清空 activeGroup，避免誤傳給獨立題目
                         activeGroup = null;
                     }
                 });
@@ -365,7 +348,6 @@
             applyFilter(filterType, filterValue);
         }
 
-        // 動態更新第二層年份選單
         function updateYearButtons(examType) {
             const yearContainer = document.getElementById('exam-year-container');
             const yearButtonsDiv = document.getElementById('exam-year-buttons');
@@ -385,7 +367,6 @@
                 yearButtonsDiv.innerHTML += `<button class="tag-btn btn-year" data-filter="examYear" data-value="${y}">${y}</button>`;
             });
 
-            // 幫新產生的按鈕綁定事件
             yearButtonsDiv.querySelectorAll('.tag-btn').forEach(btn => {
                 btn.onclick = handleFilterBtnClick;
             });
@@ -393,12 +374,10 @@
         }
 
         function applyFilter(filterType, filterValue) {
-            // 反向取消選取
             if (currentFilters[filterType] === filterValue && filterValue !== 'all') {
                 filterValue = 'all';
             }
 
-            // 處理分類與主題的連動
             if (filterType === 'category') {
                 currentFilters.category = filterValue;
                 currentFilters.chapter = 'all';
@@ -412,12 +391,10 @@
                 currentFilters[filterType] = filterValue;
             }
             
-            // 如果切換了考試類別，要連動更新年份按鈕
             if (filterType === 'examType') {
                 updateYearButtons(filterValue);
             }
             
-            // 更新按鈕視覺狀態
             document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
             const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
             if (targetBtn) {
@@ -429,7 +406,6 @@
             
             renderQuestions();
             
-            // 只有點擊非年份的按鈕，才將畫面滾動到最上方，避免使用者選年份時畫面亂跳
             if(filterType !== 'examYear') {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -443,6 +419,12 @@
             if (rate >= 60) return { class: "badge-rate-high", category: "high", text: rate + "%" };
             if (rate >= 30) return { class: "badge-rate-med", category: "med", text: rate + "%" };
             return { class: "badge-rate-low", category: "low", text: rate + "%" };
+        }
+
+        // ★ 通用的 Markdown 粗體轉 HTML 粗體函數
+        function formatBold(text) {
+            if (!text) return '';
+            return text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
         }
 
         function renderQuestions() {
@@ -474,7 +456,6 @@
                        matchRate;
             });
 
-            // 更新計數器
             statsContainer.style.display = 'flex';
             countSpan.innerText = filtered.length;
 
@@ -489,19 +470,26 @@
                 let optionsHtml = '';
                 let displayAnswer = q.answer;
                 
+                // ★ 全面套用 Markdown 轉換
+                let displayQuestion = formatBold(q.question);
+                let formattedExp = formatBold(q.explanation);
+                let formattedHint = formatBold(q.hint);
+                
                 if (q.type === "單選題" && q.options) {
                     q.options.forEach((opt) => {
+                        let optDisplay = formatBold(opt);
                         optionsHtml += `
                             <button class="option-btn" data-val="${encodeURIComponent(opt)}" onclick="checkSingleAnswer(this, '${encodeURIComponent(q.answer)}', 'feedback-${q.id}')">
-                                <span>${opt}</span>
+                                <span>${optDisplay}</span>
                             </button>`;
                     });
                 } 
                 else if (q.type === "多選題" && q.options) {
                     q.options.forEach((opt) => {
+                        let optDisplay = formatBold(opt);
                         optionsHtml += `
                             <button class="option-btn multi-btn" data-val="${encodeURIComponent(opt)}" onclick="this.classList.toggle('selected')">
-                                <span>${opt}</span>
+                                <span>${optDisplay}</span>
                             </button>`;
                     });
                     
@@ -531,19 +519,14 @@
 
                 const safeQNum = q.q_num ? q.q_num : "X";
                 
-                // 判斷並生成圖片：相容 diagram 與 image 兩種屬性寫法
                 const imgSrc = q.diagram || q.image;
                 const imageHtml = imgSrc ? `<div class="question-image"><img src="${imgSrc}" alt="題目附圖"></div>` : '';
 
-                // ★ 防重複雙圖處理：如果這題已經有圖片(imgSrc有值)，就自動把 JSON 原文裡可能手動加上的 <img...> 標籤刪除
-                let displayQuestion = q.question;
                 if (imgSrc) {
                     displayQuestion = displayQuestion.replace(/<img[^>]*>/gi, '');
                 }
 
-                // 👉 加上這行：利用正規表達式，自動將 **粗體** 轉換為 HTML 的 <b>粗體</b> 標籤
-                let formattedExp = q.explanation ? q.explanation.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') : '';
-
+                // ★ 將 HTML 內寫死的「📝 學霸詳解」移除，因為 JSON 內已自帶此標題
                 card.innerHTML = `
                     <div class="badge-group">
                         <span class="badge badge-year">${q.year}</span>
@@ -557,11 +540,11 @@
                     <div class="options">${optionsHtml}</div>
                     
                     <div id="feedback-${q.id}" class="feedback-area">
-                        ${q.hint ? `<div class="hint-box"><strong>💡 破題關鍵：</strong>${q.hint}</div>` : ''}
+                        ${q.hint ? `<div class="hint-box"><b>💡 破題關鍵：</b>${formattedHint}</div>` : ''}
                         <div class="exp-box">
                             <div style="color:#22c55e; font-weight:bold; margin-bottom:10px; font-size:18px;">✅ 正確答案：${displayAnswer}</div>
-                            <strong>📝 學霸詳解</strong><br><br>
-                            ${q.explanation}
+                            <!-- ★ 這裡直接印出格式化後的詳解 (JSON 已自帶粗體標題) -->
+                            ${formattedExp}
                         </div>
                     </div>
                 `;

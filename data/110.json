@@ -1,5 +1,5 @@
 {
-  "version": "4.0.110",
+  "version": "6.0.110",
   "update_time": "2026-08-23",
   "questions": [
     {
@@ -101,11 +101,11 @@
       "type": "多選題",
       "correct_rate": 81,
       "diagram": null,
-      "question": "心理學家找了 1000 位受試者進行暗室實驗，每位受試者都要觀看及辨識 6、8、9 三張數字卡，發現將實際數字看成某個數字的機率如下表：<br><br><table style=\"border-collapse: collapse; text-align: center; margin: 12px auto; font-size: 15px; border: 1px solid #cbd5e1;\"><tr><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">實際數字 \\\\ 看成數字</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">6</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">8</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">9</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">其他</th></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">6</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.4</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.3</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">8</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.3</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.4</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">9</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.5</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td></tr></table><br>例如：實際數字 6 被看成 6、8、9 的機率分別為 0.4、0.3、0.2，而被看成其他數字的機率是 0.1。根據上述實驗結果，試選出正確的選項。",
+      "question": "心理學家找了 1000 位受試者進行暗室實驗，每位受試者都要觀看及辨識 6、8、9 三張數字卡，發現將實際數字看成某個數字的機率如下表：<br><br><table style=\"border-collapse: collapse; text-align: center; margin: 12px auto; font-size: 15px; border: 1px solid #cbd5e1;\"><tr><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">實際數字 ＼ 看成數字</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">6</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">8</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">9</th><th style=\"border: 1px solid #cbd5e1; padding: 8px 16px; background-color: #f8fafc;\">其他</th></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">6</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.4</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.3</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">8</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.3</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.4</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td></tr><tr><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px; font-weight: bold; background-color: #f8fafc;\">9</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.2</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.5</td><td style=\"border: 1px solid #cbd5e1; padding: 8px 16px;\">0.1</td></tr></table><br>例如：實際數字 6 被看成 6、8、9 的機率分別為 0.4、0.3、0.2，而被看成其他數字的機率是 0.1。根據上述實驗結果，試選出正確的選項。",
       "options": ["(1) 如果實際數字是 8，則至少有一半的可能性會被看成是 8", "(2) 如果實際數字是 6，則有六成的可能性會被看成不是 6", "(3) 在 6、8、9 三數字中，被誤認的可能性以 9 最低", "(4) 如果被看成的數字是 6，則實際上就是 6 的可能性不到一半", "(5) 如果被看成的數字是 9，則實際上就是 9 的可能性超過 $\\frac{2}{3}$"],
       "answer": ["(2)", "(3)", "(4)"],
       "hint": "這題考驗讀表能力與貝氏定理（條件機率）的觀念。注意「實際是 A 看成 B」與「看成 B 實際是 A」的分母基準不同。",
-      "explanation": "<b>💡 破題關鍵：</b>選項 (1)(2)(3) 是直接讀表（條件為「實際數字」）；選項 (4)(5) 是貝氏定理（條件為「看成某數字」），需要將該直行的機率加總作為分母。<br><br><b>📝 學霸詳解</b><br>[選項 1] 實際是 8，被看成 8 的機率為 0.4，不到一半 (0.5)。錯誤。<br>[選項 2] 實際是 6，被看成「不是 6」的機率 = $1 - P(\\text{看成6}) = 1 - 0.4 = 0.6$ (六成)。正確。<br>[選項 3] 被誤認的機率 = $1 - P(\\text{看成正確數字})$。<br>   - 6 被誤認機率：$1 - 0.4 = 0.6$<br>   - 8 被誤認機率：$1 - 0.4 = 0.6$<br>   - 9 被誤認機率：$1 - 0.5 = 0.5$<br>   故 9 被誤認的可能性最低。正確。<br>[選項 4] 已知「被看成 6」，求「實際是 6」的機率（貝氏定理）：<br>   分母為「看成 6」的總機率（假設三張卡片出現機率相等）：$0.4 + 0.3 + 0.2 = 0.9$。<br>   分子為「實際是 6 且看成 6」：$0.4$。<br>   機率為 $\\frac{0.4}{0.9} = \\frac{4}{9} \\approx 0.44$，不到一半。正確。<br>[選項 5] 已知「被看成 9」，求「實際是 9」的機率：<br>   分母為「看成 9」的總機率：$0.2 + 0.1 + 0.5 = 0.8$。<br>   分子為「實際是 9 且看成 9」：$0.5$。<br>   機率為 $\\frac{0.5}{0.8} = \\frac{5}{8} = 0.625$。而 $\\frac{2}{3} \\approx 0.667$，故沒有超過 $\\frac{2}{3}$。錯誤。<br><br><b>答案：(2), (3), (4)</b>"
+      "explanation": "<b>💡 破題關鍵：</b>[選項 1][選項 2][選項 3] 是直接讀表（條件為「實際數字」）；[選項 4][選項 5] 是貝氏定理（條件為「看成某數字」），需要將該直行的機率加總作為分母。<br><br><b>📝 學霸詳解</b><br>[選項 1] 實際是 8，被看成 8 的機率為 0.4，不到一半 (0.5)。錯誤。<br>[選項 2] 實際是 6，被看成「不是 6」的機率 = $1 - P(\\text{看成6}) = 1 - 0.4 = 0.6$ (六成)。正確。<br>[選項 3] 被誤認的機率 = $1 - P(\\text{看成正確數字})$。<br>   - 6 被誤認機率：$1 - 0.4 = 0.6$<br>   - 8 被誤認機率：$1 - 0.4 = 0.6$<br>   - 9 被誤認機率：$1 - 0.5 = 0.5$<br>   故 9 被誤認的可能性最低。正確。<br>[選項 4] 已知「被看成 6」，求「實際是 6」的機率（貝氏定理）：<br>   分母為「看成 6」的總機率（假設三張卡片出現機率相等）：$0.4 + 0.3 + 0.2 = 0.9$。<br>   分子為「實際是 6 且看成 6」：$0.4$。<br>   機率為 $\\frac{0.4}{0.9} = \\frac{4}{9} \\approx 0.44$，不到一半。正確。<br>[選項 5] 已知「被看成 9」，求「實際是 9」的機率：<br>   分母為「看成 9」的總機率：$0.2 + 0.1 + 0.5 = 0.8$。<br>   分子為「實際是 9 且看成 9」：$0.5$。<br>   機率為 $\\frac{0.5}{0.8} = \\frac{5}{8} = 0.625$。而 $\\frac{2}{3} \\approx 0.667$，故沒有超過 $\\frac{2}{3}$。錯誤。<br><br><b>答案：(2), (3), (4)</b>"
     },
     {
       "id": "110-gsat-08",
@@ -221,7 +221,7 @@
       "type": "填充題",
       "correct_rate": 38,
       "diagram": null,
-      "question": "坐標空間中有兩條直線 $L_1, L_2$ 與一平面 $E$，其中直線 $L_1: \\frac{x}{2} = \\frac{y}{-3} = \\frac{z}{-5}$，而 $L_2$ 的參數式為 $x=1, y=1+2t, z=1+3t$ ($t$ 為實數)。若 $L_1$ 落在 $E$ 上，且 $L_2$ 與 $E$ 不相交，則 $E$ 的方程式為 $x - ay + bz = c$，求 $a, b, c$ 的值。(請依序填入，例如 $x-6y+4z=0$)",
+      "question": "坐標空間中有兩條直線 $L_1, L_2$ 與一平面 $E$，其中直線 $L_1: \\frac{x}{2} = \\frac{y}{-3} = \\frac{z}{-5}$，而 $L_2$ 的參數式為 $x=1, y=1+2t, z=1+3t$ ($t$ 為實數)。若 $L_1$ 落在 $E$ 上，且 $L_2$ 與 $E$ 不相交，則 $E$ 的方程式為 $x - ay + bz = c$，求此方程式。",
       "options": [],
       "answer": "$x-6y+4z=0$",
       "hint": "思考空間中「平面包含一條直線，且與另一條直線平行」時，平面的法向量與這兩條直線的方向向量有什麼幾何關係？",
@@ -251,10 +251,10 @@
       "type": "填充題",
       "correct_rate": 22,
       "diagram": null,
-      "question": "在坐標平面上，$\\Gamma$ 是邊長為 4 的正方形，其中心位在點 $(1,1)$，且各邊與坐標軸平行。已知函數 $y=a \\times 2^x$ 的圖形與 $\\Gamma$ 相交，其中 $a$ 為實數，則 $a$ 的最大可能範圍為何？(請以不等式表示，例如 $-2 \\le a \\le 6$)",
+      "question": "在坐標平面上，$\\Gamma$ 是邊長為 4 的正方形，其中心位在點 $(1,1)$，且各邊與坐標軸平行。已知函數 $y=a \\times 2^x$ 的圖形與 $\\Gamma$ 相交，其中 $a$ 為實數，則 $a$ 的最大可能範圍為何？",
       "options": [],
       "answer": "$-2 \\le a \\le 6$",
-      "hint": "將「函數圖形與正方形相交」的幾何條件轉化為代數限制。思考指數函數圖形隨著未知數 $a$ 的正負號變化時，會分別受到正方形哪幾個頂點或邊界的限制？",
+      "hint": "將「函數圖形與正方形相交」的幾何條件轉化為代數限制。思考指數函數圖形隨著未知數 $a$ 的正負號變化時，會分別受到正方形哪幾個邊界的限制？",
       "explanation": "<b>💡 破題關鍵：</b>「相交」代表指數函數的圖形會碰到正方形的邊界或內部。找出正方形的 $x, y$ 範圍，代入函數求 $a$ 的極端值即可。<br><br><b>📝 學霸詳解</b><br>1. <b>確立正方形範圍：</b><br>   中心在 $(1,1)$，邊長為 4，所以 $x$ 範圍是 $[1-2, 1+2] = [-1, 3]$，$y$ 範圍是 $[1-2, 1+2] = [-1, 3]$。<br>2. <b>分析函數 $y = a \\cdot 2^x$：</b><br>   - <b>當 $a \\gt 0$ 時：</b>圖形在 $x$ 軸上方，且為嚴格遞增。<br>     要與正方形相交，圖形最高點（在 $x=3$ 處）必須高於正方形下緣 $y=-1$ (恆成立)；<br>     且圖形最低點（在 $x=-1$ 處）必須低於正方形上緣 $y=3$。<br>     代入 $x=-1, y=3$：$3 = a \\cdot 2^{-1} \\Rightarrow a = 6$。<br>     所以 $a \\gt 0$ 時的最大極限是 $a = 6$。<br>   - <b>當 $a \\lt 0$ 時：</b>圖形在 $x$ 軸下方，且為嚴格遞減。<br>     要與正方形相交，圖形最高點（在 $x=-1$ 處）必須高於正方形下緣 $y=-1$。<br>     代入 $x=-1, y=-1$：$-1 = a \\cdot 2^{-1} \\Rightarrow a = -2$。<br>     所以 $a \\lt 0$ 時的最小極限是 $a = -2$。<br>3. <b>綜合範圍：</b><br>   包含 $a=0$ (水平線 $y=0$ 穿過正方形)，$a$ 的完整範圍為 $-2 \\le a \\le 6$。<br><br><b>答案：$-2 \\le a \\le 6$</b>"
     },
     {

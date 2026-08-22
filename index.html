@@ -219,10 +219,6 @@
 
         // 為了比對 JSON 裡面的 "year" 字串設定的關鍵字對應表
         const examTypeMapping = {
-            '學測數A': '學測數A',
-            '學測數B': '學測數B',
-            '分科數甲': '分科數甲',
-            '分科數乙': '分科數乙',
             '舊制學測': '學測',       // 未來舊檔請標示如 "110學測"
             '舊指考(甲)': '指考甲',   // 未來舊檔請標示如 "109指考甲"
             '舊指考(乙)': '指考乙'    // 未來舊檔請標示如 "109指考乙"
@@ -249,7 +245,11 @@
                         return { questions: [] };
                     });
                 })
-                .catch(err => return { questions: [] })
+                .catch(err => {
+                    // 已修正：原本這裡少了大括號導致語法錯誤卡死
+                    console.error(`網路連線問題: ${file}`, err);
+                    return { questions: [] };
+                })
             ))
             .then(results => {
                 allQuestions = [];
@@ -368,9 +368,19 @@
                 const rateInfo = getRateInfo(q.correct_rate);
                 const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
                 
-                // 檢查是否符合考試類別與年份
-                const mappedExamType = currentFilters.examType !== 'all' ? examTypeMapping[currentFilters.examType] : '';
-                const matchExamType = currentFilters.examType === 'all' || q.year.includes(mappedExamType);
+                // 更嚴謹的考試類別防呆過濾
+                let matchExamType = false;
+                if (currentFilters.examType === 'all') {
+                    matchExamType = true;
+                } else if (currentFilters.examType.startsWith('舊制') || currentFilters.examType.startsWith('舊指考')) {
+                    // 舊制：確保包含對應關鍵字，且「不包含」新制專有字眼 (數A/數B)
+                    const mapped = examTypeMapping[currentFilters.examType];
+                    matchExamType = q.year.includes(mapped) && !q.year.includes('數A') && !q.year.includes('數B');
+                } else {
+                    // 新制：直接比對完整字串
+                    matchExamType = q.year.includes(currentFilters.examType);
+                }
+
                 const matchExamYear = currentFilters.examYear === 'all' || q.year.includes(currentFilters.examYear);
 
                 return matchExamType && matchExamYear &&

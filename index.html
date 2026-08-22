@@ -19,10 +19,7 @@
         .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; gap: 8px; }
         .filter-row:last-child { margin-bottom: 0; }
         
-        /* 修正標題對齊：利用 padding-top 對齊第一行按鈕，確保折行時不會跑位 */
         .filter-label { font-weight: bold; color: #64748b; width: 85px; flex-shrink: 0; font-size: 15px; padding-top: 6px; margin: 0; }
-        
-        /* 確保按鈕區塊也是 flex-start，這樣按鈕折行時整體區塊會往上靠齊 */
         .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: flex-start; }
         
         .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
@@ -267,7 +264,7 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // 題庫檔案清單
+        // ★ 擴充後的題庫檔案清單
         const dataFiles = [
             // 學測數A
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
@@ -320,7 +317,7 @@
                 let activeGroup = null;
                 allQuestions.forEach(q => {
                     const imgSrc = q.diagram || q.image;
-                    // 使用正規表達式尋找「【題組 18-20】」或「【18-20題為題組】」內的數字
+                    // 使用正規表達式尋找「【題組 18-20】」或「【18-20題為題組】」內的數字區間
                     const groupRegex = /【.*?(\d+)\s*-\s*(\d+).*?】/;
                     const match = q.question.match(groupRegex);
 
@@ -328,7 +325,7 @@
                         const start = parseInt(match[1], 10);
                         const end = parseInt(match[2], 10);
 
-                        // 若為新的題組或換了考卷年度，重新設定 activeGroup
+                        // 若為新的題組或換了考卷年度，重新設定這組題組的共用圖片
                         if (!activeGroup || activeGroup.year !== q.year || activeGroup.start !== start || activeGroup.end !== end) {
                             activeGroup = {
                                 year: q.year,
@@ -337,7 +334,7 @@
                                 image: imgSrc || null
                             };
                         } else {
-                            // 同題組內，若當前題目沒有圖，但群組有圖，則繼承圖片
+                            // 同題組內，若當前題目(如第19、20題)沒有圖，但群組(如第18題)有圖，則自動繼承圖片
                             if (!imgSrc && activeGroup.image) {
                                 q.diagram = activeGroup.image; 
                             } else if (imgSrc) {
@@ -346,7 +343,7 @@
                             }
                         }
                     } else {
-                        // 如果這題沒有題組標記，就清空 activeGroup，避免影響到後面的獨立題目
+                        // 如果這題沒有題組標記，就清空 activeGroup，避免誤傳給獨立題目
                         activeGroup = null;
                     }
                 });
@@ -534,9 +531,15 @@
 
                 const safeQNum = q.q_num ? q.q_num : "X";
                 
-                // 相容 diagram 與 image 兩種屬性寫法
+                // 判斷並生成圖片：相容 diagram 與 image 兩種屬性寫法
                 const imgSrc = q.diagram || q.image;
                 const imageHtml = imgSrc ? `<div class="question-image"><img src="${imgSrc}" alt="題目附圖"></div>` : '';
+
+                // ★ 防重複雙圖處理：如果這題已經有圖片(imgSrc有值)，就自動把 JSON 原文裡可能手動加上的 <img...> 標籤刪除
+                let displayQuestion = q.question;
+                if (imgSrc) {
+                    displayQuestion = displayQuestion.replace(/<img[^>]*>/gi, '');
+                }
 
                 card.innerHTML = `
                     <div class="badge-group">
@@ -546,7 +549,7 @@
                         <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選">${q.type}</span>
                         ${rateBadgeHtml}
                     </div>
-                    <div class="question-text"><strong>Q${safeQNum}：</strong> ${q.question}</div>
+                    <div class="question-text"><strong>Q${safeQNum}：</strong> ${displayQuestion}</div>
                     ${imageHtml}
                     <div class="options">${optionsHtml}</div>
                     

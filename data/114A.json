@@ -184,7 +184,7 @@
       "chapter": "平面向量",
       "type": "多選題",
       "correct_rate": 38,
-      "diagram": "114-gsatA-11-fig.png",
+      "diagram": "images/114-gsatA-11-fig.png",
       "question": "在 $\\Delta ABC$ 中，$\\overline{AB}=6, \\overline{AC}=5, \\overline{BC}=4$。令 $\\overline{AB}$ 中點為 $D$，$P$ 為 $\\angle ABC$ 之角平分線與 $\\overline{CD}$ 之交點，如圖所示。試選出正確的選項。",
       "options": [
         "(A) $\\overline{CP}=\\frac{3}{7}\\overline{CD}$",

@@ -319,9 +319,9 @@
       "diagram": null,
       "question": "在坐標平面上，$\\triangle ABC$ 內有一點 $P$ 滿足 $\\vec{AP} = (\\frac{4}{3}, \\frac{5}{6})$ 及 $\\vec{AP} = \\frac{1}{2}\\vec{AB} + \\frac{1}{5}\\vec{AC}$。若 $A, P$ 連線交 $\\overline{BC}$ 於 $M$，則 $\\vec{AM} = ?$ (化成最簡分數，格式如 $(\\frac{a}{b}, \\frac{c}{d})$)",
       "options": [],
-      "answer": "(\\frac{40}{21}, \\frac{25}{21})",
+      "answer": "$(\\frac{40}{21}, \\frac{25}{21})$",
       "hint": "因為 $A, P, M$ 共線，可設 $\\vec{AM} = k\\vec{AP}$。又因為 $M$ 在 $\\overline{BC}$ 上，利用分點公式，$\\vec{AB}$ 與 $\\vec{AC}$ 的係數和必須為 1，藉此解出 $k$。",
-      "explanation": "<b>💡 破題關鍵：</b>「三點共線」加上「終點在對邊上」，這絕對是考「分點公式（係數和為 1）」！把 $\\vec{AM}$ 用 $\\vec{AP}$ 放大，強迫係數和變成 1 就解開了。<br><br><b>📝 學霸詳解</b><br>1. <b>利用共線假設向量：</b><br>   因為 $A, P, M$ 共線，設 $\\vec{AM} = k\\vec{AP}$。<br>   代入已知條件：$\\vec{AM} = k(\\frac{1}{2}\\vec{AB} + \\frac{1}{5}\\vec{AC}) = \\frac{k}{2}\\vec{AB} + \\frac{k}{5}\\vec{AC}$。<br>2. <b>利用分點公式求 $k$：</b><br>   因為點 $M$ 落在線段 $\\overline{BC}$ 上，所以 $\\vec{AB}$ 與 $\\vec{AC}$ 的係數和必須為 1。<br>   $\\frac{k}{2} + \\frac{k}{5} = 1 \\Rightarrow \\frac{7k}{10} = 1 \\Rightarrow k = \\frac{10}{7}$。<br>3. <b>計算 $\\vec{AM}$ 坐標：</b><br>   $\\vec{AM} = \\frac{10}{7} \\vec{AP} = \\frac{10}{7} (\\frac{4}{3}, \\frac{5}{6}) = (\\frac{40}{21}, \\frac{50}{42}) = (\\frac{40}{21}, \\frac{25}{21})$。<br><br><b>答案：(\\frac{40}{21}, \\frac{25}{21})</b>"
+      "explanation": "<b>💡 破題關鍵：</b>「三點共線」加上「終點在對邊上」，這絕對是考「分點公式（係數和為 1）」！把 $\\vec{AM}$ 用 $\\vec{AP}$ 放大，強迫係數和變成 1 就解開了。<br><br><b>📝 學霸詳解</b><br>1. <b>利用共線假設向量：</b><br>   因為 $A, P, M$ 共線，設 $\\vec{AM} = k\\vec{AP}$。<br>   代入已知條件：$\\vec{AM} = k(\\frac{1}{2}\\vec{AB} + \\frac{1}{5}\\vec{AC}) = \\frac{k}{2}\\vec{AB} + \\frac{k}{5}\\vec{AC}$。<br>2. <b>利用分點公式求 $k$：</b><br>   因為點 $M$ 落在線段 $\\overline{BC}$ 上，所以 $\\vec{AB}$ 與 $\\vec{AC}$ 的係數和必須為 1。<br>   $\\frac{k}{2} + \\frac{k}{5} = 1 \\Rightarrow \\frac{7k}{10} = 1 \\Rightarrow k = \\frac{10}{7}$。<br>3. <b>計算 $\\vec{AM}$ 坐標：</b><br>   $\\vec{AM} = \\frac{10}{7} \\vec{AP} = \\frac{10}{7} (\\frac{4}{3}, \\frac{5}{6}) = (\\frac{40}{21}, \\frac{50}{42}) = (\\frac{40}{21}, \\frac{25}{21})$。<br><br><b>答案：$(\\frac{40}{21}, \\frac{25}{21})$</b>"
     },
     {
       "id": "106-gsat-16",

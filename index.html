@@ -16,10 +16,14 @@
         
         /* 標籤篩選面板 */
         .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+        .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; gap: 8px; }
         .filter-row:last-child { margin-bottom: 0; }
-        .filter-label { font-weight: bold; color: #64748b; width: 80px; flex-shrink: 0; font-size: 15px; margin-top: 6px; }
-        .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: center;}
+        
+        /* 修正標題對齊：利用 padding-top 對齊第一行按鈕，確保折行時不會跑位 */
+        .filter-label { font-weight: bold; color: #64748b; width: 85px; flex-shrink: 0; font-size: 15px; padding-top: 6px; margin: 0; }
+        
+        /* 確保按鈕區塊也是 flex-start，這樣按鈕折行時整體區塊會往上靠齊 */
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: flex-start; }
         
         .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
         .tag-btn:hover { background: #e2e8f0; }
@@ -42,7 +46,7 @@
         .btn-rate-low:hover { background: #dc2626; }
         .tag-btn.active[data-filter="rate"] { outline: 3px solid #1e293b; outline-offset: 1px; }
 
-        /* 年份特製按鈕 (讓28個年份排版更緊湊) */
+        /* 年份特製按鈕 */
         .btn-year { padding: 4px 10px; font-size: 13px; }
 
         /* 結果統計列設計 */
@@ -63,9 +67,9 @@
         .result-stats-container span {
             background: #0284c7;
             color: white;
-            padding: 2px 10px;
+            padding: 2px 12px;
             border-radius: 12px;
-            margin: 0 6px;
+            margin: 0 8px;
             font-size: 18px;
         }
 
@@ -86,8 +90,12 @@
         .badge-rate-med { background: #f59e0b; color: white; }  
         .badge-rate-low { background: #ef4444; color: white; }  
 
-        .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 25px; }
+        .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 15px; }
         
+        /* 圖片容器設計 */
+        .question-image { text-align: center; margin-bottom: 25px; }
+        .question-image img { max-width: 100%; max-height: 350px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+
         /* 選項按鈕通用 */
         .options { display: flex; flex-direction: column; gap: 12px; }
         button.option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; display: flex; align-items: center; transition: all 0.2s; }
@@ -138,15 +146,15 @@
             </div>
         </div>
 
-        <!-- 雙層連動：第二層 考試年份 (自動換行) -->
-        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; align-items: flex-start;">
-            <span class="filter-label" style="margin-top: 6px;">考試年份：</span>
+        <!-- 雙層連動：第二層 考試年份 (自動換行，標題固定對齊頂部) -->
+        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+            <span class="filter-label">考試年份：</span>
             <div class="filter-buttons" id="exam-year-buttons">
                 <!-- 由 JavaScript 動態產生 -->
             </div>
         </div>
 
-        <div class="filter-row" style="margin-top: 12px;">
+        <div class="filter-row">
             <span class="filter-label">題型：</span>
             <div class="filter-buttons">
                 <button class="tag-btn active" data-filter="type" data-value="all">全部</button>
@@ -475,6 +483,9 @@
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
 
                 const safeQNum = q.q_num ? q.q_num : "X";
+                
+                // 判斷是否需要載入圖片
+                const imageHtml = q.image ? `<div class="question-image"><img src="${q.image}" alt="題目附圖"></div>` : '';
 
                 card.innerHTML = `
                     <div class="badge-group">
@@ -485,6 +496,7 @@
                         ${rateBadgeHtml}
                     </div>
                     <div class="question-text"><strong>Q${safeQNum}：</strong> ${q.question}</div>
+                    ${imageHtml}
                     <div class="options">${optionsHtml}</div>
                     
                     <div id="feedback-${q.id}" class="feedback-area">

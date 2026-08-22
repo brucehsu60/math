@@ -21,7 +21,20 @@
         .filter-label { font-weight: bold; color: #64748b; width: 80px; flex-shrink: 0; font-size: 15px; margin-top: 6px; }
         .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: center;}
         
-        .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        /* 特殊處理：年份容器不換行，允許橫向滑動 */
+        .scrollable-buttons {
+            flex-wrap: nowrap !important;
+            overflow-x: auto;
+            padding-bottom: 8px; /* 留出卷軸空間 */
+            -webkit-overflow-scrolling: touch;
+        }
+        /* 美化滾動條 (針對 Webkit 瀏覽器如 Chrome/Safari) */
+        .scrollable-buttons::-webkit-scrollbar { height: 6px; }
+        .scrollable-buttons::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .scrollable-buttons::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .scrollable-buttons::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
         .tag-btn:hover { background: #e2e8f0; }
         .tag-btn.active { background: #1e293b; color: white; border-color: #1e293b; font-weight: bold; }
         
@@ -42,8 +55,29 @@
         .btn-rate-low:hover { background: #dc2626; }
         .tag-btn.active[data-filter="rate"] { outline: 3px solid #1e293b; outline-offset: 1px; }
 
-        /* 年份特製按鈕 (讓28個年份排版更緊湊) */
-        .btn-year { padding: 4px 10px; font-size: 13px; }
+        /* 結果統計列設計 */
+        .result-stats-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(56, 189, 248, 0.1);
+        }
+        .result-stats-container span {
+            background: #0284c7;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin: 0 6px;
+            font-size: 18px;
+        }
 
         /* 題目卡片 */
         .question-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
@@ -114,10 +148,10 @@
             </div>
         </div>
 
-        <!-- 雙層連動：第二層 考試年份 (預設隱藏) -->
-        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <span class="filter-label">考試年份：</span>
-            <div class="filter-buttons" id="exam-year-buttons">
+        <!-- 雙層連動：第二層 考試年份 (不換行，允許橫向捲動) -->
+        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; align-items: center;">
+            <span class="filter-label" style="margin-top: 0;">考試年份：</span>
+            <div class="filter-buttons scrollable-buttons" id="exam-year-buttons">
                 <!-- 由 JavaScript 動態產生 -->
             </div>
         </div>
@@ -204,6 +238,11 @@
         </div>
     </div>
     
+    <!-- 篩選結果計數器 -->
+    <div id="result-stats" class="result-stats-container" style="display: none;">
+        共篩選出 <span id="question-count">0</span> 題
+    </div>
+
     <div id="quiz-container">
         <div class="empty-state">載入中...</div>
     </div>
@@ -219,9 +258,9 @@
 
         // 為了比對 JSON 裡面的 "year" 字串設定的關鍵字對應表
         const examTypeMapping = {
-            '舊制學測': '學測',       // 未來舊檔請標示如 "110學測"
-            '舊指考(甲)': '指考甲',   // 未來舊檔請標示如 "109指考甲"
-            '舊指考(乙)': '指考乙'    // 未來舊檔請標示如 "109指考乙"
+            '舊制學測': '學測',       
+            '舊指考(甲)': '指考甲',   
+            '舊指考(乙)': '指考乙'    
         };
 
         // ★ 題庫檔案清單
@@ -246,7 +285,6 @@
                     });
                 })
                 .catch(err => {
-                    // 已修正：原本這裡少了大括號導致語法錯誤卡死
                     console.error(`網路連線問題: ${file}`, err);
                     return { questions: [] };
                 })
@@ -307,6 +345,9 @@
                 btn.onclick = handleFilterBtnClick;
             });
             currentFilters.examYear = 'all';
+            
+            // 每次重新展開年份時，將滾動條拉回最左邊
+            yearButtonsDiv.scrollLeft = 0;
         }
 
         function applyFilter(filterType, filterValue) {
@@ -345,16 +386,18 @@
             }
             
             renderQuestions();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // 只有點擊非年份的按鈕，才將畫面滾動到最上方，避免使用者選年份時畫面亂跳
+            if(filterType !== 'examYear') {
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-        // 修改答對率轉換，直接顯示數字
         function getRateInfo(rate) {
             if (rate === null || rate === undefined || rate === "") return null;
             rate = Number(rate);
             if (isNaN(rate)) return null;
             
-            // text 欄位改為直接輸出數字加上 %
             if (rate >= 60) return { class: "badge-rate-high", category: "high", text: rate + "%" };
             if (rate >= 30) return { class: "badge-rate-med", category: "med", text: rate + "%" };
             return { class: "badge-rate-low", category: "low", text: rate + "%" };
@@ -362,22 +405,21 @@
 
         function renderQuestions() {
             const container = document.getElementById('quiz-container');
+            const statsContainer = document.getElementById('result-stats');
+            const countSpan = document.getElementById('question-count');
             container.innerHTML = ''; 
             
             const filtered = allQuestions.filter(q => {
                 const rateInfo = getRateInfo(q.correct_rate);
                 const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
                 
-                // 更嚴謹的考試類別防呆過濾
                 let matchExamType = false;
                 if (currentFilters.examType === 'all') {
                     matchExamType = true;
                 } else if (currentFilters.examType.startsWith('舊制') || currentFilters.examType.startsWith('舊指考')) {
-                    // 舊制：確保包含對應關鍵字，且「不包含」新制專有字眼 (數A/數B)
                     const mapped = examTypeMapping[currentFilters.examType];
                     matchExamType = q.year.includes(mapped) && !q.year.includes('數A') && !q.year.includes('數B');
                 } else {
-                    // 新制：直接比對完整字串
                     matchExamType = q.year.includes(currentFilters.examType);
                 }
 
@@ -389,6 +431,10 @@
                        (currentFilters.type === 'all' || q.type === currentFilters.type) &&
                        matchRate;
             });
+
+            // 更新計數器
+            statsContainer.style.display = 'flex';
+            countSpan.innerText = filtered.length;
 
             if(filtered.length === 0) {
                 container.innerHTML = `<div class="empty-state" style="color:#f59e0b;">目前沒有符合條件的題目。<br><br>請嘗試切換其他年份或題型。</div>`;
@@ -438,13 +484,11 @@
                                     <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">答案</button>`;
                 }
 
-                // 產生答對率徽章
                 const rateInfo = getRateInfo(q.correct_rate);
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
 
                 const safeQNum = q.q_num ? q.q_num : "X";
 
-                // 將 badge-year 的 clickable 移除，因為年份與類別現在改用雙層過濾，純展示用最安全
                 card.innerHTML = `
                     <div class="badge-group">
                         <span class="badge badge-year">${q.year}</span>

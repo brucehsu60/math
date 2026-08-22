@@ -267,7 +267,7 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 擴充後的題庫檔案清單 (自動讀取以下清單中存在的檔案)
+        // ★ 擴充後的題庫檔案清單
         const dataFiles = [
             // 學測數A
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
@@ -499,8 +499,9 @@
 
                 const safeQNum = q.q_num ? q.q_num : "X";
                 
-                // 判斷是否需要載入圖片
-                const imageHtml = q.image ? `<div class="question-image"><img src="${q.image}" alt="題目附圖"></div>` : '';
+                // ★ 關鍵修正：同時相容 json 內稱為 diagram 或 image 的屬性
+                const imgSrc = q.diagram || q.image;
+                const imageHtml = imgSrc ? `<div class="question-image"><img src="${imgSrc}" alt="題目附圖"></div>` : '';
 
                 card.innerHTML = `
                     <div class="badge-group">

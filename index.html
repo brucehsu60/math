@@ -267,7 +267,7 @@
             '舊指考(乙)': '指考乙'    
         };
 
-        // ★ 擴充後的題庫檔案清單
+        // 題庫檔案清單
         const dataFiles = [
             // 學測數A
             'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
@@ -314,6 +314,41 @@
                 allQuestions.sort((a, b) => {
                     if (a.year !== b.year) return b.year.localeCompare(a.year);
                     return a.q_num - b.q_num;
+                });
+
+                // ★ 題組圖片自動繼承邏輯
+                let activeGroup = null;
+                allQuestions.forEach(q => {
+                    const imgSrc = q.diagram || q.image;
+                    // 使用正規表達式尋找「【題組 18-20】」或「【18-20題為題組】」內的數字
+                    const groupRegex = /【.*?(\d+)\s*-\s*(\d+).*?】/;
+                    const match = q.question.match(groupRegex);
+
+                    if (match) {
+                        const start = parseInt(match[1], 10);
+                        const end = parseInt(match[2], 10);
+
+                        // 若為新的題組或換了考卷年度，重新設定 activeGroup
+                        if (!activeGroup || activeGroup.year !== q.year || activeGroup.start !== start || activeGroup.end !== end) {
+                            activeGroup = {
+                                year: q.year,
+                                start: start,
+                                end: end,
+                                image: imgSrc || null
+                            };
+                        } else {
+                            // 同題組內，若當前題目沒有圖，但群組有圖，則繼承圖片
+                            if (!imgSrc && activeGroup.image) {
+                                q.diagram = activeGroup.image; 
+                            } else if (imgSrc) {
+                                // 若這題自己有新圖，則更新群組圖片給後面的題目用
+                                activeGroup.image = imgSrc;
+                            }
+                        }
+                    } else {
+                        // 如果這題沒有題組標記，就清空 activeGroup，避免影響到後面的獨立題目
+                        activeGroup = null;
+                    }
                 });
 
                 setupFilterButtons();
@@ -499,7 +534,7 @@
 
                 const safeQNum = q.q_num ? q.q_num : "X";
                 
-                // ★ 關鍵修正：同時相容 json 內稱為 diagram 或 image 的屬性
+                // 相容 diagram 與 image 兩種屬性寫法
                 const imgSrc = q.diagram || q.image;
                 const imageHtml = imgSrc ? `<div class="question-image"><img src="${imgSrc}" alt="題目附圖"></div>` : '';
 

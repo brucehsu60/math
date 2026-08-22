@@ -541,6 +541,9 @@
                     displayQuestion = displayQuestion.replace(/<img[^>]*>/gi, '');
                 }
 
+                // 👉 加上這行：利用正規表達式，自動將 **粗體** 轉換為 HTML 的 <b>粗體</b> 標籤
+                let formattedExp = q.explanation ? q.explanation.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') : '';
+
                 card.innerHTML = `
                     <div class="badge-group">
                         <span class="badge badge-year">${q.year}</span>

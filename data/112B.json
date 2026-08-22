@@ -30,7 +30,7 @@
       "options": ["(1) -11", "(2) -4", "(3) 1", "(4) 10", "(5) 11"],
       "answer": "(2)",
       "hint": "依序從左至右進行矩陣乘法，展開後對照右側矩陣的對應元解出未知數。",
-      "explanation": "**💡 破題關鍵：**直接乘開比較快。左乘 $\\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}$ 相當於將矩陣的第一、二列互換；右乘對角矩陣相當於對行作倍數伸縮。<br><br>**📝 學霸詳解**<br>1. 先計算左邊兩個矩陣的乘積：<br>   $\\begin{bmatrix}0&1\\\\ 1&0\\end{bmatrix}\\begin{bmatrix}a&b\\\\ c&d\\end{bmatrix} = \\begin{bmatrix}c&d\\\\ a&b\\end{bmatrix}$。<br>   *(這一步的幾何意義就是將原矩陣的兩列上下互換)*<br>2. 接著乘上最右邊的矩陣：<br>   $\\begin{bmatrix}c&d\\\\ a&b\\end{bmatrix}\\begin{bmatrix}1&0\\\\ 0&-2\\end{bmatrix} = \\begin{bmatrix}c & -2d\\\\ a & -2b\\end{bmatrix}$。<br>   *(這一步的幾何意義是將第一行乘1，第二行乘-2)*<br>3. 將結果與等號右邊對照：<br>   $\\begin{bmatrix}c & -2d\\\\ a & -2b\\end{bmatrix} = \\begin{bmatrix}3 & -4\\\\ -9 & -7\\end{bmatrix}$。<br>4. 對應元素相等，可得：<br>   $c = 3$<br>   $-2d = -4$<br>   $a = -9$<br>   $-2b = -7 \\Rightarrow b = \\frac{7}{2}$。<br>5. 題目所求為 $c - 2b = 3 - 2(\\frac{7}{2}) = 3 - 7 = -4$。<br><br>**答案：(2)**"
+      "explanation": "**💡 破題關鍵：**直接乘開比較快。左乘 $\\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}$ 相當於將矩陣的第一、二列互換；右乘對角矩陣相當於對行作倍數伸縮。<br><br>**📝 學霸詳解**<br>1. 先計算左邊兩個矩陣的乘積：<br>   $\\begin{bmatrix}0&1\\\\ 1&0\\end{bmatrix}\\begin{bmatrix}a&b\\\\ c&d\\end{bmatrix} = \\begin{bmatrix}c&d\\\\ a&b\\end{bmatrix}$。<br>   *(這一步的幾何意義就是將原矩陣的兩列上下互換)*<br>2. 接著乘上最右邊的矩陣：<br>   $\\begin{bmatrix}c&d\\\\ a&b\\end{bmatrix}\\begin{bmatrix}1&0\\\\ 0&-2\\end{bmatrix} = \\begin{bmatrix}c & -2d\\\\ a & -2b\\end{bmatrix}$。<br>   *(這一步的幾何意義是將第一行乘1，第二行乘-2)*<br>3. 將結果與等號右邊對照：<br>   $\\begin{bmatrix}c & -2d\\\\ a & -2b\\end{bmatrix} = \\begin{bmatrix}3 & -4\\\\ -9 & -7\\end{bmatrix}$。<br>4. 對應元素相等，可得：<br>   $c = 3$<br>   $-2d = -4 \\Rightarrow d = 2$<br>   $a = -9$<br>   $-2b = -7 \\Rightarrow b = \\frac{7}{2}$。<br>5. 題目所求為 $c - 2b = 3 - 2(\\frac{7}{2}) = 3 - 7 = -4$。<br><br>**答案：(2)**"
     },
     {
       "id": "112-gsatB-03",
@@ -105,7 +105,7 @@
       "options": ["(1) 兩相交直線", "(2) 圓形", "(3) 拋物線", "(4) 長短軸不相等的橢圓", "(5) 雙曲線"],
       "answer": "(4)",
       "hint": "利用圓錐截痕定義：截角 $\\alpha$ (平面與中心軸的夾角) 與半頂角 $\\theta$ 的大小關係。牆壁為拋物線可推知 $\\alpha_{牆} = \\theta$，進而求出中心軸的仰角。",
-      "explanation": "**💡 破題關鍵：**這是考圓錐曲線的截痕定義。牆壁與地板互相垂直，兩者的截角互為餘角關係。<br><br>**📝 學霸詳解**<br>1. 設圓錐的中心軸 (即手電筒照射方向) 與地板的夾角為 $\\alpha_{地}$，與牆壁的夾角為 $\\alpha_{牆}$。<br>2. 因為牆壁與地板互相垂直，且中心軸與交界線 $L$ 垂直，故 $\\alpha_{地} + \\alpha_{牆} = 90^\\circ$。<br>3. 手電筒光發散的夾角為 $60^\\circ$，代表圓錐的半頂角 $\\theta = 30^\\circ$。<br>4. 題目已知「牆壁上的光線邊緣為拋物線」。根據圓錐截痕性質，產生拋物線的條件是：平面與軸的夾角等於半頂角。<br>   故 $\\alpha_{牆} = \\theta = 30^\\circ$。<br>5. 由此推算出中心軸與地板的夾角：$\\alpha_{地} = 90^\\circ - 30^\\circ = 60^\\circ$。<br>6. 現在判斷地板上的截痕：<br>   截角 $\\alpha_{地} = 60^\\circ$。<br>   半頂角 $\\theta = 30^\\circ$。<br>   因為 $\\alpha_{地} > \\theta$ (截角大於半頂角)，所以地板上的截痕會是一個**橢圓**。<br>   又因為 $\\alpha_{地} \\ne 90^\\circ$，所以不會是正圓。<br><br>**答案：(4)**"
+      "explanation": "**💡 破題關鍵：**這是考圓錐曲線的截痕定義。牆壁與地板互相垂直，兩者的截角互為餘角關係。<br><br>**📝 學霸詳解**<br>1. 設圓錐的中心軸 (即手電筒照射方向) 與地板的夾角為 $\\alpha_{地}$，與牆壁的夾角為 $\\alpha_{牆}$。<br>2. 因為牆壁與地板互相垂直，且中心軸與交界線 $L$ 垂直，故 $\\alpha_{地} + \\alpha_{牆} = 90^\\circ$。<br>3. 手電筒光發散的夾角為 $60^\\circ$，代表圓錐的半頂角 $\\theta = 30^\\circ$。<br>4. 題目已知「牆壁上的光線邊緣為拋物線」。根據圓錐截痕性質，產生拋物線的條件是：平面與軸的夾角等於半頂角。<br>   故 $\\alpha_{牆} = \\theta = 30^\\circ$。<br>5. 由此推算出中心軸與地板的夾角：$\\alpha_{地} = 90^\\circ - 30^\\circ = 60^\\circ$。<br>6. 現在判斷地板上的截痕：<br>   截角 $\\alpha_{地} = 60^\\circ$。<br>   半頂角 $\\theta = 30^\\circ$。<br>   因為 $\\alpha_{地} \\gt \\theta$ (截角大於半頂角)，所以地板上的截痕會是一個**橢圓**。<br>   又因為 $\\alpha_{地} \\ne 90^\\circ$，所以不會是正圓。<br><br>**答案：(4)**"
     },
     {
       "id": "112-gsatB-08",
@@ -135,7 +135,7 @@
       "options": ["(1) $a+b+c+d$ 必為一個有理數", "(2) $abcd$ 必為一個無理數", "(3) 點 $D$ 有可能與點 $C$ 的距離等於 $2\\sqrt{10}+6$", "(4) 點 $A$ 和點 $B$ 的中點位在點 $C$ 的右邊", "(5) 數線上和點 $B$ 距離小於 $8$ 的所有點中，正整數有 $14$ 個，負整數有 $1$ 個"],
       "answer": ["(3)", "(4)", "(5)"],
       "hint": "將根號化為近似小數 $c=\\sqrt{40} \\approx 6.32$，並牢記「有理數+無理數=無理數」的性質。",
-      "explanation": "**💡 破題關鍵：**將數值化為同一標準(小數或平方)來比較大小。$b \\approx 6.66$，$c = \\sqrt{40}$。<br><br>**📝 學霸詳解**<br>*(1)* $a, b, d$ 皆為有理數，但 $c = \\sqrt{40} = 2\\sqrt{10}$ 為無理數。三個有理數加上一個無理數，結果必為無理數。錯誤。<br>*(2)* $abcd = 6 \\times \\frac{20}{3} \\times 2\\sqrt{10} \\times d = 80\\sqrt{10}d$。若 $d=0$ (有理數)，則乘積為 $0$ (有理數)，並非絕對是無理數。錯誤。<br>*(3)* 若距離等於 $2\\sqrt{10}+6$，則 $|d - c| = 2\\sqrt{10}+6$。<br>   拆絕對值得 $d = c \\pm (2\\sqrt{10}+6) = 2\\sqrt{10} \\pm (2\\sqrt{10}+6)$。<br>   若取減號，$d = -6$ 為有理數，符合題意！所以有可能。正確。<br>*(4)* $A, B$ 的中點坐標為 $M = \\frac{6 + 20/3}{2} = \\frac{19}{3}$。<br>   比較 $M$ 與 $C$ 的大小：將兩者平方。<br>   $M^2 = (\\frac{19}{3})^2 = \\frac{361}{9} = 40.111\\dots$<br>   $C^2 = (\\sqrt{40})^2 = 40$。<br>   因為 $M^2 > C^2$，且皆為正數，故 $M > C$，表示中點在 $C$ 的右邊。正確。<br>*(5)* 和 $B$ 點距離小於 $8$ 的點 $x$ 滿足：$|x - \\frac{20}{3}| < 8$。<br>   展開得：$-\\frac{24}{3} < x - \\frac{20}{3} < \\frac{24}{3} \\Rightarrow -\\frac{4}{3} < x < \\frac{44}{3}$。<br>   化為小數大約是 $-1.33 < x < 14.66$。<br>   區間內的整數有：$-1, 0, 1, 2, \\dots, 14$。<br>   其中正整數為 $1 \\sim 14$ (共 $14$ 個)；負整數為 $-1$ (共 $1$ 個)。正確。<br><br>**答案：(3), (4), (5)**"
+      "explanation": "**💡 破題關鍵：**將數值化為同一標準(小數或平方)來比較大小。$b \\approx 6.66$，$c = \\sqrt{40}$。<br><br>**📝 學霸詳解**<br>*(1)* $a, b, d$ 皆為有理數，但 $c = \\sqrt{40} = 2\\sqrt{10}$ 為無理數。三個有理數加上一個無理數，結果必為無理數。錯誤。<br>*(2)* $abcd = 6 \\times \\frac{20}{3} \\times 2\\sqrt{10} \\times d = 80\\sqrt{10}d$。若 $d=0$ (有理數)，則乘積為 $0$ (有理數)，並非絕對是無理數。錯誤。<br>*(3)* 若距離等於 $2\\sqrt{10}+6$，則 $|d - c| = 2\\sqrt{10}+6$。<br>   拆絕對值得 $d = c \\pm (2\\sqrt{10}+6) = 2\\sqrt{10} \\pm (2\\sqrt{10}+6)$。<br>   若取減號，$d = -6$ 為有理數，符合題意！所以有可能。正確。<br>*(4)* $A, B$ 的中點坐標為 $M = \\frac{6 + 20/3}{2} = \\frac{19}{3}$。<br>   比較 $M$ 與 $C$ 的大小：將兩者平方。<br>   $M^2 = (\\frac{19}{3})^2 = \\frac{361}{9} = 40.111\\dots$<br>   $C^2 = (\\sqrt{40})^2 = 40$。<br>   因為 $M^2 \\gt C^2$，且皆為正數，故 $M \\gt C$，表示中點在 $C$ 的右邊。正確。<br>*(5)* 和 $B$ 點距離小於 $8$ 的點 $x$ 滿足：$|x - \\frac{20}{3}| \\lt 8$。<br>   展開得：$-\\frac{24}{3} \\lt x - \\frac{20}{3} \\lt \\frac{24}{3} \\Rightarrow -\\frac{4}{3} \\lt x \\lt \\frac{44}{3}$。<br>   化為小數大約是 $-1.33 \\lt x \\lt 14.66$。<br>   區間內的整數有：$-1, 0, 1, 2, \\dots, 14$。<br>   其中正整數為 $1 \\sim 14$ (共 $14$ 個)；負整數為 $-1$ (共 $1$ 個)。正確。<br><br>**答案：(3), (4), (5)**"
     },
     {
       "id": "112-gsatB-10",
@@ -147,10 +147,10 @@
       "correct_rate": 50,
       "diagram": null,
       "question": "某機構在12點時將兩種不同的營養劑分別投入培養皿甲與培養皿乙中，此時甲、乙的細菌數量分別為 $X, Y$。已知甲的數量每3小時成長為原來的2倍，例如15點時甲的數量為 $2X$。乙的數量每2小時成長為原來的2倍，例如14點時乙的數量為 $2Y$、16點時乙的數量為 $4Y$，測量所得結果部分記錄於下表。該機構在18點時測量發現甲、乙的數量相同，欲以細菌數量隨時間呈指數成長的模型來預估甲、乙12點至24點的細菌數量。根據上述，試選出正確的選項。<table style=\"border-collapse: collapse; text-align: center; margin: 12px auto;\"><tr><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">時刻(點)</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">12</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">13</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">14</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">15</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">16</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">17</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">18</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">19</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">20</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">21</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">22</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">23</th><th style=\"border: 1px solid #ccc; padding: 6px 16px;\">24</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">甲數量</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$X$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$2X$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">乙數量</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$Y$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$2Y$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\">$4Y$</td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td><td style=\"border: 1px solid #ccc; padding: 6px 16px;\"></td></tr></table>",
-      "options": ["(1) $X > Y$", "(2) 在13點時，甲的數量為 $\\frac{4}{3}X$", "(3) 在15點時，乙的數量為 $3Y$", "(4) 在19點時，乙的數量為甲的 $1.5$ 倍", "(5) 在24點時，乙的數量為甲的 $2$ 倍"],
+      "options": ["(1) $X \\gt Y$", "(2) 在13點時，甲的數量為 $\\frac{4}{3}X$", "(3) 在15點時，乙的數量為 $3Y$", "(4) 在19點時，乙的數量為甲的 $1.5$ 倍", "(5) 在24點時，乙的數量為甲的 $2$ 倍"],
       "answer": ["(1)", "(5)"],
       "hint": "寫出甲與乙在時刻 $t$ 的指數函數一般式，再利用 $t=18$ 時相等，解出初始值 $X$ 與 $Y$ 的比例關係。",
-      "explanation": "**💡 破題關鍵：**將語言轉換為指數函數式：$N = N_0 \\times 2^{t/週期}$。<br><br>**📝 學霸詳解**<br>設時間為 $t$ (點)。<br>甲數量函數：$f(t) = X \\cdot 2^{(t-12)/3}$<br>乙數量函數：$g(t) = Y \\cdot 2^{(t-12)/2}$<br>已知 $t=18$ 時兩者相等：<br>甲 $= X \\cdot 2^{(18-12)/3} = X \\cdot 2^2 = 4X$<br>乙 $= Y \\cdot 2^{(18-12)/2} = Y \\cdot 2^3 = 8Y$<br>故 $4X = 8Y \\Rightarrow X = 2Y$。<br><br>*(1)* 因為 $X = 2Y$ 且數量為正，所以 $X > Y$。正確。<br>*(2)* $t=13$ 時，甲數量為 $X \\cdot 2^{1/3}$。這不等於 $\\frac{4}{3}X$ (因為 $2^{1/3} \\approx 1.26 \\ne 1.33$)。錯誤。<br>*(3)* $t=15$ 時，乙數量為 $Y \\cdot 2^{(15-12)/2} = Y \\cdot 2^{1.5} = 2\\sqrt{2}Y \\approx 2.828Y$。這不等於 $3Y$。錯誤。<br>*(4)* $t=19$ 時，計算兩者的倍數比：<br>   乙/甲 $= \\frac{Y \\cdot 2^{7/2}}{X \\cdot 2^{7/3}} = \\frac{Y}{2Y} \\cdot 2^{(7/2 - 7/3)} = \\frac{1}{2} \\cdot 2^{7/6} = 2^{-1} \\cdot 2^{7/6} = 2^{1/6}$。<br>   $2^{1/6} \\approx 1.12$，不是 $1.5$。錯誤。<br>*(5)* $t=24$ 時：<br>   甲 $= X \\cdot 2^{(24-12)/3} = X \\cdot 2^4 = 16X$<br>   乙 $= Y \\cdot 2^{(24-12)/2} = Y \\cdot 2^6 = 64Y$<br>   倍數比：$\\frac{64Y}{16X} = \\frac{64Y}{16(2Y)} = \\frac{64}{32} = 2$ 倍。正確。<br><br>**答案：(1), (5)**"
+      "explanation": "**💡 破題關鍵：**將語言轉換為指數函數式：$N = N_0 \\times 2^{t/\\text{週期}}$。<br><br>**📝 學霸詳解**<br>設時間為 $t$ (點)。<br>甲數量函數：$f(t) = X \\cdot 2^{(t-12)/3}$<br>乙數量函數：$g(t) = Y \\cdot 2^{(t-12)/2}$<br>已知 $t=18$ 時兩者相等：<br>甲 $= X \\cdot 2^{(18-12)/3} = X \\cdot 2^2 = 4X$<br>乙 $= Y \\cdot 2^{(18-12)/2} = Y \\cdot 2^3 = 8Y$<br>故 $4X = 8Y \\Rightarrow X = 2Y$。<br><br>*(1)* 因為 $X = 2Y$ 且數量為正，所以 $X \\gt Y$。正確。<br>*(2)* $t=13$ 時，甲數量為 $X \\cdot 2^{1/3}$。這不等於 $\\frac{4}{3}X$ (因為 $2^{1/3} \\approx 1.26 \\ne 1.33$)。錯誤。<br>*(3)* $t=15$ 時，乙數量為 $Y \\cdot 2^{(15-12)/2} = Y \\cdot 2^{1.5} = 2\\sqrt{2}Y \\approx 2.828Y$。這不等於 $3Y$。錯誤。<br>*(4)* $t=19$ 時，計算兩者的倍數比：<br>   乙/甲 $= \\frac{Y \\cdot 2^{7/2}}{X \\cdot 2^{7/3}} = \\frac{Y}{2Y} \\cdot 2^{(7/2 - 7/3)} = \\frac{1}{2} \\cdot 2^{7/6} = 2^{-1} \\cdot 2^{7/6} = 2^{1/6}$。<br>   $2^{1/6} \\approx 1.12$，不是 $1.5$。錯誤。<br>*(5)* $t=24$ 時：<br>   甲 $= X \\cdot 2^{(24-12)/3} = X \\cdot 2^4 = 16X$<br>   乙 $= Y \\cdot 2^{(24-12)/2} = Y \\cdot 2^6 = 64Y$<br>   倍數比：$\\frac{64Y}{16X} = \\frac{64Y}{16(2Y)} = \\frac{64}{32} = 2$ 倍。正確。<br><br>**答案：(1), (5)**"
     },
     {
       "id": "112-gsatB-11",
@@ -165,7 +165,7 @@
       "options": ["(1) $a=b$", "(2) 點 $P$ 位於直線 $x+y=0$ 上", "(3) 點 $P$ 在此圓內", "(4) $\\frac{a+c}{b-c}=\\sqrt{2}$", "(5) $\\frac{a}{c}=2+3\\sqrt{2}$"],
       "answer": ["(1)", "(4)"],
       "hint": "與兩軸相切的圓其圓心坐標絕對值必等於半徑。透過兩點距離公式建立方程式，解出 $a$ 與 $c$ 的比例關係。",
-      "explanation": "**💡 破題關鍵：**與兩軸相切的圓，其圓心必定在 $y=x$ 或 $y=-x$ 上，即 $b = \\pm a$。帶入距離公式即可判定生死。<br><br>**📝 學霸詳解**<br>已知圓心 $A(a,b)$ 與兩軸相切，且 $a>0$，故圓半徑 $r = |a| = a$，且 $b = a$ 或 $b = -a$。<br>*(1)* 代入距離公式 $\\overline{PA}^2 = (a+c)^2$：<br>   $(a-c)^2 + (b-c)^2 = (a+c)^2$<br>   展開後消掉 $(a-c)^2$ 等無關項，可整理出：$(b-c)^2 = 4ac$。<br>   因為 $a>c>0$，所以 $4ac > 0$。<br>   若 $b = -a$，式子變為 $(-a-c)^2 = 4ac \\Rightarrow (a+c)^2 = 4ac \\Rightarrow (a-c)^2 = 0 \\Rightarrow a=c$。這與已知 $a>c$ 矛盾！<br>   故唯一的可能是 $b = a$。正確。<br>*(2)* 點 $P(c,c)$ 滿足 $x=y$，所以是位於 $x-y=0$ 上，非 $x+y=0$。錯誤。<br>*(3)* 此圓半徑為 $r=a$。點 $P$ 到圓心的距離為 $a+c$，因為 $c>0$，所以 $a+c > a$，點 $P$ 在圓外。錯誤。<br>*(4)* 已知 $(b-c)^2 = 4ac$，且 $b=a$，代入得 $(a-c)^2 = 4ac$。<br>   展開得 $a^2 - 6ac + c^2 = 0$。同除以 $c^2$ 得 $(\\frac{a}{c})^2 - 6(\\frac{a}{c}) + 1 = 0$。<br>   利用公式解求 $\\frac{a}{c}$：$\\frac{a}{c} = \\frac{6 \\pm \\sqrt{36-4}}{2} = 3 \\pm 2\\sqrt{2}$。<br>   由於 $a>c>0$，$\\frac{a}{c} > 1$，故取正號 $\\frac{a}{c} = 3+2\\sqrt{2}$。<br>   所求式：$\\frac{a+c}{b-c} = \\frac{a+c}{a-c} = \\frac{a/c + 1}{a/c - 1} = \\frac{4+2\\sqrt{2}}{2+2\\sqrt{2}} = \\frac{2+\\sqrt{2}}{1+\\sqrt{2}}$。<br>   上下同乘 $(\\sqrt{2}-1)$ 有理化得 $\\sqrt{2}$。正確。<br>*(5)* 由剛才推導得知 $\\frac{a}{c} = 3+2\\sqrt{2}$，不是 $2+3\\sqrt{2}$。錯誤。<br><br>**答案：(1), (4)**"
+      "explanation": "**💡 破題關鍵：**與兩軸相切的圓，其圓心必定在 $y=x$ 或 $y=-x$ 上，即 $b = \\pm a$。帶入距離公式即可判定生死。<br><br>**📝 學霸詳解**<br>已知圓心 $A(a,b)$ 與兩軸相切，且 $a>0$，故圓半徑 $r = |a| = a$，且 $b = a$ 或 $b = -a$。<br>*(1)* 代入距離公式 $\\overline{PA}^2 = (a+c)^2$：<br>   $(a-c)^2 + (b-c)^2 = (a+c)^2$<br>   展開後消掉 $(a-c)^2$ 等無關項，可整理出：$(b-c)^2 = 4ac$。<br>   因為 $a>c>0$，所以 $4ac \\gt 0$。<br>   若 $b = -a$，式子變為 $(-a-c)^2 = 4ac \\Rightarrow (a+c)^2 = 4ac \\Rightarrow (a-c)^2 = 0 \\Rightarrow a=c$。這與已知 $a>c$ 矛盾！<br>   故唯一的可能是 $b = a$。正確。<br>*(2)* 點 $P(c,c)$ 滿足 $x=y$，所以是位於 $x-y=0$ 上，非 $x+y=0$。錯誤。<br>*(3)* 此圓半徑為 $r=a$。點 $P$ 到圓心的距離為 $a+c$，因為 $c>0$，所以 $a+c \\gt a$，點 $P$ 在圓外。錯誤。<br>*(4)* 已知 $(b-c)^2 = 4ac$，且 $b=a$，代入得 $(a-c)^2 = 4ac$。<br>   展開得 $a^2 - 6ac + c^2 = 0$。同除以 $c^2$ 得 $(\\frac{a}{c})^2 - 6(\\frac{a}{c}) + 1 = 0$。<br>   利用公式解求 $\\frac{a}{c}$：$\\frac{a}{c} = \\frac{6 \\pm \\sqrt{36-4}}{2} = 3 \\pm 2\\sqrt{2}$。<br>   由於 $a>c>0$，$\\frac{a}{c} \\gt 1$，故取正號 $\\frac{a}{c} = 3+2\\sqrt{2}$。<br>   所求式：$\\frac{a+c}{b-c} = \\frac{a+c}{a-c} = \\frac{a/c + 1}{a/c - 1} = \\frac{4+2\\sqrt{2}}{2+2\\sqrt{2}} = \\frac{2+\\sqrt{2}}{1+\\sqrt{2}}$。<br>   上下同乘 $(\\sqrt{2}-1)$ 有理化得 $\\sqrt{2}$。正確。<br>*(5)* 由剛才推導得知 $\\frac{a}{c} = 3+2\\sqrt{2}$，不是 $2+3\\sqrt{2}$。錯誤。<br><br>**答案：(1), (4)**"
     },
     {
       "id": "112-gsatB-12",
@@ -191,7 +191,7 @@
       "type": "填充題",
       "correct_rate": 45,
       "diagram": null,
-      "question": "有兩個正實數 $a, b$，已知 $ab^2=10^5, a^2b=10^3$，則 $\\log b = \\frac{(\\square)}{(\\square)}$。(化為最簡分數)",
+      "question": "有兩個正實數 $a, b$，已知 $ab^2=10^5, a^2b=10^3$，則 $\\log b$ 的值為何？(化為最簡分數)",
       "options": [],
       "answer": "7/3",
       "hint": "利用指數律將兩式相乘或相除，消去 $a$ 後解出 $b$，再對其取對數。",
@@ -206,7 +206,7 @@
       "type": "填充題",
       "correct_rate": 38,
       "diagram": null,
-      "question": "從1到20的20個整數中，取出相異的3個數 $a,b,c$，使其成為等差數列，且 $a<b<c$，則 $(a,b,c)$ 的取法有 $(\\square)(\\square)$ 種。",
+      "question": "從1到20的20個整數中，取出相異的3個數 $a,b,c$，使其成為等差數列，且 $a<b<c$，則 $(a,b,c)$ 的取法共有多少種？",
       "options": [],
       "answer": "90",
       "hint": "等差數列的性質為 $a+c=2b$。因此 $a$ 和 $c$ 的奇偶性必須相同(同奇或同偶)，選定 $a,c$ 後 $b$ 即唯一決定。",
@@ -221,11 +221,11 @@
       "type": "填充題",
       "correct_rate": 38,
       "diagram": "images/112-gsatB-15-fig.png",
-      "question": "如圖所示，平面上有一點 $P_0$ 先朝某方向前進2個單位長到達點 $P_1$ 後，依前進方向左轉15度；朝新方向前進2個單位長到達點 $P_2$ 後，然後再依前進方向左轉15度；再朝新方向前進2個單位長到達點 $P_3$ 後，...依此類推。則向量 $\\vec{P_2P_3}$ 與 $\\vec{P_5P_6}$ 的內積為 $(\\square)\\sqrt{(\\square)}$。(化為最簡根式)",
+      "question": "如圖所示，平面上有一點 $P_0$ 先朝某方向前進2個單位長到達點 $P_1$ 後，依前進方向左轉15度；朝新方向前進2個單位長到達點 $P_2$ 後，然後再依前進方向左轉15度；再朝新方向前進2個單位長到達點 $P_3$ 後，...依此類推。則向量 $\\vec{P_2P_3}$ 與 $\\vec{P_5P_6}$ 的內積為何？(化為最簡根式)",
       "options": [],
       "answer": "2\\sqrt{2}",
       "hint": "利用向量內積公式 $\\vec{u} \\cdot \\vec{v} = |\\vec{u}||\\vec{v}| \\cos\\theta$，判斷兩向量間累積旋轉的總角度 $\\theta$。",
-      "explanation": "**💡 破題關鍵：**不需在意坐標，向量內積只跟「長度」與「夾角」有關。每經過一個點向量就旋轉 15 度。<br><br>**📝 學霸詳解**<br>1. 這是一個連續旋轉的軌跡。每前進一段，下一個向量的方向角就比前一個增加 $15^\\circ$。<br>2. 目標是求 $\\vec{P_2P_3}$ 與 $\\vec{P_5P_6}$ 的內積。這兩段的長度皆為已知：$|\\vec{P_2P_3}| = 2$，$|\\vec{P_5P_6}| = 2$。<br>3. 計算夾角：從 $\\vec{P_2P_3}$ 到 $\\vec{P_5P_6}$ 總共轉了幾次？<br>   $\\vec{P_3P_4}$ 轉了 $15^\\circ$<br>   $\\vec{P_4P_5}$ 轉了 $15^\\circ$<br>   $\\vec{P_5P_6}$ 轉了 $15^\\circ$<br>   因此總夾角 $\\theta = 3 \\times 15^\\circ = 45^\\circ$。<br>4. 代入內積公式：<br>   $\\vec{P_2P_3} \\cdot \\vec{P_5P_6} = |\\vec{P_2P_3}| \\times |\\vec{P_5P_6}| \\times \\cos(45^\\circ)$<br>   $= 2 \\times 2 \\times \\frac{\\sqrt{2}}{2} = 2\\sqrt{2}$。<br>5. 依照填答格式，填入 $2$ 和 $2$。<br><br>**答案：2\\sqrt{2}**"
+      "explanation": "**💡 破題關鍵：**不需在意坐標，向量內積只跟「長度」與「夾角」有關。每經過一個點向量就旋轉 15 度。<br><br>**📝 學霸詳解**<br>1. 這是一個連續旋轉的軌跡。每前進一段，下一個向量的方向角就比前一個增加 $15^\\circ$。<br>2. 目標是求 $\\vec{P_2P_3}$ 與 $\\vec{P_5P_6}$ 的內積。這兩段的長度皆為已知：$|\\vec{P_2P_3}| = 2$，$|\\vec{P_5P_6}| = 2$。<br>3. 計算夾角：從 $\\vec{P_2P_3}$ 到 $\\vec{P_5P_6}$ 總共轉了幾次？<br>   $\\vec{P_3P_4}$ 轉了 $15^\\circ$<br>   $\\vec{P_4P_5}$ 轉了 $15^\\circ$<br>   $\\vec{P_5P_6}$ 轉了 $15^\\circ$<br>   因此總夾角 $\\theta = 3 \\times 15^\\circ = 45^\\circ$。<br>4. 代入內積公式：<br>   $\\vec{P_2P_3} \\cdot \\vec{P_5P_6} = |\\vec{P_2P_3}| \\times |\\vec{P_5P_6}| \\times \\cos(45^\\circ)$<br>   $= 2 \\times 2 \\times \\frac{\\sqrt{2}}{2} = 2\\sqrt{2}$。<br><br>**答案：2\\sqrt{2}**"
     },
     {
       "id": "112-gsatB-16",
@@ -236,7 +236,7 @@
       "type": "填充題",
       "correct_rate": 16,
       "diagram": "images/112-gsatB-16-fig.png",
-      "question": "正方形紙張上有一點 $P$，$P$ 點距離紙張左邊界6公分，距離下邊界8公分。今將紙張的左下角點往內摺至 $P$ 點，如圖所示。則摺進去的三角形面積是 $\\frac{(\\square)(\\square)(\\square)}{(\\square)(\\square)}$ 平方公分。",
+      "question": "正方形紙張上有一點 $P$，$P$ 點距離紙張左邊界6公分，距離下邊界8公分。今將紙張的左下角點往內摺至 $P$ 點，如圖所示。則摺進去的三角形面積是多少平方公分？ (化為最簡分數)",
       "options": [],
       "answer": "625/24",
       "hint": "摺紙的「摺痕」即為對稱點連線的「中垂線」。建立直角坐標系找出摺痕的直線方程式，求出它與兩坐標軸的截距，即可算出切下的直角三角形面積。",
@@ -251,7 +251,7 @@
       "type": "填充題",
       "correct_rate": 8,
       "diagram": null,
-      "question": "考慮所有只用 0, 1, 2 三種數字組成的序列，序列長度是指該序列由幾個數字組成(可重複出現)。令 $a(n)$ 為在所有長度為 $n$ 的序列中連續兩個零(即00)出現的次數總和。例如長度3的序列中含有連續兩個零的有000, 001, 002, 100, 200，其中000貢獻2次00，其餘各貢獻1次00，故 $a(3)=6$。則 $a(5)$ 的值為 $(\\square)(\\square)(\\square)$",
+      "question": "考慮所有只用 0, 1, 2 三種數字組成的序列，序列長度是指該序列由幾個數字組成(可重複出現)。令 $a(n)$ 為在所有長度為 $n$ 的序列中連續兩個零(即00)出現的次數總和。例如長度3的序列中含有連續兩個零的有000, 001, 002, 100, 200，其中000貢獻2次00，其餘各貢獻1次00，故 $a(3)=6$。則 $a(5)$ 的值為何？",
       "options": [],
       "answer": "108",
       "hint": "利用「期望值/貢獻度」的觀點，將整個序列拆解為多個相鄰的位置空位，計算每個相鄰位置出現 00 的次數後相加。",
@@ -266,7 +266,7 @@
       "type": "填充題",
       "correct_rate": 56,
       "diagram": "images/112-gsatB-18-fig.png",
-      "question": "【18-20題為題組】<br>空地上有三根與地面垂直且等高的電線桿，其底座在一直線上且間距相等。某甲以單點透視法在畫布上畫這三根電線桿。在畫布上設坐標系，使得電線桿皆與 $y$ 軸平行，三根底座的點分別為 $A_1(0,0), A_2, A_3$，都在直線 $L: x+3y=0$ 上；三根頂端的點分別為 $B_1(0,3), B_2, B_3$，都在直線 $M: 2x-3y+9=0$ 上，如圖所示。已知 $\\overline{A_3B_3}=2\\overline{A_1B_1}$，且由單點透視法可知直線 $A_1B_3$ 與直線 $A_3B_1$ 的交點在直線 $A_2B_2$ 上。設 $L$ 和 $M$ 相交於 $P$ 點(此點又稱為「消失點」)。<br>根據上述，試回答下列問題。<br><br>若向量 $\\vec{PA_1}=k\\vec{PA_3}$，則 $k$ 的值為 $\\frac{(\\square)}{(\\square)}$。(化為最簡分數)",
+      "question": "【18-20題為題組】<br>空地上有三根與地面垂直且等高的電線桿，其底座在一直線上且間距相等。某甲以單點透視法在畫布上畫這三根電線桿。在畫布上設坐標系，使得電線桿皆與 $y$ 軸平行，三根底座的點分別為 $A_1(0,0), A_2, A_3$，都在直線 $L: x+3y=0$ 上；三根頂端的點分別為 $B_1(0,3), B_2, B_3$，都在直線 $M: 2x-3y+9=0$ 上，如圖所示。已知 $\\overline{A_3B_3}=2\\overline{A_1B_1}$，且由單點透視法可知直線 $A_1B_3$ 與直線 $A_3B_1$ 的交點在直線 $A_2B_2$ 上。設 $L$ 和 $M$ 相交於 $P$ 點(此點又稱為「消失點」)。<br>根據上述，試回答下列問題。<br><br>若向量 $\\vec{PA_1}=k\\vec{PA_3}$，則 $k$ 的值為何？(化為最簡分數)",
       "options": [],
       "answer": "1/2",
       "hint": "利用透視法延伸交點(消失點)所構成的相似三角形 $\\Delta PA_1B_1 \\sim \\Delta PA_3B_3$ 來解題。",

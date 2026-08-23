@@ -765,7 +765,16 @@
                     matchExamType = q.year.includes(currentFilters.examType);
                 }
 
-                const matchExamYear = currentFilters.examYear === 'all' || q.year.includes(currentFilters.examYear);
+                // ★ 修正年份篩選邏輯：精確提取年份與「補」字，避免 92 包含 92補
+let matchExamYear = false;
+if (currentFilters.examYear === 'all') {
+    matchExamYear = true;
+} else {
+    // 利用正規表達式抓取開頭的數字與可選的「補」字 (例如 "92補學測" -> "92補", "92學測" -> "92")
+    const yearMatch = q.year.match(/^(\d+補?)/);
+    const exactYear = yearMatch ? yearMatch[1] : '';
+    matchExamYear = (exactYear === currentFilters.examYear);
+}
 
                 const qStatus = userProgress[q.id] || 'white';
                 const matchStatus = currentFilters.status === 'all' || qStatus === currentFilters.status;

@@ -331,7 +331,7 @@
       "chapter": "空間中的平面與直線",
       "type": "填充題",
       "correct_rate": 36,
-      "diagram": null,
+      "diagram": "images/098-gsat-18-fig.png",
       "question": "坐標空間中 $xy$ 平面上有一正方形，其頂點為 $O(0,0,0), A(8,0,0), B(8,8,0), C(0,8,0)$。另一點 $P$ 在 $xy$ 平面的上方，且與 $O, A, B, C$ 四點的距離皆等於 6。若 $x+by+cz=d$ 為通過 $A, B, P$ 三點的平面，則 $(b,c,d) = (?, ?, ?)$。",
       "options": [],
       "answer": "(0, 2, 8)",
@@ -344,6 +344,7 @@
       "year": "098學測",
       "category": "第六冊",
       "chapter": "二次曲線",
+      "type": "14題或填充題",
       "type": "填充題",
       "correct_rate": 36,
       "diagram": null,
@@ -354,7 +355,7 @@
       "explanation": "<b>💡 破題關鍵：</b>這題是圓錐曲線定義的極致應用！看到 $\\overline{PF_1}$ 和 $\\overline{PF_2}$，馬上寫出橢圓的「相加 $= 2a$」和雙曲線的「相減 $= 2a$」。把兩式平方相減，配合 $a,b,c$ 的畢氏定理關係，答案會奇蹟般地消出來！<br><br><b>📝 學霸詳解</b><br>1. <b>設定變數與關係式：</b><br>   設共同焦距為 $2c$。<br>   橢圓：長半軸 $a_e$，短半軸 $b_e$。關係式 $a_e^2 = b_e^2 + c^2$。<br>   雙曲線：實半軸 $a_h$，虛半軸 $b_h$。關係式 $c^2 = a_h^2 + b_h^2$。<br>   已知條件：雙曲線貫軸長 = 橢圓短軸長 $\\Rightarrow 2a_h = 2b_e \\Rightarrow a_h = b_e$。<br>2. <b>利用定義列式：</b><br>   點 $P$ 在橢圓上：$\\overline{PF_1} + \\overline{PF_2} = 2a_e$。<br>   點 $P$ 在雙曲線上：$|\\overline{PF_1} - \\overline{PF_2}| = 2a_h$。<br>3. <b>平方相減法：</b><br>   將兩式平方後相減：<br>   $(\\overline{PF_1} + \\overline{PF_2})^2 - (\\overline{PF_1} - \\overline{PF_2})^2 = (2a_e)^2 - (2a_h)^2$<br>   左邊展開剛好剩下交叉項：$4 \\overline{PF_1} \\times \\overline{PF_2} = 4a_e^2 - 4a_h^2$<br>   已知 $\\overline{PF_1} \\times \\overline{PF_2} = 64$，代入得：<br>   $4(64) = 4(a_e^2 - a_h^2) \\Rightarrow a_e^2 - a_h^2 = 64$。<br>4. <b>代入 $a,b,c$ 關係式求 $c$：</b><br>   將 $a_e^2 = b_e^2 + c^2$ 與 $a_h = b_e$ 代入上式：<br>   $(b_e^2 + c^2) - b_e^2 = 64 \\Rightarrow c^2 = 64 \\Rightarrow c = 8$。<br>   所求焦點距離 $\\overline{F_1F_2} = 2c = 16$。<br><br><b>答案：16</b>"
     },
     {
-      "id": "098-gsat-20",
+      "id": "098-gsat-19",
       "q_num": 20,
       "year": "098學測",
       "category": "第二冊",
@@ -370,3 +371,4 @@
     }
   ]
 }
+```[cite: 18]

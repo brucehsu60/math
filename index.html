@@ -249,8 +249,8 @@
                 <button class="tag-btn" data-filter="examType" data-value="分科數甲">分科數甲</button>
                 <button class="tag-btn" data-filter="examType" data-value="分科數乙">分科數乙</button>
                 <button class="tag-btn" data-filter="examType" data-value="舊制學測">舊制學測</button>
-                <button class="tag-btn" data-filter="examType" data-value="舊指考(甲)">舊指考(甲)</button>
-                <button class="tag-btn" data-filter="examType" data-value="舊指考(乙)">舊指考(乙)</button>
+                <button class="tag-btn" data-filter="examType" data-value="指考(甲)">指考(甲)</button>
+                <button class="tag-btn" data-filter="examType" data-value="指考(乙)">指考(乙)</button>
             </div>
         </div>
 
@@ -437,8 +437,8 @@
 
         const examTypeMapping = {
             '舊制學測': '學測',       
-            '舊指考(甲)': '指考甲',   
-            '舊指考(乙)': '指考乙'    
+            '指考(甲)': '指考甲',   
+            '指考(乙)': '指考乙'    
         };
 
         const examTypeOrder = {
@@ -758,7 +758,7 @@
                 let matchExamType = false;
                 if (currentFilters.examType === 'all') {
                     matchExamType = true;
-                } else if (currentFilters.examType.startsWith('舊制') || currentFilters.examType.startsWith('舊指考')) {
+                } else if (currentFilters.examType.startsWith('舊制') || currentFilters.examType.startsWith('指考')) {
                     const mapped = examTypeMapping[currentFilters.examType];
                     matchExamType = q.year.includes(mapped) && !q.year.includes('數A') && !q.year.includes('數B');
                 } else {

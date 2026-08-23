@@ -52,7 +52,10 @@
       "chapter": "複數與多項式方程式",
       "type": "單選題",
       "correct_rate": 44,
-      "diagram": "images/093-gsat-03-fig.png",
+      "diagram": [
+          "images/093-gsat-03-fig.png",
+          "images/093-gsat-03.1-fig.png"
+        ],
       "question": "右圖陰影部分所示為複數平面上區域 $A = \\{z : z = r(\\cos\\theta + i\\sin\\theta), 0 \\le r \\le 1, \\frac{3\\pi}{4} \\le \\theta \\le \\frac{5\\pi}{4}\\}$ 之略圖。令 $D = \\{w : w = z^3, z \\in A\\}$，試問下列選項中之略圖，何者之陰影部分與區域 $D$ 最接近？",
       "options": [
         "(1) 圖(1)",

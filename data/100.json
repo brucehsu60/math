@@ -331,7 +331,7 @@
       "diagram": null,
       "question": "四邊形 $ABCD$ 中，$\\overline{AB}=1, \\overline{BC}=5, \\overline{CD}=5, \\overline{DA}=7$，且 $\\angle DAB = \\angle BCD = 90^\\circ$，則對角線 $\\overline{AC}$ 長為？(化為最簡根式)",
       "options": [],
-      "answer": "4\\sqrt{2}",
+      "answer": "$4\\sqrt{2}$",
       "hint": "對角互補 ($90^\\circ+90^\\circ=180^\\circ$) 代表這是一個「圓內接四邊形」。連接 $\\overline{BD}$，它剛好是外接圓的直徑。利用托勒密定理（對角線乘積等於對邊乘積之和）即可秒殺 $\\overline{AC}$。",
       "explanation": "<b>💡 破題關鍵：</b>看到兩個對角都是 $90^\\circ$，馬上想到「圓內接四邊形」，而且連起另一條對角線 $\\overline{BD}$ 就是直徑！接著套用圓內接四邊形的專屬神技「托勒密定理」就結束了。<br><br><b>📝 學霸詳解</b><br>1. <b>求對角線 $\\overline{BD}$：</b><br>   在直角 $\\triangle ABD$ 中，$\\overline{BD}^2 = 1^2 + 7^2 = 50$。<br>   在直角 $\\triangle BCD$ 中，$\\overline{BD}^2 = 5^2 + 5^2 = 50$。<br>   兩者吻合，$\\overline{BD} = \\sqrt{50} = 5\\sqrt{2}$。<br>2. <b>利用托勒密定理求 $\\overline{AC}$：</b><br>   因為 $\\angle A + \\angle C = 180^\\circ$，$ABCD$ 為圓內接四邊形。<br>   托勒密定理：對角線乘積 = 對邊乘積之和。<br>   $\\overline{AC} \\cdot \\overline{BD} = \\overline{AB} \\cdot \\overline{CD} + \\overline{AD} \\cdot \\overline{BC}$<br>   $\\overline{AC} \\cdot \\sqrt{50} = 1 \\times 5 + 7 \\times 5$<br>   $\\overline{AC} \\cdot 5\\sqrt{2} = 5 + 35 = 40$<br>   $\\overline{AC} = \\frac{40}{5\\sqrt{2}} = \\frac{8}{\\sqrt{2}} = 4\\sqrt{2}$。<br>   *(註：官方畫卡代號格式為 $\\sqrt{32}$)*<br><br><b>答案：$4\\sqrt{2}$</b>"
     },
@@ -361,7 +361,7 @@
       "diagram": null,
       "question": "設 $E_1: \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ (其中 $a \\gt 0$) 為焦點在 $(3,0), (-3,0)$ 的橢圓；$E_2$: 焦點在 $(3,0)$ 且準線為 $x=-3$ 的拋物線。已知 $E_1, E_2$ 的交點在直線 $x=3$ 上，則 $a = ?$ (化為最簡根式)",
       "options": [],
-      "answer": "3+3\\sqrt{2}",
+      "answer": "$3+3\\sqrt{2}$",
       "hint": "先利用拋物線定義求出交點的 $y$ 坐標。將交點代入橢圓方程式，並利用橢圓焦點關係 $a^2 - b^2 = c^2 = 9$ 將 $b^2$ 替換掉，解出 $a^2$ 的一元二次方程式。",
       "explanation": "<b>💡 破題關鍵：</b>交點在 $x=3$ 上，剛好是拋物線的焦點垂直線上（正焦弦）！利用拋物線定義算出交點坐標，代入橢圓方程式，配合 $a^2-b^2=c^2$ 就能解出 $a$。<br><br><b>📝 學霸詳解</b><br>1. <b>求交點坐標：</b><br>   拋物線 $E_2$ 焦點 $(3,0)$，準線 $x=-3$。頂點在原點 $(0,0)$，$c=3$。<br>   方程式為 $y^2 = 4(3)x = 12x$。<br>   交點在 $x=3$ 上，代入得 $y^2 = 12(3) = 36 \\Rightarrow y = \\pm 6$。<br>   交點為 $(3, 6)$ 與 $(3, -6)$。<br>2. <b>代入橢圓方程式：</b><br>   橢圓 $E_1$ 焦點為 $(\\pm 3, 0)$，故 $c=3$。關係式為 $a^2 - b^2 = 9 \\Rightarrow b^2 = a^2 - 9$。<br>   將交點 $(3, 6)$ 代入 $E_1$：<br>   $\\frac{3^2}{a^2} + \\frac{6^2}{b^2} = 1 \\Rightarrow \\frac{9}{a^2} + \\frac{36}{a^2-9} = 1$<br>3. <b>解方程式求 $a$：</b><br>   同乘 $a^2(a^2-9)$：<br>   $9(a^2-9) + 36a^2 = a^2(a^2-9)$<br>   $9a^2 - 81 + 36a^2 = a^4 - 9a^2$<br>   $a^4 - 54a^2 + 81 = 0$<br>   利用公式解求 $a^2$：<br>   $a^2 = \\frac{54 \\pm \\sqrt{54^2 - 4(81)}}{2} = 27 \\pm \\sqrt{27^2 - 81} = 27 \\pm \\sqrt{729 - 81} = 27 \\pm \\sqrt{648} = 27 \\pm 18\\sqrt{2}$。<br>   因為 $b^2 = a^2 - 9 \\gt 0$，所以 $a^2 \\gt 9$。<br>   $27 - 18\\sqrt{2} \\approx 27 - 25.4 = 1.6 \\lt 9$ (不合)。<br>   故 $a^2 = 27 + 18\\sqrt{2}$。<br>4. <b>雙重根號化簡：</b><br>   $a = \\sqrt{27 + 18\\sqrt{2}} = \\sqrt{27 + 2\\sqrt{162}}$。<br>   尋找相加為 27，相乘為 162 的兩數：$18$ 和 $9$。<br>   $a = \\sqrt{18} + \\sqrt{9} = 3\\sqrt{2} + 3$。<br><br><b>答案：$3+3\\sqrt{2}$</b>"
     },

@@ -766,15 +766,15 @@
                 }
 
                 // ★ 修正年份篩選邏輯：精確提取年份與「補」字，避免 92 包含 92補
-let matchExamYear = false;
-if (currentFilters.examYear === 'all') {
-    matchExamYear = true;
-} else {
-    // 利用正規表達式抓取開頭的數字與可選的「補」字 (例如 "92補學測" -> "92補", "92學測" -> "92")
-    const yearMatch = q.year.match(/^(\d+補?)/);
-    const exactYear = yearMatch ? yearMatch[1] : '';
-    matchExamYear = (exactYear === currentFilters.examYear);
-}
+                let matchExamYear = false;
+                if (currentFilters.examYear === 'all') {
+                    matchExamYear = true;
+                } else {
+                    // 利用正規表達式抓取開頭的數字與可選的「補」字 (例如 "92補學測" -> "92補", "92學測" -> "92")
+                    const yearMatch = q.year.match(/^(\d+補?)/);
+                    const exactYear = yearMatch ? yearMatch[1] : '';
+                    matchExamYear = (exactYear === currentFilters.examYear);
+                }
 
                 const qStatus = userProgress[q.id] || 'white';
                 const matchStatus = currentFilters.status === 'all' || qStatus === currentFilters.status;
@@ -853,6 +853,7 @@ if (currentFilters.examYear === 'all') {
                 const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
 
                 const safeQNum = q.q_num ? q.q_num : "X";
+                
                 // ★ 支援單張圖片(字串)與多張圖片(陣列)的渲染邏輯
                 let imageHtml = '';
                 const diagramData = q.diagram || q.image;
@@ -867,9 +868,8 @@ if (currentFilters.examYear === 'all') {
                         // 如果是單一字串（相容舊格式），產生單張圖片
                         imageHtml = `<div class="question-image"><img src="${diagramData}" alt="題目附圖"></div>`;
                     }
-                }
-
-                if (imgSrc) {
+                    
+                    // 移除題目文字中可能殘留的 img 標籤
                     displayQuestion = displayQuestion.replace(/<img[^>]*>/gi, '');
                 }
 

@@ -286,7 +286,7 @@
       "type": "填充題",
       "correct_rate": 33,
       "diagram": "images/095-gsat-13-fig.png",
-      "question": "下圖為一正立方體，若 $M$ 在線段 $AB$ 上，$\\overline{BM} = 2\\overline{AM}$，$N$ 為線段 $BC$ 之中點，則 $\\cos \\angle MON =$ ____。（分數要化成最簡分數）\n<i>(註：原題空格為 $\\frac{\\text{circled 17}\\sqrt{10}}{\\text{circled 15}\\text{circled 16}}$，答案為 4/15)</i>",
+      "question": "下圖為一正立方體，若 $M$ 在線段 $AB$ 上，$\\overline{BM} = 2\\overline{AM}$，$N$ 為線段 $BC$ 之中點，則 $\\cos \\angle MON =$ ____。（分數要化成最簡分數）",
       "options": [],
       "answer": "4/15",
       "hint": "建立空間坐標系，將幾何問題代數化。找出 $O, M, N$ 三點的坐標，利用向量內積公式 $\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{u}||\\vec{v}|}$ 求解。",

@@ -200,8 +200,9 @@
         .fill-in-blank { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
         .fill-in-blank input { padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; flex-grow: 1; max-width: 250px; outline: none; }
         
-        .correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
-        .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; opacity: 0.7; text-decoration: line-through; }
+        /* ★ 修正答題回饋樣式：確保正確與錯誤的顏色能正確顯示 */
+        button.option-btn.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
+        button.option-btn.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; text-decoration: line-through; opacity: 0.8; }
         
         .feedback-area { margin-top: 25px; display: none; }
         .hint-box { background: #fef9c3; border-left: 4px solid #eab308; padding: 15px; margin-bottom: 15px; font-size: 15px; }
@@ -931,9 +932,15 @@
             buttons.forEach(b => {
                 b.disabled = true;
                 const bVal = decodeURIComponent(b.getAttribute('data-val'));
-                if (bVal === correct) b.classList.add('correct');
+                if (bVal === correct) {
+                    b.classList.add('correct');
+                }
             });
-            if (selected !== correct) btn.classList.add('wrong');
+            
+            if (selected !== correct) {
+                btn.classList.add('wrong');
+            }
+            
             document.getElementById(feedbackId).style.display = 'block';
         }
 

@@ -331,7 +331,7 @@
       "chapter": "空間中的平面與直線",
       "type": "填充題",
       "correct_rate": 36,
-      "diagram": "images/098-gsat-18-fig.png",
+      "diagram": null,
       "question": "坐標空間中 $xy$ 平面上有一正方形，其頂點為 $O(0,0,0), A(8,0,0), B(8,8,0), C(0,8,0)$。另一點 $P$ 在 $xy$ 平面的上方，且與 $O, A, B, C$ 四點的距離皆等於 6。若 $x+by+cz=d$ 為通過 $A, B, P$ 三點的平面，則 $(b,c,d) = (?, ?, ?)$。",
       "options": [],
       "answer": "(0, 2, 8)",

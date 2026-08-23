@@ -765,15 +765,27 @@
                     matchExamType = q.year.includes(currentFilters.examType);
                 }
 
-                // ★ 修正年份篩選邏輯：精確提取年份與「補」字，避免 92 包含 92補
+                // ★ 修正年份篩選邏輯：利用 includes 判斷「補」字，徹底解決 92 與 92補 互相干擾的問題
                 let matchExamYear = false;
                 if (currentFilters.examYear === 'all') {
                     matchExamYear = true;
                 } else {
-                    // 利用正規表達式抓取開頭的數字與可選的「補」字 (例如 "92補學測" -> "92補", "92學測" -> "92")
-                    const yearMatch = q.year.match(/^(\d+補?)/);
-                    const exactYear = yearMatch ? yearMatch[1] : '';
-                    matchExamYear = (exactYear === currentFilters.examYear);
+                    const isMakeupFilter = currentFilters.examYear.includes('補'); // 按鈕是否包含「補」
+                    const baseYear = currentFilters.examYear.replace('補', '');    // 提取純數字年份 (如 "92")
+                    
+                    // 確保 q.year 存在且為字串，避免報錯
+                    const qYearStr = q.year ? String(q.year) : "";
+                    
+                    const hasBaseYear = qYearStr.includes(baseYear); // 題目年份是否包含該數字
+                    const isMakeupQuestion = qYearStr.includes('補'); // 題目年份是否包含「補」字
+
+                    if (isMakeupFilter) {
+                        // 選了 "92補"：題目必須有 "92" 且必須有 "補"
+                        matchExamYear = hasBaseYear && isMakeupQuestion;
+                    } else {
+                        // 選了 "92"：題目必須有 "92" 且【絕對不能】有 "補"
+                        matchExamYear = hasBaseYear && !isMakeupQuestion;
+                    }
                 }
 
                 const qStatus = userProgress[q.id] || 'white';

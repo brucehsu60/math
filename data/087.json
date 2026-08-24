@@ -1,0 +1,390 @@
+{
+  "version": "2.3.087",
+  "update_time": "2024-05-20",
+  "questions": [
+    {
+      "id": "087-gsat-01",
+      "q_num": 1,
+      "year": "87學測",
+      "category": "第三冊",
+      "chapter": "三角函數",
+      "type": "單選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "當 $x$ 介於 $0$ 與 $2\\pi$ 之間，直線 $y = 1 - x$ 與函數 $y = \\tan x$ 的圖形，共有幾個交點？",
+      "options": [
+        "(1) 0",
+        "(2) 1",
+        "(3) 2",
+        "(4) 3",
+        "(5) 4"
+      ],
+      "answer": "(4)",
+      "hint": "在同一坐標系中畫出 $y = 1 - x$ 與 $y = \\tan x$ 的圖形，觀察在區間 $[0, 2\\pi]$ 內的交點個數。",
+      "explanation": "<b>💡 破題關鍵：</b>利用圖解法！畫出直線與正切函數的圖形，分段觀察交點。<br><br><b>📝 學霸詳解</b><br>1. <b>分析函數圖形：</b><br>   - $y = 1 - x$ 是一條斜率為 $-1$、通過 $(0, 1)$ 與 $(1, 0)$ 的直線。<br>   - $y = \\tan x$ 在區間 $[0, 2\\pi]$ 內，於 $x = \\frac{\\pi}{2}$ 與 $x = \\frac{3\\pi}{2}$ 處有垂直漸近線，圖形被切分為三個連續區間。<br>2. <b>分段尋找交點：</b><br>   - <b>區間 $[0, \\frac{\\pi}{2})$：</b> $\\tan x$ 從 $0$ 遞增至 $\\infty$；而 $1 - x$ 從 $1$ 遞減至 $1 - \\frac{\\pi}{2} < 0$。兩連續函數一增一減，且端點值交錯，故必有 <b>1 個交點</b>。<br>   - <b>區間 $(\\frac{\\pi}{2}, \\frac{3\\pi}{2})$：</b> $\\tan x$ 從 $-\\infty$ 遞增至 $\\infty$；而 $1 - x$ 恆為負值且遞減。由於 $\\tan x$ 涵蓋所有實數值，兩圖形必相交，故有 <b>1 個交點</b>。<br>   - <b>區間 $(\\frac{3\\pi}{2}, 2\\pi]$：</b> $\\tan x$ 從 $-\\infty$ 遞增至 $0$；而 $1 - x$ 恆為負值且遞減。在 $x = 2\\pi$ 時，$\\tan(2\\pi) = 0$，而 $1 - 2\\pi < 0$。兩圖形在此區間內必相交，故有 <b>1 個交點</b>。<br>3. <b>總結：</b><br>   三個區間各有一個交點，總共有 3 個交點。<br><br><b>答案：(4)</b>"
+    },
+    {
+      "id": "087-gsat-02",
+      "q_num": 2,
+      "year": "87學測",
+      "category": "第四冊",
+      "chapter": "複數與多項式方程式",
+      "type": "單選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設 $1 - i$ 為 $x^2 + ax + 3 - i = 0$ 的一根，則 $a$ 的值為何？",
+      "options": [
+        "(1) $-3$",
+        "(2) $-2$",
+        "(3) $-1 - i$",
+        "(4) $2$",
+        "(5) $3$"
+      ],
+      "answer": "(1)",
+      "hint": "將根 $x = 1 - i$ 直接代入方程式中，展開並比較實部與虛部即可求得 $a$。",
+      "explanation": "<b>💡 破題關鍵：</b>已知方程式的根，最直接暴力的解法就是「代入」！<br><br><b>📝 學霸詳解</b><br>1. <b>代入根：</b><br>   將 $x = 1 - i$ 代入方程式 $x^2 + ax + 3 - i = 0$：<br>   $(1 - i)^2 + a(1 - i) + 3 - i = 0$<br>2. <b>展開化簡：</b><br>   $(1 - 2i + i^2) + a - ai + 3 - i = 0$<br>   因為 $i^2 = -1$，所以 $(1 - 2i - 1) = -2i$。<br>   $-2i + a - ai + 3 - i = 0$<br>3. <b>分離實部與虛部：</b><br>   將實部與虛部整理在一起：<br>   $(a + 3) + (-a - 3)i = 0$<br>   要使複數為 $0$，其實部與虛部必須皆為 $0$：<br>   $a + 3 = 0 \\implies a = -3$<br>   （檢驗虛部：$-(-3) - 3 = 0$，符合）<br><br><b>答案：(1)</b>"
+    },
+    {
+      "id": "087-gsat-03",
+      "q_num": 3,
+      "year": "87學測",
+      "category": "第二冊",
+      "chapter": "排列組合與機率",
+      "type": "單選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設事件 $A$ 發生的機率為 $\\frac{1}{2}$，事件 $B$ 發生的機率為 $\\frac{1}{3}$。若以 $P$ 表事件 $A$ 或事件 $B$ 發生的機率，則",
+      "options": [
+        "(1) $p \\le \\frac{1}{6}$",
+        "(2) $\\frac{1}{6} < p \\le \\frac{1}{3}$",
+        "(3) $\\frac{1}{3} < p < \\frac{1}{2}$",
+        "(4) $\\frac{1}{2} \\le p \\le \\frac{5}{6}$",
+        "(5) $p > \\frac{5}{6}$"
+      ],
+      "answer": "(4)",
+      "hint": "利用取捨原理 $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$。考慮 $P(A \\cap B)$ 的最大值與最小值，即可求出 $P(A \\cup B)$ 的範圍。",
+      "explanation": "<b>💡 破題關鍵：</b>聯集機率的範圍取決於交集機率的大小。交集最大時聯集最小，交集最小時聯集最大。<br><br><b>📝 學霸詳解</b><br>已知 $P(A) = \\frac{1}{2}$，$P(B) = \\frac{1}{3}$。所求 $P = P(A \\cup B)$。<br>根據取捨原理：$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{1}{2} + \\frac{1}{3} - P(A \\cap B) = \\frac{5}{6} - P(A \\cap B)$。<br>1. <b>求 $P$ 的最小值：</b><br>   當 $P(A \\cap B)$ 最大時，$P$ 最小。<br>   交集機率的最大值受限於較小的事件機率，即 $P(A \\cap B) \\le P(B) = \\frac{1}{3}$（此時 $B$ 完全包含於 $A$ 中）。<br>   $P_{\\text{min}} = \\frac{5}{6} - \\frac{1}{3} = \\frac{3}{6} = \\frac{1}{2}$。<br>2. <b>求 $P$ 的最大值：</b><br>   當 $P(A \\cap B)$ 最小時，$P$ 最大。<br>   交集機率的最小值為 $0$（此時 $A$ 與 $B$ 互斥）。<br>   $P_{\\text{max}} = \\frac{5}{6} - 0 = \\frac{5}{6}$。<br>3. <b>結論：</b><br>   綜合以上，$\\frac{1}{2} \\le P \\le \\frac{5}{6}$。<br><br><b>答案：(4)</b>"
+    },
+    {
+      "id": "087-gsat-04",
+      "q_num": 4,
+      "year": "87學測",
+      "category": "第三冊",
+      "chapter": "平面向量",
+      "type": "單選題",
+      "correct_rate": null,
+      "diagram": "images/087-gsat-04-fig.png",
+      "question": "如圖(一)，$ABCDEF$ 為一正六邊形。那麼下列向量內積中，何者最大？",
+      "options": [
+        "(1) $\\overrightarrow{AB} \\cdot \\overrightarrow{AB}$",
+        "(2) $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$",
+        "(3) $\\overrightarrow{AB} \\cdot \\overrightarrow{AD}$",
+        "(4) $\\overrightarrow{AB} \\cdot \\overrightarrow{AE}$",
+        "(5) $\\overrightarrow{AB} \\cdot \\overrightarrow{AF}$"
+      ],
+      "answer": "(2)",
+      "hint": "向量內積 $\\vec{u} \\cdot \\vec{v} = |\\vec{u}| |\\vec{v}| \\cos \\theta$。也可以將內積視為「一個向量在另一個向量上的投影長度 $\\times$ 另一個向量的長度」。",
+      "explanation": "<b>💡 破題關鍵：</b>利用內積的幾何意義：$\\overrightarrow{AB} \\cdot \\overrightarrow{AX} = |\\overrightarrow{AB}| \\times (\\overrightarrow{AX} \\text{ 在 } \\overrightarrow{AB} \\text{ 上的投影長})$。投影越長，內積越大！<br><br><b>📝 學霸詳解</b><br>設正六邊形的邊長為 $1$。我們固定 $\\overrightarrow{AB}$，比較各向量在 $\\overrightarrow{AB}$ 方向上的投影長度。<br>1. <b>$\\overrightarrow{AB} \\cdot \\overrightarrow{AB}$：</b><br>   夾角 $0^\\circ$。內積 $= 1 \\times 1 \\times \\cos 0^\\circ = 1$。<br>2. <b>$\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$：</b><br>   夾角 $30^\\circ$，$|\\overrightarrow{AC}| = \\sqrt{3}$。內積 $= 1 \\times \\sqrt{3} \\times \\cos 30^\\circ = \\sqrt{3} \\times \\frac{\\sqrt{3}}{2} = 1.5$。<br>3. <b>$\\overrightarrow{AB} \\cdot \\overrightarrow{AD}$：</b><br>   夾角 $60^\\circ$，$|\\overrightarrow{AD}| = 2$。內積 $= 1 \\times 2 \\times \\cos 60^\\circ = 2 \\times \\frac{1}{2} = 1$。<br>4. <b>$\\overrightarrow{AB} \\cdot \\overrightarrow{AE}$：</b><br>   夾角 $90^\\circ$。內積 $= 0$。<br>5. <b>$\\overrightarrow{AB} \\cdot \\overrightarrow{AF}$：</b><br>   夾角 $120^\\circ$。內積 $= 1 \\times 1 \\times \\cos 120^\\circ = -0.5$。<br><br>比較數值，最大者為 $1.5$，即 $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$。<br><br><b>答案：(2)</b>"
+    },
+    {
+      "id": "087-gsat-05",
+      "q_num": 5,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "數與式",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "已知「偶數的平方是 4 的倍數；奇數的平方除以 4 餘數為 1」。考慮五個數： $513, 226, 216, 154, 145$，試問下列何者可以和上述五數中的某一數相加成為完全平方數？",
+      "options": [
+        "(1) 513",
+        "(2) 226",
+        "(3) 216",
+        "(4) 154",
+        "(5) 145"
+      ],
+      "answer": [
+        "(1)",
+        "(3)",
+        "(5)"
+      ],
+      "hint": "利用同餘概念。任何完全平方數除以 4 的餘數只能是 0 或 1。將選項與題幹數字除以 4 求餘數，判斷相加後的餘數是否可能為 0 或 1。",
+      "explanation": "<b>💡 破題關鍵：</b>完全平方數 $\\equiv 0$ 或 $1 \\pmod 4$。利用這個性質，可以快速篩選掉不可能的組合！<br><br><b>📝 學霸詳解</b><br>1. <b>計算各數除以 4 的餘數：</b><br>   $513 \\equiv 1 \\pmod 4$<br>   $226 \\equiv 2 \\pmod 4$<br>   $216 \\equiv 0 \\pmod 4$<br>   $154 \\equiv 2 \\pmod 4$<br>   $145 \\equiv 1 \\pmod 4$<br>2. <b>分析相加後的餘數：</b><br>   我們希望 $x + y = k^2$，因此 $(x \\pmod 4) + (y \\pmod 4)$ 必須等於 $0$ 或 $1$ 或 $4$（即 $\\equiv 0$）。<br>   - <b>若 $x = 513 \\equiv 1$：</b> 需要 $y \\equiv 3$ (無此數) 或 $y \\equiv 0$ (即 216)。<br>     檢驗：$513 + 216 = 729 = 27^2$。成立！<i>(選項 1 正確)</i><br>   - <b>若 $x = 226 \\equiv 2$：</b> 需要 $y \\equiv 2$ (即 154) 或 $y \\equiv 3$ (無此數)。<br>     檢驗：$226 + 154 = 380$，不是完全平方數。失敗。<i>(選項 2 錯誤)</i><br>   - <b>若 $x = 216 \\equiv 0$：</b> 需要 $y \\equiv 0$ (無其他數) 或 $y \\equiv 1$ (即 513, 145)。<br>     檢驗：$216 + 513 = 729 = 27^2$；$216 + 145 = 361 = 19^2$。成立！<i>(選項 3 正確)</i><br>   - <b>若 $x = 154 \\equiv 2$：</b> 需要 $y \\equiv 2$ (即 226)。<br>     檢驗：$154 + 226 = 380$，不是完全平方數。失敗。<i>(選項 4 錯誤)</i><br>   - <b>若 $x = 145 \\equiv 1$：</b> 需要 $y \\equiv 3$ (無此數) 或 $y \\equiv 0$ (即 216)。<br>     檢驗：$145 + 216 = 361 = 19^2$。成立！<i>(選項 5 正確)</i><br><br><b>答案：(1), (3), (5)</b>"
+    },
+    {
+      "id": "087-gsat-06",
+      "q_num": 6,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "直線與圓",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設不共點的三直線之方程式分別為<br>$ax - 4y = 1$,<br>$(a + 1)x + 3y = 2$,<br>$x - 2y = 3$,<br>其中 $a$ 為實數。試問 $a$ 為何值時，上述三直線會圍出一個直角三角形？",
+      "options": [
+        "(1) $-8$",
+        "(2) $-4$",
+        "(3) $1$",
+        "(4) $3$",
+        "(5) $5$"
+      ],
+      "answer": [
+        "(1)",
+        "(2)",
+        "(4)",
+        "(5)"
+      ],
+      "hint": "三直線圍成直角三角形，代表其中必有兩條直線互相垂直。利用「兩直線垂直 $\\iff$ 斜率相乘為 $-1$」列式求解。",
+      "explanation": "<b>💡 破題關鍵：</b>直角三角形的條件就是「任兩直線垂直」。分別計算三條直線的斜率，兩兩相乘等於 $-1$ 即可解出 $a$。<br><br><b>📝 學霸詳解</b><br>1. <b>求各直線斜率：</b><br>   $L_1: ax - 4y = 1 \\implies m_1 = \\frac{a}{4}$<br>   $L_2: (a + 1)x + 3y = 2 \\implies m_2 = -\\frac{a + 1}{3}$<br>   $L_3: x - 2y = 3 \\implies m_3 = \\frac{1}{2}$<br>2. <b>分情況討論垂直條件：</b><br>   - <b>情況一：$L_1 \\perp L_2$</b><br>     $m_1 \\times m_2 = -1 \\implies \\frac{a}{4} \\times \\left(-\\frac{a + 1}{3}\\right) = -1$<br>     $a(a + 1) = 12 \\implies a^2 + a - 12 = 0$<br>     $(a + 4)(a - 3) = 0 \\implies a = -4$ 或 $a = 3$。<i>(選項 2, 4 正確)</i><br>   - <b>情況二：$L_1 \\perp L_3$</b><br>     $m_1 \\times m_3 = -1 \\implies \\frac{a}{4} \\times \\frac{1}{2} = -1 \\implies a = -8$。<i>(選項 1 正確)</i><br>   - <b>情況三：$L_2 \\perp L_3$</b><br>     $m_2 \\times m_3 = -1 \\implies -\\frac{a + 1}{3} \\times \\frac{1}{2} = -1$<br>     $a + 1 = 6 \\implies a = 5$。<i>(選項 5 正確)</i><br>3. <b>檢驗共點（學霸嚴謹視角）：</b><br>   題目要求「不共點」。若 $a=5$，三直線為 $5x-4y=1, 6x+3y=2, x-2y=3$。<br>   解 $L_1, L_3$ 交點：$5(2y+3)-4y=1 \\implies 6y=-14 \\implies y=-\\frac{7}{3}, x=-\\frac{5}{3}$。<br>   代入 $L_2$：$6(-\\frac{5}{3}) + 3(-\\frac{7}{3}) = -10 - 7 = -17 \\neq 2$。不共點，成立！<br>   同理可證其他 $a$ 值也不共點。<br><br><b>答案：(1), (2), (4), (5)</b>"
+    },
+    {
+      "id": "087-gsat-07",
+      "q_num": 7,
+      "year": "87學測",
+      "category": "第三冊",
+      "chapter": "三角函數",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "下列敘述何者為真？",
+      "options": [
+        "(1) $\\sin 50^\\circ < \\cos 50^\\circ$",
+        "(2) $\\tan 50^\\circ < \\cot 50^\\circ$",
+        "(3) $\\tan 50^\\circ < \\sec 50^\\circ$",
+        "(4) $\\sin 230^\\circ < \\cos 230^\\circ$",
+        "(5) $\\tan 230^\\circ < \\cot 230^\\circ$"
+      ],
+      "answer": [
+        "(3)",
+        "(4)"
+      ],
+      "hint": "利用餘角關係將 $\\cos, \\cot$ 轉為 $\\sin, \\tan$，並利用 $45^\\circ$ 作為分界點判斷大小。對於大於 $90^\\circ$ 的角，先化為銳角再比較。",
+      "explanation": "<b>💡 破題關鍵：</b>在第一象限中，$45^\\circ$ 是 $\\sin$ 與 $\\cos$、$\\tan$ 與 $\\cot$ 的黃金交叉點！超過 $45^\\circ$ 後，$\\sin$ 與 $\\tan$ 會勝出。<br><br><b>📝 學霸詳解</b><br>1. <b>檢驗 (1)：</b><br>   $\\cos 50^\\circ = \\sin 40^\\circ$。因為 $50^\\circ > 40^\\circ$，且 $\\sin$ 在第一象限遞增，所以 $\\sin 50^\\circ > \\sin 40^\\circ = \\cos 50^\\circ$。<i>(錯誤)</i><br>2. <b>檢驗 (2)：</b><br>   $\\cot 50^\\circ = \\tan 40^\\circ$。因為 $50^\\circ > 40^\\circ$，且 $\\tan$ 在第一象限遞增，所以 $\\tan 50^\\circ > \\tan 40^\\circ = \\cot 50^\\circ$。<i>(錯誤)</i><br>3. <b>檢驗 (3)：</b><br>   $\\tan 50^\\circ = \\frac{\\sin 50^\\circ}{\\cos 50^\\circ}$，$\\sec 50^\\circ = \\frac{1}{\\cos 50^\\circ}$。<br>   因為 $\\sin 50^\\circ < 1$，同除以正數 $\\cos 50^\\circ$ 得 $\\frac{\\sin 50^\\circ}{\\cos 50^\\circ} < \\frac{1}{\\cos 50^\\circ}$，即 $\\tan 50^\\circ < \\sec 50^\\circ$。<i>(正確)</i><br>4. <b>檢驗 (4)：</b><br>   化為銳角：$\\sin 230^\\circ = \\sin(180^\\circ + 50^\\circ) = -\\sin 50^\\circ$。<br>   $\\cos 230^\\circ = \\cos(180^\\circ + 50^\\circ) = -\\cos 50^\\circ$。<br>   由 (1) 知 $\\sin 50^\\circ > \\cos 50^\\circ$，同乘負號需變號，得 $-\\sin 50^\\circ < -\\cos 50^\\circ$，即 $\\sin 230^\\circ < \\cos 230^\\circ$。<i>(正確)</i><br>5. <b>檢驗 (5)：</b><br>   化為銳角：$\\tan 230^\\circ = \\tan(180^\\circ + 50^\\circ) = \\tan 50^\\circ$。<br>   $\\cot 230^\\circ = \\cot(180^\\circ + 50^\\circ) = \\cot 50^\\circ$。<br>   由 (2) 知 $\\tan 50^\\circ > \\cot 50^\\circ$，故 $\\tan 230^\\circ > \\cot 230^\\circ$。<i>(錯誤)</i><br><br><b>答案：(3), (4)</b>"
+    },
+    {
+      "id": "087-gsat-08",
+      "q_num": 8,
+      "year": "87學測",
+      "category": "第四冊",
+      "chapter": "空間向量",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "在空間中，下列那些點可與 $A(1,2,3)$，$B(2,5,3)$，$C(2,6,4)$ 三點構成一平行四邊形？",
+      "options": [
+        "(1) $(-1,-5,-2)$",
+        "(2) $(1,1,2)$",
+        "(3) $(1,3,4)$",
+        "(4) $(3,7,6)$",
+        "(5) $(3,9,4)$"
+      ],
+      "answer": [
+        "(2)",
+        "(3)",
+        "(5)"
+      ],
+      "hint": "已知三頂點求第四頂點，利用平行四邊形對角線互相平分的性質：對角頂點坐標和相等。考慮 $A, B, C$ 分別作為對角頂點的三種情況。",
+      "explanation": "<b>💡 破題關鍵：</b>平行四邊形的必殺技：「對角頂點相加會相等」！因為題目沒指定順序，所以有三種可能的對角線組合。<br><br><b>📝 學霸詳解</b><br>設第四點為 $D$。根據對角線互相平分，任兩點相加等於另外兩點相加。<br>1. <b>情況一：$A, C$ 為對角頂點</b><br>   $A + C = B + D_1 \\implies D_1 = A + C - B$<br>   $D_1 = (1+2-2, 2+6-5, 3+4-3) = (1, 3, 4)$。<i>(選項 3 正確)</i><br>2. <b>情況二：$B, C$ 為對角頂點</b><br>   $B + C = A + D_2 \\implies D_2 = B + C - A$<br>   $D_2 = (2+2-1, 5+6-2, 3+4-3) = (3, 9, 4)$。<i>(選項 5 正確)</i><br>3. <b>情況三：$A, B$ 為對角頂點</b><br>   $A + B = C + D_3 \\implies D_3 = A + B - C$<br>   $D_3 = (1+2-2, 2+5-6, 3+3-4) = (1, 1, 2)$。<i>(選項 2 正確)</i><br><br><b>答案：(2), (3), (5)</b>"
+    },
+    {
+      "id": "087-gsat-09",
+      "q_num": 9,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "多項式函數",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設 $a$ 與 $b$ 均為實數，且二次函數 $f(x) = a(x - 1)^2 + b$ 滿足 $f(4) > 0, f(5) < 0$。試問下列何者為真？",
+      "options": [
+        "(1) $f(0) > 0$",
+        "(2) $f(-1) > 0$",
+        "(3) $f(-2) > 0$",
+        "(4) $f(-3) > 0$",
+        "(5) $f(-4) > 0$"
+      ],
+      "answer": [
+        "(1)",
+        "(2)",
+        "(3)"
+      ],
+      "hint": "由方程式可知拋物線的對稱軸為 $x = 1$。利用對稱性 $f(1+k) = f(1-k)$，將選項中的點映射到對稱軸右側來判斷正負。",
+      "explanation": "<b>💡 破題關鍵：</b>二次函數最重要的性質就是「對稱性」！找出對稱軸，把左邊未知的點全部翻到右邊已知的地方比對。<br><br><b>📝 學霸詳解</b><br>1. <b>分析函數特徵：</b><br>   由 $f(x) = a(x - 1)^2 + b$ 可知，拋物線的頂點在 $x = 1$，對稱軸為 $x = 1$。<br>   因為 $f(4) > 0$ 且 $f(5) < 0$，代表圖形在 $x > 1$ 的右半邊是遞減的，因此拋物線開口向下（$a < 0$）。<br>   且實根介於 $4$ 與 $5$ 之間。<br>2. <b>利用對稱性判斷：</b><br>   對稱軸為 $x = 1$，所以 $f(1-k) = f(1+k)$。<br>   - (1) $f(0) = f(2)$。因為開口向下且 $f(4) > 0$，所以比 $4$ 更靠近對稱軸的 $2$，其函數值必定更大，即 $f(2) > f(4) > 0$。<i>(正確)</i><br>   - (2) $f(-1) = f(3)$。同理，$f(3) > f(4) > 0$。<i>(正確)</i><br>   - (3) $f(-2) = f(4)$。已知 $f(4) > 0$。<i>(正確)</i><br>   - (4) $f(-3) = f(5)$。已知 $f(5) < 0$。<i>(錯誤)</i><br>   - (5) $f(-4) = f(6)$。因為 $f(5) < 0$ 且函數遞減，所以 $f(6) < f(5) < 0$。<i>(錯誤)</i><br><br><b>答案：(1), (2), (3)</b>"
+    },
+    {
+      "id": "087-gsat-10",
+      "q_num": 10,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "指數與對數",
+      "type": "多選題",
+      "correct_rate": null,
+      "diagram": "images/087-gsat-10-fig.png",
+      "question": "圖(二)為某池塘中布袋蓮蔓延的面積與時間的關係圖。假設其關係為指數函數，試問下列敘述何者為真？",
+      "options": [
+        "(1) 此指數函數的底數為 2。",
+        "(2) 在第 5 個月時，布袋蓮的面積就會超過 $30\\text{m}^2$。",
+        "(3) 布袋蓮從 $4\\text{m}^2$ 蔓延到 $12\\text{m}^2$，只需 1.5 個月。",
+        "(4) 設布袋蓮蔓延到 $2\\text{m}^2$、$3\\text{m}^2$、$6\\text{m}^2$ 所需的時間分別為 $t_1$、$t_2$、$t_3$，則 $t_1 + t_2 = t_3$。",
+        "(5) 布袋蓮在第 1 到第 3 個月之間的蔓延平均速度等於在第 2 到第 4 個月之間的蔓延平均速度。"
+      ],
+      "answer": [
+        "(1)",
+        "(2)",
+        "(4)"
+      ],
+      "hint": "仔細觀察圖表上的點，找出指數函數的關係式 $A(t) = a^t$。利用對數性質檢驗時間相加的關係。",
+      "explanation": "<b>💡 破題關鍵：</b>仔細看圖！找出通過的精確坐標點，建立函數模型 $A(t) = 2^t$ 是解題核心。<br><br><b>📝 學霸詳解</b><br>1. <b>建立函數模型：</b><br>   觀察圖(二)，橫軸為時間 $t$，縱軸為面積 $A$。<br>   對應虛線交點：$(1, 2), (2, 4), (3, 8), (4, 16)$。<br>   這是一個標準的指數成長，函數關係式為 $A(t) = 2^t$。<br>2. <b>逐一檢驗選項：</b><br>   - (1) 函數為 $2^t$，底數確實為 2。<i>(正確)</i><br>   - (2) 第 5 個月時，$A(5) = 2^5 = 32 > 30$。<i>(正確)</i><br>   - (3) $A(t_a) = 4 \\implies t_a = 2$。$A(t_b) = 12 \\implies 2^{t_b} = 12 \\implies t_b = \\log_2 12 = 2 + \\log_2 3 \\approx 2 + 1.58 = 3.58$。<br>     所需時間為 $3.58 - 2 = 1.58$ 個月，並非剛好 1.5 個月（$2^{1.5} = 2\\sqrt{2} \\approx 2.828 \\neq 3$）。<i>(錯誤)</i><br>   - (4) $A(t_1) = 2 \\implies t_1 = \\log_2 2 = 1$。<br>     $A(t_2) = 3 \\implies t_2 = \\log_2 3$。<br>     $A(t_3) = 6 \\implies t_3 = \\log_2 6$。<br>     $t_1 + t_2 = 1 + \\log_2 3 = \\log_2 2 + \\log_2 3 = \\log_2(2 \\times 3) = \\log_2 6 = t_3$。<i>(正確)</i><br>   - (5) 第 1 到 3 個月的平均速度：$\\frac{A(3) - A(1)}{3 - 1} = \\frac{8 - 2}{2} = 3$。<br>     第 2 到 4 個月的平均速度：$\\frac{A(4) - A(2)}{4 - 2} = \\frac{16 - 4}{2} = 6$。<br>     兩者不相等。<i>(錯誤)</i><br><br><b>答案：(1), (2), (4)</b>"
+    },
+    {
+      "id": "087-gsat-11",
+      "q_num": 11,
+      "year": "87學測",
+      "category": "第二冊",
+      "chapter": "排列組合與機率",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "在三位數中，百位數與個位數之差的絕對值為 2 的數，共有 <u>(11)(12)(13)</u> 個。",
+      "options": [],
+      "answer": "150",
+      "hint": "設三位數為 $abc$。先列舉出所有滿足 $|a - c| = 2$ 的 $(a, c)$ 組合，再考慮十位數 $b$ 的可能選擇。",
+      "explanation": "<b>💡 破題關鍵：</b>分步驟處理！先搞定限制最嚴格的百位與個位，十位數沒有限制，最後乘上 10 即可。<br><br><b>📝 學霸詳解</b><br>設三位數為 $abc$，其中 $a \\in \\{1, 2, \\dots, 9\\}$，$b, c \\in \\{0, 1, \\dots, 9\\}$。<br>條件為 $|a - c| = 2$。<br>1. <b>列舉 $(a, c)$ 的組合：</b><br>   - 若 $a = 1 \\implies c = 3$ (1 種)<br>   - 若 $a = 2 \\implies c = 0, 4$ (2 種)<br>   - 若 $a = 3 \\implies c = 1, 5$ (2 種)<br>   - 若 $a = 4 \\implies c = 2, 6$ (2 種)<br>   - 若 $a = 5 \\implies c = 3, 7$ (2 種)<br>   - 若 $a = 6 \\implies c = 4, 8$ (2 種)<br>   - 若 $a = 7 \\implies c = 5, 9$ (2 種)<br>   - 若 $a = 8 \\implies c = 6$ (1 種)<br>   - 若 $a = 9 \\implies c = 7$ (1 種)<br>   總共有 $1 + 2 \\times 6 + 1 + 1 = 15$ 種 $(a, c)$ 的組合。<br>2. <b>考慮十位數 $b$：</b><br>   十位數 $b$ 沒有任何限制，可以是 $0 \\sim 9$ 的任意數字，共 10 種選擇。<br>3. <b>計算總數：</b><br>   根據乘法原理，共有 $15 \\times 10 = 150$ 個。<br><br><b>答案：150</b>"
+    },
+    {
+      "id": "087-gsat-12",
+      "q_num": 12,
+      "year": "87學測",
+      "category": "第二冊",
+      "chapter": "數列與級數",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設 $a$ 與 $b$ 均為實數。若 $\\frac{a}{2^1} + \\frac{b}{2^2} + \\frac{a}{2^3} + \\frac{b}{2^4} + \\dots + \\frac{a}{2^{2n-1}} + \\frac{b}{2^{2n}} + \\dots = 3$，則 $2a + b =$ <u>(14)</u>。",
+      "options": [],
+      "answer": "9",
+      "hint": "將無窮級數拆分為兩個無窮等比級數：一個包含 $a$，另一個包含 $b$。分別利用無窮等比級數求和公式 $S = \\frac{a_1}{1-r}$ 計算。",
+      "explanation": "<b>💡 破題關鍵：</b>看到交錯出現的變數，立刻「拆項分組」！將 $a$ 和 $b$ 分別視為兩個獨立的無窮等比級數。<br><br><b>📝 學霸詳解</b><br>1. <b>拆分級數：</b><br>   原式可拆分為兩個無窮等比級數之和：<br>   $S_a = \\frac{a}{2} + \\frac{a}{8} + \\frac{a}{32} + \\dots$<br>   $S_b = \\frac{b}{4} + \\frac{b}{16} + \\frac{b}{64} + \\dots$<br>2. <b>分別求和：</b><br>   - $S_a$ 的首項為 $\\frac{a}{2}$，公比為 $\\frac{1}{4}$。<br>     $S_a = \\frac{\\frac{a}{2}}{1 - \\frac{1}{4}} = \\frac{\\frac{a}{2}}{\\frac{3}{4}} = \\frac{2a}{3}$。<br>   - $S_b$ 的首項為 $\\frac{b}{4}$，公比為 $\\frac{1}{4}$。<br>     $S_b = \\frac{\\frac{b}{4}}{1 - \\frac{1}{4}} = \\frac{\\frac{b}{4}}{\\frac{3}{4}} = \\frac{b}{3}$。<br>3. <b>解方程式：</b><br>   已知 $S_a + S_b = 3$。<br>   $\\frac{2a}{3} + \\frac{b}{3} = 3$<br>   同乘 3 得：$2a + b = 9$。<br><br><b>答案：9</b>"
+    },
+    {
+      "id": "087-gsat-13",
+      "q_num": 13,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "數與式",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "某公司有甲、乙、丙三條生產線，現欲生產三萬個產品，如果甲、乙、丙三條生產線同時開動，則需 10 小時；如果只開動乙、丙兩條生產線，則需 15 小時；如果只開動甲生產線 15 小時，則需再開動丙生產線 30 小時，才能完成所有產品。問如果只開動乙生產線，則需 <u>(15)(16)</u> 小時才能生產三萬個產品。",
+      "options": [],
+      "answer": "20",
+      "hint": "設甲、乙、丙每小時的產量分別為 $x, y, z$。根據題意列出三元一次聯立方程式，解出 $y$ 後，再用總產量除以 $y$ 即可。",
+      "explanation": "<b>💡 破題關鍵：</b>標準的「工作問題」。將「完成時間」轉化為「每小時工作效率」，列出聯立方程式秒殺！<br><br><b>📝 學霸詳解</b><br>設甲、乙、丙每小時的產量分別為 $v_A, v_B, v_C$。<br>1. <b>依題意列式：</b><br>   - 甲乙丙齊開需 10 小時：$10(v_A + v_B + v_C) = 30000 \\implies v_A + v_B + v_C = 3000$ --- (式一)<br>   - 乙丙齊開需 15 小時：$15(v_B + v_C) = 30000 \\implies v_B + v_C = 2000$ --- (式二)<br>   - 甲開 15 小時，丙開 30 小時：$15v_A + 30v_C = 30000 \\implies v_A + 2v_C = 2000$ --- (式三)<br>2. <b>解聯立方程式：</b><br>   將 (式二) 代入 (式一)：<br>   $v_A + 2000 = 3000 \\implies v_A = 1000$。<br>   將 $v_A = 1000$ 代入 (式三)：<br>   $1000 + 2v_C = 2000 \\implies 2v_C = 1000 \\implies v_C = 500$。<br>   將 $v_C = 500$ 代入 (式二)：<br>   $v_B + 500 = 2000 \\implies v_B = 1500$。<br>3. <b>計算乙單獨所需時間：</b><br>   乙每小時生產 1500 個，生產三萬個所需時間為：<br>   $\\frac{30000}{1500} = 20$ 小時。<br><br><b>答案：20</b>"
+    },
+    {
+      "id": "087-gsat-14",
+      "q_num": 14,
+      "year": "87學測",
+      "category": "第四冊",
+      "chapter": "空間向量",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "長方體中，互為歪斜線的稜線共有 <u>(17)(18)</u> 對。",
+      "options": [],
+      "answer": "24",
+      "hint": "長方體共有 12 條稜線。先選定一條稜線，計算與它互為歪斜線的稜線數量，最後乘以總稜線數並除以 2（避免重複計算）。",
+      "explanation": "<b>💡 破題關鍵：</b>歪斜線的定義是「不平行且不相交」。固定一條邊，扣除與它平行和相交的邊，剩下的就是歪斜線！<br><br><b>📝 學霸詳解</b><br>1. <b>分析單一稜線的關係：</b><br>   長方體共有 12 條稜線。<br>   任選其中一條稜線（例如某條長邊），我們來分類其他 11 條稜線與它的關係：<br>   - <b>相交：</b> 在兩個端點各有 2 條稜線與之相交，共 4 條。<br>   - <b>平行：</b> 與它同方向的稜線還有 3 條。<br>   - <b>歪斜：</b> 剩下的稜線即為歪斜線。數量為 $11 - 4 - 3 = 4$ 條。<br>   （這 4 條剛好是位於對面且方向垂直的邊）<br>2. <b>計算總對數：</b><br>   每 1 條稜線都有 4 條歪斜線與之配對。<br>   12 條稜線共有 $12 \\times 4 = 48$ 種配對。<br>   但因為「A 與 B 歪斜」和「B 與 A 歪斜」是同一對，必須除以 2。<br>   總對數 $= \\frac{48}{2} = 24$ 對。<br><br><b>答案：24</b>"
+    },
+    {
+      "id": "087-gsat-15",
+      "q_num": 15,
+      "year": "87學測",
+      "category": "第三冊",
+      "chapter": "平面向量",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": "images/087-gsat-E-fig.png",
+      "question": "在圖(三)中，$ABC$ 是邊長為 8 的正三角形撞球檯，線段 $BP = \\sqrt{2}$。今由 $P$ 點將一粒球以平行 $BA$ 方向射出，最後又回到 $P$ 點。球所走的路徑，如圖箭號所示。則此路徑的長度為 <u>(19)(20)</u>。",
+      "options": [],
+      "answer": "24",
+      "hint": "利用撞球反射原理（入射角等於反射角）與平行線性質，追蹤球的軌跡。每次反射都會形成與原正三角形相似的小正三角形。",
+      "explanation": "<b>💡 破題關鍵：</b>正三角形撞球檯的平行反射，軌跡永遠平行於三邊！利用相似三角形的邊長關係，一段一段推導即可。<br><br><b>📝 學霸詳解</b><br>1. <b>第一段路徑 $PQ$：</b><br>   從 $P$ 平行 $BA$ 射出，交 $AC$ 於 $Q$。因為 $PQ \\parallel BA$，$\\triangle CQP \\sim \\triangle CAB$。<br>   $CP = 8 - \\sqrt{2}$，所以 $PQ = 8 - \\sqrt{2}$，$CQ = 8 - \\sqrt{2}$。<br>2. <b>第二段路徑 $QR$：</b><br>   在 $Q$ 點反射。入射軌跡平行 $AB$，與 $AC$ 夾角 $60^\\circ$；反射角亦為 $60^\\circ$，這意味著反射軌跡 $QR$ 必定平行於 $BC$！<br>   交 $AB$ 於 $R$。因為 $QR \\parallel BC$，$\\triangle AQR \\sim \\triangle ACB$。<br>   $AQ = 8 - CQ = 8 - (8 - \\sqrt{2}) = \\sqrt{2}$。<br>   所以 $QR = \\sqrt{2}$，$AR = \\sqrt{2}$。<br>3. <b>第三段路徑 $RP'$：</b><br>   在 $R$ 點反射，同理，軌跡 $RP'$ 必平行於 $AC$。<br>   交 $BC$ 於 $P'$。$\\triangle BRP' \\sim \\triangle BAC$。<br>   $BR = 8 - AR = 8 - \\sqrt{2}$。<br>   所以 $RP' = 8 - \\sqrt{2}$，$BP' = 8 - \\sqrt{2}$。<br>4. <b>後續路徑與循環：</b><br>   球並未回到 $P$（因為 $BP' = 8 - \\sqrt{2} \\neq \\sqrt{2}$），繼續反射。<br>   - $P'Q' \\parallel BA$：$CP' = \\sqrt{2} \\implies P'Q' = \\sqrt{2}$。<br>   - $Q'R' \\parallel BC$：$AQ' = 8 - \\sqrt{2} \\implies Q'R' = 8 - \\sqrt{2}$。<br>   - $R'P'' \\parallel AC$：$BR' = \\sqrt{2} \\implies R'P'' = \\sqrt{2}$。<br>   此時 $BP'' = \\sqrt{2}$，剛好回到起點 $P$！<br>5. <b>計算總長度：</b><br>   總長度 $= PQ + QR + RP' + P'Q' + Q'R' + R'P$<br>   $= (8 - \\sqrt{2}) + \\sqrt{2} + (8 - \\sqrt{2}) + \\sqrt{2} + (8 - \\sqrt{2}) + \\sqrt{2} = 24$。<br><br><b>答案：24</b>"
+    },
+    {
+      "id": "087-gsat-16",
+      "q_num": 16,
+      "year": "87學測",
+      "category": "第二冊",
+      "chapter": "數列與級數",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "在等比數列 $\\langle a_n \\rangle$ 中，<br>$a_1 = 1$,<br>$a_4 = 2 - \\sqrt{5}$,<br>$a_{n+2} = a_{n+1} + a_n, \\quad n \\ge 1$<br>則 $\\langle a_n \\rangle$ 的公比 = $\\frac{\\text{\\underline{(21)(22)}}\\sqrt{5}}{\\text{\\underline{(23)}}}$",
+      "options": [],
+      "answer": "1, -, 2",
+      "hint": "設公比為 $r$，將遞迴關係式 $a_{n+2} = a_{n+1} + a_n$ 轉化為 $r$ 的一元二次方程式。解出 $r$ 後，利用 $a_4$ 的值來決定取正根或負根。",
+      "explanation": "<b>💡 破題關鍵：</b>等比數列的遞迴式，直接代入 $a_n = r^{n-1}$ 就能化為公比 $r$ 的方程式！<br><br><b>📝 學霸詳解</b><br>1. <b>建立公比方程式：</b><br>   設等比數列的公比為 $r$。則 $a_n = a_1 r^{n-1} = r^{n-1}$。<br>   代入遞迴式 $a_{n+2} = a_{n+1} + a_n$：<br>   $r^{n+1} = r^n + r^{n-1}$<br>   因為 $a_4 \\neq 0$，所以 $r \\neq 0$。兩邊同除以 $r^{n-1}$：<br>   $r^2 = r + 1 \\implies r^2 - r - 1 = 0$<br>2. <b>解方程式求 $r$：</b><br>   利用公式解：$r = \\frac{1 \\pm \\sqrt{(-1)^2 - 4(1)(-1)}}{2} = \\frac{1 \\pm \\sqrt{5}}{2}$。<br>3. <b>利用 $a_4$ 決定正負號：</b><br>   已知 $a_4 = r^3 = 2 - \\sqrt{5}$。我們來檢驗哪個 $r$ 符合。<br>   - 若 $r = \\frac{1 - \\sqrt{5}}{2}$：<br>     $r^2 = \\frac{1 - 2\\sqrt{5} + 5}{4} = \\frac{6 - 2\\sqrt{5}}{4} = \\frac{3 - \\sqrt{5}}{2}$。<br>     $r^3 = r \\cdot r^2 = \\frac{1 - \\sqrt{5}}{2} \\cdot \\frac{3 - \\sqrt{5}}{2} = \\frac{3 - \\sqrt{5} - 3\\sqrt{5} + 5}{4} = \\frac{8 - 4\\sqrt{5}}{4} = 2 - \\sqrt{5}$。完全吻合！<br>   - （若 $r = \\frac{1 + \\sqrt{5}}{2}$，則 $r^3 = 2 + \\sqrt{5}$，不合）<br>4. <b>對應答案格式：</b><br>   公比 $r = \\frac{1 - \\sqrt{5}}{2}$。<br>   對應格式 $\\frac{\\text{\\underline{(21)(22)}}\\sqrt{5}}{\\text{\\underline{(23)}}}$，可得 21=1, 22=-, 23=2。<br><br><b>答案：1, -, 2</b>"
+    },
+    {
+      "id": "087-gsat-17",
+      "q_num": 17,
+      "year": "87學測",
+      "category": "第三冊",
+      "chapter": "三角函數",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": "images/087-gsat-G-fig.png",
+      "question": "如圖(四)，$A$、$B$ 分別位於一河口的兩岸邊。某人在通往 $A$ 點的筆直公路上，距離 $A$ 點 50 公尺的 $C$ 點與距離 $A$ 點 200 公尺的 $D$ 點，分別測得 $\\angle ACB = 60^\\circ$，$\\angle ADB = 30^\\circ$，則 $A$ 與 $B$ 的距離為 <u>(24)(25)</u>$\\sqrt{\\text{\\underline{(26)}}}$ 公尺。",
+      "options": [],
+      "answer": "50, 7",
+      "hint": "觀察 $\\triangle BCD$ 的角度關係，發現它是等腰三角形，求出 $BC$ 長度。接著在 $\\triangle ABC$ 中使用餘弦定理求 $AB$。",
+      "explanation": "<b>💡 破題關鍵：</b>不要急著設未知數硬算！先觀察角度，利用外角定理找出隱藏的「等腰三角形」，邊長瞬間就出來了。<br><br><b>📝 學霸詳解</b><br>1. <b>分析幾何關係：</b><br>   由題意知 $A, C, D$ 三點共線，且順序為 $A \\to C \\to D$。<br>   已知 $AC = 50$，$AD = 200$，所以 $CD = 200 - 50 = 150$。<br>2. <b>利用外角定理找等腰三角形：</b><br>   在 $\\triangle BCD$ 中，$\\angle ACB$ 是外角。<br>   根據外角定理：$\\angle ACB = \\angle CBD + \\angle CDB$<br>   $60^\\circ = \\angle CBD + 30^\\circ \\implies \\angle CBD = 30^\\circ$。<br>   因為 $\\angle CBD = \\angle CDB = 30^\\circ$，所以 $\\triangle BCD$ 是等腰三角形！<br>   因此，$BC = CD = 150$。<br>3. <b>在 $\\triangle ABC$ 中使用餘弦定理：</b><br>   現在我們知道 $\\triangle ABC$ 的兩邊與夾角：$AC = 50$，$BC = 150$，$\\angle ACB = 60^\\circ$。<br>   $AB^2 = AC^2 + BC^2 - 2(AC)(BC)\\cos 60^\\circ$<br>   $AB^2 = 50^2 + 150^2 - 2(50)(150) \\times \\frac{1}{2}$<br>   $AB^2 = 2500 + 22500 - 7500 = 17500$<br>   $AB = \\sqrt{17500} = \\sqrt{2500 \\times 7} = 50\\sqrt{7}$。<br>   對應格式，填入 50, 7。<br><br><b>答案：50, 7</b>"
+    },
+    {
+      "id": "087-gsat-18",
+      "q_num": 18,
+      "year": "87學測",
+      "category": "第一冊",
+      "chapter": "多項式函數",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "設 $f(x)$ 為一多項式。若 $(x+1)f(x)$ 除以 $x^2+x+1$ 的餘式為 $5x+3$，則 $f(x)$ 除以 $x^2+x+1$ 的餘式為 <u>(27)</u>$x + $<u>(28)</u>。",
+      "options": [],
+      "answer": "2, 5",
+      "hint": "利用除法原理，假設 $f(x)$ 除以 $x^2+x+1$ 的餘式為 $ax+b$。將其代入 $(x+1)f(x)$ 中，再次進行除法求出最終餘式，並與已知餘式比較係數。",
+      "explanation": "<b>💡 破題關鍵：</b>除式是二次式，餘式必為一次式。大膽假設餘式為 $ax+b$，代入運算後比較係數即可。<br><br><b>📝 學霸詳解</b><br>1. <b>假設餘式：</b><br>   設 $f(x) = Q(x)(x^2+x+1) + (ax+b)$。<br>2. <b>代入已知條件：</b><br>   將上式同乘 $(x+1)$：<br>   $(x+1)f(x) = (x+1)Q(x)(x^2+x+1) + (x+1)(ax+b)$<br>   前半部顯然能被 $x^2+x+1$ 整除，所以 $(x+1)f(x)$ 除以 $x^2+x+1$ 的餘式，就等於 $(x+1)(ax+b)$ 除以 $x^2+x+1$ 的餘式。<br>3. <b>展開並求餘式：</b><br>   $(x+1)(ax+b) = ax^2 + (a+b)x + b$<br>   為了求除以 $x^2+x+1$ 的餘式，我們將其強行配出除式：<br>   $= a(x^2+x+1) - ax - a + (a+b)x + b$<br>   $= a(x^2+x+1) + bx + (b-a)$<br>   所以餘式為 $bx + (b-a)$。<br>4. <b>比較係數：</b><br>   已知餘式為 $5x+3$。<br>   比較係數得：$b = 5$，且 $b - a = 3$。<br>   代入 $b=5 \implies 5 - a = 3 \implies a = 2$。<br>   故 $f(x)$ 的餘式為 $ax+b = 2x+5$。<br><br><b>答案：2, 5</b>"
+    },
+    {
+      "id": "087-gsat-19",
+      "q_num": 19,
+      "year": "87學測",
+      "category": "第四冊",
+      "chapter": "二次曲線",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": "images/087-gsat-I-fig.png",
+      "question": "在圖(五)中，圓 $O$ 的半徑為 6，$F$ 的坐標為 $(4,0)$，$Q$ 在圓 $O$ 上，$P$ 為 $FQ$ 的中垂線與 $OQ$ 的交點。當 $Q$ 在圓 $O$ 上移動時，動點 $P$ 的軌跡方程式為 $\\frac{(x - \\text{\\underline{(29)}})^2}{\\text{\\underline{(31)}}} + \\frac{(y - \\text{\\underline{(30)}})^2}{\\text{\\underline{(32)}}} = 1$",
+      "options": [],
+      "answer": "2, 0, 9, 5",
+      "hint": "利用中垂線性質 $PF = PQ$，將 $OP + PQ = OQ$ 轉化為 $OP + PF = 6$。這符合橢圓的幾何定義。",
+      "explanation": "<b>💡 破題關鍵：</b>看到「中垂線」立刻聯想「到兩端點等距」！將線段代換後，完美契合橢圓的定義 $\\overline{PF_1} + \\overline{PF_2} = 2a$。<br><br><b>📝 學霸詳解</b><br>1. <b>利用幾何性質代換：</b><br>   因為 $P$ 在 $FQ$ 的中垂線上，所以 $P$ 到 $F$ 與 $Q$ 的距離相等，即 $PF = PQ$。<br>   又因為 $P$ 在半徑 $OQ$ 上，所以 $OP + PQ = OQ$。<br>   圓 $O$ 的半徑為 6，故 $OQ = 6$。<br>   將 $PQ$ 替換為 $PF$，得到：$OP + PF = 6$。<br>2. <b>確認軌跡圖形：</b><br>   動點 $P$ 到兩定點 $O(0,0)$ 與 $F(4,0)$ 的距離和恆為定值 6。<br>   這正是<b>橢圓</b>的定義！其中焦點為 $O(0,0)$ 與 $F(4,0)$，長軸長 $2a = 6$。<br>3. <b>求橢圓方程式參數：</b><br>   - $2a = 6 \\implies a = 3$。<br>   - 中心點為兩焦點中點：$(\\frac{0+4}{2}, \\frac{0+0}{2}) = (2,0)$。<br>   - 焦距 $2c = 4 \\implies c = 2$。<br>   - 短軸半長 $b^2 = a^2 - c^2 = 9 - 4 = 5$。<br>4. <b>寫出方程式：</b><br>   長軸在 $x$ 軸上，方程式為 $\\frac{(x-2)^2}{9} + \\frac{(y-0)^2}{5} = 1$。<br>   對應題目格式，依序填入 2, 0, 9, 5。<br><br><b>答案：2, 0, 9, 5</b>"
+    },
+    {
+      "id": "087-gsat-20",
+      "q_num": 20,
+      "year": "87學測",
+      "category": "第二冊",
+      "chapter": "數據分析",
+      "type": "填充題",
+      "correct_rate": null,
+      "diagram": null,
+      "question": "下表所列為各項主要食品的平均消費價格，以及民國 70 年維持一家四口所需各項食品的平均需要量。若以拉氏指數來衡量，那麼民國 76 年主要食品的費用比民國 70 年高出的百分率為 <u>(33)(34)(35)</u> %。(小數點以下四捨五入)\n\n| 項 目 | 70 年價格 | 76 年價格 | 70 年平均用量 |\n| :--- | :--- | :--- | :--- |\n| 蓬萊米 | 7.6 | 16.0 | 45.0 |\n| 豬 肉 | 49.0 | 97.0 | 5.0 |\n| 虱目魚 | 36.0 | 74.0 | 0.5 |\n| 包心白菜 | 5.6 | 15.0 | 4.0 |\n| 香 蕉 | 4.7 | 13.0 | 3.0 |\n| 花生油 | 25.0 | 54.0 | 0.8 |",
+      "options": [],
+      "answer": "109",
+      "hint": "拉氏指數公式：$I = \\frac{\\sum P_{76} Q_{70}}{\\sum P_{70} Q_{70}} \\times 100$。分別計算出 70 年與 76 年的總花費，求出指數後再減去 100 即為高出的百分率。",
+      "explanation": "<b>💡 破題關鍵：</b>拉氏指數就是「用基期（70年）的消費量，去算兩年的總花費比例」。小心計算，最後記得扣掉 100%！<br><br><b>📝 學霸詳解</b><br>1. <b>計算基期（70年）總花費：</b><br>   $\\sum P_{70} Q_{70} = (7.6 \\times 45.0) + (49.0 \\times 5.0) + (36.0 \\times 0.5) + (5.6 \\times 4.0) + (4.7 \\times 3.0) + (25.0 \\times 0.8)$<br>   $= 342 + 245 + 18 + 22.4 + 14.1 + 20 = 661.5$<br>2. <b>計算計算期（76年）總花費（使用 70 年用量）：</b><br>   $\\sum P_{76} Q_{70} = (16.0 \\times 45.0) + (97.0 \\times 5.0) + (74.0 \\times 0.5) + (15.0 \\times 4.0) + (13.0 \\times 3.0) + (54.0 \\times 0.8)$<br>   $= 720 + 485 + 37 + 60 + 39 + 43.2 = 1384.2$<br>3. <b>計算拉氏指數與高出百分率：</b><br>   拉氏指數 $I = \\frac{1384.2}{661.5} \\times 100 \\approx 2.0925 \\times 100 = 209.25$<br>   題目問的是「高出」的百分率，所以要減去基準的 100%：<br>   $209.25\\% - 100\\% = 109.25\\%$<br>   四捨五入至整數位，得 109%。<br><br><b>答案：109</b>"
+    }
+  ]
+}

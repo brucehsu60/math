@@ -95,7 +95,7 @@
       "type": "單選題",
       "correct_rate": 50,
       "diagram": null,
-      "question": "甲、乙、丙三位同學參加推薦甄選學科能力測驗，五科的成績如表一所示。設 $S_甲, S_乙, S_丙$ 分別代表甲、乙、丙三位同學五科成績的標準差。請仔細觀察表中數據，判斷下列那一選項表示 $S_甲, S_乙, S_丙$ 的大小關係？<br><table><tr><td>科目<br>成績<br>學生</td><td>社<br>會</td><td>國<br>文</td><td>自<br>然</td><td>英<br>文</td><td>數<br>學</td></tr><tr><td>甲</td><td>100</td><td>70</td><td>80</td><td>60</td><td>50</td></tr><tr><td>乙</td><td>90</td><td>60</td><td>70</td><td>50</td><td>40</td></tr><tr><td>丙</td><td>80</td><td>56</td><td>64</td><td>48</td><td>40</td></tr></table>",
+      "question": "甲、乙、丙三位同學參加推薦甄選學科能力測驗，五科的成績如表一所示。設 $S_甲, S_乙, S_丙$ 分別代表甲、乙、丙三位同學五科成績的標準差。請仔細觀察表中數據，判斷下列那一選項表示 $S_甲, S_乙, S_丙$ 的大小關係？<br><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse; text-align: center; margin-top: 10px;\"><thead><tr style=\"background-color:#f2f2f2;\"><th>學生 \\\\ 科目</th><th>社會</th><th>國文</th><th>自然</th><th>英文</th><th>數學</th></tr></thead><tbody><tr><th>甲</th><td>100</td><td>70</td><td>80</td><td>60</td><td>50</td></tr><tr><th>乙</th><td>90</td><td>60</td><td>70</td><td>50</td><td>40</td></tr><tr><th>丙</th><td>80</td><td>56</td><td>64</td><td>48</td><td>40</td></tr></tbody></table>",
       "options": [
         "(A) $S_甲 > S_丙 > S_乙$",
         "(B) $S_丙 > S_甲 = S_乙$",

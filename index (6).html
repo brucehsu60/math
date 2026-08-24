@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中數學歷屆題庫系統</title>
+    
+    <!-- 引入 KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="loadQuestions()"></script>
+
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #333; }
+        .header-section { text-align: center; margin-bottom: 30px; }
+        
+        /* 標籤篩選面板 */
+        .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .filter-row { display: flex; align-items: flex-start; margin-bottom: 12px; gap: 8px; }
+        .filter-row:last-child { margin-bottom: 0; }
+        
+        .filter-label { font-weight: bold; color: #64748b; width: 85px; flex-shrink: 0; font-size: 15px; padding-top: 6px; margin: 0; }
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; flex-grow: 1; align-items: flex-start; }
+        
+        .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+        .tag-btn:hover { background: #e2e8f0; }
+        .tag-btn.active { background: #1e293b; color: white; border-color: #1e293b; font-weight: bold; }
+        
+        .tag-btn.active[data-value="all"] { background: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important; outline: none !important; }
+
+        .tag-btn.active[data-filter="type"]:not([data-value="all"]) { background: #8b5cf6; border-color: #8b5cf6; }
+        .tag-btn.active[data-filter="chapter"]:not([data-value="all"]) { background: #3b82f6; border-color: #3b82f6; }
+        
+        .btn-cat { background: #f1f5f9; font-weight: bold; border-color: #cbd5e1; }
+        .btn-cat:hover { background: #e2e8f0; }
+        .tag-btn.active[data-filter="category"]:not([data-value="all"]) { background: #1e293b; color: white; border-color: #1e293b; }
+        
+        .btn-rate-high { background: #10b981; color: white; border-color: #10b981; }
+        .btn-rate-med { background: #f59e0b; color: white; border-color: #f59e0b; }
+        .btn-rate-low { background: #ef4444; color: white; border-color: #ef4444; }
+        .tag-btn.active[data-filter="rate"]:not([data-value="all"]) { outline: 3px solid #1e293b; outline-offset: 1px; }
+
+        .btn-status-green { background: #dcfce7; color: #166534; border-color: #22c55e; }
+        .btn-status-yellow { background: #fef9c3; color: #854d0e; border-color: #eab308; }
+        .btn-status-red { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+        .btn-status-white { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+        .tag-btn.active[data-filter="status"]:not([data-value="all"]) { outline: 3px solid #1e293b; outline-offset: 1px; font-weight: bold; }
+
+        .btn-year { padding: 4px 10px; font-size: 13px; }
+
+        /* 細部答對率按鈕樣式 */
+        .tag-btn.active[data-filter="exactRate"]:not([data-value="all"]) { background: #0ea5e9; border-color: #0ea5e9; }
+
+        /* 結果統計列設計 */
+        .result-stats-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 25px; padding: 15px 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; border: 1px solid #bae6fd;
+            color: #0369a1; font-size: 16px; font-weight: bold; box-shadow: 0 2px 4px rgba(56, 189, 248, 0.1); gap: 12px;
+        }
+        .stats-main span { background: #0284c7; color: white; padding: 2px 12px; border-radius: 12px; margin: 0 8px; font-size: 18px; }
+        .stats-details { display: flex; gap: 15px; font-size: 14px; color: #0f172a; }
+        .stats-details span { display: flex; align-items: center; gap: 4px; }
+        .stats-actions { display: flex; gap: 15px; align-items: center; }
+
+        .toggle-container {
+            display: flex; align-items: center; gap: 8px; font-size: 14px; color: #475569; cursor: pointer;
+            background: white; padding: 6px 12px; border-radius: 20px; border: 1px solid #cbd5e1; transition: all 0.2s; font-weight: normal;
+        }
+        .toggle-container:hover { background: #f1f5f9; }
+
+        /* 題目卡片 */
+        .question-card { 
+            background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
+            margin-bottom: 25px; position: relative; border-left: 5px solid transparent; transition: all 0.3s ease;
+        }
+        
+        .card-status-green { border-left-color: #22c55e; background-color: #f8fafc; opacity: 0.85; }
+        .card-status-yellow { border-left-color: #eab308; }
+        .card-status-red { border-left-color: #ef4444; }
+        .card-status-white { border-left-color: #cbd5e1; }
+
+        .status-selector {
+            position: absolute; top: 20px; right: 20px; display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 8px; border: 1px solid #e2e8f0;
+        }
+        .status-btn {
+            width: 28px; height: 28px; border-radius: 6px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all 0.2s; background: white;
+        }
+        .status-btn:hover { transform: scale(1.1); }
+        .status-btn.active { border-color: #334155; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        .s-btn-green { color: #22c55e; } .s-btn-green.active { background: #dcfce7; }
+        .s-btn-yellow { color: #eab308; } .s-btn-yellow.active { background: #fef9c3; }
+        .s-btn-red { color: #ef4444; } .s-btn-red.active { background: #fee2e2; }
+        .s-btn-white { color: #94a3b8; } .s-btn-white.active { background: #e2e8f0; color: #475569; }
+
+        .badge-group { margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap; padding-right: 120px; }
+        .badge { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: bold; }
+        .badge.clickable { cursor: pointer; transition: transform 0.1s, opacity 0.2s; }
+        .badge.clickable:hover { transform: translateY(-2px); opacity: 0.8; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        .badge-year { background: #e2e8f0; color: #475569; }
+        .badge-category { background: #1e293b; color: white; } 
+        .badge-topic { background: #3b82f6; color: white; }   
+        .badge-type { background: #8b5cf6; color: white; }   
+        
+        .badge-rate-high { background: #10b981; color: white; } 
+        .badge-rate-med { background: #f59e0b; color: white; }  
+        .badge-rate-low { background: #ef4444; color: white; }  
+
+        .question-text { font-size: 18px; line-height: 1.8; margin-bottom: 15px; }
+        .question-image { text-align: center; margin-bottom: 25px; }
+        .question-image img { max-width: 100%; max-height: 350px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        button.option-btn { padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; cursor: pointer; text-align: left; font-size: 16px; display: flex; align-items: center; transition: all 0.2s; }
+        button.option-btn:hover:not(:disabled) { background: #f8fafc; }
+        
+        button.option-btn.multi-btn.selected { background: #e0f2fe; border-color: #38bdf8; }
+
+        .action-btn { padding: 12px 20px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.2s; margin-top: 10px; width: 100%; }
+        .action-btn:hover { background: #2563eb; }
+
+        .fill-in-blank { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
+        .fill-in-blank input { padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; flex-grow: 1; max-width: 250px; outline: none; }
+        
+        /* ★ 刪除號視覺優化：取消 text-decoration，改用紅色底與邊框，保留公式閱讀性 */
+        button.option-btn.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
+        button.option-btn.wrong { 
+            background: #fee2e2 !important; 
+            border-color: #ef4444 !important; 
+            color: #991b1b !important; 
+            opacity: 0.8; 
+            /* 拿掉 text-decoration: line-through; 避免擋住數學公式 */
+        }
+        
+        .feedback-area { margin-top: 25px; display: none; }
+        .hint-box { background: #fef9c3; border-left: 4px solid #eab308; padding: 15px; margin-bottom: 15px; font-size: 15px; }
+        .exp-box { background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 20px; font-size: 16px; line-height: 1.8; }
+        .empty-state { text-align: center; color: #94a3b8; padding: 50px 0; font-size: 18px; }
+
+        /* 載入更多按鈕 */
+        .load-more-btn {
+            display: block; width: 200px; margin: 30px auto; padding: 12px 24px; background: #0f172a; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.3s;
+        }
+        .load-more-btn:hover { background: #334155; }
+        .load-more-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+        .data-management { margin-top: 40px; padding: 20px; background: white; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1; }
+        .data-btn { padding: 8px 16px; margin: 0 5px; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer; font-size: 14px; }
+        .data-btn:hover { background: #e2e8f0; }
+        .data-btn.danger { color: #ef4444; border-color: #fca5a5; }
+        .data-btn.danger:hover { background: #fee2e2; }
+
+        /* 排序 Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .modal-header h2 { margin: 0; font-size: 20px; color: #1e293b; }
+        .close-btn { background: none; border: none; font-size: 20px; cursor: pointer; color: #64748b; }
+        .sort-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .sort-row select { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; flex-grow: 1; font-size: 14px; outline: none; }
+        .remove-sort-btn { background: #fee2e2; color: #ef4444; border: none; border-radius: 6px; padding: 8px 12px; cursor: pointer; font-size: 14px; }
+        .add-sort-btn { background: #f1f5f9; color: #3b82f6; border: 1px dashed #3b82f6; width: 100%; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 20px; transition: all 0.2s; }
+        .modal-footer { display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-save { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1 style="color: #1e293b;">高中數學歷屆題庫系統</h1>
+    </div>
+
+    <!-- 標籤篩選面板 -->
+    <div class="filter-container">
+        <div class="filter-row">
+            <span class="filter-label">考試類別：</span>
+            <div class="filter-buttons" id="exam-type-buttons">
+                <button class="tag-btn active" data-filter="examType" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="examType" data-value="學測數A">學測數A</button>
+                <button class="tag-btn" data-filter="examType" data-value="學測數B">學測數B</button>
+                <button class="tag-btn" data-filter="examType" data-value="分科數甲">分科數甲</button>
+                <button class="tag-btn" data-filter="examType" data-value="分科數乙">分科數乙</button>
+                <button class="tag-btn" data-filter="examType" data-value="舊制學測">舊制學測</button>
+                <button class="tag-btn" data-filter="examType" data-value="指考(甲)">指考(甲)</button>
+                <button class="tag-btn" data-filter="examType" data-value="指考(乙)">指考(乙)</button>
+            </div>
+        </div>
+
+        <div class="filter-row" id="exam-year-container" style="display: none; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+            <span class="filter-label">考試年份：</span>
+            <div class="filter-buttons" id="exam-year-buttons">
+                <!-- 由 JavaScript 動態產生 -->
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <span class="filter-label">題型：</span>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="type" data-value="all">全部</button>
+                <button class="tag-btn" data-filter="type" data-value="單選題">單選題</button>
+                <button class="tag-btn" data-filter="type" data-value="多選題">多選題</button>
+                <button class="tag-btn" data-filter="type" data-value="填充題">填充題</button>
+                <button class="tag-btn" data-filter="type" data-value="非選擇題">非選擇題</button>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <span class="filter-label">學習狀態：</span>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="status" data-value="all">全部狀態</button>
+                <button class="tag-btn btn-status-red" data-filter="status" data-value="red">🔴 不會</button>
+                <button class="tag-btn btn-status-yellow" data-filter="status" data-value="yellow">🟡 不太會</button>
+                <button class="tag-btn btn-status-green" data-filter="status" data-value="green">🟢 已經會</button>
+                <button class="tag-btn btn-status-white" data-filter="status" data-value="white">⚪ 未讀</button>
+            </div>
+        </div>
+
+        <!-- 答對率粗分 -->
+        <div class="filter-row">
+            <span class="filter-label">難易度：</span>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="rate" data-value="all">全部</button>
+                <button class="tag-btn btn-rate-high" data-filter="rate" data-value="high">易 (≥60%)</button>
+                <button class="tag-btn btn-rate-med" data-filter="rate" data-value="med">中 (30~59%)</button>
+                <button class="tag-btn btn-rate-low" data-filter="rate" data-value="low">難 (<30%)</button>
+            </div>
+        </div>
+
+        <!-- ★ 新增：精確答對率區間 -->
+        <div class="filter-row">
+            <span class="filter-label">精確區間：</span>
+            <div class="filter-buttons" id="exact-rate-buttons">
+                <button class="tag-btn active" data-filter="exactRate" data-value="all">不限</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="90-100">90~100%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="80-89">80~89%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="70-79">70~79%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="60-69">60~69%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="50-59">50~59%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="40-49">40~49%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="30-39">30~39%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="20-29">20~29%</button>
+                <button class="tag-btn" data-filter="exactRate" data-value="0-19">20%以下</button>
+            </div>
+        </div>
+        
+        <hr style="border:0; border-top:1px dashed #cbd5e1; margin: 15px 0;">
+        
+        <!-- 主題分類 (省略部分代碼保持簡潔，結構與原版相同) -->
+        <div class="filter-row">
+            <span class="filter-label">主題：</span>
+            <div class="filter-buttons">
+                <button class="tag-btn active" data-filter="chapter" data-value="all">全部主題</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第一冊" style="margin-right:10px;">第一冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="數與式">數與式</button>
+                <button class="tag-btn" data-filter="chapter" data-value="指數與對數">指數與對數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="多項式函數">多項式函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="直線與圓">直線與圓</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第二冊" style="margin-right:10px;">第二冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="數列與級數">數列與級數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="數據分析">數據分析</button>
+                <button class="tag-btn" data-filter="chapter" data-value="排列組合與機率">排列組合與機率</button>
+                <button class="tag-btn" data-filter="chapter" data-value="三角比">三角比</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第三冊" style="margin-right:10px;">第三冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="三角函數">三角函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="指數與對數函數">指數與對數函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="平面向量">平面向量</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第四冊" style="margin-right:10px;">第四冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="空間向量">空間向量</button>
+                <button class="tag-btn" data-filter="chapter" data-value="空間中的平面與直線">空間中的平面與直線</button>
+                <button class="tag-btn" data-filter="chapter" data-value="機率">機率</button>
+                <button class="tag-btn" data-filter="chapter" data-value="矩陣">矩陣</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第五冊" style="margin-right:10px;">第五冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="極限與函數">極限與函數</button>
+                <button class="tag-btn" data-filter="chapter" data-value="微分">微分</button>
+                <button class="tag-btn" data-filter="chapter" data-value="積分">積分</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="第六冊" style="margin-right:10px;">第六冊</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="二次曲線">二次曲線</button>
+                <button class="tag-btn" data-filter="chapter" data-value="複數與多項式方程式">複數與多項式方程式</button>
+                <button class="tag-btn" data-filter="chapter" data-value="機率統計">機率統計</button>
+            </div>
+        </div>
+        <div class="filter-row">
+            <button class="tag-btn btn-cat" data-filter="category" data-value="數B特有" style="margin-right:10px;">數B特有</button>
+            <div class="filter-buttons">
+                <button class="tag-btn" data-filter="chapter" data-value="數B特有">數B特有</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="result-stats" class="result-stats-container" style="display: none;">
+        <div class="stats-main">
+            共篩選出 <span id="question-count">0</span> 題
+        </div>
+        <div class="stats-details">
+            <span>🟢 <b id="count-green">0</b></span>
+            <span>🟡 <b id="count-yellow">0</b></span>
+            <span>🔴 <b id="count-red">0</b></span>
+            <span>⚪ <b id="count-white">0</b></span>
+        </div>
+        <div class="stats-actions">
+            <button class="toggle-container" onclick="openSortModal()">⚙️ 自訂排序</button>
+            <label class="toggle-container">
+                <input type="checkbox" id="hide-green-toggle" onchange="renderQuestions(true)">
+                隱藏 🟢 已經會的題目
+            </label>
+        </div>
+    </div>
+
+    <!-- 題目列表容器 -->
+    <div id="quiz-container">
+        <div class="empty-state">載入檔案中...請稍候...</div>
+    </div>
+    
+    <!-- 載入更多按鈕 -->
+    <button id="load-more-btn" class="load-more-btn" style="display: none;" onclick="loadMoreQuestions()">載入更多題目 ⬇️</button>
+
+    <div class="data-management">
+        <p style="margin-top:0; color:#64748b; font-size:14px;">學習紀錄管理 (紅綠燈狀態與排序設定)</p>
+        <button class="data-btn" onclick="exportProgress()">📥 匯出紀錄</button>
+        <button class="data-btn" onclick="document.getElementById('import-file').click()">📤 匯入紀錄</button>
+        <input type="file" id="import-file" style="display:none" accept=".json" onchange="importProgress(event)">
+        <button class="data-btn danger" onclick="clearProgress()">🗑️ 清除所有紀錄</button>
+    </div>
+
+    <!-- 排序設定 Modal -->
+    <div id="sort-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ 題目排序設定</h2>
+                <button class="close-btn" onclick="closeSortModal()">✖</button>
+            </div>
+            <div id="sort-levels-container"></div>
+            <button class="add-sort-btn" onclick="addSortLevel()">➕ 新增排序層級</button>
+            <div class="modal-footer">
+                <button class="btn-reset" onclick="resetSortConfig()">復原為預設</button>
+                <button class="btn-save" onclick="saveSortConfig()">💾 儲存並套用</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allQuestions = []; 
+        let currentFilteredData = []; // 存放篩選後準備渲染的資料
+        let currentRenderedCount = 0; // 目前已經渲染到畫面的數量
+        const ITEMS_PER_PAGE = 20;    // 每次載入的數量 (改善效能關鍵)
+
+        // 預設篩選條件：加入 exactRate
+        let currentFilters = { 
+            examType: 'all', examYear: 'all', category: 'all', 
+            chapter: 'all', type: 'all', rate: 'all', exactRate: 'all', status: 'all' 
+        };
+        
+        let userProgress = JSON.parse(localStorage.getItem('mathProgress')) || {};
+
+        // 排序選項
+        const sortFieldOptions = {
+            'year': { label: '年份', asc: '小到大 (舊到新)', desc: '大到小 (新到舊)' },
+            'examType': { label: '考試類別', asc: '預設順序', desc: '反向順序' },
+            'q_num': { label: '題號', asc: '小到大', desc: '大到小' },
+            'rate': { label: '答對率', asc: '低到高 (難到易)', desc: '高到低 (易到難)' },
+            'status': { label: '學習狀態', asc: '白 ➔ 綠 ➔ 黃 ➔ 紅', desc: '紅 ➔ 黃 ➔ 綠 ➔ 白' }
+        };
+        const defaultSortConfig = [
+            { field: 'year', order: 'desc' },
+            { field: 'examType', order: 'asc' },
+            { field: 'q_num', order: 'asc' }
+        ];
+        let sortConfig = JSON.parse(localStorage.getItem('mathSortConfig')) || defaultSortConfig;
+
+        const newSystemYears = ['115', '114', '113', '112', '111'];
+        let oldSystemYears = Array.from({length: 110 - 83 + 1}, (_, i) => String(110 - i));
+        oldSystemYears.splice(oldSystemYears.indexOf('92') + 1, 0, '92補');
+        oldSystemYears.splice(oldSystemYears.indexOf('91') + 1, 0, '91補');
+
+        const examTypeMapping = { '舊制學測': '學測', '指考(甲)': '指考甲', '指考(乙)': '指考乙' };
+        const examTypeOrder = { '學測數A': 1, '學測數B': 2, '分科數甲': 3, '分科數乙': 4, '學測': 5, '指考甲': 6, '指考乙': 7 };
+
+        const dataFiles = [
+            'data/115A.json', 'data/114A.json', 'data/113A.json', 'data/112A.json', 'data/111A.json',
+            'data/115B.json', 'data/114B.json', 'data/113B.json', 'data/112B.json', 'data/111B.json',
+            'data/114甲.json', 'data/113甲.json', 'data/112甲.json', 'data/111甲.json',
+            'data/114乙.json',
+            'data/110.json', 'data/109.json', 'data/108.json', 'data/107.json', 'data/106.json',
+            'data/105.json', 'data/104.json', 'data/103.json', 'data/102.json', 'data/101.json',
+            'data/100.json', 'data/099.json', 'data/098.json', 'data/097.json', 'data/096.json',
+            'data/095.json', 'data/094.json', 'data/093.json', 'data/092.json', 'data/092補.json',
+            'data/091.json', 'data/091補.json', 'data/090.json', 'data/089.json', 'data/088.json',
+            'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
+        ];
+
+        // ★ 效能優化：使用 Promise.all 併發下載所有檔案
+        async function loadQuestions() {
+            const cacheBuster = new Date().getTime();
+            allQuestions = [];
+            let errorFiles = []; 
+            
+            // 建立所有 Fetch 請求的陣列
+            const fetchPromises = dataFiles.map(file => 
+                fetch(`${file}?t=${cacheBuster}`)
+                .then(res => res.ok ? res.json() : Promise.reject(`HTTP error: ${res.status}`))
+                .catch(err => { errorFiles.push(file); return null; })
+            );
+
+            // 並行等待所有請求完成
+            const results = await Promise.all(fetchPromises);
+            
+            results.forEach(data => {
+                if (data && data.questions) {
+                    allQuestions = allQuestions.concat(data.questions);
+                }
+            });
+            
+            if (errorFiles.length > 0) {
+                console.error(`⚠️ 以下檔案無法載入：\n${errorFiles.join('\n')}`);
+            }
+            
+            applySorting();
+            setupFilterButtons();
+            
+            // 預設一開始就只呈現部分畫面，避免卡頓
+            renderQuestions(true);
+        }
+
+        function applySorting() {
+            allQuestions.sort((a, b) => {
+                for (let level of sortConfig) {
+                    let valA, valB;
+                    if (level.field === 'year') {
+                        valA = parseInt(a.year.match(/\d+/)[0]);
+                        valB = parseInt(b.year.match(/\d+/)[0]);
+                    } else if (level.field === 'examType') {
+                        const typeA = a.year.replace(/\d+/, '').trim();
+                        const typeB = b.year.replace(/\d+/, '').trim();
+                        valA = examTypeOrder[typeA] || 99;
+                        valB = examTypeOrder[typeB] || 99;
+                    } else if (level.field === 'q_num') {
+                        valA = a.q_num;
+                        valB = b.q_num;
+                    } else if (level.field === 'rate') {
+                        valA = a.correct_rate !== null ? a.correct_rate : -1;
+                        valB = b.correct_rate !== null ? b.correct_rate : -1;
+                    } else if (level.field === 'status') {
+                        const statusOrder = { 'white': 0, 'green': 1, 'yellow': 2, 'red': 3 };
+                        valA = statusOrder[userProgress[a.id] || 'white'];
+                        valB = statusOrder[userProgress[b.id] || 'white'];
+                    }
+
+                    if (valA !== valB) {
+                        return level.order === 'asc' ? (valA > valB ? 1 : -1) : (valA < valB ? 1 : -1);
+                    }
+                }
+                return 0;
+            });
+        }
+
+        // ================= 篩選按鈕事件綁定 =================
+        function setupFilterButtons() {
+            document.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.onclick = handleFilterBtnClick;
+            });
+        }
+
+        function handleFilterBtnClick(e) {
+            const filterType = e.target.getAttribute('data-filter');
+            const filterValue = e.target.getAttribute('data-value');
+            applyFilter(filterType, filterValue);
+        }
+
+        function updateYearButtons(examType) {
+            const yearContainer = document.getElementById('exam-year-container');
+            const yearButtonsDiv = document.getElementById('exam-year-buttons');
+            
+            if (examType === 'all') {
+                yearContainer.style.display = 'none';
+                currentFilters.examYear = 'all';
+                return;
+            }
+
+            yearContainer.style.display = 'flex';
+            yearButtonsDiv.innerHTML = '<button class="tag-btn active" data-filter="examYear" data-value="all">全部年份</button>';
+            
+            const targetYears = ['學測數A', '學測數B', '分科數甲', '分科數乙'].includes(examType) ? newSystemYears : oldSystemYears;
+            targetYears.forEach(y => {
+                yearButtonsDiv.innerHTML += `<button class="tag-btn btn-year" data-filter="examYear" data-value="${y}">${y}</button>`;
+            });
+
+            yearButtonsDiv.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.onclick = handleFilterBtnClick;
+            });
+            currentFilters.examYear = 'all';
+        }
+
+        function applyFilter(filterType, filterValue) {
+            if (currentFilters[filterType] === filterValue && filterValue !== 'all') {
+                filterValue = 'all';
+            }
+
+            // 處理分類互斥
+            if (filterType === 'category') {
+                currentFilters.category = filterValue;
+                currentFilters.chapter = 'all';
+                document.querySelectorAll(`.tag-btn[data-filter="chapter"]`).forEach(b => b.classList.remove('active'));
+                document.querySelector(`.tag-btn[data-filter="chapter"][data-value="all"]`).classList.add('active');
+            } else if (filterType === 'chapter' && filterValue !== 'all') {
+                currentFilters.chapter = filterValue;
+                currentFilters.category = 'all';
+                document.querySelectorAll(`.tag-btn[data-filter="category"]`).forEach(b => b.classList.remove('active'));
+            } 
+            // 如果點擊了粗糙難度，取消精確區間
+            else if (filterType === 'rate') {
+                currentFilters.rate = filterValue;
+                currentFilters.exactRate = 'all';
+                document.querySelectorAll(`.tag-btn[data-filter="exactRate"]`).forEach(b => b.classList.remove('active'));
+                document.querySelector(`.tag-btn[data-filter="exactRate"][data-value="all"]`).classList.add('active');
+            }
+            // 如果點擊了精確區間，取消粗糙難度
+            else if (filterType === 'exactRate') {
+                currentFilters.exactRate = filterValue;
+                currentFilters.rate = 'all';
+                document.querySelectorAll(`.tag-btn[data-filter="rate"]`).forEach(b => b.classList.remove('active'));
+                document.querySelector(`.tag-btn[data-filter="rate"][data-value="all"]`).classList.add('active');
+            } else {
+                currentFilters[filterType] = filterValue;
+            }
+            
+            if (filterType === 'examType') {
+                updateYearButtons(filterValue);
+            }
+            
+            // 更新 UI 狀態
+            document.querySelectorAll(`.tag-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
+            const targetBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="${filterValue}"]`);
+            if (targetBtn) targetBtn.classList.add('active');
+            else if (filterValue === 'all') {
+                const allBtn = document.querySelector(`.tag-btn[data-filter="${filterType}"][data-value="all"]`);
+                if(allBtn) allBtn.classList.add('active');
+            }
+            
+            // 每次篩選條件改變，就要重新清空畫面並從第一頁開始載入
+            renderQuestions(true); 
+        }
+
+        // ================= 核心渲染邏輯 (含分頁效能優化) =================
+        
+        function checkExactRate(qRate, filterValue) {
+            if (filterValue === 'all') return true;
+            if (qRate === null || qRate === undefined || qRate === "") return false;
+            let rate = Number(qRate);
+            if (isNaN(rate)) return false;
+
+            if (filterValue === '0-19') return rate <= 19;
+            const parts = filterValue.split('-');
+            const min = parseInt(parts[0]);
+            const max = parseInt(parts[1]);
+            return rate >= min && rate <= max;
+        }
+
+        function getRateInfo(rate) {
+            if (rate === null || rate === undefined || rate === "") return null;
+            rate = Number(rate);
+            if (isNaN(rate)) return null;
+            if (rate >= 60) return { class: "badge-rate-high", category: "high", text: rate + "%" };
+            if (rate >= 30) return { class: "badge-rate-med", category: "med", text: rate + "%" };
+            return { class: "badge-rate-low", category: "low", text: rate + "%" };
+        }
+
+        // 當 isReset 為 true 時，代表是全新的搜尋條件，要清空畫面重來
+        function renderQuestions(isReset = false) {
+            const container = document.getElementById('quiz-container');
+            const statsContainer = document.getElementById('result-stats');
+            const hideGreen = document.getElementById('hide-green-toggle').checked;
+            
+            if (isReset) {
+                container.innerHTML = ''; 
+                currentRenderedCount = 0;
+                
+                // 執行條件篩選
+                currentFilteredData = allQuestions.filter(q => {
+                    const rateInfo = getRateInfo(q.correct_rate);
+                    const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
+                    const matchExactRate = checkExactRate(q.correct_rate, currentFilters.exactRate);
+                    
+                    let matchExamType = false;
+                    if (currentFilters.examType === 'all') matchExamType = true;
+                    else if (currentFilters.examType.startsWith('舊制') || currentFilters.examType.startsWith('指考')) {
+                        const mapped = examTypeMapping[currentFilters.examType];
+                        matchExamType = q.year.includes(mapped) && !q.year.includes('數A') && !q.year.includes('數B');
+                    } else {
+                        matchExamType = q.year.includes(currentFilters.examType);
+                    }
+
+                    let matchExamYear = false;
+                    if (currentFilters.examYear === 'all') matchExamYear = true;
+                    else {
+                        const isMakeupFilter = currentFilters.examYear.includes('補');
+                        const baseYear = currentFilters.examYear.replace('補', '');    
+                        const qYearStr = q.year ? String(q.year) : "";
+                        const hasBaseYear = qYearStr.includes(baseYear); 
+                        const isMakeupQuestion = qYearStr.includes('補'); 
+                        matchExamYear = isMakeupFilter ? (hasBaseYear && isMakeupQuestion) : (hasBaseYear && !isMakeupQuestion);
+                    }
+
+                    const qStatus = userProgress[q.id] || 'white';
+                    const matchStatus = currentFilters.status === 'all' || qStatus === currentFilters.status;
+                    if (hideGreen && qStatus === 'green') return false;
+
+                    return matchExamType && matchExamYear &&
+                           (currentFilters.category === 'all' || q.category === currentFilters.category) &&
+                           (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
+                           (currentFilters.type === 'all' || q.type === currentFilters.type) &&
+                           matchRate && matchExactRate && matchStatus;
+                });
+
+                document.getElementById('question-count').innerText = currentFilteredData.length;
+                statsContainer.style.display = 'flex';
+
+                if(currentFilteredData.length === 0) {
+                    container.innerHTML = `<div class="empty-state" style="color:#f59e0b;">目前沒有符合條件的題目。<br><br>請嘗試放寬篩選條件。</div>`;
+                    document.getElementById('load-more-btn').style.display = 'none';
+                    updateStatsCount();
+                    return;
+                }
+            }
+
+            // 開始繪製下一批卡片
+            loadMoreQuestions();
+        }
+
+        // 分批載入函數
+        function loadMoreQuestions() {
+            const container = document.getElementById('quiz-container');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const fragment = document.createDocumentFragment();
+            
+            // 擷取接下來要渲染的 20 題
+            const nextBatch = currentFilteredData.slice(currentRenderedCount, currentRenderedCount + ITEMS_PER_PAGE);
+
+            nextBatch.forEach((q) => {
+                const qStatus = userProgress[q.id] || 'white';
+                const card = document.createElement('div');
+                card.id = `card-${q.id}`;
+                card.className = `question-card card-status-${qStatus}`;
+                
+                let optionsHtml = '';
+                let displayAnswer = q.answer;
+                let displayQuestion = formatBold(q.question);
+                let formattedExp = formatBold(q.explanation);
+                let formattedHint = formatBold(q.hint);
+                
+                if (q.type === "單選題" && q.options && q.options.length > 0) {
+                    q.options.forEach((opt) => {
+                        let optDisplay = formatBold(opt);
+                        optionsHtml += `
+                            <button class="option-btn" data-val="${encodeURIComponent(opt)}" onclick="checkSingleAnswer(this, '${encodeURIComponent(q.answer)}', 'feedback-${q.id}')">
+                                <span>${optDisplay}</span>
+                            </button>`;
+                    });
+                } 
+                else if (q.type === "多選題" && q.options && q.options.length > 0) {
+                    q.options.forEach((opt) => {
+                        let optDisplay = formatBold(opt);
+                        optionsHtml += `
+                            <button class="option-btn multi-btn" data-val="${encodeURIComponent(opt)}" onclick="this.classList.toggle('selected')">
+                                <span>${optDisplay}</span>
+                            </button>`;
+                    });
+                    let ansArray = Array.isArray(q.answer) ? q.answer : [q.answer];
+                    const encodedAns = encodeURIComponent(JSON.stringify(ansArray));
+                    optionsHtml += `<button class="action-btn" onclick="checkMultiAnswer(this, '${q.id}', '${encodedAns}')">確認答案</button>`;
+                    displayAnswer = ansArray.map(ans => { const match = String(ans).match(/^\([A-E]\)/); return match ? match[0] : ans; }).join('');
+                } 
+                else if (q.type === "填充題") {
+                    optionsHtml += `
+                        <div class="fill-in-blank">
+                            <input type="text" id="input-${q.id}" placeholder="請自行計算後輸入答案">
+                            <button class="action-btn" style="width: auto; margin-top: 0;" onclick="checkFillInAnswer('${q.id}', '${encodeURIComponent(q.answer)}')">答案</button>
+                        </div>`;
+                } 
+                else {
+                    optionsHtml += `<div style="color: #64748b; font-style: italic; margin-bottom: 5px;">(本題為手寫或混合題型，請在計算紙上作答後點擊看答案)</div>
+                                    <button class="action-btn" onclick="document.getElementById('feedback-${q.id}').style.display='block'; this.style.display='none';">看答案 / 詳解</button>`;
+                }
+
+                const rateInfo = getRateInfo(q.correct_rate);
+                const rateBadgeHtml = rateInfo ? `<span class="badge ${rateInfo.class} clickable" onclick="applyFilter('rate', '${rateInfo.category}')" title="點擊篩選此難易區間">${rateInfo.text}</span>` : '';
+                const safeQNum = q.q_num ? q.q_num : "X";
+                
+                let imageHtml = '';
+                const diagramData = q.diagram || q.image;
+                if (diagramData) {
+                    if (Array.isArray(diagramData)) {
+                        diagramData.forEach(src => { imageHtml += `<div class="question-image" style="margin-bottom: 15px;"><img src="${src}" alt="題目附圖"></div>`; });
+                    } else {
+                        imageHtml = `<div class="question-image"><img src="${diagramData}" alt="題目附圖"></div>`;
+                    }
+                    displayQuestion = displayQuestion.replace(/<img[^>]*>/gi, '');
+                }
+
+                card.innerHTML = `
+                    <div class="status-selector">
+                        <button class="status-btn s-btn-white ${qStatus==='white'?'active':''}" onclick="setStatus('${q.id}', 'white')" title="標記為未讀">⚪</button>
+                        <button class="status-btn s-btn-red ${qStatus==='red'?'active':''}" onclick="setStatus('${q.id}', 'red')" title="標記為不會">🔴</button>
+                        <button class="status-btn s-btn-yellow ${qStatus==='yellow'?'active':''}" onclick="setStatus('${q.id}', 'yellow')" title="標記為不太會">🟡</button>
+                        <button class="status-btn s-btn-green ${qStatus==='green'?'active':''}" onclick="setStatus('${q.id}', 'green')" title="標記為已經會">🟢</button>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-year">${q.year}</span>
+                        <span class="badge badge-category clickable" onclick="applyFilter('category', '${q.category}')" title="點擊篩選">${q.category}</span>
+                        <span class="badge badge-topic clickable" onclick="applyFilter('chapter', '${q.chapter}')" title="點擊篩選">${q.chapter}</span>
+                        <span class="badge badge-type clickable" onclick="applyFilter('type', '${q.type}')" title="點擊篩選">${q.type}</span>
+                        ${rateBadgeHtml}
+                    </div>
+                    <div class="question-text"><strong>Q${safeQNum}：</strong> ${displayQuestion}</div>
+                    ${imageHtml}
+                    <div class="options">${optionsHtml}</div>
+                    
+                    <div id="feedback-${q.id}" class="feedback-area">
+                        ${q.hint ? `<div class="hint-box"><b>💡 破題關鍵：</b>${formattedHint}</div>` : ''}
+                        <div class="exp-box">
+                            <div style="color:#22c55e; font-weight:bold; margin-bottom:10px; font-size:18px;">✅ 正確答案：${displayAnswer}</div>
+                            ${formattedExp}
+                        </div>
+                    </div>
+                `;
+                fragment.appendChild(card);
+            });
+
+            container.appendChild(fragment);
+            currentRenderedCount += nextBatch.length;
+
+            // 如果還有沒顯示完的資料，顯示載入更多按鈕
+            if (currentRenderedCount < currentFilteredData.length) {
+                loadMoreBtn.style.display = 'block';
+                loadMoreBtn.innerText = `載入更多題目 ⬇️ (尚有 ${currentFilteredData.length - currentRenderedCount} 題)`;
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            // 針對剛加進去的容器進行數學公式渲染
+            if (window.renderMathInElement) {
+                renderMathInElement(container, {
+                    delimiters: [ {left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false} ]
+                });
+            }
+            
+            updateStatsCount();
+        }
+
+        // ================= 答題邏輯 =================
+
+        function checkSingleAnswer(btn, encCorrect, feedbackId) {
+            const correct = decodeURIComponent(encCorrect);
+            const selected = decodeURIComponent(btn.getAttribute('data-val'));
+            const buttons = btn.parentElement.querySelectorAll('.option-btn');
+            
+            buttons.forEach(b => {
+                b.disabled = true;
+                const bVal = decodeURIComponent(b.getAttribute('data-val'));
+                if (bVal === correct) b.classList.add('correct');
+            });
+            
+            if (selected !== correct) btn.classList.add('wrong');
+            document.getElementById(feedbackId).style.display = 'block';
+        }
+
+        function checkMultiAnswer(submitBtn, qId, encodedAnsArr) {
+            const correctAnswers = JSON.parse(decodeURIComponent(encodedAnsArr));
+            const container = submitBtn.parentElement;
+            const buttons = container.querySelectorAll('.multi-btn');
+            
+            buttons.forEach(opt => {
+                opt.disabled = true;
+                const val = decodeURIComponent(opt.getAttribute('data-val'));
+                const isSelected = opt.classList.contains('selected');
+                const isCorrect = correctAnswers.includes(val);
+                
+                if (isCorrect) {
+                    opt.classList.add('correct'); 
+                    if (!isSelected) opt.style.border = '2px dashed #22c55e'; 
+                } else if (isSelected && !isCorrect) {
+                    // ★ 修正：多選題選錯選項，套用新的 wrong CSS
+                    opt.classList.add('wrong'); 
+                }
+            });
+            
+            submitBtn.style.display = 'none';
+            document.getElementById(`feedback-${qId}`).style.display = 'block';
+        }
+
+        function checkFillInAnswer(qId, encCorrect) {
+            const input = document.getElementById(`input-${qId}`);
+            const correct = decodeURIComponent(encCorrect);
+            const feedback = document.getElementById(`feedback-${qId}`);
+            
+            input.disabled = true;
+            if(input.value.replace(/\s+/g, '') === correct.replace(/\s+/g, '')) {
+                input.style.borderColor = "#22c55e";
+                input.style.backgroundColor = "#dcfce7";
+            } else {
+                input.style.borderColor = "#ef4444";
+                input.style.backgroundColor = "#fee2e2";
+            }
+            feedback.style.display = 'block';
+            input.nextElementSibling.style.display = 'none'; 
+        }
+
+        function formatBold(text) {
+            if (!text) return '';
+            let parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
+            for (let i = 0; i < parts.length; i++) {
+                if (i % 2 === 0) parts[i] = parts[i].replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                else parts[i] = parts[i].replace(/\*\*(.*?)\*\*/g, '\\textbf{$1}');
+            }
+            return parts.join('');
+        }
+
+        function setStatus(qId, status) {
+            userProgress[qId] = status;
+            localStorage.setItem('mathProgress', JSON.stringify(userProgress));
+            
+            const card = document.getElementById(`card-${qId}`);
+            card.className = `question-card card-status-${status}`;
+            
+            const btns = card.querySelectorAll('.status-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            card.querySelector(`.s-btn-${status}`).classList.add('active');
+
+            if (status === 'green' && document.getElementById('hide-green-toggle').checked) {
+                renderQuestions(true);
+            } else {
+                updateStatsCount(); 
+            }
+        }
+
+        function updateStatsCount() {
+            let counts = { green: 0, yellow: 0, red: 0, white: 0 };
+            // 注意：這裡只統計目前「有符合篩選條件」的題目，而不是只看畫面上的。
+            currentFilteredData.forEach(q => {
+                const s = userProgress[q.id] || 'white';
+                counts[s]++;
+            });
+            document.getElementById('count-green').innerText = counts.green;
+            document.getElementById('count-yellow').innerText = counts.yellow;
+            document.getElementById('count-red').innerText = counts.red;
+            document.getElementById('count-white').innerText = counts.white;
+        }
+
+        // ================= Modal 與資料管理 =================
+        function openSortModal() {
+            const container = document.getElementById('sort-levels-container');
+            container.innerHTML = '';
+            sortConfig.forEach(config => addSortRow(config.field, config.order));
+            document.getElementById('sort-modal').style.display = 'flex';
+        }
+
+        function closeSortModal() { document.getElementById('sort-modal').style.display = 'none'; }
+
+        function addSortRow(selectedField = 'year', selectedOrder = 'desc') {
+            const container = document.getElementById('sort-levels-container');
+            const row = document.createElement('div');
+            row.className = 'sort-row';
+            
+            const fieldSelect = document.createElement('select');
+            fieldSelect.className = 'sort-field-select';
+            for (const [key, data] of Object.entries(sortFieldOptions)) {
+                const option = document.createElement('option');
+                option.value = key; option.textContent = data.label;
+                if (key === selectedField) option.selected = true;
+                fieldSelect.appendChild(option);
+            }
+
+            const orderSelect = document.createElement('select');
+            orderSelect.className = 'sort-order-select';
+            const updateOrderOptions = () => {
+                orderSelect.innerHTML = '';
+                const fieldData = sortFieldOptions[fieldSelect.value];
+                orderSelect.innerHTML += `<option value="asc" ${selectedOrder === 'asc' ? 'selected' : ''}>${fieldData.asc}</option>`;
+                orderSelect.innerHTML += `<option value="desc" ${selectedOrder === 'desc' ? 'selected' : ''}>${fieldData.desc}</option>`;
+            };
+            fieldSelect.onchange = () => { selectedOrder = 'asc'; updateOrderOptions(); };
+            updateOrderOptions();
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-sort-btn'; removeBtn.textContent = '❌ 移除';
+            removeBtn.onclick = () => row.remove();
+
+            row.appendChild(fieldSelect); row.appendChild(orderSelect); row.appendChild(removeBtn);
+            container.appendChild(row);
+        }
+
+        function addSortLevel() { addSortRow('year', 'desc'); }
+
+        function saveSortConfig() {
+            const rows = document.querySelectorAll('.sort-row');
+            const newConfig = [];
+            rows.forEach(row => {
+                newConfig.push({ field: row.querySelector('.sort-field-select').value, order: row.querySelector('.sort-order-select').value });
+            });
+            if (newConfig.length === 0) { alert("請至少設定一層排序條件！"); return; }
+            sortConfig = newConfig;
+            localStorage.setItem('mathSortConfig', JSON.stringify(sortConfig));
+            closeSortModal(); applySorting(); renderQuestions(true);
+        }
+
+        function resetSortConfig() {
+            sortConfig = defaultSortConfig;
+            localStorage.setItem('mathSortConfig', JSON.stringify(sortConfig));
+            closeSortModal(); applySorting(); renderQuestions(true);
+        }
+
+        function exportProgress() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userProgress));
+            const a = document.createElement('a');
+            a.setAttribute("href", dataStr); a.setAttribute("download", "math_progress_backup.json");
+            document.body.appendChild(a); a.click(); a.remove();
+        }
+
+        function importProgress(event) {
+            const file = event.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    userProgress = JSON.parse(e.target.result);
+                    localStorage.setItem('mathProgress', JSON.stringify(userProgress));
+                    alert("✅ 學習紀錄匯入成功！"); applySorting(); renderQuestions(true);
+                } catch (err) { alert("❌ 檔案格式錯誤，匯入失敗。"); }
+            };
+            reader.readAsText(file);
+        }
+
+        function clearProgress() {
+            if(confirm("⚠️ 確定要清除所有紅綠燈紀錄嗎？此動作無法復原！")) {
+                userProgress = {}; localStorage.removeItem('mathProgress');
+                applySorting(); renderQuestions(true);
+            }
+        }
+    </script>
+</body>
+</html>

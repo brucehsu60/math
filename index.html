@@ -24,32 +24,34 @@
         
         .tag-btn { padding: 6px 14px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
         .tag-btn:hover { background: #e2e8f0; }
-        .tag-btn.active { background: #1e293b; color: white; border-color: #1e293b; font-weight: bold; }
         
-        .tag-btn.active[data-value="all"] { background: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important; outline: none !important; }
-
-        .tag-btn.active[data-filter="type"]:not([data-value="all"]) { background: #8b5cf6; border-color: #8b5cf6; }
-        .tag-btn.active[data-filter="chapter"]:not([data-value="all"]) { background: #3b82f6; border-color: #3b82f6; }
+        /* ★ 修改 1：統一所有一般標籤的 active 顏色為指定的藍色 (#3b82f6) */
+        .tag-btn.active { background: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important; font-weight: bold; outline: none !important; }
         
         .btn-cat { background: #f1f5f9; font-weight: bold; border-color: #cbd5e1; }
         .btn-cat:hover { background: #e2e8f0; }
-        .tag-btn.active[data-filter="category"]:not([data-value="all"]) { background: #1e293b; color: white; border-color: #1e293b; }
         
-        .btn-rate-high { background: #10b981; color: white; border-color: #10b981; }
-        .btn-rate-med { background: #f59e0b; color: white; border-color: #f59e0b; }
-        .btn-rate-low { background: #ef4444; color: white; border-color: #ef4444; }
-        .tag-btn.active[data-filter="rate"]:not([data-value="all"]) { outline: 3px solid #1e293b; outline-offset: 1px; }
-
-        .btn-status-green { background: #dcfce7; color: #166534; border-color: #22c55e; }
-        .btn-status-yellow { background: #fef9c3; color: #854d0e; border-color: #eab308; }
-        .btn-status-red { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
-        .btn-status-white { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
-        .tag-btn.active[data-filter="status"]:not([data-value="all"]) { outline: 3px solid #1e293b; outline-offset: 1px; font-weight: bold; }
+        /* 狀態與難易度按鈕保留原本的語意顏色 */
+        .btn-rate-high { background: #10b981 !important; color: white !important; border-color: #10b981 !important; }
+        .btn-rate-med { background: #f59e0b !important; color: white !important; border-color: #f59e0b !important; }
+        .btn-rate-low { background: #ef4444 !important; color: white !important; border-color: #ef4444 !important; }
+        
+        .btn-status-green { background: #dcfce7 !important; color: #166534 !important; border-color: #22c55e !important; }
+        .btn-status-yellow { background: #fef9c3 !important; color: #854d0e !important; border-color: #eab308 !important; }
+        .btn-status-red { background: #fee2e2 !important; color: #991b1b !important; border-color: #ef4444 !important; }
+        .btn-status-white { background: #f1f5f9 !important; color: #475569 !important; border-color: #cbd5e1 !important; }
+        
+        /* ★ 針對帶有特殊背景色的按鈕 (狀態、難易度)，active 時加上藍色外框以統一視覺，但不覆蓋底色 */
+        .tag-btn.active[data-filter="status"]:not([data-value="all"]),
+        .tag-btn.active[data-filter="rate"]:not([data-value="all"]) { 
+            outline: 3px solid #3b82f6 !important; outline-offset: 1px; font-weight: bold; 
+        }
 
         .btn-year { padding: 4px 10px; font-size: 13px; }
 
-        /* 細部答對率按鈕樣式 */
-        .tag-btn.active[data-filter="exactRate"]:not([data-value="all"]) { background: #0ea5e9; border-color: #0ea5e9; }
+        /* 自訂答對率輸入框樣式 */
+        .rate-input { width: 70px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 14px; outline: none; text-align: center; }
+        .rate-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
 
         /* 結果統計列設計 */
         .result-stats-container {
@@ -123,15 +125,8 @@
         .fill-in-blank { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
         .fill-in-blank input { padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; flex-grow: 1; max-width: 250px; outline: none; }
         
-        /* ★ 刪除號視覺優化：取消 text-decoration，改用紅色底與邊框，保留公式閱讀性 */
         button.option-btn.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
-        button.option-btn.wrong { 
-            background: #fee2e2 !important; 
-            border-color: #ef4444 !important; 
-            color: #991b1b !important; 
-            opacity: 0.8; 
-            /* 拿掉 text-decoration: line-through; 避免擋住數學公式 */
-        }
+        button.option-btn.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; opacity: 0.8; }
         
         .feedback-area { margin-top: 25px; display: none; }
         .hint-box { background: #fef9c3; border-left: 4px solid #eab308; padding: 15px; margin-bottom: 15px; font-size: 15px; }
@@ -226,26 +221,24 @@
             </div>
         </div>
 
-        <!-- ★ 新增：精確答對率區間 -->
+        <!-- ★ 修改 2：自訂答對率區間 -->
         <div class="filter-row">
-            <span class="filter-label">精確區間：</span>
-            <div class="filter-buttons" id="exact-rate-buttons">
-                <button class="tag-btn active" data-filter="exactRate" data-value="all">不限</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="90-100">90~100%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="80-89">80~89%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="70-79">70~79%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="60-69">60~69%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="50-59">50~59%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="40-49">40~49%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="30-39">30~39%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="20-29">20~29%</button>
-                <button class="tag-btn" data-filter="exactRate" data-value="0-19">20%以下</button>
+            <span class="filter-label">答對率：</span>
+            <div class="filter-buttons" style="align-items: center; gap: 10px;">
+                <button class="tag-btn active" id="clear-custom-rate">不限</button>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; padding: 4px 10px; border-radius: 20px; border: 1px solid #e2e8f0;">
+                    <input type="number" id="custom-rate-max" class="rate-input" placeholder="上限(%)" min="0" max="100">
+                    <span style="color: #64748b; font-weight: bold;">~</span>
+                    <input type="number" id="custom-rate-min" class="rate-input" placeholder="下限(%)" min="0" max="100">
+                    <button class="tag-btn" id="apply-custom-rate" style="margin-left: 4px; background: white;">套用區間</button>
+                </div>
+                <span style="font-size: 12px; color: #94a3b8; margin-left: 5px;">(套用後將自動由高到低排序)</span>
             </div>
         </div>
         
         <hr style="border:0; border-top:1px dashed #cbd5e1; margin: 15px 0;">
         
-        <!-- 主題分類 (省略部分代碼保持簡潔，結構與原版相同) -->
+        <!-- 主題分類 -->
         <div class="filter-row">
             <span class="filter-label">主題：</span>
             <div class="filter-buttons">
@@ -364,14 +357,15 @@
 
     <script>
         let allQuestions = []; 
-        let currentFilteredData = []; // 存放篩選後準備渲染的資料
-        let currentRenderedCount = 0; // 目前已經渲染到畫面的數量
-        const ITEMS_PER_PAGE = 20;    // 每次載入的數量 (改善效能關鍵)
+        let currentFilteredData = []; 
+        let currentRenderedCount = 0; 
+        const ITEMS_PER_PAGE = 20;    
 
-        // 預設篩選條件：加入 exactRate
+        // 預設篩選條件：加入 customRate
         let currentFilters = { 
             examType: 'all', examYear: 'all', category: 'all', 
-            chapter: 'all', type: 'all', rate: 'all', exactRate: 'all', status: 'all' 
+            chapter: 'all', type: 'all', rate: 'all', status: 'all',
+            customRate: { active: false, min: 0, max: 100 }
         };
         
         let userProgress = JSON.parse(localStorage.getItem('mathProgress')) || {};
@@ -412,20 +406,17 @@
             'data/087.json', 'data/086.json', 'data/085.json', 'data/084.json', 'data/083.json'
         ];
 
-        // ★ 效能優化：使用 Promise.all 併發下載所有檔案
         async function loadQuestions() {
             const cacheBuster = new Date().getTime();
             allQuestions = [];
             let errorFiles = []; 
             
-            // 建立所有 Fetch 請求的陣列
             const fetchPromises = dataFiles.map(file => 
                 fetch(`${file}?t=${cacheBuster}`)
                 .then(res => res.ok ? res.json() : Promise.reject(`HTTP error: ${res.status}`))
                 .catch(err => { errorFiles.push(file); return null; })
             );
 
-            // 並行等待所有請求完成
             const results = await Promise.all(fetchPromises);
             
             results.forEach(data => {
@@ -440,8 +431,8 @@
             
             applySorting();
             setupFilterButtons();
+            setupCustomRateEvents();
             
-            // 預設一開始就只呈現部分畫面，避免卡頓
             renderQuestions(true);
         }
 
@@ -479,8 +470,60 @@
 
         // ================= 篩選按鈕事件綁定 =================
         function setupFilterButtons() {
-            document.querySelectorAll('.tag-btn').forEach(btn => {
+            document.querySelectorAll('.tag-btn[data-filter]').forEach(btn => {
                 btn.onclick = handleFilterBtnClick;
+            });
+        }
+
+        function setupCustomRateEvents() {
+            document.getElementById('apply-custom-rate').addEventListener('click', () => {
+                let maxVal = parseFloat(document.getElementById('custom-rate-max').value);
+                let minVal = parseFloat(document.getElementById('custom-rate-min').value);
+                
+                if (isNaN(maxVal) && isNaN(minVal)) return; 
+                
+                if (isNaN(maxVal)) maxVal = 100;
+                if (isNaN(minVal)) minVal = 0;
+
+                // 若使用者輸入反了，自動對調
+                if (minVal > maxVal) {
+                    let temp = minVal;
+                    minVal = maxVal;
+                    maxVal = temp;
+                }
+
+                currentFilters.customRate = { active: true, min: minVal, max: maxVal };
+                
+                // 清除粗略難易度按鈕狀態
+                currentFilters.rate = 'all';
+                document.querySelectorAll(`.tag-btn[data-filter="rate"]`).forEach(b => b.classList.remove('active'));
+                document.querySelector(`.tag-btn[data-filter="rate"][data-value="all"]`).classList.add('active');
+
+                // 更新自訂區間按鈕 UI
+                document.getElementById('clear-custom-rate').classList.remove('active');
+                document.getElementById('apply-custom-rate').classList.add('active');
+
+                // ★ 自動更改排序：由答對率高排到低
+                sortConfig = [
+                    { field: 'rate', order: 'desc' },
+                    { field: 'year', order: 'desc' },
+                    { field: 'q_num', order: 'asc' }
+                ];
+                localStorage.setItem('mathSortConfig', JSON.stringify(sortConfig));
+                applySorting();
+
+                renderQuestions(true);
+            });
+
+            document.getElementById('clear-custom-rate').addEventListener('click', () => {
+                currentFilters.customRate = { active: false, min: 0, max: 100 };
+                document.getElementById('custom-rate-max').value = '';
+                document.getElementById('custom-rate-min').value = '';
+                
+                document.getElementById('apply-custom-rate').classList.remove('active');
+                document.getElementById('clear-custom-rate').classList.add('active');
+                
+                renderQuestions(true);
             });
         }
 
@@ -519,7 +562,6 @@
                 filterValue = 'all';
             }
 
-            // 處理分類互斥
             if (filterType === 'category') {
                 currentFilters.category = filterValue;
                 currentFilters.chapter = 'all';
@@ -530,19 +572,14 @@
                 currentFilters.category = 'all';
                 document.querySelectorAll(`.tag-btn[data-filter="category"]`).forEach(b => b.classList.remove('active'));
             } 
-            // 如果點擊了粗糙難度，取消精確區間
+            // 如果點擊了粗糙難度，取消自訂區間
             else if (filterType === 'rate') {
                 currentFilters.rate = filterValue;
-                currentFilters.exactRate = 'all';
-                document.querySelectorAll(`.tag-btn[data-filter="exactRate"]`).forEach(b => b.classList.remove('active'));
-                document.querySelector(`.tag-btn[data-filter="exactRate"][data-value="all"]`).classList.add('active');
-            }
-            // 如果點擊了精確區間，取消粗糙難度
-            else if (filterType === 'exactRate') {
-                currentFilters.exactRate = filterValue;
-                currentFilters.rate = 'all';
-                document.querySelectorAll(`.tag-btn[data-filter="rate"]`).forEach(b => b.classList.remove('active'));
-                document.querySelector(`.tag-btn[data-filter="rate"][data-value="all"]`).classList.add('active');
+                currentFilters.customRate = { active: false, min: 0, max: 100 };
+                document.getElementById('custom-rate-max').value = '';
+                document.getElementById('custom-rate-min').value = '';
+                document.getElementById('apply-custom-rate').classList.remove('active');
+                document.getElementById('clear-custom-rate').classList.add('active');
             } else {
                 currentFilters[filterType] = filterValue;
             }
@@ -560,25 +597,11 @@
                 if(allBtn) allBtn.classList.add('active');
             }
             
-            // 每次篩選條件改變，就要重新清空畫面並從第一頁開始載入
             renderQuestions(true); 
         }
 
-        // ================= 核心渲染邏輯 (含分頁效能優化) =================
+        // ================= 核心渲染邏輯 =================
         
-        function checkExactRate(qRate, filterValue) {
-            if (filterValue === 'all') return true;
-            if (qRate === null || qRate === undefined || qRate === "") return false;
-            let rate = Number(qRate);
-            if (isNaN(rate)) return false;
-
-            if (filterValue === '0-19') return rate <= 19;
-            const parts = filterValue.split('-');
-            const min = parseInt(parts[0]);
-            const max = parseInt(parts[1]);
-            return rate >= min && rate <= max;
-        }
-
         function getRateInfo(rate) {
             if (rate === null || rate === undefined || rate === "") return null;
             rate = Number(rate);
@@ -588,7 +611,6 @@
             return { class: "badge-rate-low", category: "low", text: rate + "%" };
         }
 
-        // 當 isReset 為 true 時，代表是全新的搜尋條件，要清空畫面重來
         function renderQuestions(isReset = false) {
             const container = document.getElementById('quiz-container');
             const statsContainer = document.getElementById('result-stats');
@@ -598,11 +620,24 @@
                 container.innerHTML = ''; 
                 currentRenderedCount = 0;
                 
-                // 執行條件篩選
                 currentFilteredData = allQuestions.filter(q => {
                     const rateInfo = getRateInfo(q.correct_rate);
                     const matchRate = currentFilters.rate === 'all' || (rateInfo && rateInfo.category === currentFilters.rate);
-                    const matchExactRate = checkExactRate(q.correct_rate, currentFilters.exactRate);
+                    
+                    // 判斷自訂答對率區間
+                    let matchCustomRate = true;
+                    if (currentFilters.customRate.active) {
+                        if (q.correct_rate === null || q.correct_rate === undefined || q.correct_rate === "") {
+                            matchCustomRate = false;
+                        } else {
+                            let rate = Number(q.correct_rate);
+                            if (isNaN(rate)) {
+                                matchCustomRate = false;
+                            } else {
+                                matchCustomRate = (rate >= currentFilters.customRate.min && rate <= currentFilters.customRate.max);
+                            }
+                        }
+                    }
                     
                     let matchExamType = false;
                     if (currentFilters.examType === 'all') matchExamType = true;
@@ -632,7 +667,7 @@
                            (currentFilters.category === 'all' || q.category === currentFilters.category) &&
                            (currentFilters.chapter === 'all' || q.chapter === currentFilters.chapter) &&
                            (currentFilters.type === 'all' || q.type === currentFilters.type) &&
-                           matchRate && matchExactRate && matchStatus;
+                           matchRate && matchCustomRate && matchStatus;
                 });
 
                 document.getElementById('question-count').innerText = currentFilteredData.length;
@@ -646,17 +681,14 @@
                 }
             }
 
-            // 開始繪製下一批卡片
             loadMoreQuestions();
         }
 
-        // 分批載入函數
         function loadMoreQuestions() {
             const container = document.getElementById('quiz-container');
             const loadMoreBtn = document.getElementById('load-more-btn');
             const fragment = document.createDocumentFragment();
             
-            // 擷取接下來要渲染的 20 題
             const nextBatch = currentFilteredData.slice(currentRenderedCount, currentRenderedCount + ITEMS_PER_PAGE);
 
             nextBatch.forEach((q) => {
@@ -752,7 +784,6 @@
             container.appendChild(fragment);
             currentRenderedCount += nextBatch.length;
 
-            // 如果還有沒顯示完的資料，顯示載入更多按鈕
             if (currentRenderedCount < currentFilteredData.length) {
                 loadMoreBtn.style.display = 'block';
                 loadMoreBtn.innerText = `載入更多題目 ⬇️ (尚有 ${currentFilteredData.length - currentRenderedCount} 題)`;
@@ -760,7 +791,6 @@
                 loadMoreBtn.style.display = 'none';
             }
 
-            // 針對剛加進去的容器進行數學公式渲染
             if (window.renderMathInElement) {
                 renderMathInElement(container, {
                     delimiters: [ {left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false} ]
@@ -802,7 +832,6 @@
                     opt.classList.add('correct'); 
                     if (!isSelected) opt.style.border = '2px dashed #22c55e'; 
                 } else if (isSelected && !isCorrect) {
-                    // ★ 修正：多選題選錯選項，套用新的 wrong CSS
                     opt.classList.add('wrong'); 
                 }
             });
@@ -858,7 +887,6 @@
 
         function updateStatsCount() {
             let counts = { green: 0, yellow: 0, red: 0, white: 0 };
-            // 注意：這裡只統計目前「有符合篩選條件」的題目，而不是只看畫面上的。
             currentFilteredData.forEach(q => {
                 const s = userProgress[q.id] || 'white';
                 counts[s]++;
